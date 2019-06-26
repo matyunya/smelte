@@ -11,5 +11,5 @@
   class={`material-icons ${color} ${c}`}
   class:text-base={small}
 >
-  <slot></slot>
+  <slot></slot> 
 </i>

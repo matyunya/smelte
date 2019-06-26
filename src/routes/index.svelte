@@ -177,7 +177,7 @@
 	>
 		<List dense navigation items={menu} />
 	</NavigationDrawer>
-	<Button on:click={() => showNavigation = true}>Show navigation drawer</Button>
+
 	<div class="my-4">
 		<Checkbox label="To the right" bind:value={right} />
 	</div>

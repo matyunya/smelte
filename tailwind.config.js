@@ -11,7 +11,7 @@ const rippleAfter = {
   backgroundPosition: '50%',
   transform: 'scale(10, 10)',
   opacity: 0,
-  transition: 'transform .6s, opacity 0.8s',
+  transition: 'transform .5s, opacity 0.8s',
 }
 
 const ripple = {

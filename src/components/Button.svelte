@@ -34,7 +34,7 @@
   @apply border border-solid border-primary-500 rounded text-primary-500;
 
   &:hover {
-    @apply bg-primary-100;
+    @apply bg-primary-50;
   }
 }
 

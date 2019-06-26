@@ -18,7 +18,7 @@
   min-width: 216px;
 }
 .bordered {
-  @apply border-gray-400 border-r border-solid;
+  @apply border-gray-400 border-r border-l border-solid;
 }
 </style>
 

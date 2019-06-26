@@ -50,7 +50,11 @@
   on:click={() => value = name}
 >
   {#if icon}
-    <Icon c="pr-6" small={dense}>{icon}</Icon>
+    <Icon
+      c="pr-6"
+      small={dense}
+      color={selected && navigation ? 'text-primary-500' : ''}
+    >{icon}</Icon>
   {/if}
 
   <div class="flex flex-col p-0">
