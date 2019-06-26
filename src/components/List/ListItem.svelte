@@ -6,12 +6,14 @@
   export let value = '';
   export let text = '';
   export let subheading = '';
+  export let dense = false;
 
   $: selected = name === value;
 </script>
 
 <li
-  class="cursor-pointer ripple-gray hover:bg-gray-300 p-4 flex align-center items-center"
+  class="cursor-pointer ripple-gray hover:bg-gray-300 flex align-center items-center p-4"
+  class:py-2={dense}
   class:bg-gray-200={selected}
   on:click={() => value = name}
 >

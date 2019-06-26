@@ -25,7 +25,8 @@
 
 {#if value}
   <div
-    transition:fade={{duration: 400, easing: quadIn }}
+    in:fade={{duration: 100, easing: quadIn }}
+    out:fade={{duration: 400, easing: quadOut }}
     class={`
       flex fixed bottom-0 py-2 px-4 z-30 mb-4
       content-between mx-auto rounded

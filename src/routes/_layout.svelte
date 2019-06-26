@@ -6,7 +6,7 @@
 
 <style>
 	:global(body) {
-		@apply bg-white text-black;
+		@apply bg-gray-200 text-black;
 	}
 
 	main {

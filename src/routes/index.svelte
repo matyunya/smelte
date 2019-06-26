@@ -10,6 +10,7 @@
 	import Select from '../components/Select.svelte';
 	import Snackbar from '../components/Snackbar.svelte';
 	import Dialog from '../components/Dialog.svelte';
+	import NavigationDrawer from '../components/NavigationDrawer.svelte';
 
 	onMount(() => {
 		if (!process.browser || !window.location.hash) return;
@@ -46,12 +47,28 @@
 		subheading: 'Subheading 3',
 	}];
 
+	const menu = [
+		{ to: "#text-fields", text: 'Text fields' },
+		{ to: "#buttons", text: 'Buttons' },
+		{ to: "#checkboxes", text: 'Checkboxes' },
+		{ to: "#checkboxes", text: 'Radio buttons' },
+		{ to: "#lists", text: 'Lists' },
+		{ to: "#selects", text: 'Selects' },
+		{ to: "#snackbars", text: 'Snackbars' },
+		{ to: "#dialogs", text: 'Dialogs' },
+		{ to: "#navigation-drawers", text: 'Navigation drawers' },
+	];
+
 	let showSnackbar = false;
 	let showDialog = false;
+	let showNavigation = false;
+	let persistent = true;
+	let right = false;
+	let elevation = true;
 </script>
 
 <svelte:head>
-	<title>Sapper project template</title>
+	<title>Melte: Material design using Tailwind CSS for Svelte</title>
 </svelte:head>
 
 <div>
@@ -88,10 +105,8 @@
 	<Button icon="change_history" text light />
 
 	<h2 class="text-xl pb-4 pt-8" id="checkboxes"><a href="#checkboxes">Checkboxes</a></h2>
-	<Checkbox checked label="Checked" />
-	<Checkbox checked={false} label="Unchecked" />
-	<Checkbox checked={false} disabled label="Disabled unchecked" />
-	<Checkbox checked disabled label="Disabled checked" />
+	<Checkbox label="A checkbox" />
+	<Checkbox disabled label="A disabled checkbox" />
 
 	<h2 class="text-xl pb-4 pt-8" id="checkboxes"><a href="#checkboxes">Radio buttons</a></h2>
 	<RadioButtonGroup
@@ -146,6 +161,24 @@
 		</div>
 	</Dialog>
 	<Button on:click={() => showDialog = true}>Show dialog</Button>
+	
+	<h2 class="text-xl pb-4 pt-8" id="navigation-drawers">
+		<a href="#navigation-drawers">Navigation drawers</a>
+	</h2>
+
+	<NavigationDrawer bind:value={showNavigation} {right} {persistent} {elevation}>
+		<List dense items={menu} />
+	</NavigationDrawer>
+	<Button on:click={() => showNavigation = true}>Show navigation drawer</Button>
+	<div class="my-4">
+		<Checkbox label="To the right" bind:value={right} />
+	</div>
+	<div class="my-4">
+		<Checkbox label="Persistent" bind:value={persistent} />
+	</div>
+	<div class="my-4">
+		<Checkbox label="With elevation" bind:value={elevation} />
+	</div>
 
 </div>
 

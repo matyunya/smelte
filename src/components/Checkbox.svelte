@@ -1,7 +1,7 @@
 <script>
   import Icon from './Icon.svelte';
 
-  export let checked = false;
+  export let value = false;
   export let label = '';
   export let color = 'text-primary-700';
   export let disabled = false;
@@ -9,7 +9,7 @@
   function check() {
     if (disabled) return;
 
-    checked = !checked;
+    value = !value;
   }
 
 </script>
@@ -19,7 +19,7 @@
     class="hidden"
     type="checkbox"
   />
-  {#if checked}
+  {#if value}
     <Icon color={disabled ? 'text-gray-500' : color}>
       check_box
     </Icon>
