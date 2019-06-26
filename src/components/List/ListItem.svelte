@@ -16,15 +16,18 @@
 <style>
   .list-item {
     @apply text-gray-700 cursor-pointer flex items-center;
+    transition: background-color .2s ease-out;
   }
 
   .basic {
     &:hover {
       @apply bg-gray-300;
+      transition: background-color .2s ease-in;
     }
 
     &.selected {
       @apply bg-gray-200;
+      transition: background-color .2s ease-in;
     }
   }
   .navigation {
@@ -35,6 +38,7 @@
 
     &.selected {
       @apply bg-primary-50 text-primary-500;
+      transition: background-color .2s ease-in;
     }
   }
 </style>

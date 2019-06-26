@@ -67,12 +67,12 @@
   }
   
   .outlined-error {
-    @apply border-solid border-red-700 border;
+    @apply border-solid border-red-500 border;
     transition: border-color 200ms;
   }
 
   .error {
-    @apply text-red-700 caret-red-700;
+    @apply text-red-500 caret-red-500;
   }
 
   .select {
@@ -130,7 +130,7 @@
         class:outlined
         class:outlined-focused-border={focused && outlined}
         class:outlined-error={outlined && error}
-        class:caret-red-700={error}
+        class:caret-red-500={error}
         bind:value
         on:focus={toggleFocused}
         on:blur={toggleFocused}
@@ -140,7 +140,7 @@
 
     <div
       class="line"
-      class:bg-red-700={error}
+      class:bg-red-500={error}
       class:bg-primary-500={focused}
       class:bg-gray-600={notFocused}
       class:hidden={outlined}

@@ -11,6 +11,36 @@
   }
 }
 
+h1 {
+  @apply text-5xl font-light;
+  letter-spacing: -1.5;
+}
+
+h2 {
+  @apply text-4xl font-light;
+  letter-spacing: -0.5;
+}
+
+h3 {
+  @apply text-3xl font-normal;
+  letter-spacing: 0;
+}
+
+h4 {
+  @apply text-2xl font-normal;
+  letter-spacing: 0.25;
+}
+
+h5 {
+  @apply text-xl font-normal;
+  letter-spacing: 0;
+}
+
+h6 {
+  @apply text-base font-medium;
+  letter-spacing: 0.15;
+}
+
 html {
   font-family: 'Roboto', sans-serif;
 }
