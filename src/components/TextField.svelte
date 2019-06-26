@@ -62,7 +62,7 @@
   }
 
   .outlined-focused-border {
-    @apply border-solid border-primary-500 border;
+    @apply border-solid border-primary-400 border;
     transition: border-color 200ms;
   }
   
