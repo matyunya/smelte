@@ -53,7 +53,7 @@
   }
 
   .input {
-    @apply pb-2 pt-6 px-4 outline-none rounded-t text-black w-full caret-primary-700 bg-gray-100;
+    @apply pb-2 pt-6 px-4 outline-none rounded-t text-black w-full caret-primary-500 bg-gray-100;
     transition: background-color 0.2s;
   }
 
@@ -62,7 +62,7 @@
   }
 
   .outlined-focused-border {
-    @apply border-solid border-primary-700 border;
+    @apply border-solid border-primary-500 border;
     transition: border-color 200ms;
   }
   
@@ -87,7 +87,7 @@
 >
   <div
     class="text-gray-600 relative border-box"
-    class:text-primary-700={focused && !error}
+    class:text-primary-500={focused && !error}
     class:error
   >
     <label
@@ -100,7 +100,7 @@
       <div
         class="absolute right-0 top-0 pb-2 pr-4 pt-4"
       >
-        <Icon color={focused ? 'text-primary-700' : 'text-gray-700'}>{append}</Icon>
+        <Icon color={focused ? 'text-primary-500' : 'text-gray-700'}>{append}</Icon>
       </div>
     {/if}
 
@@ -141,7 +141,7 @@
     <div
       class="line"
       class:bg-red-700={error}
-      class:bg-primary-700={focused}
+      class:bg-primary-500={focused}
       class:bg-gray-600={notFocused}
       class:hidden={outlined}
     />

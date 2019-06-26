@@ -7,18 +7,50 @@
   export let text = '';
   export let subheading = '';
   export let dense = false;
+  export let navigation = false;
 
   $: selected = name === value;
 </script>
 
+<style>
+  .list-item {
+    @apply text-gray-700 cursor-pointer flex items-center;
+  }
+
+  .basic {
+    @apply ripple-gray;
+
+    &:hover {
+      @apply bg-gray-300;
+    }
+
+    &.selected {
+      @apply bg-gray-200;
+    }
+  }
+  .navigation {
+    @apply mx-3 rounded text-sm;
+    &:hover {
+      @apply bg-local;
+    }
+
+    &.selected {
+      @apply bg-primary-50 text-primary-500;
+    }
+  }
+</style>
+
 <li
-  class="cursor-pointer ripple-gray hover:bg-gray-300 flex align-center items-center p-4"
+  class="list-item p-4"
+  class:navigation
+  class:selected
+  class:basic={!navigation}
+  class:ripple-white={navigation}
   class:py-2={dense}
-  class:bg-gray-200={selected}
   on:click={() => value = name}
 >
   {#if icon}
-    <Icon c="pr-6">{icon}</Icon>
+    <Icon c="pr-6" small={dense}>{icon}</Icon>
   {/if}
 
   <div class="flex flex-col p-0">

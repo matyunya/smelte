@@ -21,17 +21,17 @@
 }
 
 .basic {
-  @apply elevation-3 bg-primary-700;
+  @apply elevation-3 bg-primary-500;
 
   &:hover {
-    @apply elevation-5 bg-primary-600;
+    @apply elevation-5 bg-primary-400;
     transition: box-shadow 0.2s ease;
   }
 }
 
 .outlined {
   background: transparent;
-  @apply border border-solid border-primary-700 rounded text-primary-700;
+  @apply border border-solid border-primary-500 rounded text-primary-500;
 
   &:hover {
     @apply bg-primary-100;
@@ -48,7 +48,7 @@
 }
 
 .text {
-  @apply bg-transparent border-none text-primary-700 ripple-primary px-3;
+  @apply bg-transparent border-none text-primary-400 ripple-primary px-3;
 
   &:hover {
     @apply bg-transparent;
@@ -91,7 +91,7 @@
 >
   {#if icon}
     <Icon
-      color={light ? 'text-primary-700' : 'white'}
+      color={light ? 'text-primary-500' : 'white'}
       {small}
     >{icon}</Icon>
   {/if}

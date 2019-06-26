@@ -129,6 +129,9 @@
 	<List items={listOneLine} />
 	<h4>Two-line</h4>
 	<List items={listTwoLines} />
+	
+	<h4>Dense</h4>
+	<List dense items={listTwoLines} />
 
 	<h2 class="text-xl pb-4 pt-8" id="selects"><a href="#selects">Selects</a></h2>
 	<h4>A typical select</h4>
@@ -166,8 +169,13 @@
 		<a href="#navigation-drawers">Navigation drawers</a>
 	</h2>
 
-	<NavigationDrawer bind:value={showNavigation} {right} {persistent} {elevation}>
-		<List dense items={menu} />
+	<NavigationDrawer
+		bind:value={showNavigation}
+		{right}
+		{persistent}
+		{elevation}
+	>
+		<List dense navigation items={menu} />
 	</NavigationDrawer>
 	<Button on:click={() => showNavigation = true}>Show navigation drawer</Button>
 	<div class="my-4">

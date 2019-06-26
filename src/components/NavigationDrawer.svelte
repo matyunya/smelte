@@ -40,7 +40,7 @@
         class="bg-white w-full"
         class:elevation-4={elevation}
         class:bordered={!elevation}>
-        <slot></slot>
+        <slot navigation></slot>
       </div>
     </div>
   </div>

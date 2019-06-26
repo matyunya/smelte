@@ -31,7 +31,7 @@
       flex fixed bottom-0 py-2 px-4 z-30 mb-4
       content-between mx-auto rounded
       items-center
-      bg-gray-700 text-white snackbar elevation-2
+      bg-gray-800 text-white snackbar elevation-2
     `}>
     <slot></slot>
     <Spacer />

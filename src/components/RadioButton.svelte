@@ -3,7 +3,7 @@
 
   export let selected = '';
   export let label = '';
-  export let color = 'text-primary-700';
+  export let color = 'text-primary-500';
   export let disabled = false;
   export let name = '';
   export let value = '';
