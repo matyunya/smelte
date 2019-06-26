@@ -147,7 +147,7 @@
 
 	<h2 class="text-xl pb-4 pt-8" id="snackbars"><a href="#snackbars">Snackbars</a></h2>
 	<Snackbar bind:value={showSnackbar}>
-		<div>You are awesome.</div>
+		<div>Have a nice day.</div>
 		<div slot="action">
 			<Button text on:click={() => showSnackbar = false}>Dismiss</Button>
 		</div>
@@ -169,15 +169,6 @@
 		<a href="#navigation-drawers">Navigation drawers</a>
 	</h2>
 
-	<NavigationDrawer
-		bind:value={showNavigation}
-		{right}
-		{persistent}
-		{elevation}
-	>
-		<List dense navigation items={menu} />
-	</NavigationDrawer>
-
 	<div class="my-4">
 		<Checkbox label="To the right" bind:value={right} />
 	</div>
@@ -187,6 +178,15 @@
 	<div class="my-4">
 		<Checkbox label="With elevation" bind:value={elevation} />
 	</div>
+
+	<NavigationDrawer
+		bind:value={showNavigation}
+		{right}
+		{persistent}
+		{elevation}
+	>
+		<List dense navigation items={menu} />
+	</NavigationDrawer>
 
 </div>
 

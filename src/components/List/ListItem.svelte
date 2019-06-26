@@ -8,6 +8,7 @@
   export let subheading = '';
   export let dense = false;
   export let navigation = false;
+  export let to = '';
 
   $: selected = name === value;
 </script>
@@ -18,8 +19,6 @@
   }
 
   .basic {
-    @apply ripple-gray;
-
     &:hover {
       @apply bg-gray-300;
     }
@@ -46,6 +45,7 @@
   class:selected
   class:basic={!navigation}
   class:ripple-white={navigation}
+  class:ripple-gray={!navigation}
   class:py-2={dense}
   on:click={() => value = name}
 >

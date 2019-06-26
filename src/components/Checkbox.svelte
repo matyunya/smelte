@@ -20,7 +20,7 @@
     class="hidden"
     type="checkbox"
   />
-  <div class="relative w-auto h-auto">
+  <div class="relative w-auto h-auto z-0">
     <Ripple color={value ? 'primary' : 'gray'}>
       {#if value}
         <Icon color={disabled ? 'text-gray-500' : color}>

@@ -45,7 +45,7 @@
       class="absolute top-1 left-0 bg-white rounded elevation-3 w-full z-10"
       on:click={() => showList = false}
       in:fly="{{ y: 10, duration: 200, easing: quadIn }}"
-      out:fly="{{ y: -10, duration: 200, easing: quadOut }}"
+      out:fly="{{ y: -10, duration: 100, easing: quadOut, delay: 200 }}"
     >
       <List bind:value items={items} />
     </div>

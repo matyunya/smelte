@@ -12,7 +12,7 @@
     <Scrim on:click={() => value = false} />
     <div class="h-screen w-full absolute flex items-center justify-center">
       <div
-        transition:scale={{duration: 300, easing: quadIn, delay: 100 }}
+        transition:scale={{duration: 300, easing: quadIn, delay: 150 }}
         class="items-center z-50 rounded bg-white p-4 elevation-4">
         <div class="text-lg font-bold pb-4">
           <slot name="title"></slot>
