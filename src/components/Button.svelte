@@ -48,7 +48,7 @@
 }
 
 .text {
-  @apply bg-transparent border-none text-primary-700 ripple-primary;
+  @apply bg-transparent border-none text-primary-700 ripple-primary px-3;
 
   &:hover {
     @apply bg-transparent;
@@ -63,7 +63,7 @@
 }
 
 .fab {
-  @apply elevation-0 text-white;
+  @apply elevation-0 text-white px-4;
   &:hover {
     @apply bg-transparent;
   }

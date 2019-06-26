@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "melte",
+  "description": "Material design using Tailwind CSS for Svelte",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev -p 7777",
@@ -18,8 +18,7 @@
   "dependencies": {
     "compression": "^1.7.1",
     "express": "^4.17.1",
-    "sirv": "^0.4.0",
-    "tailwindcss-elevation": "^0.3.0"
+    "sirv": "^0.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -48,6 +47,7 @@
     "sapper": "^0.27.0",
     "svelte": "^3.0.0",
     "svelte-preprocess": "^2.9.0",
-    "tailwindcss": "^1.0.1"
+    "tailwindcss": "^1.0.1",
+    "tailwindcss-elevation": "^0.3.0"
   }
 }

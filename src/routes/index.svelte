@@ -9,6 +9,7 @@
 	import ListItem from '../components/List/ListItem.svelte';
 	import Select from '../components/Select.svelte';
 	import Snackbar from '../components/Snackbar.svelte';
+	import Dialog from '../components/Dialog.svelte';
 
 	onMount(() => {
 		if (!process.browser || !window.location.hash) return;
@@ -46,6 +47,7 @@
 	}];
 
 	let showSnackbar = false;
+	let showDialog = false;
 </script>
 
 <svelte:head>
@@ -127,10 +129,23 @@
 
 	<h2 class="text-xl pb-4 pt-8" id="snackbars"><a href="#snackbars">Snackbars</a></h2>
 	<Snackbar bind:value={showSnackbar}>
-		<span>You are awesome.</span>
-		<Button text on:click={() => showSnackbar = false}>Dismiss</Button>
+		<div>You are awesome.</div>
+		<div slot="action">
+			<Button text on:click={() => showSnackbar = false}>Dismiss</Button>
+		</div>
 	</Snackbar>
 	<Button on:click={() => showSnackbar = true}>Show snackbar</Button>
+	
+	<h2 class="text-xl pb-4 pt-8" id="dialogs"><a href="#dialogs">Dialogs</a></h2>
+	<Dialog bind:value={showDialog}>
+		<h3 slot="title">What do you think?</h3>
+		<div class="text-gray-700">I'm not sure about today's weather.</div>
+		<div slot="actions">
+			<Button text on:click={() => showDialog = false}>Disagree</Button>
+			<Button text on:click={() => showDialog = false}>Agree</Button>
+		</div>
+	</Dialog>
+	<Button on:click={() => showDialog = true}>Show dialog</Button>
 
 </div>
 

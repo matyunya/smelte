@@ -3,7 +3,7 @@
   import { onMount } from 'svelte';
   import { quadOut, quadIn } from 'svelte/easing';
   import List from './List/List.svelte';
-  import TextField from './TextField.svelte';
+  import Spacer from './Spacer.svelte';
 
   export let value = false;
   export let timeout = 4000;
@@ -19,7 +19,7 @@
 
 <style>
   .snackbar {
-    width: 344px;
+    min-width: 344px;
   }
 </style>
 
@@ -33,6 +33,8 @@
       bg-gray-700 text-white snackbar elevation-2
     `}>
     <slot></slot>
+    <Spacer />
+    <slot name="action"></slot>
   </div>
 {/if}
 
