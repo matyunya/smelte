@@ -5,7 +5,7 @@
   let showSnackbar = false;
 </script>
 
-<h5 class="mt-4 mb-2" id="snackbars">Snackbars</h5>
+<h4 class="pb-8">Snackbars</h4>
 
 <Snackbar bind:value={showSnackbar}>
   <div>Have a nice day.</div>

@@ -28,7 +28,7 @@
 	}];
 </script>
 
-<h5 class="mt-4 mb-2" id="lists">Lists</h5>
+<h4 class="pb-8">Buttons</h4>
 <h6>One-line</h6>
 <List items={listOneLine} />
 <h6>Two-line</h6>

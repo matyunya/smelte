@@ -5,7 +5,7 @@
   let showDialog = false;
 </script>
 
-<h5 class="mt-4 mb-2" id="dialogs">Dialogs</h5>
+<h4 class="pb-8">Dialogs</h4>
 
 <Dialog bind:value={showDialog}>
   <h5 slot="title">What do you think?</h5>

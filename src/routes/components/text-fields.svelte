@@ -2,7 +2,7 @@
 	import TextField from 'components/TextField.svelte';
 </script>
 
-<h5 class="mt-4 mb-2" id="text-fields">Text fields</h5>
+<h4 class="pb-8">Text fields</h4>
 
 <h6>Basic</h6>
 <TextField label="Test label" />

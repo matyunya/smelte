@@ -5,11 +5,13 @@
 
 </script>
 
-<h5 class="mt-4 mb-2" id="checkboxes">Checkboxes</h5>
+<h4 class="pb-8" id="checkboxes">Checkboxes</h4>
+
 <Checkbox label="A checkbox" />
 <Checkbox disabled label="A disabled checkbox" />
 
-<h5 class="mt-4 mb-2" id="checkboxes">Radio buttons</h5>
+<h4 class="pb-8" id="radio-buttons">Radio buttons</h4>
+
 <RadioButtonGroup
   name="test"
   items={[

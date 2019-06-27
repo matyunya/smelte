@@ -3,7 +3,7 @@
 	import Icon from 'components/Icon.svelte';
 </script>
 
-<h5 class="mt-4 mb-2" id="buttons">Buttons</h5>
+<h4 class="pb-8">Buttons</h4>
 
 <h6>Basic</h6>
 <div class="py-2">
