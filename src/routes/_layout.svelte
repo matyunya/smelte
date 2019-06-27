@@ -21,19 +21,9 @@
 	
 	const menuOther = [
 		{ to: "/typography", text: 'Typography' },
+		{ to: "/color", text: 'Color' },
 	];
 </script>
-
-<style>
-	:global(body) {
-		@apply bg-gray-200;
-	}
-
-	main {
-		@apply relative p-8 max-w-4xl mx-auto mb-10 mt-24;
-		box-sizing: border-box;
-	}
-</style>
 
 <svelte:head>
 	<title>Smelte: Material design using Tailwind CSS for Svelte</title>
@@ -56,7 +46,7 @@
 	</a>
 </AppBar>
 
-<main class="bg-white container rounded-lg p-5 elevation-10">
+<main class="container relative p-8 max-w-3xl mx-auto mb-10 mt-24">
 	<NavigationDrawer
 		bind:value={$showNav}
 		right={$right}

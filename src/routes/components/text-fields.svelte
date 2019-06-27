@@ -1,5 +1,5 @@
 <script>
-	import TextField from 'components/TextField.svelte';
+	import TextField from 'components/TextField';
 </script>
 
 <h4 class="pb-8">Text fields</h4>

@@ -2,7 +2,7 @@
   import { fly } from 'svelte/transition';
   import { quadOut, quadIn } from 'svelte/easing';
   import List from 'components/List/List.svelte';
-  import TextField from 'components/TextField.svelte';
+  import TextField from 'components/TextField';
 
   export let items = [];
   export let value = '';
