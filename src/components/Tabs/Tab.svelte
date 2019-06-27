@@ -1,5 +1,5 @@
 <script>
-  import Icon from '../Icon.svelte';
+  import Icon from 'components/Icon.svelte';
 
   export let icon = '';
   export let name = '';
@@ -13,7 +13,7 @@
 
 <style>
   .tab-item {
-    @apply text-white cursor-pointer flex items-center opacity-75 text-sm;
+    @apply text-white flex items-center opacity-75 text-sm;
     transition: background-color .2s ease-out;
   }
 
@@ -30,7 +30,7 @@
 </style>
 
 <li
-  class="tab-item p-4 ripple-white"
+  class="tab-item p-4 ripple-white cursor-pointer"
   class:selected
   on:click={() => {
     value = name;

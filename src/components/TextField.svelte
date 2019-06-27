@@ -2,7 +2,7 @@
   import { fly } from 'svelte/transition';
   import { quadOut } from 'svelte/easing';
 
-  import Icon from './Icon.svelte';
+  import Icon from 'components/Icon.svelte';
 	export let c = '';
 	export let outlined = false;
   export let value = null;

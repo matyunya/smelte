@@ -1,5 +1,5 @@
 <script>
-  import Icon from './Icon.svelte';
+  import Icon from 'components/Icon.svelte';
 
   export let outlined = false;
   export let text = false;

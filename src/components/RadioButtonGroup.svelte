@@ -1,5 +1,5 @@
 <script>
-  import RadioButton from './RadioButton.svelte';
+  import RadioButton from 'components/RadioButton.svelte';
 
   export let items = [];
   export let selected = '';

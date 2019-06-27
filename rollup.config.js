@@ -8,6 +8,7 @@ import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
 import getPreprocessor from 'svelte-preprocess';
 import postcss from 'rollup-plugin-postcss';
+import includePaths from 'rollup-plugin-includepaths';
 import path from 'path';
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
@@ -46,7 +47,10 @@ const postcssPlugins = (purge = false) => {
 				},
 			],
 			// Whitelist selectors to stop Purgecss from removing them from your CSS.
-			whitelist: ['html', 'body'],
+			whitelist: [
+				'html', 'body', 'ripple-gray', 'ripple-primary', 'bg-gray-600', 'cursor-pointer',
+				'navigation:hover', 'navigation.selected',
+			],
 		}),
 	].filter(Boolean)
 }
@@ -76,6 +80,7 @@ export default {
 			}),
 			resolve(),
 			commonjs(),
+			includePaths({ paths: ["./src"] }),
 
 			legacy && babel({
 				extensions: ['.js', '.mjs', '.html', '.svelte'],
@@ -114,6 +119,7 @@ export default {
 				preprocess
 			}),
 			resolve(),
+			includePaths({ paths: ["./src"] }),
 			commonjs(),
 			postcss({
 				plugins: postcssPlugins(!dev),

@@ -1,6 +1,6 @@
 <script>
-  import Icon from './Icon.svelte';
-  import Ripple from './Ripple.svelte';
+  import Icon from 'components/Icon.svelte';
+  import Ripple from 'components/Ripple.svelte';
 
   export let value = false;
   export let label = '';
@@ -15,8 +15,9 @@
 
 </script>
 
-<div class="flex items-center mb-2 cursor-pointer" on:click={check}>
+<div class="flex items-center mb-2 cursor-pointer z-10" on:click={check}>
   <input
+    bind:value
     class="hidden"
     type="checkbox"
   />

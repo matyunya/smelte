@@ -1,0 +1,21 @@
+<script>
+	import Dialog from 'components/Dialog';
+	import Button from 'components/Button';
+  
+  let showDialog = false;
+</script>
+
+<h5 class="mt-4 mb-2" id="dialogs">Dialogs</h5>
+
+<Dialog bind:value={showDialog}>
+  <h5 slot="title">What do you think?</h5>
+  <div class="text-gray-700">I'm not sure about today's weather.</div>
+  <div slot="actions">
+    <Button text on:click={() => showDialog = false}>Disagree</Button>
+    <Button text on:click={() => showDialog = false}>Agree</Button>
+  </div>
+</Dialog>
+
+<div class="py-2">
+  <Button on:click={() => showDialog = true}>Show dialog</Button>
+</div>

@@ -1,6 +1,6 @@
 <script>
-  import Icon from './Icon.svelte';
-  import Ripple from './Ripple.svelte';
+  import Icon from 'components/Icon.svelte';
+  import Ripple from 'components/Ripple.svelte';
 
   export let selected = '';
   export let label = '';
@@ -37,7 +37,7 @@
   </Ripple>
   <label
     aria-hidden="true"
-    class="pl-2 cursor-pointer"
+    class="pl-2"
     class:text-gray-500={disabled}
     class:text-gray-700={!disabled}
   >{label}</label>

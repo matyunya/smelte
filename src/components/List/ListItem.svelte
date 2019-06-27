@@ -1,5 +1,5 @@
 <script>
-  import Icon from '../Icon.svelte';
+  import Icon from 'components/Icon.svelte';
 
   export let icon = '';
   export let name = '';
@@ -15,7 +15,7 @@
 
 <style>
   .list-item {
-    @apply text-gray-700 cursor-pointer flex items-center;
+    @apply text-gray-700 flex items-center z-10;
     transition: background-color .2s ease-out;
   }
 
@@ -44,7 +44,7 @@
 </style>
 
 <li
-  class="list-item p-4"
+  class="list-item p-4 cursor-pointer"
   class:navigation
   class:selected
   class:basic={!navigation}
