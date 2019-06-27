@@ -15,7 +15,6 @@
 
 <style>
   .list-item {
-    @apply text-gray-700 flex items-center z-10;
     transition: background-color .2s ease-out;
   }
 
@@ -44,7 +43,7 @@
 </style>
 
 <li
-  class="list-item p-4 cursor-pointer"
+  class="list-item p-4 cursor-pointer text-gray-700 flex items-center z-10"
   class:navigation
   class:selected
   class:basic={!navigation}

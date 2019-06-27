@@ -15,9 +15,8 @@
 
 <style>
 .any {
-  @apply py-2 px-4 rounded text-white outline-none border-none uppercase text-sm font-medium;
   letter-spacing: .0892857143em;
-  transition: text-shadow 0.2s ease;
+  transition: box-shadow 0.9s ease;
 }
 
 .basic {
@@ -84,7 +83,7 @@
   class:fab
   class:small
   class:light
-  class="any"
+  class="any py-2 px-4 rounded text-white outline-none border-none uppercase text-sm font-medium"
   class:ripple-primary={outlined || text}
   class:ripple-white={basic || fab}
   on:click

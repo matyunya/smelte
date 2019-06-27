@@ -13,7 +13,6 @@
 
 <style>
   .tab-item {
-    @apply text-white flex items-center opacity-75 text-sm;
     transition: background-color .2s ease-out;
   }
 
@@ -30,7 +29,7 @@
 </style>
 
 <li
-  class="tab-item p-4 ripple-white cursor-pointer"
+  class="tab-item p-4 ripple-white cursor-pointer text-white flex items-center opacity-75 text-sm"
   class:selected
   on:click={() => {
     value = name;

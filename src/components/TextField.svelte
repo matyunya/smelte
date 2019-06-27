@@ -32,7 +32,6 @@
 <style>
   .line {
     height: 1px;
-    @apply absolute bottom-0 left-0 w-full;
   }
 
   .label-top {
@@ -53,7 +52,6 @@
   }
 
   .input {
-    @apply pb-2 pt-6 px-4 outline-none rounded-t text-black w-full caret-primary-500 bg-gray-100;
     transition: background-color 0.2s;
   }
 
@@ -107,7 +105,7 @@
     {#if !textarea}
       <input
         aria-label={label}
-        class="input"
+        class="pb-2 pt-6 px-4 outline-none rounded-t text-black w-full caret-primary-500 bg-gray-100"
         class:bg-gray-300={focused}
         class:outlined
         class:outlined-focused-border={focused && outlined}
@@ -125,7 +123,7 @@
       <textarea
         {rows}
         aria-label={label}
-        class="input"
+        class="pb-2 pt-6 px-4 outline-none rounded-t text-black w-full caret-primary-500 bg-gray-100"
         class:bg-gray-300={focused}
         class:outlined
         class:outlined-focused-border={focused && outlined}
@@ -139,7 +137,7 @@
     {/if}
 
     <div
-      class="line"
+      class="line absolute bottom-0 left-0 w-full"
       class:bg-red-500={error}
       class:bg-primary-500={focused}
       class:bg-gray-600={notFocused}
