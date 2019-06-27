@@ -72,43 +72,57 @@
 </svelte:head>
 
 <div>
-	<h2 class="text-xl pb-4" id="text-fields"><a href="#text-fields">Text fields</a></h2>
-	<h4>Basic</h4>
+	<h5 class="mt-4 mb-2" id="text-fields"><a href="#text-fields">Text fields</a></h5>
+	<h6>Basic</h6>
 	<TextField label="Test label" />
-	<h4>With hint</h4>
+	<h6>With hint</h6>
 	<TextField label="Test label" hint="Test hint" persistentHint />
-	<h4>With error</h4>
+	<h6>With error</h6>
 	<TextField label="Test label" error="Test error" />
-	<h4>Outlined</h4>
+	<h6>Outlined</h6>
 	<TextField label="Test label" outlined  />
-	<h4>Outlined with hint</h4>
+	<h6>Outlined with hint</h6>
 	<TextField label="Test label" outlined hint="Test hint" />
-	<h4>Outlined with error</h4>
+	<h6>Outlined with error</h6>
 	<TextField label="Test label" outlined error="Test error" />
-	<h4>Outlined textarea</h4>
+	<h6>Outlined textarea</h6>
 	<TextField label="Test label" textarea rows=5 outlined />
 
-	<h2 class="text-xl pb-4 pt-8" id="buttons"><a href="#buttons">Buttons</a></h2>
-	<h4>Basic</h4>
-	<Button>Button</Button>
-	<h4>Block</h4>
-	<Button block>Button</Button>
-	<h4>Outlined</h4>
-	<Button block outlined>Button</Button>
-	<h4>Text</h4>
-	<Button text>Button</Button>
-	<h4>Disabled</h4>
-	<Button block disabled>Button</Button>
-	<h4>Fab</h4>
-	<Button icon="change_history" />
-	<h4>Fab flat</h4>
-	<Button icon="change_history" text light />
+	<h5 class="mt-4 mb-2" id="buttons"><a href="#buttons">Buttons</a></h5>
+	<h6>Basic</h6>
+	<div class="py-2">
+		<Button>Button</Button>
+	</div>
+	<h6>Block</h6>
+	<div class="py-2">
+		<Button block>Button</Button>
+	</div>
+	<h6>Outlined</h6>
+	<div class="py-2">
+		<Button block outlined>Button</Button>
+	</div>
+	<h6>Text</h6>
+	<div class="py-2">
+		<Button text>Button</Button>
+	</div>
+	<h6>Disabled</h6>
+	<div class="py-2">
+		<Button block disabled>Button</Button>
+	</div>
+	<h6>Fab</h6>
+	<div class="py-2">
+		<Button icon="change_history" />
+	</div>
+	<h6>Fab flat</h6>
+	<div class="py-2">
+		<Button icon="change_history" text light />
+	</div>
 
-	<h2 class="text-xl pb-4 pt-8" id="checkboxes"><a href="#checkboxes">Checkboxes</a></h2>
+	<h5 class="mt-4 mb-2" id="checkboxes"><a href="#checkboxes">Checkboxes</a></h5>
 	<Checkbox label="A checkbox" />
 	<Checkbox disabled label="A disabled checkbox" />
 
-	<h2 class="text-xl pb-4 pt-8" id="checkboxes"><a href="#checkboxes">Radio buttons</a></h2>
+	<h5 class="mt-4 mb-2" id="checkboxes"><a href="#checkboxes">Radio buttons</a></h5>
 	<RadioButtonGroup
 		name="test"
 		items={[
@@ -124,60 +138,56 @@
 			{ value: 2, label: 'Two' }
 		]} />
 
-	<h2 class="text-xl pb-4 pt-8" id="lists"><a href="#lists">Lists</a></h2>
-	<h4>One-line</h4>
+	<h5 class="mt-4 mb-2" id="lists"><a href="#lists">Lists</a></h5>
+	<h6>One-line</h6>
 	<List items={listOneLine} />
-	<h4>Two-line</h4>
+	<h6>Two-line</h6>
 	<List items={listTwoLines} />
 	
-	<h4>Dense</h4>
+	<h6>Dense</h6>
 	<List dense items={listTwoLines} />
 
-	<h2 class="text-xl pb-4 pt-8" id="selects"><a href="#selects">Selects</a></h2>
-	<h4>A typical select</h4>
+	<h5 class="mt-4 mb-2" id="selects"><a href="#selects">Selects</a></h5>
+	<h6>A typical select</h6>
 	<Select label="A select" items={[
 		{ value: 1, text: 'One' },
 		{ value: 2, text: 'Two' }
 	]} />
-	<h4>Outlined select</h4>
+	<h6>Outlined select</h6>
 	<Select outlined label="A select" items={[
 		{ value: 1, text: 'One' },
 		{ value: 2, text: 'Two' }
 	]} />
 
-	<h2 class="text-xl pb-4 pt-8" id="snackbars"><a href="#snackbars">Snackbars</a></h2>
+	<h5 class="mt-4 mb-2" id="snackbars"><a href="#snackbars">Snackbars</a></h5>
 	<Snackbar bind:value={showSnackbar}>
 		<div>Have a nice day.</div>
 		<div slot="action">
 			<Button text on:click={() => showSnackbar = false}>Dismiss</Button>
 		</div>
 	</Snackbar>
-	<Button on:click={() => showSnackbar = true}>Show snackbar</Button>
+	<div class="py-2">
+		<Button on:click={() => showSnackbar = true}>Show snackbar</Button>
+	</div>
 	
-	<h2 class="text-xl pb-4 pt-8" id="dialogs"><a href="#dialogs">Dialogs</a></h2>
+	<h5 class="mt-4 mb-2" id="dialogs"><a href="#dialogs">Dialogs</a></h5>
 	<Dialog bind:value={showDialog}>
-		<h3 slot="title">What do you think?</h3>
+		<h5 slot="title">What do you think?</h5>
 		<div class="text-gray-700">I'm not sure about today's weather.</div>
 		<div slot="actions">
 			<Button text on:click={() => showDialog = false}>Disagree</Button>
 			<Button text on:click={() => showDialog = false}>Agree</Button>
 		</div>
 	</Dialog>
-	<Button on:click={() => showDialog = true}>Show dialog</Button>
+	<div class="py-2">
+		<Button on:click={() => showDialog = true}>Show dialog</Button>
+	</div>
 	
-	<h2 class="text-xl pb-4 pt-8" id="navigation-drawers">
-		<a href="#navigation-drawers">Navigation drawers</a>
-	</h2>
+	<h5 class="mt-4 mb-2" id="navigation-drawers"><a href="#navigation-drawers">Navigation drawers</a></h5>
 
-	<div class="my-4">
-		<Checkbox label="To the right" bind:value={right} />
-	</div>
-	<div class="my-4">
-		<Checkbox label="Persistent" bind:value={persistent} />
-	</div>
-	<div class="my-4">
-		<Checkbox label="With elevation" bind:value={elevation} />
-	</div>
+	<Checkbox label="To the right" bind:value={right} />
+	<Checkbox label="Persistent" bind:value={persistent} />
+	<Checkbox label="With elevation" bind:value={elevation} />
 
 	<NavigationDrawer
 		bind:value={showNavigation}

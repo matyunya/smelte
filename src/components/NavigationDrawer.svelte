@@ -24,25 +24,26 @@
 
 {#if value || persistent}
   <div
-    class="fixed w-full h-screen top-0 left-0"
+    class="fixed w-full h-screen top-0 left-0 mt-16"
     class:pointer-events-none={persistent}
   >
     {#if !persistent}
       <Scrim on:click={() => value = false} />
     {/if}
-    <div
-      class="h-screen absolute flex w-auto z-50 drawer pointer-events-auto"
+    <nav
+      role="navigation"
+      class="h-screen absolute flex w-auto z-40 drawer pointer-events-auto overflow-y-auto"
       class:right-0={right}
       class:left-0={left}
+      class:elevation-4={elevation}
     >
       <div
         transition:fly={{duration: 200, x: right ? 200 : -200, opacity: 1, easing: cubicIn }}
         class="bg-white w-full"
-        class:elevation-4={elevation}
         class:bordered={!elevation}>
-        <slot navigation></slot>
+        <slot></slot>
       </div>
-    </div>
+    </nav>
   </div>
 {/if}
 

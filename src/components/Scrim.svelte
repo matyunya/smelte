@@ -3,7 +3,7 @@
   import { quadOut, quadIn } from 'svelte/easing';
 </script>
 
-<div class="opacity-50 bg-black fixed top-0 left-0 z-40 w-full h-screen"
+<div class="opacity-50 bg-black fixed top-0 left-0 z-50 w-full h-screen"
   in:fade={{duration: 200, easing: quadIn}}
   out:fade={{duration: 200, easing: quadOut}}
   on:click
