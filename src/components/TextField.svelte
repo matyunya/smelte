@@ -105,7 +105,7 @@
     {#if !textarea}
       <input
         aria-label={label}
-        class="pb-2 pt-6 px-4 outline-none rounded-t text-black w-full caret-primary-500 bg-gray-100"
+        class="input pb-2 pt-6 px-4 rounded-t text-black w-full caret-primary-500 bg-gray-100"
         class:bg-gray-300={focused}
         class:outlined
         class:outlined-focused-border={focused && outlined}
@@ -123,7 +123,7 @@
       <textarea
         {rows}
         aria-label={label}
-        class="pb-2 pt-6 px-4 outline-none rounded-t text-black w-full caret-primary-500 bg-gray-100"
+        class="input pb-2 pt-6 px-4 rounded-t text-black w-full caret-primary-500 bg-gray-100"
         class:bg-gray-300={focused}
         class:outlined
         class:outlined-focused-border={focused && outlined}

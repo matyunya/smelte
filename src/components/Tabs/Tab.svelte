@@ -29,7 +29,7 @@
 </style>
 
 <li
-  class="tab-item p-4 ripple-white cursor-pointer text-white flex items-center opacity-75 text-sm"
+  class="navigation tab-item p-4 ripple-white cursor-pointer text-white flex items-center opacity-75 text-sm"
   class:selected
   on:click={() => {
     value = name;

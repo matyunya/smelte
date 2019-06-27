@@ -45,6 +45,10 @@ hr {
   @apply border-t border-gray-400 border-solid;
 }
 
+input:focus, button:focus {
+  @apply outline-none;
+}
+
 html {
   font-family: 'Roboto', sans-serif;
 }

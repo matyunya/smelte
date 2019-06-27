@@ -83,7 +83,7 @@
   class:fab
   class:small
   class:light
-  class="any py-2 px-4 rounded text-white outline-none border-none uppercase text-sm font-medium"
+  class="any py-2 px-4 rounded text-white border-none uppercase text-sm font-medium"
   class:ripple-primary={outlined || text}
   class:ripple-white={basic || fab}
   on:click
