@@ -9,7 +9,7 @@
   export let timeout = 4000;
 
 	onMount(() => {
-		if (!process.browser || timeout > 0) return;
+		if (!process.browser || !timeout) return;
 
 		setTimeout(() => {
       value = false;

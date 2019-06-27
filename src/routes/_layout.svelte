@@ -1,11 +1,44 @@
 <script>
+	import { onMount } from 'svelte';
+
+	import { fade } from 'svelte/transition';
+
 	import AppBar from 'components/AppBar.svelte';
 	import Tabs from 'components/Tabs';
+	import Button from 'components/Button';
 	import Spacer from 'components/Spacer.svelte';
 	import List from 'components/List/List.svelte';
 	import NavigationDrawer from 'components/NavigationDrawer.svelte';
 
-	import { right, elevation, persistent, showNav } from 'stores.js';
+	import { right, elevation, persistent, showNav, showNavMobile, breakpoint } from 'stores.js';
+
+	let innerWidth = 0;
+
+	function calcBreakpoint(width) {
+		if (width > 1279) {
+			return 'xl'
+		}
+		if (width > 1023) {
+			return 'lg';
+		}
+		if (width > 767) {
+			return 'md'
+		}
+		return 'sm';
+	}
+
+	onMount(() => {
+		if (!process.browser) return;
+
+		breakpoint.update(() => calcBreakpoint(window.innerWidth));
+	})
+
+
+	function updateBreakpoint({ target }) {
+		const bp = calcBreakpoint(target.innerWidth);
+
+		return breakpoint.update(() => bp);
+	}
 
 	const menu = [
 		{ to: "/components/text-fields", text: 'Text fields' },
@@ -23,11 +56,17 @@
 		{ to: "/typography", text: 'Typography' },
 		{ to: "/color", text: 'Color' },
 	];
+
+	function toggleNav() {
+		return showNavMobile.update(() => !$showNavMobile);
+	}
 </script>
 
 <svelte:head>
 	<title>Smelte: Material design using Tailwind CSS for Svelte</title>
 </svelte:head>
+
+<svelte:window on:resize={updateBreakpoint} />
 
 <AppBar>
 	<a href="." class="px-8 flex items-center">
@@ -40,24 +79,35 @@
 	<Tabs.Wrapper>
 		<Tabs.Tab to="/components">Components</Tabs.Tab>
 		<Tabs.Tab to="/typography">Typography</Tabs.Tab>
+		<Tabs.Tab to="/color">Color</Tabs.Tab>
 	</Tabs.Wrapper>
+	<div class="md:hidden">
+		<Button icon="menu" small text on:click={toggleNav} />
+	</div>
 	<a href="https://github.com/matyunya/smelte" class="px-4">
 		<img src="/github.png" alt="Github Smelte" width="24" height="24">
 	</a>
 </AppBar>
 
-<main class="container relative p-8 max-w-3xl mx-auto mb-10 mt-24">
-	<NavigationDrawer
-		bind:value={$showNav}
-		right={$right}
-		persistent={$persistent}
-		elevation={$elevation}
+{#if $breakpoint}
+	<main
+		class="container relative p-8 lg:max-w-3xl lg:ml-64 mx-auto mb-10 mt-24 md:ml-56 md:max-w-md md:px-3"
+		transition:fade={{duration: 300 }}
 	>
-		<h6 class="p-6 ml-1 pb-2 text-lg font-normal text-gray-700">Components</h6>
-		<List dense navigation items={menu} />
-		<hr>
-		<List dense navigation items={menuOther} />
+		<NavigationDrawer
+			bind:showDesktop={$showNav}
+			bind:showMobile={$showNavMobile}
+			right={$right}
+			persistent={$persistent}
+			elevation={$elevation}
+			breakpoint={$breakpoint}
+		>
+			<h6 class="p-6 ml-1 pb-2 text-lg font-normal text-gray-700">Components</h6>
+			<List dense navigation items={menu} />
+			<hr>
+			<List dense navigation items={menuOther} />
 
-	</NavigationDrawer>
-	<slot></slot>
-</main>
+		</NavigationDrawer>
+		<slot></slot>
+	</main>
+{/if}

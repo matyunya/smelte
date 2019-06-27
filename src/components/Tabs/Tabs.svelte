@@ -1,3 +1,3 @@
-<div class="flex py-0 h-full sm:visible hidden">
+<div class="py-0 h-full hidden">
 	<slot></slot>
 </div>

@@ -39,6 +39,12 @@ module.exports = {
       sm: ' 0.875rem',
       xs: ' 0.75rem',
     },
+    breakpoints: {
+      'sm': { 'max': '639px' },
+      'md': { 'max': '767px' },
+      'lg': { 'max': '1023px' },
+      'xl': { 'max': '1279px' },
+    },
     lineHeight: {
       none: 1,
       tight: 1.25,
@@ -386,7 +392,6 @@ module.exports = {
       sans: 'Roboto',
     },
   },
-  variants: {},
   plugins: [
     require('tailwindcss-elevation')(['hover']),
     function ({ addUtilities }) {

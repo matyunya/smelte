@@ -1,15 +1,42 @@
 <script>
   import { fly } from 'svelte/transition';
-  import { onMount } from 'svelte';
   import { cubicIn } from 'svelte/easing';
   import Scrim from 'components/Scrim.svelte';
 
   export let right = false;
   export let persistent = false;
   export let elevation = true;
-  export let value = true;
+  export let showMobile = false;
+  export let showDesktop = true;
+  export let breakpoint = '';
 
-  $: left = !right;
+  function shouldShowWithScrim(mobile, persist, bp) {
+    if (bp === 'sm') {
+      return mobile;
+    }
+
+    return !persist;
+  }
+
+  $: showWithScrim = shouldShowWithScrim(showMobile, persistent, breakpoint);
+
+  $: show = breakpoint === 'sm' ? showMobile : showDesktop;
+
+  $: transitionProps = showWithScrim ? {
+    duration: 200,
+    x: right ? 300 : -300,
+    opacity: 1,
+    easing: cubicIn
+  } : { x: 0 };
+
+  function hide() {
+    if (breakpoint === 'sm') {
+      showMobile = false;
+      return;
+    }
+    showDesktop = false;
+  }
+
 </script>
 
 <style>
@@ -21,32 +48,32 @@
 }
 </style>
 
-<div
-  class="fixed h-screen top-0 mt-16 drawer"
-  class:right-0={right}
-  class:left-0={left}
-  class:pointer-events-none={persistent}
-  class:z-50={!persistent}
-  class:z-20={persistent}
-  class:md:visible={value || persistent}
-  class:hidden={!value || !persistent}
->
-  {#if !persistent}
-    <Scrim on:click={() => value = false} />
-  {/if}
-  <nav
-    role="navigation"
-    class="h-screen bg-white absolute flex w-auto z-20 drawer pointer-events-auto overflow-y-auto"
-    class:elevation-4={elevation}
-    class:bordered={!elevation}
-    transition:fly={{duration: 200, x: right ? 200 : -200, opacity: 1, easing: cubicIn }}
+{#if show}
+  <aside
+    class="fixed h-screen top-0 md:mt-16 w-auto drawer"
+    class:right-0={right}
+    class:left-0={!right}
+    class:pointer-events-none={!showWithScrim}
+    class:z-50={showWithScrim}
+    class:z-20={!showWithScrim}
+    on:click={() => showMobile = false}
   >
-    <div
-      class="w-full"
+    {#if showWithScrim}
+      <Scrim on:click={hide} />
+    {/if}
+    <nav
+      role="navigation"
+      class="h-screen bg-white absolute flex w-auto z-20 drawer pointer-events-auto overflow-y-auto"
+      class:elevation-4={elevation}
+      class:bordered={!elevation}
+      transition:fly={transitionProps}
     >
-      <slot></slot>
-    </div>
-  </nav>
-</div>
-
+      <div
+        class="w-full"
+      >
+        <slot></slot>
+      </div>
+    </nav>
+  </aside>
+{/if}
 
