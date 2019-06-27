@@ -56,16 +56,16 @@
   }
 
   .outlined {
-    @apply border-solid border-gray-600 border rounded bg-transparent py-4;
+    @apply border-gray-600 border rounded bg-transparent py-4;
   }
 
   .outlined-focused-border {
-    @apply border-solid border-primary-400 border;
+    @apply border-primary-400 border;
     transition: border-color 200ms;
   }
   
   .outlined-error {
-    @apply border-solid border-red-500 border;
+    @apply border-red-500 border;
     transition: border-color 200ms;
   }
 

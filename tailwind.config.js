@@ -35,10 +35,9 @@ module.exports = {
       '2xl': '2.125rem',
       xl: ' 1.5rem',
       lg: ' 1.25rem',
-      base: ' 1rem',
+      base: '1rem',
       sm: ' 0.875rem',
       xs: ' 0.75rem',
-      caption: '0.625rem',
     },
     lineHeight: {
       none: 1,

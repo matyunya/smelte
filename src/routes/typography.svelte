@@ -1,10 +1,21 @@
 <div>
-  <h1>Header 1</h1>
-  <h2>Header 2</h2>
-  <h3>Header 3</h3>
-  <h4>Header 3</h4>
-  <h5>Header 3</h5>
-  <h6>Header 3</h6>
-  <h7>Header 3</h7>
+  <h4 class="pb-8">Typography defaults and helper classes</h4>
+  <p>H1-h6, subtitle, body and caption as well as their respected classes (.h1, .h2...)
+    use Material design <a class="a" href="https://material.io/design/typography/the-type-system.html#type-scale">type scale</a>.
+  </p>
+  <div class="bg-gray-200 p-4 my-4">
+    <h1>.h1 header 1</h1>
+    <h2>.h2 header 2</h2>
+    <h3>.h3 header 3</h3>
+    <h4>.h4 header 4</h4>
+    <h5>.h5 header 5</h5>
+    <h6>.h6 header 6</h6>
+    <div class="subtitle-1">.subtitle-1 Subtitle</div>
+    <div class="subtitle-2">.subtitle-2 Smaller subtitle</div>
+    <div class="body-1">.body-1</div>
+    <div class="body-2">.body-2</div>
+    <caption>Caption</caption>
+  </div>
+  
 </div>
 

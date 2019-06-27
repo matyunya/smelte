@@ -20,6 +20,7 @@
     bind:value
     class="hidden"
     type="checkbox"
+    on:change
   />
   <div class="relative w-auto h-auto z-0">
     <Ripple color={value && !disabled ? 'primary' : 'gray'}>

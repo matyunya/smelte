@@ -5,6 +5,8 @@
 	import List from 'components/List/List.svelte';
 	import NavigationDrawer from 'components/NavigationDrawer.svelte';
 
+	import { right, elevation, persistent, showNav } from 'stores.js';
+
 	const menu = [
 		{ to: "/components/text-fields", text: 'Text fields' },
 		{ to: "/components/buttons", text: 'Buttons' },
@@ -56,11 +58,12 @@
 
 <main class="bg-white container rounded-lg p-5 elevation-10">
 	<NavigationDrawer
-		persistent
-		elevation={false}
+		bind:value={$showNav}
+		right={$right}
+		persistent={$persistent}
+		elevation={$elevation}
 	>
-		<h6 class="p-6 pb-2">Components</h6>
-		<hr>
+		<h6 class="p-6 ml-1 pb-2 text-lg font-normal text-gray-700">Components</h6>
 		<List dense navigation items={menu} />
 		<hr>
 		<List dense navigation items={menuOther} />

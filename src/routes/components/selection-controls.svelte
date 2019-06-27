@@ -1,5 +1,5 @@
 <script>
-	import Checkbox from 'components/Checkbox.svelte';
+	import Checkbox from 'components/Checkbox';
 	import RadioButtonGroup from 'components/RadioButtonGroup.svelte';
 	import Icon from 'components/Icon.svelte';
 
