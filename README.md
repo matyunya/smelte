@@ -1,1 +1,1 @@
-TODO: readme
+Material design components for Svelte using Tailwind CSS

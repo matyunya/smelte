@@ -10,7 +10,7 @@
 <Checkbox label="A checkbox" />
 <Checkbox disabled label="A disabled checkbox" />
 
-<h4 class="pb-8" id="radio-buttons">Radio buttons</h4>
+<h4 class="pb-8 pt-10" id="radio-buttons">Radio buttons</h4>
 
 <RadioButtonGroup
   name="test"

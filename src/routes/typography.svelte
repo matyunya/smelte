@@ -10,11 +10,11 @@
     <h4>.h4 header 4</h4>
     <h5>.h5 header 5</h5>
     <h6>.h6 header 6</h6>
-    <div class="subtitle-1">.subtitle-1 Subtitle</div>
-    <div class="subtitle-2">.subtitle-2 Smaller subtitle</div>
+    <div class="subtitle-1">.subtitle-1</div>
+    <div class="subtitle-2">.subtitle-2</div>
     <div class="body-1">.body-1</div>
     <div class="body-2">.body-2</div>
-    <caption>Caption</caption>
+    <caption>.caption</caption>
   </div>
   
 </div>

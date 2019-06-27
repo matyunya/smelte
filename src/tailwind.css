@@ -62,7 +62,7 @@ caption, .caption {
   @apply w-auto;
 }
 
-input:focus, button:focus {
+input:focus, button:focus, textarea:focus {
   @apply outline-none;
 }
 

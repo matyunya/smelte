@@ -1,6 +1,6 @@
 {
   "name": "smelte",
-  "description": "Material design using Tailwind CSS for Svelte",
+  "description": "Material design components for Svelte using Tailwind CSS",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev -p 7777",

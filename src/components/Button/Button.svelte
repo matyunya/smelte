@@ -30,7 +30,7 @@
 
 .outlined {
   background: transparent;
-  @apply border border-primary-400 rounded text-primary-500;
+  @apply border border-primary-400 border-solid rounded text-primary-500;
 
   &:hover {
     @apply bg-primary-50;
