@@ -14,6 +14,7 @@
 <style>
   .tab-item {
     transition: background-color .2s ease-out;
+    @apply w-32;
   }
 
   .navigation {
@@ -28,23 +29,43 @@
   }
 </style>
 
-<li
-  class="navigation tab-item p-4 ripple-white cursor-pointer text-white flex items-center opacity-75 text-sm"
-  class:selected
-  on:click={() => {
-    value = name;
-  }}
->
-  {#if icon}
-    <Icon
-      c="pr-6"
-      color={selected && navigation ? 'text-primary-500' : ''}
-    >{icon}</Icon>
-  {/if}
+{#if to}
+  <a
+    href={to}
+    class="navigation tab-item p-4 ripple-white cursor-pointer text-white flex mx-auto items-center opacity-75 text-sm h-full"
+    class:selected
+  >
+    <div class="flex flex-col items-center content-center mx-auto">
+      {#if icon}
+        <Icon
+          color={selected && navigation ? 'text-primary-500' : ''}
+        >{icon}</Icon>
+      {/if}
 
-  <div class="flex flex-col p-0">
-    <div>
-      <slot>{text}</slot>
+      <div>
+        <slot>{text}</slot>
+      </div>
     </div>
-  </div>
-</li>
+  </a>
+{:else}
+  <li
+    class="navigation tab-item p-4 ripple-white cursor-pointer text-white flex mx-auto items-center opacity-75 text-sm"
+    class:selected
+    on:click={() => {
+      value = name;
+    }}
+  >
+    {#if icon}
+      <Icon
+        c="pr-6"
+        color={selected && navigation ? 'text-primary-500' : ''}
+      >{icon}</Icon>
+    {/if}
+
+    <div class="flex flex-col p-0">
+      <div>
+        <slot>{text}</slot>
+      </div>
+    </div>
+  </li>
+{/if}

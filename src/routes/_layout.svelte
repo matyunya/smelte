@@ -77,6 +77,10 @@
 	<ProgressLinear app />
 {/if}
 
+{#each menu as link}
+	<a href={link.to} class="hidden">{link.text}</a>
+{/each}
+
 <AppBar>
 	<a href="." class="px-8 flex items-center">
 		<img src="/logo.png" alt="Smelte logo" width="44">
@@ -86,9 +90,9 @@
 	</a>
 	<Spacer />
 	<Tabs.Wrapper>
-		<Tabs.Tab to="/components">Components</Tabs.Tab>
-		<Tabs.Tab to="/typography">Typography</Tabs.Tab>
+		<Tabs.Tab to="/components/text-fields">Components</Tabs.Tab>
 		<Tabs.Tab to="/color">Color</Tabs.Tab>
+		<Tabs.Tab to="/typography">Typography</Tabs.Tab>
 	</Tabs.Wrapper>
 	<div class="md:hidden">
 		<Button icon="menu" small text on:click={toggleNav} />
