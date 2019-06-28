@@ -1,6 +1,18 @@
 <script>
+  import { onMount } from 'svelte';
+
   export let app = false;
   export let progress = 0;
+
+  let initialized = false;
+
+  onMount(() => {
+    if (!app) return;
+
+    setTimeout(() => {
+      initialized = true;
+    }, 100);
+  });
 </script>
 
 <style>
@@ -10,6 +22,10 @@
   }
   .dec {
     animation: decrease 2s 0.9s ease-in-out infinite;
+  }
+
+  .transition {
+    transition: .2s ease-in;
   }
 
   @keyframes increase {
@@ -26,6 +42,7 @@
   class:fixed={app}
   class:z-50={app}
   class="top-0 left-0 w-full h-1 bg-primary-100 overflow-hidden relative"
+  class:hidden={app && !initialized}
 >
   <div
     class="bg-primary-500 h-1 absolute"
