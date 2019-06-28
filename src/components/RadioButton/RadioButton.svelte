@@ -16,7 +16,7 @@
   }
 </script>
 
-<div class="flex block items-center mb-2 cursor-pointer z-0" on:click={select}>
+<div class="inline-flex block items-center mb-2 cursor-pointer z-0" on:click={select}>
   <input
     aria-label={label}
     class="hidden"

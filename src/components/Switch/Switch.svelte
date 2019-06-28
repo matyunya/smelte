@@ -1,5 +1,4 @@
 <script>
-  import Icon from 'components/Icon';
   import { Ripple } from 'components/Util';
 
   export let value = false;
@@ -12,7 +11,6 @@
 
     value = !value;
   }
-
 </script>
 
 <div class="inline-flex items-center mb-2 cursor-pointer z-10" on:click={check}>
@@ -22,18 +20,23 @@
     type="checkbox"
     on:change
   />
-  <div class="relative w-auto h-auto z-0">
+  <div
+    class="relative w-10 h-auto z-0 rounded-full overflow-visible flex items-center justify-center"
+    class:bg-gray-300={!value}
+    class:bg-primary-200={value}
+  >
     <Ripple color={value && !disabled ? 'primary' : 'gray'}>
-      {#if value}
-        <Icon color={disabled ? 'text-gray-500' : color}>
-          check_box
-        </Icon>
-      {:else}
-        <Icon color={disabled ? 'text-gray-500' : 'text-gray-600'}>
-          check_box_outline_blank
-        </Icon>
-      {/if}
+      <div
+        class="w-full h-full absolute"
+      >
     </Ripple>
+    <div
+      class="rounded-full p-2 w-5 h-5 absolute elevation-3 transition"
+      class:bg-white={!value}
+      class:bg-primary-400={value}
+      class:left-0={!value}
+      style={value ? 'left: 1.25rem' : ''}
+    />
   </div>
   <label
     aria-hidden="true"

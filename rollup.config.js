@@ -51,6 +51,7 @@ const postcssPlugins = (purge = false) => {
 				'html', 'body', 'ripple-gray', 'ripple-primary',
 				'cursor-pointer', 'navigation:hover',
 				'navigation.selected', 'outline-none', 'text-xs',
+				'transition'
 			],
 			whitelistPatterns: [/bg-gray/, /text-gray/],
 		}),

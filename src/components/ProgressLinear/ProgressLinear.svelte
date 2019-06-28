@@ -27,10 +27,6 @@
     animation: decrease 2s 0.9s ease-in-out infinite;
   }
 
-  .transition {
-    transition: .2s ease-in;
-  }
-
   @keyframes increase {
     from { left: -5%; width: 5%; }
     to { left: 130%; width: 150%;}

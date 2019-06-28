@@ -1,6 +1,7 @@
 <script>
 	import Checkbox from 'components/Checkbox';
 	import RadioButton from 'components/RadioButton';
+	import Switch from 'components/Switch';
 	import Icon from 'components/Icon';
 
 </script>
@@ -26,3 +27,7 @@
     { value: 1, label: 'One' },
     { value: 2, label: 'Two' }
   ]} />
+
+<h4 class="pb-8 pt-10" id="switches">Switches</h4>
+
+<Switch />

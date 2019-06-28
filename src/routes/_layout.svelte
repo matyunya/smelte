@@ -48,6 +48,7 @@
 		{ to: "/components/buttons", text: 'Buttons' },
 		{ to: "/components/selection-controls#checkboxes", text: 'Checkboxes' },
 		{ to: "/components/selection-controls#radio-buttons", text: 'Radio buttons' },
+		{ to: "/components/selection-controls#switches", text: 'Switches' },
 		{ to: "/components/lists", text: 'Lists' },
 		{ to: "/components/selects", text: 'Selects' },
 		{ to: "/components/snackbars", text: 'Snackbars' },
