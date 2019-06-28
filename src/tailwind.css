@@ -74,6 +74,11 @@ html {
   @apply underline text-blue-600;
 }
 
+.transition {
+  transition: .2s ease-in;
+}
+
+
 @responsive {
   .border-box {
     box-sizing: border-box;

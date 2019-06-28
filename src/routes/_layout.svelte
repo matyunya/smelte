@@ -11,6 +11,7 @@
 	import { Spacer } from 'components/Util';
 	import List from 'components/List';
 	import NavigationDrawer from 'components/NavigationDrawer';
+	import ProgressLinear from 'components/ProgressLinear';
 
 	import { right, elevation, persistent, showNav, showNavMobile, breakpoint } from 'stores.js';
 
@@ -70,6 +71,10 @@
 
 <svelte:window on:resize={updateBreakpoint} />
 
+{#if $preloading}
+	<ProgressLinear app />
+{/if}
+
 <AppBar>
 	<a href="." class="px-8 flex items-center">
 		<img src="/logo.png" alt="Smelte logo" width="44">
@@ -108,11 +113,7 @@
 			<List dense navigation items={menu} />
 			<hr>
 			<List dense navigation items={menuOther} />
-
 		</NavigationDrawer>
-		{#if $preloading}
-			preloading
-		{/if}
 		<slot></slot>
 	</main>
 {/if}
