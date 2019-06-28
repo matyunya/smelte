@@ -53,6 +53,7 @@
 		{ to: "/components/snackbars", text: 'Snackbars' },
 		{ to: "/components/dialogs", text: 'Dialogs' },
 		{ to: "/components/navigation-drawers", text: 'Navigation drawers' },
+		{ to: "/components/progress-indicators", text: 'Progress indicators' },
 	];
 	
 	const menuOther = [
