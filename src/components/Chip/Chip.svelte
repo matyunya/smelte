@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from 'svelte';
-  import { fade } from 'svelte/transition';
+  import { scale } from 'svelte/transition';
 
   import Icon from 'components/Icon';
 
@@ -52,7 +52,7 @@
 {#if value}
   <span
     class="mx-1 inline-block"
-    out:fade={{ duration: 100 }}>
+    out:scale={{ duration: 100 }}>
     <button
       class="flex items-center rounded-full bg-gray-300 px-2 py-1"
       on:click

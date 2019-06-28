@@ -11,8 +11,8 @@
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run",
-    "now": "yarn build && cp package.json __sapper__/build/server && now",
-    "now-build": "sapper build --legacy"
+    "now": "yarn export && now",
+    "now-build": "yarn export"
   },
   "browserslist": "last 3 version",
   "dependencies": {

@@ -1,25 +1,10 @@
 {
   "version": 2,
+  "name": "smelte",
   "builds": [
     {
-      "src": "__sapper__/build/index.js",
-      "use": "@now/node",
-      "config": {
-        "maxLambdaSize": 50000000
-      }
-    },
-    {
-      "src": "static/**",
-      "use": "@now/static"
-    },
-    {
-      "src": "__sapper__/build/client/**",
+      "src": "__sapper__/build/export/**",
       "use": "@now/static"
     }
-  ],
-  "routes": [
-    { "src": "/(.*(\\.css)|(\\.json)|(\\.png))", "dest": "/static/$1" },
-    { "src": "/client/(.*)", "dest": "/__sapper__/build/client/$1" },
-    { "src": "/(.*)", "dest": "/__sapper__/build/index.js" }
   ]
 }
