@@ -6,6 +6,9 @@
 
   export let removable;
   export let icon;
+  export let outlined = false;
+  export let selected = false;
+  export let selectable = true;
 
   let value = true;
 
@@ -16,31 +19,69 @@
     value = false;
   }
 
+  function select() {
+    if (!selectable) return;
+
+    selected = true;
+  }
+
 </script>
 
 <style>
 .p-1\/2 {
   padding: 0.125rem;
 }
+
+.outlined {
+  @apply bg-transparent border border-gray-400 border-solid;
+
+  &:hover {
+    @apply bg-gray-50;
+  }
+}
+
+.selected {
+  @apply border-primary-500 text-primary-500 bg-primary-100;
+
+  &:hover {
+    @apply bg-primary-50;
+  }
+}
 </style>
 
 {#if value}
-  <div
+  <span
+    class="mx-1 inline-block"
     out:fade={{ duration: 100 }}>
-    <button class="rounded-full bg-gray-300 px-2 py-1" on:click>
+    <button
+      class="flex items-center rounded-full bg-gray-300 pr-2 pl-1 py-1"
+      on:click
+      class:outlined
+      class:selected
+      class:ripple-primary={selectable}
+      on:click={select}
+    >
       {#if icon}
-        <Icon small>{icon}</Icon>
+        <Icon
+          small
+          color={selected ? 'text-primary-400' : 'text-gray-400'}
+          >{icon}</Icon>
       {/if}
-      <span class="px-2">
+      <span class="px-3">
         <slot></slot>
       </span>
       {#if removable}
         <span
-          class="rounded-full bg-gray-700 p-1/2 hover:bg-gray-500 inline-flex items-center cursor-pointer"
+          class="rounded-full p-1/2 hover:bg-gray-500 inline-flex items-center cursor-pointer"
+          class:bg-gray-600={!selected}
+          class:bg-primary-400={selected}
           on:click|stopPropagation={close}>
-          <Icon color="text-gray-300" xs>close</Icon>
+          <Icon
+            color={selected ? 'text-white' : 'text-gray-300'}
+            xs
+          >close</Icon>
         </span>
       {/if}
     </button>
-  </div>
+  </span>
 {/if}
