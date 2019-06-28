@@ -54,7 +54,7 @@
     class="mx-1 inline-block"
     out:fade={{ duration: 100 }}>
     <button
-      class="flex items-center rounded-full bg-gray-300 pr-2 pl-1 py-1"
+      class="flex items-center rounded-full bg-gray-300 px-2 py-1"
       on:click
       class:outlined
       class:selected
@@ -64,20 +64,23 @@
       {#if icon}
         <Icon
           small
-          color={selected ? 'text-primary-400' : 'text-gray-400'}
+          color={selected ? 'text-primary-400' : 'text-gray-600'}
           >{icon}</Icon>
       {/if}
-      <span class="px-3">
+      <span class="px-2 text-sm">
         <slot></slot>
       </span>
       {#if removable}
         <span
-          class="rounded-full p-1/2 hover:bg-gray-500 inline-flex items-center cursor-pointer"
-          class:bg-gray-600={!selected}
+          class={`
+            rounded-full p-1/2 inline-flex items-center cursor-pointer
+            ${selected ? 'hover:bg-primary-300' : 'hover:bg-gray-400'}
+          `}
+          class:bg-gray-500={!selected}
           class:bg-primary-400={selected}
           on:click|stopPropagation={close}>
           <Icon
-            color={selected ? 'text-white' : 'text-gray-300'}
+            color="text-white"
             xs
           >close</Icon>
         </span>
