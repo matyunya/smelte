@@ -26,6 +26,9 @@
     append,
     persistentHint,
   };
+
+  const inProps = { y: 10, duration: 200, easing: quadIn };
+  const outProps = { y: -10, duration: 100, easing: quadOut, delay: 200 };
 </script>
 
 <svelte:window on:click={() => showList = false} />
@@ -44,8 +47,8 @@
     <div
       class="absolute top-1 left-0 bg-white rounded elevation-3 w-full z-10"
       on:click={() => showList = false}
-      in:fly="{{ y: 10, duration: 200, easing: quadIn }}"
-      out:fly="{{ y: -10, duration: 100, easing: quadOut, delay: 200 }}"
+      in:fly={inProps}
+      out:fly={outProps}
     >
       <List bind:value items={items} />
     </div>

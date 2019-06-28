@@ -19,5 +19,6 @@ module.exports = {
   rules: {
   },
   settings: {
+    "svelte3/ignore-styles": () => true,
   }
 };

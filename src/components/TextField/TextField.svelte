@@ -27,6 +27,8 @@
 
   $: showHint = error || (persistentHint ? hint : (focused && hint));
   $: notFocused = focused === false;
+
+  const transitionProps = { y: -10, duration: 100, easing: quadOut };
 </script>
 
 <style>
@@ -150,7 +152,7 @@
       class="text-xs py-1 pl-4 absolute bottom-0 left-0"
       class:error
       class:text-gray-600={hint}
-      transition:fly="{{ y: -10, duration: 100, easing: quadOut }}"
+      transition:fly={transitionProps}
     >{showHint}</div>
   {/if}
 </div>
