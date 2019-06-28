@@ -5,7 +5,9 @@
 
 	function next() {
 		setTimeout(() => {
-			if (progress === 100) return;
+			if (progress === 100) {
+				progress = 0;
+			}
 
 			progress += 1;
 			next();
@@ -22,4 +24,5 @@
 
 <h5 class="pt-6 pb-4">Definite linear progress indicator</h5>
 
+<caption class="mb-3">{progress}%</caption>
 <ProgressLinear {progress} />
