@@ -1,5 +1,6 @@
 <script>
 	import ProgressLinear from 'components/ProgressLinear';
+	import ProgressCircular from 'components/ProgressCircular';
 
 	let progress = 0;
 
@@ -26,3 +27,11 @@
 
 <caption class="mb-3">{progress}%</caption>
 <ProgressLinear {progress} />
+
+<h5 class="pt-6 pb-4">Indefinite circular progress indicator</h5>
+<ProgressCircular />
+
+<h5 class="pt-6 pb-4">Definite circular progress indicator</h5>
+
+<caption class="mb-3">{progress}%</caption>
+<ProgressCircular {progress} />

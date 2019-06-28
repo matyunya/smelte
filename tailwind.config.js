@@ -401,6 +401,33 @@ module.exports = {
         }
       });
     },
+    // Strokes
+    function ({ addUtilities, theme, e }) {
+      const colors = theme('colors');
+
+      const ripples = Object.keys(colors)
+        .reduce((acc, key) => {
+          if (typeof colors[key] === 'string') {
+            return {
+              ...acc,
+              [`.stroke-${e(key)}`]: {
+                stroke: colors[key],
+              },
+            };
+          }
+
+          return {
+            ...acc,
+            [`.stroke-${e(key)}`]: {
+              stroke: colors[key]['500'],
+            },
+          };
+
+        }, {});
+
+      addUtilities(ripples);
+    },
+    // Ripples
     function ({ addUtilities, theme, e }) {
       const colors = theme('colors');
 
@@ -423,7 +450,7 @@ module.exports = {
             [`.ripple-${e(key)}`]: ripple,
             [`.ripple-${e(key)}:after`]: {
               ...rippleAfter,
-              backgroundImage: `radial-gradient(circle, ${colors[key]['700']} 20%, transparent 10.01%)`
+              backgroundImage: `radial-gradient(circle, ${colors[key]['500']} 20%, transparent 10.01%)`
             },
             [`.ripple-${e(key)}:active:after`]: rippleActiveAfter,
           };
@@ -432,6 +459,7 @@ module.exports = {
 
       addUtilities(ripples);
     },
+    // Caret colors
     function ({ e, addUtilities, theme }) {
       const colors = theme('colors');
 
