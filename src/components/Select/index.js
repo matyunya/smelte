@@ -1,3 +1,3 @@
-import Select from 'components/Select/Select.svelte';
+import Select from './Select.svelte';
 
 export default Select;

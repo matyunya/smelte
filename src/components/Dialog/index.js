@@ -1,3 +1,3 @@
-import Dialog from 'components/Dialog/Dialog.svelte';
+import Dialog from './Dialog.svelte';
 
 export default Dialog;

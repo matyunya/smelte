@@ -1,7 +1,7 @@
 <script>
 	import Checkbox from 'components/Checkbox';
-	import RadioButtonGroup from 'components/RadioButtonGroup.svelte';
-	import Icon from 'components/Icon.svelte';
+	import RadioButton from 'components/RadioButton';
+	import Icon from 'components/Icon';
 
 </script>
 
@@ -12,14 +12,14 @@
 
 <h4 class="pb-8 pt-10" id="radio-buttons">Radio buttons</h4>
 
-<RadioButtonGroup
+<RadioButton.Group
   name="test"
   items={[
     { value: 1, label: 'One' },
     { value: 2, label: 'Two' }
   ]} />
 
-<RadioButtonGroup
+<RadioButton.Group
   name="test-disabled"
   disabled
   items={[

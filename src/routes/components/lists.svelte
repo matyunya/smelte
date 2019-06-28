@@ -1,6 +1,6 @@
 <script>
 	import List from 'components/List';
-	import Icon from 'components/Icon.svelte';
+	import Icon from 'components/Icon';
 
   const listOneLine = [{
 		text: 'Item 1',

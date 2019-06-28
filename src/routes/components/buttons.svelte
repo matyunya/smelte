@@ -1,6 +1,6 @@
 <script>
 	import Button from 'components/Button';
-	import Icon from 'components/Icon.svelte';
+	import Icon from 'components/Icon';
 </script>
 
 <h4 class="pb-8">Buttons</h4>

@@ -2,8 +2,8 @@
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
   import { quadOut, quadIn } from 'svelte/easing';
-  import List from 'components/List/List.svelte';
-  import Spacer from 'components/Spacer.svelte';
+  import List from 'components/List';
+  import { Spacer } from 'components/Util';
 
   export let value = false;
   export let timeout = 4000;

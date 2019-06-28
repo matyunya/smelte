@@ -1,14 +1,16 @@
 <script>
+	import { stores } from '@sapper/app';
 	import { onMount } from 'svelte';
+	const { preloading } = stores();
 
 	import { fade } from 'svelte/transition';
 
-	import AppBar from 'components/AppBar.svelte';
+	import AppBar from 'components/AppBar';
 	import Tabs from 'components/Tabs';
 	import Button from 'components/Button';
-	import Spacer from 'components/Spacer.svelte';
-	import List from 'components/List/List.svelte';
-	import NavigationDrawer from 'components/NavigationDrawer.svelte';
+	import { Spacer } from 'components/Util';
+	import List from 'components/List';
+	import NavigationDrawer from 'components/NavigationDrawer';
 
 	import { right, elevation, persistent, showNav, showNavMobile, breakpoint } from 'stores.js';
 
@@ -108,6 +110,9 @@
 			<List dense navigation items={menuOther} />
 
 		</NavigationDrawer>
+		{#if $preloading}
+			preloading
+		{/if}
 		<slot></slot>
 	</main>
 {/if}

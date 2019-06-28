@@ -1,6 +1,6 @@
 <script>
-  import Icon from 'components/Icon.svelte';
-  import Ripple from 'components/Ripple.svelte';
+  import Icon from 'components/Icon';
+  import { Ripple } from 'components/Util';
 
   export let value = false;
   export let label = '';

@@ -1,7 +1,7 @@
 <script>
   import { fly } from 'svelte/transition';
   import { cubicIn } from 'svelte/easing';
-  import Scrim from 'components/Scrim.svelte';
+  import { Scrim } from 'components/Util';
 
   export let right = false;
   export let persistent = false;

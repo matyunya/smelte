@@ -1,3 +1,3 @@
-import TextField from 'components/TextField/TextField.svelte';
+import TextField from './TextField.svelte';
 
 export default TextField;
