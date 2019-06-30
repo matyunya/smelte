@@ -9,7 +9,7 @@
     <h3>.h3 header 3</h3>
     <h4>.h4 header 4</h4>
     <h5>.h5 header 5</h5>
-    <h6>.h6 header 6</h6>
+    <h6 class="mb-3 mt-6">.h6 header 6</h6>
     <div class="subtitle-1">.subtitle-1</div>
     <div class="subtitle-2">.subtitle-2</div>
     <div class="body-1">.body-1</div>

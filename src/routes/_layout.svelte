@@ -10,12 +10,14 @@
 	import Button from 'components/Button';
 	import { Spacer } from 'components/Util';
 	import List from 'components/List';
+	import ListItem from 'components/List/ListItem.svelte';
 	import NavigationDrawer from 'components/NavigationDrawer';
 	import ProgressLinear from 'components/ProgressLinear';
 
 	import { right, elevation, persistent, showNav, showNavMobile, breakpoint } from 'stores.js';
 
 	let innerWidth = 0;
+	let selected = '';
 
 	function calcBreakpoint(width) {
 		if (width > 1279) {
@@ -120,6 +122,7 @@
 			<List dense navigation items={menu} />
 			<hr>
 			<List dense navigation items={menuOther} />
+			<hr>
 		</NavigationDrawer>
 		<slot></slot>
 	</main>

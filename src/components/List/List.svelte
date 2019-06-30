@@ -2,6 +2,7 @@
   import ListItem from 'components/List/ListItem.svelte';
 
   export let items = [];
+  export let item = {};
   export let value = '';
   export let text = '';
   export let dense = false;
@@ -11,15 +12,31 @@
 <ul class="py-2 rounded">
 	{#each items as item, i}
     {#if item.to}
-    <a href={item.to}>
-      <ListItem bind:value {...item} {dense} {navigation} name={item.name || item.text}>
-        {item.text}
-      </ListItem>
-    </a>
+     <slot
+        name="item"
+        {item}
+        {dense}
+        {navigation}
+        {value}
+    >
+      <a href={item.to}>
+        <ListItem bind:value {...item} {dense} {navigation} name={item.name || item.text}>
+          {item.text}
+        </ListItem>
+      </a>
+    </slot>
     {:else}
-      <ListItem bind:value {...item} {dense} {navigation} name={item.name || item.text}>
-        {item.text}
-      </ListItem>
+      <slot
+        name="item"
+        {item}
+        {dense}
+        {navigation}
+        {value}
+      >
+        <ListItem bind:value {...item} {dense} {navigation} name={item.name || item.text}>
+          {item.text}
+        </ListItem>
+      </slot>
     {/if}
 	{/each}
 </ul>
