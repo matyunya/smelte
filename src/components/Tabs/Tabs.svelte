@@ -6,6 +6,7 @@
 
 	export let value = null;
 	export let items = [];
+	// export let indicator = true;
 
 	let node;
 	let indicatorWidth = 0;

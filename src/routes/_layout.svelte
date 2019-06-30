@@ -56,6 +56,7 @@
 		{ to: "/components/navigation-drawers", text: 'Navigation drawers' },
 		{ to: "/components/progress-indicators", text: 'Progress indicators' },
 		{ to: "/components/chips", text: 'Chips' },
+		{ to: "/components/tabs", text: 'Tabs' },
 		{ to: "/typography", text: 'Typography' },
 		{ to: "/color", text: 'Color' },
 	];
@@ -64,7 +65,7 @@
 		{ to: "/components/text-fields", text: 'Components' },
 		{ to: "/typography", text: 'Typography' },
 		{ to: "/color", text: 'Color' },
-	]
+	];
 
 	function toggleNav() {
 		return showNavMobile.update(() => !$showNavMobile);
