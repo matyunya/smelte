@@ -12,7 +12,7 @@
 
     setTimeout(() => {
       initialized = true;
-    }, 100);
+    }, 200);
   });
 
   const inProps = { y: 10, duration: 50 };
