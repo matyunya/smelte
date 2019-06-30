@@ -60,9 +60,17 @@
 		{ to: "/color", text: 'Color' },
 	];
 
+	const topMenu = [
+		{ to: "/components/text-fields", text: 'Components' },
+		{ to: "/typography", text: 'Typography' },
+		{ to: "/color", text: 'Color' },
+	]
+
 	function toggleNav() {
 		return showNavMobile.update(() => !$showNavMobile);
 	}
+
+	$: path = $page.path;
 </script>
 
 <svelte:head>
@@ -87,11 +95,7 @@
 		</h6>
 	</a>
 	<Spacer />
-	<Tabs.Wrapper>
-		<Tabs.Tab to="/components/text-fields">Components</Tabs.Tab>
-		<Tabs.Tab to="/color">Color</Tabs.Tab>
-		<Tabs.Tab to="/typography">Typography</Tabs.Tab>
-	</Tabs.Wrapper>
+	<Tabs items={topMenu} bind:value={path} />
 	<div class="md:hidden">
 		<Button icon="menu" small text on:click={toggleNav} />
 	</div>
@@ -123,7 +127,7 @@
 
 					<a href={item.to}>
 						<ListItem
-							selected={$page.path.includes(item.to)}
+							selected={path.includes(item.to)}
 							{...item}
 							dense
 							navigation

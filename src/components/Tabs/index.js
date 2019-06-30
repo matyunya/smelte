@@ -1,7 +1,7 @@
-import Tab from './Tab.svelte';
+import TabItem from './Tab.svelte';
 import Tabs from './Tabs.svelte';
 
-export default {
-  Wrapper: Tabs,
-  Tab,
-};
+export default Tabs;
+
+export const Wrapper = Tabs;
+export const Tab = TabItem;

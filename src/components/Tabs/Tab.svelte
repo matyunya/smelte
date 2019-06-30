@@ -7,8 +7,9 @@
   export let text = '';
   export let navigation = true;
   export let to = '';
+  export let selected = false;
 
-  $: selected = name && name === value;
+  $: selected = to ? selected : name === value;
 </script>
 
 <style>
@@ -34,6 +35,7 @@
     href={to}
     class="navigation tab-item p-4 ripple-white cursor-pointer text-white flex mx-auto items-center opacity-75 text-sm h-full"
     class:selected
+    on:click
   >
     <div class="flex flex-col items-center content-center mx-auto">
       {#if icon}
@@ -54,6 +56,7 @@
     on:click={() => {
       value = name;
     }}
+    on:click
   >
     {#if icon}
       <Icon
