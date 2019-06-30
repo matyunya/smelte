@@ -13,5 +13,5 @@
   class:text-base={small}
   class:text-xs={xs}
 >
-  <slot /> 
+  <slot />
 </i>

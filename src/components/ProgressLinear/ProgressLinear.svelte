@@ -4,6 +4,7 @@
 
   export let app = false;
   export let progress = 0;
+  export let color = 'primary';
 
   let initialized = false;
 
@@ -16,6 +17,8 @@
   });
 
   const inProps = { y: 10, duration: 50 };
+
+  color = color.includes('-') ? color.split('-')[0] : color;
 </script>
 
 <style>
@@ -40,18 +43,18 @@
 <div
   class:fixed={app}
   class:z-50={app}
-  class="top-0 left-0 w-full h-1 bg-primary-100 overflow-hidden relative"
+  class={`top-0 left-0 w-full h-1 bg-${color}-100 overflow-hidden relative`}
   class:hidden={app && !initialized}
   in:fly={inProps}
 >
   <div
-    class="bg-primary-500 h-1 absolute"
+    class={`bg-${color}-500 h-1 absolute`}
     class:inc={!progress}
     class:transition={progress}
     style={progress ? `width: ${progress}%` : ''}
   />
   <div
-    class="bg-primary-500 h-1 absolute dec"
+    class={`bg-${color}-500 h-1 absolute dec`}
     class:hidden={progress}
   />
 </div>

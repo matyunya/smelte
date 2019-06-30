@@ -2,11 +2,15 @@
 	import { onMount } from 'svelte';
 
 	import Indicator from './Indicator.svelte';
+	import ProgressLinear from 'components/ProgressLinear';
 	import Tab from './Tab.svelte';
 
-	export let value = null;
+	export let selected = null;
 	export let items = [];
 	export let indicator = true;
+	export let color = 'white';
+	export let c = '';
+	export let loading = false;
 
 	let node;
 	let indicatorWidth = 0;
@@ -14,30 +18,35 @@
 	let offset = 0;
 
 	function calcIndicator() {
-		indicatorWidth = node ? node.children[0].offsetWidth : 0;
-		const left = value
-			? items.findIndex(i => value.includes(i.to || i.value))
+		indicatorWidth = node ? node.offsetWidth / items.length : 0;
+
+		const left = selected
+			? items.findIndex(i => selected.includes(i.to || i.id))
 			: 0;
 
 		offset = left * indicatorWidth;
 	}
 
-	onMount(() => calcIndicator(value));
+	onMount(() => calcIndicator(selected));
 
-	$: calcIndicator(value);
+	$: calcIndicator(selected);
 </script>
 
-<div class="py-0 h-full hidden md:flex items-center relative" bind:this={node}>
+<div
+	class={`${c} py-0 h-full flex items-center relative mx-auto z-20`}
+	bind:this={node}
+>
 	{#each items as item, i}
-		<slot name="item" {value}>
-			<Tab bind:value {...item} name={item.name || item.text}>{item.text}</Tab>
+		<slot name="item">
+			<Tab bind:selected {...item} {color}>{item.text}</Tab>
 		</slot>
 	{/each}
-
 	{#if indicator}
-		<Indicator color="white" width={indicatorWidth} left={offset} />
+		<Indicator {color} width={indicatorWidth} left={offset} />
 	{/if}
-	
-
-	<slot {value} name="content" />
 </div>
+{#if loading}
+	<ProgressLinear {color} />
+{/if}
+
+<slot {selected} name="content" />

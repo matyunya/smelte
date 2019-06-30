@@ -46,7 +46,7 @@ function addUtility({
           }
         }
 
-        const variants = Object.keys(colors[key])
+        const variants = Object.keys(colors[key]);
 
         return {
           ...acc,
@@ -457,16 +457,27 @@ module.exports = {
             };
           }
 
+          const variants = Object.keys(colors[key]);
+
           return {
             ...acc,
             [`.ripple-${e(key)}`]: ripple,
             [`.ripple-${e(key)}:after`]: {
               ...rippleAfter,
-              backgroundImage: `radial-gradient(circle, ${colors[key]['500']} 20%, transparent 10.01%)`
+              backgroundImage: `radial-gradient(circle, ${colors[key][500]} 20%, transparent 10.01%)`
             },
             [`.ripple-${e(key)}:active:after`]: rippleActiveAfter,
-          };
 
+            ...variants.reduce((a, variant) => ({
+              ...a,
+              [`.ripple-${e(key)}-${variant}`]: ripple,
+              [`.ripple-${e(key)}-${variant}:after`]: {
+                ...rippleAfter,
+                backgroundImage: `radial-gradient(circle, ${colors[key][variant]} 20%, transparent 10.01%)`
+              },
+              [`.ripple-${e(key)}-${variant}:active:after`]: rippleActiveAfter,
+            }), {}),
+          };
         }, {});
 
       addUtilities(ripples);

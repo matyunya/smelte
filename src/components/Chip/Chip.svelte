@@ -82,7 +82,7 @@
           <Icon
             color="text-white"
             xs
-          >close</Icon>
+          >clear</Icon>
         </span>
       {/if}
     </button>

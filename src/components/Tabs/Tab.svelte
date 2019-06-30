@@ -2,17 +2,15 @@
   import Icon from 'components/Icon';
 
   export let icon = '';
-  export let name = '';
-  export let value = '';
+  export let id = '';
   export let text = '';
-  export let navigation = true;
   export let to = '';
-  export let selected = false;
+  export let selected = '';
   export let color = 'primary-500';
 
-  const classes = 'text-center w-32 p-4 cursor-pointer flex mx-auto items-center opacity-75 text-sm h-full';
+  $: isSelected = selected === id;
 
-  $: selected = to ? selected : name === value;
+  const classes = 'text-center w-40 p-4 cursor-pointer flex mx-auto items-center opacity-75 text-sm h-full';
 </script>
 
 {#if to}
@@ -20,15 +18,16 @@
     href={to}
     class={`
       ${classes} ripple-${color} text-white
-      ${selected ? `text-${color}` : ''}
+      ${isSelected ? `text-${color}` : ''}
     `}
     on:click
-    class:text-{color}={selected}
+    class:uppercase={icon}
   >
     <div class="flex flex-col items-center content-center mx-auto">
       {#if icon}
         <Icon
-          color={selected && navigation ? `text-${color}-500` : ''}
+          c="mb-1"
+          color={isSelected ? `text-${color}` : ''}
         >{icon}</Icon>
       {/if}
 
@@ -41,17 +40,19 @@
   <li
     class={`
       ${classes} ripple-${color} text-white
-      ${selected ? `text-${color}` : ''}
+      ${isSelected ? `text-${color}` : ''}
     `}
     on:click={() => {
-      value = name;
+      selected = id;
     }}
     on:click
+    class:uppercase={icon}
   >
     <div class="flex flex-col items-center content-center mx-auto">
       {#if icon}
         <Icon
-          color={selected && navigation ? `text-${color}-500` : ''}
+          c="mb-1"
+          color={isSelected ? `text-${color}` : ''}
         >{icon}</Icon>
       {/if}
 

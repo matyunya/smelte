@@ -97,8 +97,9 @@
 	</a>
 	<Spacer />
 	<Tabs
+		c="sm:hidden md:flex"
 		items={topMenu}
-		bind:value={path}
+		bind:selected={path}
 	/>
 	<div class="md:hidden">
 		<Button icon="menu" small text on:click={toggleNav} />
