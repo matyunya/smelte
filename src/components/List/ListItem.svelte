@@ -9,8 +9,9 @@
   export let dense = false;
   export let navigation = false;
   export let to = '';
+  export let selected = false;
 
-  $: selected = name === value;
+  $: selected = to ? selected : name === value;
 </script>
 
 <style>
@@ -51,6 +52,7 @@
   class:ripple-gray={!navigation}
   class:py-2={dense}
   on:click={() => value = name}
+  on:click
 >
   {#if icon}
     <Icon

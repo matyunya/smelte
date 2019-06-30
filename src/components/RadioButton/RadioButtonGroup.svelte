@@ -11,11 +11,15 @@
 
 <div class="flex flex-col mb-4 cursor-pointer">
   {#each items as item}
-		<RadioButton
-      bind:selected
-      {...item}
-      name={groupName}
-      {disabled}
-    />
+    <slot
+      {item}
+    >
+      <RadioButton
+        bind:selected
+        {...item}
+        name={groupName}
+        {disabled}
+      />
+    </slot>
 	{/each}
 </div>

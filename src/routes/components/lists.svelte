@@ -57,11 +57,13 @@
 <h6 class="mb-3 mt-6">Custom list element using let:slots</h6>
 
 <List bind:value={selected} items={menu} dense navigation>
-	<span slot="item" let:item={item}>
+	<li slot="item" let:item={item}>
 		<div
 			class="cursor-pointer ripple-green p-4 border-green-50 border my-2 border-solid" 
-			on:click={() => selected = item.text}>
+			on:click={() => selected = item.text}
+			class:bg-green-50={selected === item.text}
+		>
 			{selected === item.text ? '👌' : '🙅‍'} {item.text}
 		</div>
-	</span>
+	</li>
 </List>
