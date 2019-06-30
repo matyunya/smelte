@@ -53,7 +53,7 @@ const postcssPlugins = (purge = false) => {
 				'navigation.selected', 'outline-none', 'text-xs',
 				'transition'
 			],
-			whitelistPatterns: [/bg-gray/, /text-gray/],
+			whitelistPatterns: [/bg-gray/, /text-gray/, /yellow-a200/],
 		}),
 	].filter(Boolean)
 }
