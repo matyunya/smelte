@@ -19,7 +19,7 @@
         <div class="text-lg font-bold pb-4">
           <slot name="title"></slot>
         </div>
-        <slot></slot>
+        <slot />
         <div class="flex w-full justify-end pt-4">
           <slot name="actions"></slot>
         </div>

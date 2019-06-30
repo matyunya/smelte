@@ -94,5 +94,5 @@
       {small}
     >{icon}</Icon>
   {/if}
-  <slot></slot>
+  <slot />
 </button>

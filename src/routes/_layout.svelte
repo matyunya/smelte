@@ -62,9 +62,9 @@
 	];
 
 	const topMenu = [
-		{ to: "/components/text-fields", text: 'Components' },
-		{ to: "/typography", text: 'Typography' },
-		{ to: "/color", text: 'Color' },
+		{ to: "/components", text: 'Components', },
+		{ to: "/typography", text: 'Typography', },
+		{ to: "/color", text: 'Color', },
 	];
 
 	function toggleNav() {
@@ -96,7 +96,10 @@
 		</h6>
 	</a>
 	<Spacer />
-	<Tabs items={topMenu} bind:value={path} />
+	<Tabs
+		items={topMenu}
+		bind:value={path}
+	/>
 	<div class="md:hidden">
 		<Button icon="menu" small text on:click={toggleNav} />
 	</div>
@@ -139,7 +142,7 @@
 			<hr>
 		</NavigationDrawer>
 
-		<slot></slot>
+		<slot />
 
 	</main>
 {/if}

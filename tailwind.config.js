@@ -26,6 +26,46 @@ const rippleActiveAfter = {
   transition: '0s',
 };
 
+function addUtility({
+  prop = 'caret-color',
+  className = '.caret',
+  value = a => a,
+  defaultVariant = 500
+}) {
+  return function ({ e, addUtilities, theme }) {
+    const colors = theme('colors');
+
+    const caretColors = Object.keys(colors)
+      .reduce((acc, key) => {
+        if (typeof colors[key] === 'string') {
+          return {
+            ...acc,
+            [`${className}-${e(key)}`]: {
+              [prop]: colors[key]
+            }
+          }
+        }
+
+        const variants = Object.keys(colors[key])
+
+        return {
+          ...acc,
+          [`${className}-${e(key)}`]: {
+            [prop]: colors[key][defaultVariant]
+          },
+          ...variants.reduce((a, variant) => ({
+            ...a,
+            [`${className}-${e(key)}-${variant}`]: {
+              [prop]: colors[key][variant]
+            },
+          }), {}),
+        };
+      }, {});
+
+    addUtilities(caretColors);
+  };
+}
+
 module.exports = {
   theme: {
     fontSize: {
@@ -73,7 +113,6 @@ module.exports = {
         "a400": "#d500f9",
         "a700": "#aa00ff",
       },
-
       "red": {
         "50": "#ffebee",
         "100": "#ffcdd2",
@@ -384,7 +423,6 @@ module.exports = {
         "800": "#37474f",
         "900": "#263238",
       }
-
     }
   },
   extend: {
@@ -400,32 +438,6 @@ module.exports = {
           transition: 'font-size 0.2s, line-height 0.2s',
         }
       });
-    },
-    // Strokes
-    function ({ addUtilities, theme, e }) {
-      const colors = theme('colors');
-
-      const ripples = Object.keys(colors)
-        .reduce((acc, key) => {
-          if (typeof colors[key] === 'string') {
-            return {
-              ...acc,
-              [`.stroke-${e(key)}`]: {
-                stroke: colors[key],
-              },
-            };
-          }
-
-          return {
-            ...acc,
-            [`.stroke-${e(key)}`]: {
-              stroke: colors[key]['500'],
-            },
-          };
-
-        }, {});
-
-      addUtilities(ripples);
     },
     // Ripples
     function ({ addUtilities, theme, e }) {
@@ -459,35 +471,13 @@ module.exports = {
 
       addUtilities(ripples);
     },
-    // Caret colors
-    function ({ e, addUtilities, theme }) {
-      const colors = theme('colors');
-
-      const caretColors = Object.keys(colors)
-        .reduce((acc, key) => {
-          if (typeof colors[key] === 'string') {
-            return {
-              ...acc,
-              [`.caret-${e(key)}`]: {
-                'caret-color': colors[key]
-              }
-            }
-          }
-
-          const variants = Object.keys(colors[key])
-
-          return {
-            ...acc,
-            ...variants.reduce((a, variant) => ({
-              ...a,
-              [`.caret-${e(key)}-${variant}`]: {
-                'caret-color': colors[key][variant]
-              },
-            }), {}),
-          };
-        }, {});
-
-      addUtilities(caretColors);
-    }
+    addUtility({
+      prop: 'caret-color',
+      className: '.caret',
+    }),
+    addUtility({
+      prop: 'stroke',
+      className: '.stroke',
+    })
   ]
 }

@@ -12,6 +12,6 @@
   class="z-40 p-2 rounded-full flex items-center justify-center top-0 left-0"
   class:ripple-primary={color === 'primary'}
   class:ripple-gray={color === 'gray'}
-><slot></slot>
+><slot />
 </span>
   

@@ -6,7 +6,7 @@
 
 	export let value = null;
 	export let items = [];
-	// export let indicator = true;
+	export let indicator = true;
 
 	let node;
 	let indicatorWidth = 0;
@@ -15,7 +15,10 @@
 
 	function calcIndicator() {
 		indicatorWidth = node ? node.children[0].offsetWidth : 0;
-		const left = value ? items.findIndex(i => [i.value, i.to].includes(value)) : 0;
+		const left = value
+			? items.findIndex(i => value.includes(i.to || i.value))
+			: 0;
+
 		offset = left * indicatorWidth;
 	}
 
@@ -27,8 +30,14 @@
 <div class="py-0 h-full hidden md:flex items-center relative" bind:this={node}>
 	{#each items as item, i}
 		<slot name="item" {value}>
-			<Tab bind:value to={item.to} name={item.name || item.text}>{item.text}</Tab>
+			<Tab bind:value {...item} name={item.name || item.text}>{item.text}</Tab>
 		</slot>
 	{/each}
-	<Indicator color="white" width={indicatorWidth} left={offset} />
+
+	{#if indicator}
+		<Indicator color="white" width={indicatorWidth} left={offset} />
+	{/if}
+	
+
+	<slot {value} name="content" />
 </div>

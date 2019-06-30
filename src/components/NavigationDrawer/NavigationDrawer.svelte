@@ -71,7 +71,7 @@
       <div
         class="w-full"
       >
-        <slot></slot>
+        <slot />
       </div>
     </nav>
   </aside>

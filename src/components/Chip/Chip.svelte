@@ -68,7 +68,7 @@
           >{icon}</Icon>
       {/if}
       <span class="px-2 text-sm">
-        <slot></slot>
+        <slot />
       </span>
       {#if removable}
         <span

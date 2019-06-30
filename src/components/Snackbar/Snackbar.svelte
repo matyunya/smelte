@@ -37,7 +37,7 @@
         items-center
         bg-gray-800 text-white snackbar elevation-2
       `}>
-      <slot></slot>
+      <slot />
       <Spacer />
       <slot name="action"></slot>
     </div>

@@ -5,5 +5,5 @@
 		elevation-3
 	`}
 	>
-	<slot></slot>
+	<slot />
 </header>

@@ -8,68 +8,56 @@
   export let navigation = true;
   export let to = '';
   export let selected = false;
+  export let color = 'primary-500';
+
+  const classes = 'text-center w-32 p-4 cursor-pointer flex mx-auto items-center opacity-75 text-sm h-full';
 
   $: selected = to ? selected : name === value;
 </script>
 
-<style>
-  .tab-item {
-    transition: background-color .2s ease-out;
-    @apply w-32;
-  }
-
-  .navigation {
-    &:hover {
-      @apply bg-local;
-    }
-
-    &.selected {
-      @apply bg-primary-50 text-white opacity-100;
-      transition: background-color .2s ease-in;
-    }
-  }
-</style>
-<span class="w-auto h-full">
-  {#if to}
-    <a
-      href={to}
-      class="navigation tab-item p-4 ripple-white cursor-pointer text-white flex mx-auto items-center opacity-75 text-sm h-full"
-      class:selected
-      on:click
-    >
-      <div class="flex flex-col items-center content-center mx-auto">
-        {#if icon}
-          <Icon
-            color={selected && navigation ? 'text-primary-500' : ''}
-          >{icon}</Icon>
-        {/if}
-
-        <div>
-          <slot>{text}</slot>
-        </div>
-      </div>
-    </a>
-  {:else}
-    <li
-      class="navigation tab-item p-4 ripple-white cursor-pointer text-white flex mx-auto items-center opacity-75 text-sm"
-      class:selected
-      on:click={() => {
-        value = name;
-      }}
-      on:click
-    >
+{#if to}
+  <a
+    href={to}
+    class={`
+      ${classes} ripple-${color} text-white
+      ${selected ? `text-${color}` : ''}
+    `}
+    on:click
+    class:text-{color}={selected}
+  >
+    <div class="flex flex-col items-center content-center mx-auto">
       {#if icon}
         <Icon
-          c="pr-6"
-          color={selected && navigation ? 'text-primary-500' : ''}
+          color={selected && navigation ? `text-${color}-500` : ''}
         >{icon}</Icon>
       {/if}
 
-      <div class="flex flex-col p-0">
-        <div>
-          <slot>{text}</slot>
-        </div>
+      <div>
+        <slot>{text}</slot>
       </div>
-    </li>
-  {/if}
-</span>
+    </div>
+  </a>
+{:else}
+  <li
+    class={`
+      ${classes} ripple-${color} text-white
+      ${selected ? `text-${color}` : ''}
+    `}
+    on:click={() => {
+      value = name;
+    }}
+    on:click
+  >
+    <div class="flex flex-col items-center content-center mx-auto">
+      {#if icon}
+        <Icon
+          color={selected && navigation ? `text-${color}-500` : ''}
+        >{icon}</Icon>
+      {/if}
+
+      <div>
+        <slot>{text}</slot>
+      </div>
+    </div>
+  </li>
+{/if}
