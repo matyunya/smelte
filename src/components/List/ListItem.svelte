@@ -1,4 +1,5 @@
 <script>
+  import { createEventDispatcher } from 'svelte';
   import Icon from 'components/Icon';
 
   export let icon = '';
@@ -10,6 +11,8 @@
   export let navigation = false;
   export let to = '';
   export let selected = false;
+
+  const dispatch = createEventDispatcher();
 </script>
 
 <style>
@@ -49,7 +52,11 @@
   class:ripple-white={navigation}
   class:ripple-gray={!navigation}
   class:py-2={dense}
-  on:click={() => value = id}
+  on:click={() => {
+    value = id;
+    console.log('called');
+    dispatch('change', id);
+  }}
   on:click
 >
   {#if icon}

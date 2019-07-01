@@ -15,9 +15,9 @@
   export let textarea = false;
   export let rows = 5;
   export let select = false;
+  export let autocomplete = false;
 
 
-  if (!value) value = '';
   let focused = false;
 
   function toggleFocused() {
@@ -64,7 +64,8 @@
   }
 
   .select {
-    @apply pb-0 h-16;
+    @apply pb-0;
+    height: 3.5rem;
   }
 </style>
 
@@ -72,7 +73,7 @@
 
 <div
   class="mt-2 relative pb-6"
-  class:select
+  class:select={select || autocomplete}
 >
   <div
     class="text-gray-600 relative"
@@ -81,7 +82,6 @@
     <label
       class="label pt-4 absolute top-0 label-transition block pb-2 px-4 pointer-events-none cursor-text"
       class:text-primary-500={focused && !error}
-      class:pt-5={select}
       class:label-top={placeholder || focused || value}
       class:label-top-outlined={(placeholder || focused || value) && outlined}
     >{label}</label>
@@ -94,7 +94,7 @@
       </div>
     {/if}
 
-    {#if !textarea && !select}
+    {#if (!textarea && !select) || autocomplete}
       <input
         aria-label={label}
         class="transition pb-2 pt-6 px-4 rounded-t text-black w-full caret-primary-500 bg-gray-100"
@@ -132,7 +132,7 @@
         on:blur={toggleFocused}
         placeholder={!value ? placeholder : ''}
       />
-    {:else if select}
+    {:else if select && !autocomplete}
       <div
         class="select transition pb-2 pt-6 px-4 rounded-t text-black w-full caret-primary-500 bg-gray-100"
         class:bg-gray-300={focused}

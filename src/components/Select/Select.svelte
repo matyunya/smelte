@@ -15,8 +15,10 @@
   export let error = false;
   export let append = '';
   export let persistentHint = false;
+  export let autocomplete = false;
 
   let showList = false;
+  let filteredItems = items;
 
   const props = {
     outlined,
@@ -32,8 +34,20 @@
   const outProps = { y: -10, duration: 100, easing: quadOut, delay: 200 };
   const dispatch = createEventDispatcher();
 
-  $: selectedLabel = (items.find(i => i.value === value) || {}).text;
-  $: dispatch('change', value);
+  function getLabel(value) {
+    return value
+      ? (items.find(i => i.value === value) || {}).text
+      : '';
+  }
+
+  $: selectedLabel = getLabel(value);
+
+  function filterItems({ target }) {
+    filteredItems = items
+      .filter(i => i.text
+        .toLowerCase()
+        .includes(target.value.toLowerCase()));
+  }
 
 </script>
 
@@ -42,12 +56,14 @@
 <div class="cursor-pointer relative pb-4">
   <TextField
     select
-    bind:value={selectedLabel}
+    {autocomplete}
+    value={selectedLabel}
     {...props}
     on:click={(e) => {
       e.stopPropagation();
       showList = true;
     }}
+    on:input={filterItems}
     append={showList ? 'arrow_drop_up' : 'arrow_drop_down'} />
 
   {#if showList}
@@ -56,9 +72,17 @@
       on:click={() => showList = false}
       in:fly={inProps}
       out:fly={outProps}
+      class:rounded-t-none={!outlined}
       style="margin-top: 2px"
     >
-      <List bind:value items={items} />
+      <List
+        bind:value
+        select
+        items={filteredItems}
+        on:change={({ detail }) => {
+          dispatch('change', detail);
+        }}
+      />
     </div>
   {/if}
 </div>

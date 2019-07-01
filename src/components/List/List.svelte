@@ -7,15 +7,18 @@
   export let text = '';
   export let dense = false;
   export let navigation = false;
+  export let select = false;
 
   const props = {
     dense,
     navigation,
-    id: item.value || item.name,
   };
 </script>
 
-<ul class="py-2 rounded">
+<ul
+  class="py-2 rounded"
+  class:rounded-t-none={select}
+>
 	{#each items as item, i}
     {#if item.to}
      <slot
@@ -26,7 +29,7 @@
         {value}
     >
       <a href={item.to}>
-        <ListItem bind:value {...item} {...props}>
+        <ListItem bind:value {...item} id={item.id || item.value} {...props} on:change>
           {item.text}
         </ListItem>
       </a>
@@ -39,7 +42,7 @@
         {navigation}
         {value}
       >
-        <ListItem bind:value {...item} {...props}>
+        <ListItem bind:value {...item} id={item.id || item.value} {...props} on:change>
           {item.text}
         </ListItem>
       </slot>
