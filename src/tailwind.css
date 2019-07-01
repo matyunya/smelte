@@ -59,7 +59,7 @@ p, .body-1 {
 caption, .caption {
   font-size: 0.625rem;
   letter-spacing: 0.4px;
-  @apply w-auto;
+  display: inline-block;
 }
 
 input:focus, button:focus, textarea:focus, select:focus {

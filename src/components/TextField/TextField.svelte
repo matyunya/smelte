@@ -37,12 +37,7 @@
 
   .label-top {
     line-height: 0.05;
-    @apply absolute top-0 label-transition text-xs;
-  }
-
-  .label {
-    @apply absolute top-0 label-transition block pb-2 px-4 pt-4 pointer-events-none;
-    cursor: text;
+    @apply absolute top-0 label-transition text-xs pt-4;
   }
 
   /* 
@@ -84,8 +79,9 @@
     class:error
   >
     <label
-      class="label"
+      class="label pt-4 absolute top-0 label-transition block pb-2 px-4 pointer-events-none cursor-text"
       class:text-primary-500={focused && !error}
+      class:pt-5={select}
       class:label-top={placeholder || focused || value}
       class:label-top-outlined={(placeholder || focused || value) && outlined}
     >{label}</label>
@@ -138,7 +134,6 @@
       />
     {:else if select}
       <div
-        aria-label={label}
         class="select transition pb-2 pt-6 px-4 rounded-t text-black w-full caret-primary-500 bg-gray-100"
         class:bg-gray-300={focused}
         class:outlined

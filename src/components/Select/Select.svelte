@@ -1,4 +1,5 @@
 <script>
+  import { createEventDispatcher } from 'svelte';
   import { fly } from 'svelte/transition';
   import { quadOut, quadIn } from 'svelte/easing';
   import List from 'components/List/List.svelte';
@@ -29,6 +30,11 @@
 
   const inProps = { y: 10, duration: 200, easing: quadIn };
   const outProps = { y: -10, duration: 100, easing: quadOut, delay: 200 };
+  const dispatch = createEventDispatcher();
+
+  $: selectedLabel = (items.find(i => i.value === value) || {}).text;
+  $: dispatch('change', value);
+
 </script>
 
 <svelte:window on:click={() => showList = false} />
@@ -36,7 +42,7 @@
 <div class="cursor-pointer relative pb-4">
   <TextField
     select
-    bind:value
+    bind:value={selectedLabel}
     {...props}
     on:click={(e) => {
       e.stopPropagation();
@@ -50,6 +56,7 @@
       on:click={() => showList = false}
       in:fly={inProps}
       out:fly={outProps}
+      style="margin-top: 2px"
     >
       <List bind:value items={items} />
     </div>

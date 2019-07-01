@@ -7,6 +7,12 @@
   export let text = '';
   export let dense = false;
   export let navigation = false;
+
+  const props = {
+    dense,
+    navigation,
+    id: item.value || item.name,
+  };
 </script>
 
 <ul class="py-2 rounded">
@@ -20,7 +26,7 @@
         {value}
     >
       <a href={item.to}>
-        <ListItem bind:value {...item} {dense} {navigation} name={item.name || item.text}>
+        <ListItem bind:value {...item} {...props}>
           {item.text}
         </ListItem>
       </a>
@@ -33,7 +39,7 @@
         {navigation}
         {value}
       >
-        <ListItem bind:value {...item} {dense} {navigation} name={item.name || item.text}>
+        <ListItem bind:value {...item} {...props}>
           {item.text}
         </ListItem>
       </slot>

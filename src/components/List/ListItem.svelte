@@ -2,7 +2,7 @@
   import Icon from 'components/Icon';
 
   export let icon = '';
-  export let name = '';
+  export let id = '';
   export let value = '';
   export let text = '';
   export let subheading = '';
@@ -10,8 +10,6 @@
   export let navigation = false;
   export let to = '';
   export let selected = false;
-
-  $: selected = to ? selected : name === value;
 </script>
 
 <style>
@@ -51,7 +49,7 @@
   class:ripple-white={navigation}
   class:ripple-gray={!navigation}
   class:py-2={dense}
-  on:click={() => value = name}
+  on:click={() => value = id}
   on:click
 >
   {#if icon}
