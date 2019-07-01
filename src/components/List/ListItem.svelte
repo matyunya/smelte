@@ -54,7 +54,6 @@
   class:py-2={dense}
   on:click={() => {
     value = id;
-    console.log('called');
     dispatch('change', id);
   }}
   on:click
