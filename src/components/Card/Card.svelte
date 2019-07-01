@@ -12,6 +12,6 @@
   <slot name="title" />
   <slot name="media" />
   <slot />
-  <slot name="text"></slot>
-  <slot name="actions"></slot>
+  <slot name="text" />
+  <slot name="actions" />
 </div>
