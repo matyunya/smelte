@@ -14,14 +14,13 @@
   export let persistentHint = false;
   export let textarea = false;
   export let rows = 5;
-  
   export let select = false;
 
 
   if (!value) value = '';
   let focused = false;
 
-  function toggleFocused(f) {
+  function toggleFocused() {
     focused = !focused;
   }
 
@@ -53,10 +52,6 @@
     @apply absolute top-0 label-transition ml-3 px-1 pt-0 mt-0 bg-white;
   }
 
-  .input {
-    transition: background-color 0.2s;
-  }
-
   .outlined {
     @apply border-gray-600 border rounded bg-transparent py-4;
   }
@@ -76,14 +71,15 @@
   }
 
   .select {
-    @apply pb-0 cursor-pointer;
+    @apply pb-0 h-16;
   }
 </style>
+
+<svelte:window on:click={() => select ? focused = false : null} />
 
 <div
   class="mt-2 relative pb-6"
   class:select
-  on:click
 >
   <div
     class="text-gray-600 relative border-box"
@@ -104,38 +100,61 @@
       </div>
     {/if}
 
-    {#if !textarea}
+    {#if !textarea && !select}
       <input
         aria-label={label}
-        class="input pb-2 pt-6 px-4 rounded-t text-black w-full caret-primary-500 bg-gray-100"
+        class="transition pb-2 pt-6 px-4 rounded-t text-black w-full caret-primary-500 bg-gray-100"
         class:bg-gray-300={focused}
         class:outlined
         class:outlined-focused-border={focused && outlined}
         class:outlined-error={outlined && error}
         class:error
         class:cursor-pointer={select}
-        bind:value
         on:focus={toggleFocused}
         on:blur={toggleFocused}
+        bind:value
         on:change
         on:input
+        on:click
+        on:focus
         placeholder={!value ? placeholder : ''}
       />
-    {:else}
+    {:else if textarea && !select}
       <textarea
         {rows}
         aria-label={label}
-        class="input pb-2 pt-6 px-4 rounded-t text-black w-full caret-primary-500 bg-gray-100"
+        class="transition pb-2 pt-6 px-4 rounded-t text-black w-full caret-primary-500 bg-gray-100"
         class:bg-gray-300={focused}
         class:outlined
         class:outlined-focused-border={focused && outlined}
         class:outlined-error={outlined && error}
         class:caret-red-500={error}
         bind:value
+        on:change
+        on:input
+        on:click
+        on:focus
         on:focus={toggleFocused}
         on:blur={toggleFocused}
         placeholder={!value ? placeholder : ''}
       />
+    {:else if select}
+      <div
+        aria-label={label}
+        class="select transition pb-2 pt-6 px-4 rounded-t text-black w-full caret-primary-500 bg-gray-100"
+        class:bg-gray-300={focused}
+        class:outlined
+        class:outlined-focused-border={focused && outlined}
+        class:outlined-error={outlined && error}
+        class:error
+        class:cursor-pointer={select}
+        on:click={toggleFocused}
+        on:change
+        on:input
+        on:click
+        on:focus
+      >{value}
+      </div>
     {/if}
 
     <div

@@ -36,7 +36,8 @@
 <div class="cursor-pointer relative pb-4">
   <TextField
     select
-    bind:value {...props}
+    bind:value
+    {...props}
     on:click={(e) => {
       e.stopPropagation();
       showList = true;
