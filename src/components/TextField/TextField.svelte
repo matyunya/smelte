@@ -57,13 +57,11 @@
   }
 
   .outlined-focused-border {
-    @apply border-primary-400 border;
-    transition: border-color 200ms;
+    @apply border-primary-400 border transition;
   }
   
   .outlined-error {
-    @apply border-red-500 border;
-    transition: border-color 200ms;
+    @apply border-red-500 border transition;
   }
 
   .error {
@@ -82,12 +80,12 @@
   class:select
 >
   <div
-    class="text-gray-600 relative border-box"
-    class:text-primary-500={focused && !error}
+    class="text-gray-600 relative"
     class:error
   >
     <label
       class="label"
+      class:text-primary-500={focused && !error}
       class:label-top={placeholder || focused || value}
       class:label-top-outlined={(placeholder || focused || value) && outlined}
     >{label}</label>
@@ -158,12 +156,18 @@
     {/if}
 
     <div
-      class="line absolute bottom-0 left-0 w-full"
-      class:bg-red-500={error}
-      class:bg-primary-500={focused}
-      class:bg-gray-600={notFocused}
+      class="line absolute bottom-0 left-0 w-full bg-gray-600"
       class:hidden={outlined}
-    />
+    >
+      <div
+        class="mx-auto w-0"
+        class:w-full={focused || error}
+        class:bg-red-500={error}
+        class:bg-primary-500={focused}
+        style="height: 2px; transition: width .2s ease"
+      >
+      </div>
+    </div>
   </div>
 
   {#if showHint}

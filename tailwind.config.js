@@ -436,7 +436,16 @@ module.exports = {
       return addUtilities({
         ['.label-transition']: {
           transition: 'font-size 0.2s, line-height 0.2s',
-        }
+        },
+        ['.border-box']: {
+          boxSizing: 'border-box',
+        },
+        ['.content-box']: {
+          boxSizing: 'content-box',
+        },
+        ['.transition']: {
+          transition: '.2s ease-in',
+        },
       });
     },
     // Ripples
