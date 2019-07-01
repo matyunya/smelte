@@ -13,6 +13,8 @@
     dense,
     navigation,
   };
+
+  const id = item => item.id || item.value || item.to || item.text;
 </script>
 
 <ul
@@ -29,7 +31,13 @@
         {value}
     >
       <a href={item.to}>
-        <ListItem bind:value {...item} id={item.id || item.value} {...props} on:change>
+        <ListItem
+          bind:value
+          {...item}
+          id={id(item)}
+          {...props}
+          on:change
+        >
           {item.text}
         </ListItem>
       </a>
@@ -42,7 +50,14 @@
         {navigation}
         {value}
       >
-        <ListItem bind:value {...item} id={item.id || item.value} {...props} on:change>
+        <ListItem
+          bind:value
+          {...item}
+          id={id(item)}
+          selected={value === id(item)}
+          {...props}
+          on:change
+        >
           {item.text}
         </ListItem>
       </slot>
