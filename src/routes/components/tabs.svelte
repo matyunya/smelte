@@ -1,5 +1,6 @@
 <script>
-  import { fly } from 'svelte/transition';
+  import Waypoint from 'svelte-waypoint';
+  import { fly, fade } from 'svelte/transition';
   import Tabs from 'components/Tabs';
 
   let loading = false;
@@ -65,8 +66,51 @@
     and at the same level of hierarchy.
   </blockquote>
 
-<div class="elevation-1">
-  <Tabs
+<Waypoint>
+  <div class="elevation-1" in:fade>
+    <Tabs
+      selected="1"
+      c="bg-black elevation-10 mt-6 text-white rounded-t-lg"
+      color="yellow-a200"
+      let:selected={selected}
+      {loading}
+      items={[
+        { id: "1", text: 'Cats', icon: 'alarm_on' },
+        { id: "2", text: 'Kittens', icon: 'bug_report' },
+        { id: "3", text: 'Kitties', icon: 'eject' },
+        { id: "4", text: 'Kitty code', icon: 'tab' },
+      ]}>
+      <div
+        slot="content"
+        class="flex items-center content-center overflow-hidden w-full"
+        key={selected}
+      >
+          {#if selected === '1'}
+            <img
+              alt="kitten 1"
+              class="w-full"
+              src="http://placekitten.com/400/250"
+              use:lazy={"http://placekitten.com/400/250"}
+            >
+          {:else if selected === '2'}
+            <img
+              alt="kitten 1"
+              class="w-full"
+              src="http://placekitten.com/400/250"
+              use:lazy={"http://placekitten.com/399/250"}
+            >
+          {:else if selected === '3'}
+            <img
+              alt="kitten 3"
+              class="w-full"
+              src="http://placekitten.com/400/250"
+              use:lazy={"http://placekitten.com/401/250"}
+            >
+          {:else if selected === '4'}
+            <code class="block p-4">
+              <pre>
+              {
+            `<Tabs
     selected="1"
     c="bg-black elevation-10 mt-6 text-white rounded-t-lg"
     color="yellow-a200"
@@ -76,7 +120,7 @@
       { id: "1", text: 'Cats', icon: 'alarm_on' },
       { id: "2", text: 'Kittens', icon: 'bug_report' },
       { id: "3", text: 'Kitties', icon: 'eject' },
-      { id: "4", text: 'Kitty code', icon: 'tab' },
+      { id: "3", text: 'Kitty code', icon: 'eject' },
     ]}>
     <div
       slot="content"
@@ -84,52 +128,11 @@
       key={selected}
     >
       {#if selected === '1'}
-        <img
-          alt="kitten 1"
-          class="w-full"
-          src="http://placekitten.com/400/250"
-          use:lazy={"http://placekitten.com/400/250"}
-        >
-      {:else if selected === '2'}
-        <img
-          alt="kitten 1"
-          class="w-full"
-          src="http://placekitten.com/400/250"
-          use:lazy={"http://placekitten.com/399/250"}
-        >
-      {:else if selected === '3'}
-        <img
-          alt="kitten 3"
-          class="w-full"
-          src="http://placekitten.com/400/250"
-          use:lazy={"http://placekitten.com/401/250"}
-        >
-      {:else if selected === '4'}
-        <code class="block p-4">
-          <pre>
-          {
-        `<Tabs
-  selected="1"
-  c="bg-black elevation-10 mt-6 text-white rounded-t-lg"
-  color="yellow-a200"
-  let:selected={selected}
-  {loading}
-  items={[
-    { id: "1", text: 'Cats', icon: 'alarm_on' },
-    { id: "2", text: 'Kittens', icon: 'bug_report' },
-    { id: "3", text: 'Kitties', icon: 'eject' },
-    { id: "3", text: 'Kitty code', icon: 'eject' },
-  ]}>
-  <div
-    slot="content"
-    class="flex items-center content-center overflow-hidden w-full"
-    key={selected}
-  >
-    {#if selected === '1'}
-      ...`}
-          </pre>
-        </code>
-      {/if}
-    </div>
-  </Tabs>
-</div>
+        ...`}
+              </pre>
+            </code>
+          {/if}
+      </div>
+    </Tabs>
+  </div>
+</Waypoint>

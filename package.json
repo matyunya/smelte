@@ -18,7 +18,8 @@
   "dependencies": {
     "compression": "^1.7.1",
     "express": "^4.17.1",
-    "sirv": "^0.4.0"
+    "sirv": "^0.4.0",
+    "svelte-waypoint": "^0.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
