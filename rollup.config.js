@@ -48,7 +48,7 @@ const postcssPlugins = (purge = false) => {
 			],
 			// Whitelist selectors to stop Purgecss from removing them from your CSS.
 			whitelist: [
-				'html', 'body', 'ripple-gray', 'ripple-primary',
+				'html', 'body', 'ripple-gray', 'ripple-primary', 'ripple-white',
 				'cursor-pointer', 'navigation:hover',
 				'navigation.selected', 'outline-none', 'text-xs',
 				'transition'
