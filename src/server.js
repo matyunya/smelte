@@ -4,6 +4,7 @@ import compression from 'compression';
 import * as sapper from '@sapper/server';
 
 import './tailwind.css';
+import './prism.css';
 
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === 'development';

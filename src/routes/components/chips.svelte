@@ -2,6 +2,7 @@
 	import Chip from 'components/Chip';
 	import Snackbar from 'components/Snackbar';
 	import Button from 'components/Button';
+  import Code from 'components/Code';
 
   let closed = false;
   let clicked = false;
@@ -15,6 +16,23 @@
   on:close={() => closed = true}
   on:click={() => clicked = true}
 >test</Chip>
+
+<div class="my-4">
+  <Code lang="javascript" code={`<script>
+  import Chip from 'components/Chip';
+
+  let closed = false;
+  let clicked = false;
+</script>
+
+<Chip
+  icon="face"
+  removable
+  selectable
+  on:close={() => closed = true}
+  on:click={() => clicked = true}
+>test</Chip>`} />
+</div>
 
 <h5 class="mt-6 mb-2">Outlined</h5>
 <Chip
@@ -49,6 +67,48 @@
   on:close={() => closed = true}
   on:click={() => clicked = true}
 >Parents</Chip>
+
+<div class="my-4">
+  <Code lang="javascript" code={`<script>
+  import Chip from 'components/Chip';
+
+  let closed = false;
+  let clicked = false;
+</script>
+
+<Chip
+  icon="pan_tool"
+  outlined
+  removable
+  selectable
+  on:close={() => closed = true}
+  on:click={() => clicked = true}
+>Cats</Chip>
+<Chip
+  icon="print"
+  outlined
+  removable
+  selectable
+  on:close={() => closed = true}
+  on:click={() => clicked = true}
+>Dogs</Chip>
+<Chip
+  icon="pageview"
+  outlined
+  removable
+  selectable
+  on:close={() => closed = true}
+  on:click={() => clicked = true}
+>Plants</Chip>
+<Chip
+  icon="pets"
+  outlined
+  removable
+  selectable
+  on:close={() => closed = true}
+  on:click={() => clicked = true}
+>Parents</Chip>`} />
+</div>
 
 <Snackbar
   bind:value={closed}

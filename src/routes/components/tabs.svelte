@@ -2,6 +2,7 @@
   import Waypoint from 'svelte-waypoint';
   import { fly, fade } from 'svelte/transition';
   import Tabs from 'components/Tabs';
+  import Code from 'components/Code';
 
   let loading = false;
 
@@ -33,10 +34,8 @@
   You need to bind current pathname as value prop for active indicator to work correctly.
 </p>
 
-<code class="block my-4 bg-gray-200 p-8">
-  <pre>
-  {
-`<script>
+
+<Code code={`<script>
   import { stores } from '@sapper/app';
   const { page } = stores();
 
@@ -52,8 +51,7 @@
 </script>
 
 <Tabs items={topMenu} bind:selected={path} />`}
-  </pre>
-</code>
+/>
 
 
   <blockquote
@@ -76,11 +74,11 @@
         { id: "1", text: 'Cats', icon: 'alarm_on' },
         { id: "2", text: 'Kittens', icon: 'bug_report' },
         { id: "3", text: 'Kitties', icon: 'eject' },
-        { id: "4", text: 'Kitty code', icon: 'tab' },
+        { id: "4", text: 'Code', icon: 'tab' },
       ]}>
       <div
         slot="content"
-        class="flex items-center content-center overflow-hidden w-full"
+        class="flex items-center content-center overflow-hidden w-full bg-gray-900"
         key={selected}
       >
           {#if selected === '1'}
@@ -105,30 +103,25 @@
               use:lazy={"http://placekitten.com/401/250"}
             >
           {:else if selected === '4'}
-            <code class="block p-4">
-              <pre>
-              {
-            `<Tabs
-    selected="1"
-    c="bg-black elevation-10 mt-6 text-white rounded-t-lg"
-    color="yellow-a200"
-    let:selected={selected}
-    {loading}
-    items={[
-      { id: "1", text: 'Cats', icon: 'alarm_on' },
-      { id: "2", text: 'Kittens', icon: 'bug_report' },
-      { id: "3", text: 'Kitties', icon: 'eject' },
-      { id: "3", text: 'Kitty code', icon: 'eject' },
-    ]}>
-    <div
-      slot="content"
-      class="flex items-center content-center..."
-      key={selected}
-    >
-      {#if selected === '1'}
-        ...`}
-              </pre>
-            </code>
+            <Code code={`<Tabs
+  selected="1"
+  c="bg-black elevation-10 mt-6 text-white rounded-t-lg"
+  color="yellow-a200"
+  let:selected={selected}
+  {loading}
+  items={[
+    { id: "1", text: 'Cats', icon: 'alarm_on' },
+    { id: "2", text: 'Kittens', icon: 'bug_report' },
+    { id: "3", text: 'Kitties', icon: 'eject' },
+    { id: "3", text: 'Kitty code', icon: 'eject' },
+  ]}>
+  <div
+    slot="content"
+    class="flex items-center content-center..."
+    key={selected}
+  >
+    {#if selected === '1'}
+      ...`} />
           {/if}
       </div>
     </Tabs>
