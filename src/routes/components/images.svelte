@@ -1,5 +1,5 @@
 <script>
-	import Image from 'components/Image';
+  import Image from 'components/Image';
 
   const range = [...new Array(50)];
 </script>
