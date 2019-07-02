@@ -3,8 +3,6 @@
 	import Icon from 'components/Icon';
 </script>
 
-<h4 class="pb-8">Buttons</h4>
-
 <h6 class="mb-3 mt-6">Basic</h6>
 <div class="py-2">
   <Button>Button</Button>

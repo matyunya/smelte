@@ -5,8 +5,6 @@
   export let selected = '';
   export let name = '';
   export let disabled = false;
-
-  let groupName = name || `radio-${Math.random()}`;
 </script>
 
 <div class="flex flex-col mb-4 cursor-pointer">
@@ -17,7 +15,7 @@
       <RadioButton
         bind:selected
         {...item}
-        name={groupName}
+        name={name || `radio-${Math.random()}`}
         {disabled}
       />
     </slot>

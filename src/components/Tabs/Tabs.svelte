@@ -33,7 +33,7 @@
 </script>
 
 <div
-	class="${c} py-0 h-full flex items-center relative mx-auto z-20"
+	class="{c} py-0 h-full flex items-center relative mx-auto z-20"
 	bind:this={node}
 >
 	{#each items as item, i}

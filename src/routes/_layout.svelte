@@ -125,7 +125,9 @@
 			elevation={$elevation}
 			breakpoint={$breakpoint}
 		>
-			<h6 class="p-6 ml-1 pb-2 text-xs text-gray-900">Components</h6>
+			<h6
+				class="p-6 ml-1 pb-2 text-xs text-gray-900"
+			>Components</h6>
 			<List items={menu}>
 				<span slot="item" let:item={item} class="cursor-pointer">
 					{#if item.to === '/typography'}

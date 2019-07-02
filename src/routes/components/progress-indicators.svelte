@@ -18,8 +18,6 @@
 	next();
 </script>
 
-<h4 class="pb-8">Progress indicators</h4>
-
 <h5 class="pb-4">Indefinite linear progress indicator</h5>
 <ProgressLinear />
 

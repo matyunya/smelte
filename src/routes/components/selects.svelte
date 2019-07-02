@@ -12,7 +12,6 @@
 	const label = 'A select';
 </script>
 
-<h4 class="pb-8">Selects</h4>
 <p>One may bind to a select via <span class="code-inline">on:change</span> event.</p>
 <caption>Selected: {value1 || 'nothing'}</caption>
 <Select

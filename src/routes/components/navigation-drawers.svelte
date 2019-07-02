@@ -4,8 +4,6 @@
   import { right, elevation, persistent, showNav } from 'stores.js';
 </script>
 
-<h4 class="pb-8">Navigation drawers</h4>
-
 <Checkbox bind:value={$showNav} label="Show drawer" on:change={persistent.update} />
 <Checkbox bind:value={$elevation} label="With elevation" on:change={elevation.update} />
 <Checkbox bind:value={$right} label="Placed on the right" on:change={right.update} />

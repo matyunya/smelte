@@ -4,8 +4,6 @@
 	// TODO: components introduction
 </script>
 
-<h4 class="pb-8">Text fields</h4>
-
 <h6 class="mb-3 mt-6">Basic</h6>
 <TextField label="Test label" />
 <h6 class="mb-3 mt-6">With hint</h6>

@@ -7,8 +7,6 @@
   let clicked = false;
 </script>
 
-<h4 class="pb-8">Chips</h4>
-
 <h5 class="mt-6 mb-2">Basic</h5>
 <Chip
   icon="face"

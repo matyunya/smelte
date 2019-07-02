@@ -5,10 +5,10 @@
 </script>
 
 <div
-  class={`
-    ${hover ? 'elevation-1 hover:elevation-8' : ''}
-    rounded inline-flex flex-col ${c} overflow-hidden
-  `}>
+  class="{c}
+    {hover ? 'elevation-1 hover:elevation-8' : ''}
+    rounded inline-flex flex-col  overflow-hidden
+  ">
   <slot name="title" />
   <slot name="media" />
   <slot />

@@ -5,8 +5,6 @@
   let showSnackbar = false;
 </script>
 
-<h4 class="pb-8">Snackbars</h4>
-
 <Snackbar bind:value={showSnackbar}>
   <div>Have a nice day.</div>
   <div slot="action">

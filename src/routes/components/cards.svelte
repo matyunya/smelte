@@ -6,8 +6,6 @@
 
 </script>
 
-<h4 class="pb-8">Cards</h4>
-
 <Card.Card>
 	<div slot="title">
 		<Card.Title

@@ -16,10 +16,7 @@
 {#if to}
   <a
     href={to}
-    class={`
-      ${classes} ripple-${color} text-white
-      ${isSelected ? `text-${color}` : ''}
-    `}
+    class="{classes} ripple-{color} text-white {isSelected ? `text-${color}` : ''}"
     on:click
     class:uppercase={icon}
   >
@@ -38,10 +35,7 @@
   </a>
 {:else}
   <li
-    class={`
-      ${classes} ripple-${color} text-white
-      ${isSelected ? `text-${color}` : ''}
-    `}
+    class="{classes} ripple-{color} text-white {isSelected ? `text-${color}` : ''}"
     on:click={() => {
       selected = id;
     }}

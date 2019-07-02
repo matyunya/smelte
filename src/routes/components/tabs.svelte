@@ -28,8 +28,6 @@
 	}
 </script>
 
-<h4 class="pb-8">Tabs</h4>
-
 <p>
   Tabs can be used as navigation elements like the ones you see on the top right.
   You need to bind current pathname as value prop for active indicator to work correctly.
@@ -66,7 +64,7 @@
     and at the same level of hierarchy.
   </blockquote>
 
-<Waypoint>
+<Waypoint once>
   <div class="elevation-1" in:fade>
     <Tabs
       selected="1"
@@ -124,7 +122,7 @@
     ]}>
     <div
       slot="content"
-      class="flex items-center content-center overflow-hidden w-full"
+      class="flex items-center content-center..."
       key={selected}
     >
       {#if selected === '1'}

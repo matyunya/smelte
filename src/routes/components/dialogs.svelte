@@ -5,8 +5,6 @@
   let showDialog = false;
 </script>
 
-<h4 class="pb-8">Dialogs</h4>
-
 <Dialog bind:value={showDialog}>
   <h5 slot="title">What do you think?</h5>
   <div class="text-gray-700">I'm not sure about today's weather.</div>
