@@ -68,12 +68,11 @@
 
   {#if showList}
     <div
-      class="absolute top-1 left-0 bg-white rounded elevation-3 w-full z-10"
+      class="list"
       on:click={() => showList = false}
       in:fly={inProps}
       out:fly={outProps}
       class:rounded-t-none={!outlined}
-      style="margin-top: 2px"
     >
       <List
         bind:value

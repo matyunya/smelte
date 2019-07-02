@@ -1,6 +1,7 @@
 <script>
   import Icon from 'components/Icon';
 
+  export let value = false;
   export let outlined = false;
   export let text = false;
   export let block = false;
@@ -87,6 +88,7 @@
   class:ripple-primary={outlined || text}
   class:ripple-white={basic || fab}
   on:click
+  on:click={() => value = !value}
 >
   {#if icon}
     <Icon

@@ -17,7 +17,7 @@
 		/>
 	</div>
 	<div slot="media">
-		<Waypoint>
+		<Waypoint c="w-full">
 			<img
 				class="w-full"
 				src="https://placekitten.com/300/200"

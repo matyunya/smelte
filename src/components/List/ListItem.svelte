@@ -7,6 +7,7 @@
   export let value = '';
   export let text = '';
   export let subheading = '';
+  export let disabled = false;
   export let dense = false;
   export let navigation = false;
   export let to = '';
@@ -52,7 +53,10 @@
   class:ripple-white={navigation}
   class:ripple-gray={!navigation}
   class:py-2={dense}
+  class:text-gray-600={disabled}
   on:click={() => {
+    if (disabled) return;
+
     value = id;
     dispatch('change', id);
   }}

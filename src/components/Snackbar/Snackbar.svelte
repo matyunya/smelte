@@ -31,12 +31,11 @@
     <div
       in:fade={inProps}
       out:fade={outProps}
-      class={`
+      class="
         flex absolute bottom-0 py-2 px-4 z-30 mb-4
-        content-between mx-auto rounded
-        items-center
+        content-between mx-auto rounded items-center
         bg-gray-800 text-white snackbar elevation-2
-      `}>
+      ">
       <slot />
       <Spacer />
       <slot name="action"></slot>

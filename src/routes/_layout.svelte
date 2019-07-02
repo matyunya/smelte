@@ -58,6 +58,7 @@
 		{ to: "/components/chips", text: 'Chips' },
 		{ to: "/components/tabs", text: 'Tabs' },
 		{ to: "/components/cards", text: 'Cards' },
+		{ to: "/components/menus", text: 'Menus' },
 
 		{ to: "/typography", text: 'Typography' },
 		{ to: "/color", text: 'Color' },

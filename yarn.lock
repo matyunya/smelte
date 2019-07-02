@@ -3848,10 +3848,10 @@ svelte-waypoint@^0.0.4:
   resolved "https://registry.yarnpkg.com/svelte-waypoint/-/svelte-waypoint-0.0.4.tgz#c3cd4f19d6bd8abcf325a130fb85f6966aa4a314"
   integrity sha512-v9XSR5PMsmvhLGzXU1JxqHIiMKRG+AYOZUHHSRkVCNhrfSx5wXlkiNY/+6Z6mAhaiQczXDkkMVTIDHu8ALo38A==
 
-svelte@^3.0.0:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.6.2.tgz#2eb8d58498b0c45739c8627d1f67ebc902f99f2c"
-  integrity sha512-OzKC7mzHkEXbCxe3+NsHty2NShtFjYDDmJhgmMprXjaCBoTm03lrGUQz0moJxD89+u7iSCUz7GqOT6NE7PgkXA==
+svelte@^3.6.3:
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.6.3.tgz#c783bc07456218be960005af83019d6063adbd9d"
+  integrity sha512-MWGAiMgDdXRmCI5qbyBKFZtlQVxa0E+RFgSKx8Rk8huoqUum/wcB/ezk1zG5lYl0JtTO4ctLm2aAxP3EcEnUmQ==
 
 svgo@^1.0.0:
   version "1.2.2"
