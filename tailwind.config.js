@@ -435,7 +435,7 @@ module.exports = {
     function ({ addUtilities }) {
       return addUtilities({
         ['.label-transition']: {
-          transition: 'font-size 0.2s, line-height 0.2s',
+          transition: 'font-size 0.2s, line-height 0.05s',
         },
         ['.border-box']: {
           boxSizing: 'border-box',

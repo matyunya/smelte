@@ -30,8 +30,8 @@
     persistentHint,
   };
 
-  const inProps = { y: 10, duration: 200, easing: quadIn };
-  const outProps = { y: -10, duration: 100, easing: quadOut, delay: 200 };
+  const inProps = { y: 10, duration: 50, easing: quadIn };
+  const outProps = { y: -10, duration: 100, easing: quadOut, delay: 50 };
   const dispatch = createEventDispatcher();
 
   function getLabel(value) {
