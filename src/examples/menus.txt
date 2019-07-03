@@ -2,11 +2,8 @@
 	import Button from 'components/Button';
 	import Menu from 'components/Menu';
 	import List from 'components/List';
-	import Code from 'components/Code';
 
-	import menus from 'examples/menus.txt';
-
-  let open = false;
+  let open = true;
 	let selected = '';
 
   const items = [
@@ -26,5 +23,3 @@
 		<Button on:click={() => open = !open}>A menu</Button>
 	</div>
 </Menu>
-
-<Code code={menus} />

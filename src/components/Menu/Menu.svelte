@@ -18,23 +18,26 @@
 
 <svelte:window on:click={() => open = false} />
 
-<div
-  class="cursor-pointer relative pb-4 block"
-  on:click|stopPropagation
->
-  <slot name="activator" />
-  <slot>
-    <List
-      bind:value
-      select
-      {items}
-      c="list"
-      on:click={() => open = false}
-      on:change={({ detail }) => {
-        dispatch('change', detail);
-      }}
-    />
-  </slot>
+<div>
+  <div
+    class="cursor-pointer relative inline-flex"
+    on:click|stopPropagation
+  >
+    <slot name="activator" />
+    {#if open}
+      <div class="absolute w-full bottom-0">
+        <List
+          bind:value
+          select
+          dense
+          {items}
+          c="list"
+          on:change={({ detail }) => {
+            dispatch('change', detail);
+            open = false;
+          }}
+        />
+      </div>
+    {/if}
+  </div>
 </div>
-
-

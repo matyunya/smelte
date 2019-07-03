@@ -3,7 +3,6 @@
 	import RadioButton from 'components/RadioButton';
 	import Switch from 'components/Switch';
 	import Icon from 'components/Icon';
-
 </script>
 
 <h5 class="pb-8 pt-10" id="checkboxes">Checkboxes</h5>
