@@ -38,14 +38,11 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 /* Code blocks */
 pre[class*="language-"] {
     padding: 1em;
-    @apply mt-6 mb-10;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
     overflow: auto;
     border: 1px solid #dddddd;
     background-color: white;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
 }
 
 /* Inline code */

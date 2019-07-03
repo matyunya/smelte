@@ -1,5 +1,6 @@
 <script>
   import TextField from 'components/TextField';
+  import Code from 'components/Code';
 </script>
 
 <h4 class="pb-8">Color helper classes</h4>
@@ -16,26 +17,20 @@
 <h5 class="mt-6 mb-2">Background</h5>
 
 <span class="body-2">.bg-{'{color}-{variant}'}</span> gives element appropriate background color:
-<code class="block my-4 bg-gray-200 p-8">
-  {'<div class="bg-deep-purple-500 text-white p-4">This div is deep purple.</div>'}
-</code>
+<Code code={'<div class="bg-deep-purple-500 text-white p-4">This div is deep purple.</div>'} />
 <div class="bg-deep-purple-500 text-white p-4">This div is deep purple.</div>
 
 <h5 class="mt-6 mb-2">Text</h5>
 
 <span class="body-2">.text-{'{color}-{variant}'}</span> changes text color accordingly:
-<code class="block my-4 bg-gray-200 p-8">
-  {'<h4 class="text-lime-500">This header is lime</h4>'}
-</code>
+<Code code={'<h4 class="text-lime-500">This header is lime</h4>'} />
 <h4 class="text-lime-500">This header is lime</h4>
 
 <h5 class="mt-6 mb-2">Border</h5>
 Same principle applies to border, but there are also border width <span class="body-2">border-{'{n}'}</span>
 and type <span class="body-2">border-{'{solid|dashed|dotted|none}'}</span> helpers.
 
-<code class="block my-4 bg-gray-200 p-8">
-  {'<div class="border-2 border-amber-600 p-4">This div has amber border</div>'}
-</code>
+<Code code={'<div class="border-2 border-amber-600 p-4">This div has amber border</div>'} />
 
 <div class="border-2 border-amber-600 p-4">This div has amber border</div>
 
@@ -43,8 +38,8 @@ and type <span class="body-2">border-{'{solid|dashed|dotted|none}'}</span> helpe
 This is css only version of the infamous ripple effect taken from
 <a class="a" href="https://codeburst.io/create-a-material-design-ripple-effect-without-js-9d3cbee25b3e">this great blog</a>
 and turned into a Tailwind utility <span class="body-2">.ripple-{'{color}'}</span>
-<code class="block my-4 bg-gray-200 p-8">
-  {'<div class="text-center cursor-pointer w-64 p-4 border-pink-200 border-2 ripple-pink">I ripple pink</div>'}
-</code>
+<Code code={`<div class="text-center cursor-pointer w-64 p-4 border-pink-200 border-2 ripple-pink">
+  I ripple pink
+</div>`} />
 
 <div class="text-center cursor-pointer w-64 p-4 border-pink-200 border-2 ripple-pink">I ripple pink</div>
