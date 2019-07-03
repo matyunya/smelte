@@ -3,8 +3,9 @@
   "name": "smelte",
   "builds": [
     {
-      "src": "__sapper__/build/export/**",
-      "use": "@now/static"
+      "src": "__sapper__/build/index.js",
+      "use": "now-sapper"
     }
-  ]
+  ],
+  "routes": [{ "src": "/(.*)", "dest": "__sapper__/build/index.js" }]
 }

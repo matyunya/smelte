@@ -3,3 +3,4 @@ __sapper__/export
 cypress
 node_modules
 src
+.DS_Store

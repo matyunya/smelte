@@ -5,8 +5,8 @@ import svelte from 'rollup-plugin-svelte';
 import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import { string } from "rollup-plugin-string";
+import json from "rollup-plugin-json";
 import config from 'sapper/config/rollup.js';
-import pkg from './package.json';
 import getPreprocessor from 'svelte-preprocess';
 import postcss from 'rollup-plugin-postcss';
 import includePaths from 'rollup-plugin-includepaths';
@@ -133,6 +133,7 @@ export default {
 				'process.browser': false,
 				'process.env.NODE_ENV': JSON.stringify(mode)
 			}),
+			json(),
 			svelte({
 				generate: 'ssr',
 				dev,
@@ -149,7 +150,7 @@ export default {
 				extract: path.resolve(__dirname, './static/global.css')
 			})
 		],
-		external: Object.keys(pkg.dependencies).concat(
+		external: [].concat(
 			require('module').builtinModules || Object.keys(process.binding('natives'))
 		),
 	},
