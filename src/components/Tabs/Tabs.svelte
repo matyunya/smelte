@@ -3,7 +3,7 @@
 
 	import Indicator from './Indicator.svelte';
 	import ProgressLinear from 'components/ProgressLinear';
-	import Tab from './Tab.svelte';
+	import Tab from './TabButton.svelte';
 
 	export let selected = null;
 	export let items = [];

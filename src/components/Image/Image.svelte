@@ -7,6 +7,7 @@
   export let height = '';
   export let src = '';
   export let thumbnail = '';
+  export let c = '';
 
   let loaded = false;
   let loading = false;
@@ -18,16 +19,16 @@
 
     img.onload = () => {
       loading = false;
-      loaded = true;
+      loaded = true;  
     }
   }
 </script>
 
-<Waypoint once on:enter={load} style="height: {height}" offset="200">
+<Waypoint {c} once on:enter={load} style="height: {height}" offset="200">
   {#if loaded}
-    <img in:fade {src} {alt} {width} {height}>
+    <img class={c} in:fade {src} {alt} {width} {height}>
   {:else if thumbnail}
-    <img src={thumbnail} {alt} {width} {height}>
+    <img class={c} src={thumbnail} {alt} {width} {height}>
   {:else if loading}
     <slot name="loading" />
   {/if}
