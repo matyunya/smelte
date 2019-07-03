@@ -38,7 +38,7 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 /* Code blocks */
 pre[class*="language-"] {
     padding: 1em;
-    @apply mt-8 mb-16;
+    @apply mt-6 mb-10;
     overflow: auto;
     border: 1px solid #dddddd;
     background-color: white;

@@ -1,21 +1,23 @@
 <script>
-	import ProgressLinear from 'components/ProgressLinear';
-	import ProgressCircular from 'components/ProgressCircular';
+  import ProgressLinear from 'components/ProgressLinear';
+  import ProgressCircular from 'components/ProgressCircular';
 
-	let progress = 0;
+  import Code from 'components/Code';
 
-	function next() {
-		setTimeout(() => {
-			if (progress === 100) {
-				progress = 0;
-			}
+  let progress = 0;
 
-			progress += 1;
-			next();
-		}, 100);
-	}
+  function next() {
+    setTimeout(() => {
+      if (progress === 100) {
+        progress = 0;
+      }
 
-	next();
+      progress += 1;
+      next();
+    }, 100);
+  }
+
+  next();
 </script>
 
 <h5 class="pb-4">Indefinite linear progress indicator</h5>
@@ -33,3 +35,40 @@
 
 <caption class="mb-3">{progress}%</caption>
 <ProgressCircular {progress} />
+
+<Code code={`<script>
+  import ProgressLinear from 'components/ProgressLinear';
+  import ProgressCircular from 'components/ProgressCircular';
+
+  import Code from 'components/Code';
+
+  let progress = 0;
+
+  function next() {
+    setTimeout(() => {
+      if (progress === 100) {
+        progress = 0;
+      }
+
+      progress += 1;
+      next();
+    }, 100);
+  }
+
+  next();
+</script>
+<h5 class="pb-4">Indefinite linear progress indicator</h5>
+<ProgressLinear />
+
+<h5 class="pt-6 pb-4">Definite linear progress indicator</h5>
+
+<caption class="mb-3">{progress}%</caption>
+<ProgressLinear {progress} />
+
+<h5 class="pt-6 pb-4">Indefinite circular progress indicator</h5>
+<ProgressCircular />
+
+<h5 class="pt-6 pb-4">Definite circular progress indicator</h5>
+
+<caption class="mb-3">{progress}%</caption>
+<ProgressCircular {progress} />`} />

@@ -1,5 +1,4 @@
 <script>
-  import { fly, fade } from 'svelte/transition';
   import Tabs, { Tab } from 'components/Tabs';
   import Code from 'components/Code';
   import Image from 'components/Image';

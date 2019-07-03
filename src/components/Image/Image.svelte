@@ -26,7 +26,7 @@
 
 <Waypoint {c} once on:enter={load} style="height: {height}" offset="200">
   {#if loaded}
-    <img class={c} in:fade {src} {alt} {width} {height}>
+    <img class={c} {src} {alt} {width} {height}>
   {:else if thumbnail}
     <img class={c} src={thumbnail} {alt} {width} {height}>
   {:else if loading}
