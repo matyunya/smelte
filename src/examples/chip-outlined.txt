@@ -1,0 +1,39 @@
+<script>
+  import Chip from 'components/Chip';
+
+  let closed = false;
+  let clicked = false;
+</script>
+
+<Chip
+  icon="pan_tool"
+  outlined
+  removable
+  selectable
+  on:close={() => closed = true}
+  on:click={() => clicked = true}
+>Cats</Chip>
+<Chip
+  icon="print"
+  outlined
+  removable
+  selectable
+  on:close={() => closed = true}
+  on:click={() => clicked = true}
+>Dogs</Chip>
+<Chip
+  icon="pageview"
+  outlined
+  removable
+  selectable
+  on:close={() => closed = true}
+  on:click={() => clicked = true}
+>Plants</Chip>
+<Chip
+  icon="pets"
+  outlined
+  removable
+  selectable
+  on:close={() => closed = true}
+  on:click={() => clicked = true}
+>Parents</Chip>

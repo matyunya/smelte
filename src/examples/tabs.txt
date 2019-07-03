@@ -1,0 +1,16 @@
+<script>
+  import { stores } from '@sapper/app';
+  const { page } = stores();
+
+  const topMenu = [
+      { to: '/components', text: 'Components' },
+      { to: '/typography', text: 'Typography' },
+      { to: '/color', text: 'Color' },
+    ];
+
+  // Or simply use document.location.pathname
+  // if your app isn't sapper.
+  $: path = $page.path;
+</script>
+
+<Tabs items={topMenu} bind:selected={path} />

@@ -4,6 +4,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import svelte from 'rollup-plugin-svelte';
 import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
+import { string } from "rollup-plugin-string";
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
 import getPreprocessor from 'svelte-preprocess';
@@ -78,6 +79,9 @@ export default {
 				'process.browser': true,
 				'process.env.NODE_ENV': JSON.stringify(mode)
 			}),
+			string({
+				include: "**/*.txt",
+			}),
 			svelte({
 				dev,
 				hydratable: true,
@@ -88,13 +92,23 @@ export default {
 			commonjs(),
 			includePaths({ paths: ["./src"] }),
 
+			!legacy && babel({
+				extensions: ['.js', '.mjs', '.html', '.svelte'],
+				exclude: ['node_modules/@babel/**'],
+				plugins: [
+					'@babel/plugin-syntax-dynamic-import',
+					'@babel/plugin-proposal-object-rest-spread'
+				]
+			}),
+
 			legacy && babel({
 				extensions: ['.js', '.mjs', '.html', '.svelte'],
 				runtimeHelpers: true,
 				exclude: ['node_modules/@babel/**'],
 				presets: [
 					['@babel/preset-env', {
-						targets: '> 0.25%, not dead'
+						// spec: true,
+						targets: '> 0.25%, ie >= 11, not dead'
 					}]
 				],
 				plugins: [
@@ -124,8 +138,11 @@ export default {
 				dev,
 				preprocess
 			}),
+			string({
+				include: "**/*.txt",
+			}),
 			resolve(),
-			includePaths({ paths: ["./src"] }),
+			includePaths({ paths: ["./src", './'] }),
 			commonjs(),
 			postcss({
 				plugins: postcssPlugins(!dev),

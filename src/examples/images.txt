@@ -1,13 +1,9 @@
 <script>
   import Image from 'components/Image';
-  import Code from 'components/Code';
-  
-  import images from 'examples/images.txt';
 
   const range = [...new Array(50)];
 </script>
 
-<Code code={images} />
 
 {#each range as _, i}
   <div class="my-8">

@@ -3,7 +3,6 @@
   import ProgressCircular from 'components/ProgressCircular';
 
   import Code from 'components/Code';
-  import indicators from 'examples/progress-indicators.txt';
 
   let progress = 0;
 
@@ -20,7 +19,6 @@
 
   next();
 </script>
-
 <h5 class="pb-4">Indefinite linear progress indicator</h5>
 <ProgressLinear />
 
@@ -36,5 +34,3 @@
 
 <caption class="mb-3">{progress}%</caption>
 <ProgressCircular {progress} />
-
-<Code code={indicators} />

@@ -1,30 +1,3 @@
-<script>
-  import Tabs, { Tab } from 'components/Tabs';
-  import Code from 'components/Code';
-  import Image from 'components/Image';
-
-  import tabs from 'examples/tabs.txt';
-  import tabsWithContent from 'examples/tabs-with-content.txt';
-
-  let loading = false;
-</script>
-
-<p>
-  Tabs can be used as navigation elements like the ones you see on the top right.
-  You need to bind current pathname as value prop for active indicator to work correctly.
-</p>
-
-
-<Code code={tabs} />
-
-<blockquote
-  class="pl-8 mt-16 mb-10 border-l-8 border-primary-300 text-lg"
-  cite="https://material.io/design/components/tabs.html#usage"
->
-  Tabs organize and allow navigation between groups of content that are related
-  and at the same level of hierarchy.
-</blockquote>
-
 <div style="max-width: 400px">
   <Tabs
     selected="1"
@@ -71,5 +44,3 @@
       </Tab>
   </Tabs>
 </div>
-
-<Code code={tabsWithContent} />

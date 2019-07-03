@@ -12,6 +12,8 @@
 
   let value = true;
 
+  $: hoverClass = selected ? 'hover:bg-primary-300' : 'hover:bg-gray-400';
+
   const dispatch = createEventDispatcher();
 
   function close() {
@@ -72,10 +74,7 @@
       </span>
       {#if removable}
         <span
-          class={`
-            rounded-full p-1/2 inline-flex items-center cursor-pointer
-            ${selected ? 'hover:bg-primary-300' : 'hover:bg-gray-400'}
-          `}
+          class="rounded-full p-1/2 inline-flex items-center cursor-pointer {hoverClass}"
           class:bg-gray-500={!selected}
           class:bg-primary-400={selected}
           on:click|stopPropagation={close}>

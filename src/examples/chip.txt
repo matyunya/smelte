@@ -1,0 +1,14 @@
+<script>
+  import Chip from 'components/Chip';
+
+  let closed = false;
+  let clicked = false;
+</script>
+
+<Chip
+  icon="face"
+  removable
+  selectable
+  on:close={() => closed = true}
+  on:click={() => clicked = true}
+>test</Chip>

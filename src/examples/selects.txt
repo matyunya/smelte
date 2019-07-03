@@ -1,0 +1,22 @@
+<script>
+	import Select from 'components/Select';
+	import Code from 'components/Code';
+
+	let value1 = '';
+	let value2 = '';
+	let value3 = '';
+
+	const items = [
+		{ value: 1, text: 'One' },
+		{ value: 2, text: 'Two' }
+	];
+	const label = 'A select';
+</script>
+
+<p>One may bind to a select via <span class="code-inline">on:change</span> event.</p>
+<caption>Selected: {value1 || 'nothing'}</caption>
+<Select
+	{label}
+	{items}
+	on:change={(v) => value1 = v.detail}
+/>

@@ -123,15 +123,15 @@
         class:outlined-focused-border={focused && outlined}
         class:outlined-error={outlined && error}
         class:caret-red-500={error}
-        bind:value
         on:change
         on:input
         on:click
         on:focus
+        on:input={({ target }) => value = target.value}
         on:focus={toggleFocused}
         on:blur={toggleFocused}
         placeholder={!value ? placeholder : ''}
-      />
+      >{value || ''}</textarea>
     {:else if select && !autocomplete}
       <div
         class="select transition pb-2 pt-6 px-4 rounded-t text-black w-full caret-primary-500 bg-gray-100"

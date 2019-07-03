@@ -1,6 +1,8 @@
 <script>
   import TextField from 'components/TextField';
   import Code from 'components/Code';
+
+  import ripple from 'examples/ripple.txt';
 </script>
 
 <h4 class="pb-8">Color helper classes</h4>
@@ -38,8 +40,6 @@ and type <span class="body-2">border-{'{solid|dashed|dotted|none}'}</span> helpe
 This is css only version of the infamous ripple effect taken from
 <a class="a" href="https://codeburst.io/create-a-material-design-ripple-effect-without-js-9d3cbee25b3e">this great blog</a>
 and turned into a Tailwind utility <span class="body-2">.ripple-{'{color}'}</span>
-<Code code={`<div class="text-center cursor-pointer w-64 p-4 border-pink-200 border-2 ripple-pink">
-  I ripple pink
-</div>`} />
+<Code code={ripple} />
 
 <div class="text-center cursor-pointer w-64 p-4 border-pink-200 border-2 ripple-pink">I ripple pink</div>
