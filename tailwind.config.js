@@ -1,66 +1,68 @@
 const rippleAfter = {
-  content: "\'\'",
-  display: 'block',
-  position: 'absolute',
-  width: '100%',
-  height: '100%',
+  content: "''",
+  display: "block",
+  position: "absolute",
+  width: "100%",
+  height: "100%",
   top: 0,
   left: 0,
-  pointerEvents: 'none',
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: '50%',
-  transform: 'scale(10, 10)',
+  pointerEvents: "none",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "50%",
+  transform: "scale(10, 10)",
   opacity: 0,
-  transition: 'transform .4s ease-in, opacity 0.8s ease-out',
-}
+  transition: "transform .4s ease-in, opacity 0.8s ease-out"
+};
 
 const ripple = {
-  position: 'relative',
-  overflow: 'hidden',
-  transform: 'translate3d(0, 0, 0)',
-}
+  position: "relative",
+  overflow: "hidden",
+  transform: "translate3d(0, 0, 0)"
+};
 
 const rippleActiveAfter = {
-  transform: 'scale(0, 0)',
-  opacity: .3,
-  transition: '0s',
+  transform: "scale(0, 0)",
+  opacity: 0.3,
+  transition: "0s"
 };
 
 function addUtility({
-  prop = 'caret-color',
-  className = '.caret',
+  prop = "caret-color",
+  className = ".caret",
   value = a => a,
   defaultVariant = 500
 }) {
-  return function ({ e, addUtilities, theme }) {
-    const colors = theme('colors');
+  return function({ e, addUtilities, theme }) {
+    const colors = theme("colors");
 
-    const caretColors = Object.keys(colors)
-      .reduce((acc, key) => {
-        if (typeof colors[key] === 'string') {
-          return {
-            ...acc,
-            [`${className}-${e(key)}`]: {
-              [prop]: colors[key]
-            }
-          }
-        }
-
-        const variants = Object.keys(colors[key]);
-
+    const caretColors = Object.keys(colors).reduce((acc, key) => {
+      if (typeof colors[key] === "string") {
         return {
           ...acc,
           [`${className}-${e(key)}`]: {
-            [prop]: colors[key][defaultVariant]
-          },
-          ...variants.reduce((a, variant) => ({
+            [prop]: colors[key]
+          }
+        };
+      }
+
+      const variants = Object.keys(colors[key]);
+
+      return {
+        ...acc,
+        [`${className}-${e(key)}`]: {
+          [prop]: colors[key][defaultVariant]
+        },
+        ...variants.reduce(
+          (a, variant) => ({
             ...a,
             [`${className}-${e(key)}-${variant}`]: {
               [prop]: colors[key][variant]
-            },
-          }), {}),
-        };
-      }, {});
+            }
+          }),
+          {}
+        )
+      };
+    }, {});
 
     addUtilities(caretColors);
   };
@@ -69,35 +71,35 @@ function addUtility({
 module.exports = {
   theme: {
     fontSize: {
-      '5xl': '6rem',
-      '4xl': '3.75rem',
-      '3xl': '3rem',
-      '2xl': '2.125rem',
-      xl: ' 1.5rem',
-      lg: ' 1.25rem',
-      base: '1rem',
-      sm: ' 0.875rem',
-      xs: ' 0.75rem',
+      "5xl": "6rem",
+      "4xl": "3.75rem",
+      "3xl": "3rem",
+      "2xl": "2.125rem",
+      xl: "1.5rem",
+      lg: "1.25rem",
+      base: "1rem",
+      sm: "0.875rem",
+      xs: "0.75rem"
     },
     breakpoints: {
-      'sm': { 'max': '639px' },
-      'md': { 'max': '767px' },
-      'lg': { 'max': '1023px' },
-      'xl': { 'max': '1279px' },
+      sm: { max: "639px" },
+      md: { max: "767px" },
+      lg: { max: "1023px" },
+      xl: { max: "1279px" }
     },
     lineHeight: {
       none: 1,
       tight: 1.25,
       normal: 1.45,
       relaxed: 1.75,
-      loose: 2,
+      loose: 2
     },
     colors: {
-      white: '#fff',
-      black: '#000',
-      transparent: 'transparent',
+      white: "#fff",
+      black: "#000",
+      transparent: "transparent",
 
-      "primary": {
+      primary: {
         "50": "#f3e5f5",
         "100": "#e1bee7",
         "200": "#ce93d8",
@@ -108,12 +110,12 @@ module.exports = {
         "700": "#7b1fa2",
         "800": "#6a1b9a",
         "900": "#4a148c",
-        "a100": "#ea80fc",
-        "a200": "#e040fb",
-        "a400": "#d500f9",
-        "a700": "#aa00ff",
+        a100: "#ea80fc",
+        a200: "#e040fb",
+        a400: "#d500f9",
+        a700: "#aa00ff"
       },
-      "red": {
+      red: {
         "50": "#ffebee",
         "100": "#ffcdd2",
         "200": "#ef9a9a",
@@ -124,13 +126,13 @@ module.exports = {
         "700": "#d32f2f",
         "800": "#c62828",
         "900": "#b71c1c",
-        "a100": "#ff8a80",
-        "a200": "#ff5252",
-        "a400": "#ff1744",
-        "a700": "#d50000",
+        a100: "#ff8a80",
+        a200: "#ff5252",
+        a400: "#ff1744",
+        a700: "#d50000"
       },
 
-      "pink": {
+      pink: {
         "50": "#fce4ec",
         "100": "#f8bbd0",
         "200": "#f48fb1",
@@ -141,13 +143,13 @@ module.exports = {
         "700": "#c2185b",
         "800": "#ad1457",
         "900": "#880e4f",
-        "a100": "#ff80ab",
-        "a200": "#ff4081",
-        "a400": "#f50057",
-        "a700": "#c51162",
+        a100: "#ff80ab",
+        a200: "#ff4081",
+        a400: "#f50057",
+        a700: "#c51162"
       },
 
-      "purple": {
+      purple: {
         "50": "#f3e5f5",
         "100": "#e1bee7",
         "200": "#ce93d8",
@@ -158,10 +160,10 @@ module.exports = {
         "700": "#7b1fa2",
         "800": "#6a1b9a",
         "900": "#4a148c",
-        "a100": "#ea80fc",
-        "a200": "#e040fb",
-        "a400": "#d500f9",
-        "a700": "#aa00ff",
+        a100: "#ea80fc",
+        a200: "#e040fb",
+        a400: "#d500f9",
+        a700: "#aa00ff"
       },
 
       "deep-purple": {
@@ -175,13 +177,13 @@ module.exports = {
         "700": "#512da8",
         "800": "#4527a0",
         "900": "#311b92",
-        "a100": "#b388ff",
-        "a200": "#7c4dff",
-        "a400": "#651fff",
-        "a700": "#6200ea",
+        a100: "#b388ff",
+        a200: "#7c4dff",
+        a400: "#651fff",
+        a700: "#6200ea"
       },
 
-      "indigo": {
+      indigo: {
         "50": "#e8eaf6",
         "100": "#c5cae9",
         "200": "#9fa8da",
@@ -192,13 +194,13 @@ module.exports = {
         "700": "#303f9f",
         "800": "#283593",
         "900": "#1a237e",
-        "a100": "#8c9eff",
-        "a200": "#536dfe",
-        "a400": "#3d5afe",
-        "a700": "#304ffe",
+        a100: "#8c9eff",
+        a200: "#536dfe",
+        a400: "#3d5afe",
+        a700: "#304ffe"
       },
 
-      "blue": {
+      blue: {
         "50": "#e3f2fd",
         "100": "#bbdefb",
         "200": "#90caf9",
@@ -209,10 +211,10 @@ module.exports = {
         "700": "#1976d2",
         "800": "#1565c0",
         "900": "#0d47a1",
-        "a100": "#82b1ff",
-        "a200": "#448aff",
-        "a400": "#2979ff",
-        "a700": "#2962ff",
+        a100: "#82b1ff",
+        a200: "#448aff",
+        a400: "#2979ff",
+        a700: "#2962ff"
       },
 
       "light-blue": {
@@ -226,13 +228,13 @@ module.exports = {
         "700": "#0288d1",
         "800": "#0277bd",
         "900": "#01579b",
-        "a100": "#80d8ff",
-        "a200": "#40c4ff",
-        "a400": "#00b0ff",
-        "a700": "#0091ea",
+        a100: "#80d8ff",
+        a200: "#40c4ff",
+        a400: "#00b0ff",
+        a700: "#0091ea"
       },
 
-      "cyan": {
+      cyan: {
         "50": "#e0f7fa",
         "100": "#b2ebf2",
         "200": "#80deea",
@@ -243,13 +245,13 @@ module.exports = {
         "700": "#0097a7",
         "800": "#00838f",
         "900": "#006064",
-        "a100": "#84ffff",
-        "a200": "#18ffff",
-        "a400": "#00e5ff",
-        "a700": "#00b8d4",
+        a100: "#84ffff",
+        a200: "#18ffff",
+        a400: "#00e5ff",
+        a700: "#00b8d4"
       },
 
-      "teal": {
+      teal: {
         "50": "#e0f2f1",
         "100": "#b2dfdb",
         "200": "#80cbc4",
@@ -260,13 +262,13 @@ module.exports = {
         "700": "#00796b",
         "800": "#00695c",
         "900": "#004d40",
-        "a100": "#a7ffeb",
-        "a200": "#64ffda",
-        "a400": "#1de9b6",
-        "a700": "#00bfa5",
+        a100: "#a7ffeb",
+        a200: "#64ffda",
+        a400: "#1de9b6",
+        a700: "#00bfa5"
       },
 
-      "green": {
+      green: {
         "50": "#e8f5e9",
         "100": "#c8e6c9",
         "200": "#a5d6a7",
@@ -277,10 +279,10 @@ module.exports = {
         "700": "#388e3c",
         "800": "#2e7d32",
         "900": "#1b5e20",
-        "a100": "#b9f6ca",
-        "a200": "#69f0ae",
-        "a400": "#00e676",
-        "a700": "#00c853",
+        a100: "#b9f6ca",
+        a200: "#69f0ae",
+        a400: "#00e676",
+        a700: "#00c853"
       },
 
       "light-green": {
@@ -294,13 +296,13 @@ module.exports = {
         "700": "#689f38",
         "800": "#558b2f",
         "900": "#33691e",
-        "a100": "#ccff90",
-        "a200": "#b2ff59",
-        "a400": "#76ff03",
-        "a700": "#64dd17",
+        a100: "#ccff90",
+        a200: "#b2ff59",
+        a400: "#76ff03",
+        a700: "#64dd17"
       },
 
-      "lime": {
+      lime: {
         "50": "#f9fbe7",
         "100": "#f0f4c3",
         "200": "#e6ee9c",
@@ -311,13 +313,13 @@ module.exports = {
         "700": "#afb42b",
         "800": "#9e9d24",
         "900": "#827717",
-        "a100": "#f4ff81",
-        "a200": "#eeff41",
-        "a400": "#c6ff00",
-        "a700": "#aeea00",
+        a100: "#f4ff81",
+        a200: "#eeff41",
+        a400: "#c6ff00",
+        a700: "#aeea00"
       },
 
-      "yellow": {
+      yellow: {
         "50": "#fffde7",
         "100": "#fff9c4",
         "200": "#fff59d",
@@ -328,13 +330,13 @@ module.exports = {
         "700": "#fbc02d",
         "800": "#f9a825",
         "900": "#f57f17",
-        "a100": "#ffff8d",
-        "a200": "#ffff00",
-        "a400": "#ffea00",
-        "a700": "#ffd600",
+        a100: "#ffff8d",
+        a200: "#ffff00",
+        a400: "#ffea00",
+        a700: "#ffd600"
       },
 
-      "amber": {
+      amber: {
         "50": "#fff8e1",
         "100": "#ffecb3",
         "200": "#ffe082",
@@ -345,13 +347,13 @@ module.exports = {
         "700": "#ffa000",
         "800": "#ff8f00",
         "900": "#ff6f00",
-        "a100": "#ffe57f",
-        "a200": "#ffd740",
-        "a400": "#ffc400",
-        "a700": "#ffab00",
+        a100: "#ffe57f",
+        a200: "#ffd740",
+        a400: "#ffc400",
+        a700: "#ffab00"
       },
 
-      "orange": {
+      orange: {
         "50": "#fff3e0",
         "100": "#ffe0b2",
         "200": "#ffcc80",
@@ -362,10 +364,10 @@ module.exports = {
         "700": "#f57c00",
         "800": "#ef6c00",
         "900": "#e65100",
-        "a100": "#ffd180",
-        "a200": "#ffab40",
-        "a400": "#ff9100",
-        "a700": "#ff6d00",
+        a100: "#ffd180",
+        a200: "#ffab40",
+        a400: "#ff9100",
+        a700: "#ff6d00"
       },
 
       "deep-orange": {
@@ -379,13 +381,13 @@ module.exports = {
         "700": "#e64a19",
         "800": "#d84315",
         "900": "#bf360c",
-        "a100": "#ff9e80",
-        "a200": "#ff6e40",
-        "a400": "#ff3d00",
-        "a700": "#dd2c00",
+        a100: "#ff9e80",
+        a200: "#ff6e40",
+        a400: "#ff3d00",
+        a700: "#dd2c00"
       },
 
-      "brown": {
+      brown: {
         "50": "#efebe9",
         "100": "#d7ccc8",
         "200": "#bcaaa4",
@@ -395,10 +397,10 @@ module.exports = {
         "600": "#6d4c41",
         "700": "#5d4037",
         "800": "#4e342e",
-        "900": "#3e2723",
+        "900": "#3e2723"
       },
 
-      "gray": {
+      gray: {
         "50": "#fafafa",
         "100": "#f5f5f5",
         "200": "#eeeeee",
@@ -408,7 +410,7 @@ module.exports = {
         "600": "#757575",
         "700": "#616161",
         "800": "#424242",
-        "900": "#212121",
+        "900": "#212121"
       },
 
       "blue-gray": {
@@ -421,83 +423,87 @@ module.exports = {
         "600": "#546e7a",
         "700": "#455a64",
         "800": "#37474f",
-        "900": "#263238",
+        "900": "#263238"
       }
     }
   },
   extend: {
     fontFamily: {
-      sans: 'Roboto',
-    },
+      sans: "Roboto"
+    }
   },
   plugins: [
-    require('tailwindcss-elevation')(['hover']),
-    function ({ addUtilities }) {
+    require("tailwindcss-elevation")(["hover"]),
+    function({ addUtilities }) {
       return addUtilities({
-        ['.label-transition']: {
-          transition: 'font-size 0.05s, line-height 0.1s',
+        [".label-transition"]: {
+          transition: "font-size 0.05s, line-height 0.1s"
         },
-        ['.border-box']: {
-          boxSizing: 'border-box',
+        [".border-box"]: {
+          boxSizing: "border-box"
         },
-        ['.content-box']: {
-          boxSizing: 'content-box',
+        [".content-box"]: {
+          boxSizing: "content-box"
         },
-        ['.transition']: {
-          transition: '.2s ease-in',
-        },
+        [".transition"]: {
+          transition: ".2s ease-in"
+        }
       });
     },
     // Ripples
-    function ({ addUtilities, theme, e }) {
-      const colors = theme('colors');
+    function({ addUtilities, theme, e }) {
+      const colors = theme("colors");
 
-      const ripples = Object.keys(colors)
-        .reduce((acc, key) => {
-          if (typeof colors[key] === 'string') {
-            return {
-              ...acc,
-              [`.ripple-${e(key)}`]: ripple,
-              [`.ripple-${e(key)}:after`]: {
-                ...rippleAfter,
-                backgroundImage: `radial-gradient(circle, ${colors[key]} 20%, transparent 10.01%)`
-              },
-              [`.ripple-${e(key)}:active:after`]: rippleActiveAfter,
-            };
-          }
-
-          const variants = Object.keys(colors[key]);
-
+      const ripples = Object.keys(colors).reduce((acc, key) => {
+        if (typeof colors[key] === "string") {
           return {
             ...acc,
             [`.ripple-${e(key)}`]: ripple,
             [`.ripple-${e(key)}:after`]: {
               ...rippleAfter,
-              backgroundImage: `radial-gradient(circle, ${colors[key][500]} 20%, transparent 10.01%)`
+              backgroundImage: `radial-gradient(circle, ${colors[key]} 20%, transparent 10.01%)`
             },
-            [`.ripple-${e(key)}:active:after`]: rippleActiveAfter,
+            [`.ripple-${e(key)}:active:after`]: rippleActiveAfter
+          };
+        }
 
-            ...variants.reduce((a, variant) => ({
+        const variants = Object.keys(colors[key]);
+
+        return {
+          ...acc,
+          [`.ripple-${e(key)}`]: ripple,
+          [`.ripple-${e(key)}:after`]: {
+            ...rippleAfter,
+            backgroundImage: `radial-gradient(circle, ${
+              colors[key][500]
+            } 20%, transparent 10.01%)`
+          },
+          [`.ripple-${e(key)}:active:after`]: rippleActiveAfter,
+
+          ...variants.reduce(
+            (a, variant) => ({
               ...a,
               [`.ripple-${e(key)}-${variant}`]: ripple,
               [`.ripple-${e(key)}-${variant}:after`]: {
                 ...rippleAfter,
                 backgroundImage: `radial-gradient(circle, ${colors[key][variant]} 20%, transparent 10.01%)`
               },
-              [`.ripple-${e(key)}-${variant}:active:after`]: rippleActiveAfter,
-            }), {}),
-          };
-        }, {});
+              [`.ripple-${e(key)}-${variant}:active:after`]: rippleActiveAfter
+            }),
+            {}
+          )
+        };
+      }, {});
 
       addUtilities(ripples);
     },
     addUtility({
-      prop: 'caret-color',
-      className: '.caret',
+      prop: "caret-color",
+      className: ".caret"
     }),
     addUtility({
-      prop: 'stroke',
-      className: '.stroke',
+      prop: "stroke",
+      className: ".stroke"
     })
   ]
-}
+};
