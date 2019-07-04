@@ -41,7 +41,7 @@
         <Image
           alt="kitten 1"
           c="w-full"
-          src="http://placekitten.com/400/250"
+          src="https://placekitten.com/400/250"
           width="400"
           height="250" />
       </Tab>
@@ -49,7 +49,7 @@
         <Image
           alt="kitten 1"
           c="w-full"
-          src="http://placekitten.com/400/251"
+          src="https://placekitten.com/400/251"
           width="400"
           height="250" />
       </Tab>
@@ -57,7 +57,7 @@
         <Image
           alt="kitten 3"
           c="w-full"
-          src="http://placekitten.com/400/253"
+          src="https://placekitten.com/400/253"
           width="400"
           height="250" />
       </Tab>

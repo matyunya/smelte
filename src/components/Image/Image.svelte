@@ -1,5 +1,5 @@
 <script>
-  import Waypoint from "svelte-waypoint";
+  import Waypoint from "components/Waypoint.svelte";
   import { fade } from "svelte/transition";
 
   export let alt = "";
