@@ -13,7 +13,7 @@
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run",
     "now": "yarn build && now",
-    "now-build": "yarn export"
+    "now-build": "sapper build --export"
   },
   "pre-commit": ["lint"],
   "browserslist": "last 3 version",
