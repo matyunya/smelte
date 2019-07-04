@@ -25,7 +25,8 @@
     "prismjs": "^1.16.0",
     "sirv": "^0.4.0",
     "svelte": "^3.6.4",
-    "svelte-waypoint": "^0.0.9"
+    "svelte-waypoint": "^0.1.0",
+    "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

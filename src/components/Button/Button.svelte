@@ -12,6 +12,10 @@
 
   const basic = !outlined && !text;
   const fab = text && icon;
+
+  // TODO:
+  // extract colored styles
+  // iterate with variables
 </script>
 
 <style>
