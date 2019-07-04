@@ -1,8 +1,8 @@
 <script>
-  import Image from 'components/Image';
-  import Code from 'components/Code';
-  
-  import images from 'examples/images.txt';
+  import Image from "components/Image";
+  import Code from "components/Code";
+
+  import images from "examples/images.txt";
 
   const range = [...new Array(50)];
 </script>
@@ -15,7 +15,6 @@
       src="https://placeimg.com/{400 + i}/{300 + i}/animals"
       alt="Kitty {i}"
       height={400 + 1}
-      width={300 +1}
-    />
+      width={300 + 1} />
   </div>
 {/each}

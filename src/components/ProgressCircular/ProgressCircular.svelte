@@ -12,7 +12,7 @@
   }
 
   .path {
-    stroke-dasharray: 1,200;
+    stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
     stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;
@@ -26,15 +26,15 @@
 
   @keyframes dash {
     0% {
-      stroke-dasharray: 1,200;
+      stroke-dasharray: 1, 200;
       stroke-dashoffset: 0;
     }
     50% {
-      stroke-dasharray: 89,200;
+      stroke-dasharray: 89, 200;
       stroke-dashoffset: -35;
     }
     100% {
-      stroke-dasharray: 89,200;
+      stroke-dasharray: 89, 200;
       stroke-dashoffset: -124;
     }
   }
@@ -49,13 +49,9 @@
     fill="none"
     stroke-width="3"
     stroke-miterlimit="10"
-    style={progress > 0
-      ? `
+    style="{progress > 0 ? `
         animation: none;
-        stroke-dasharray: ${150000 - (progress * 1000)};
-        stroke-dashoffset: -${124 - (progress * 124 / 100)};
-      `
-      : ''
-    };
-  />
+        stroke-dasharray: ${150000 - progress * 1000};
+        stroke-dashoffset: -${124 - (progress * 124) / 100};
+      ` : ''};" />
 </svg>

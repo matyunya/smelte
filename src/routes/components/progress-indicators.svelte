@@ -1,9 +1,9 @@
 <script>
-  import ProgressLinear from 'components/ProgressLinear';
-  import ProgressCircular from 'components/ProgressCircular';
+  import ProgressLinear from "components/ProgressLinear";
+  import ProgressCircular from "components/ProgressCircular";
 
-  import Code from 'components/Code';
-  import indicators from 'examples/progress-indicators.txt';
+  import Code from "components/Code";
+  import indicators from "examples/progress-indicators.txt";
 
   let progress = 0;
 

@@ -1,7 +1,14 @@
 <div>
   <h4 class="pb-8">Typography defaults and helper classes</h4>
-  <p>H1-h6, subtitle, body and caption as well as their respected classes (.h1, .h2...)
-    use Material design <a class="a" href="https://material.io/design/typography/the-type-system.html#type-scale">type scale</a>.
+  <p>
+    H1-h6, subtitle, body and caption as well as their respected classes (.h1,
+    .h2...) use Material design
+    <a
+      class="a"
+      href="https://material.io/design/typography/the-type-system.html#type-scale">
+      type scale
+    </a>
+    .
   </p>
   <div class="bg-gray-200 p-4 my-4">
     <h1>.h1 header 1</h1>
@@ -16,6 +23,5 @@
     <div class="body-2">.body-2</div>
     <caption>.caption</caption>
   </div>
-  
-</div>
 
+</div>

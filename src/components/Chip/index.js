@@ -1,3 +1,3 @@
-import Chip from './Chip.svelte';
+import Chip from "./Chip.svelte";
 
 export default Chip;

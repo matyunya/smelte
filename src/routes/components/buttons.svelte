@@ -1,7 +1,7 @@
 <script>
-	import Button from 'components/Button';
-	import Icon from 'components/Icon';
-  import Code from 'components/Code';
+  import Button from "components/Button";
+  import Icon from "components/Icon";
+  import Code from "components/Code";
 </script>
 
 <h6 class="mb-3 mt-6">Basic</h6>

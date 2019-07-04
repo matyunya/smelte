@@ -1,3 +1,3 @@
-import List from './List.svelte';
+import List from "./List.svelte";
 
 export default List;

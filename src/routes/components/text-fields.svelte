@@ -1,8 +1,8 @@
 <script>
-	import TextField from 'components/TextField';
-	import Code from 'components/Code';
-	
-	import textFields from 'examples/text-fields.txt';
+  import TextField from "components/TextField";
+  import Code from "components/Code";
+
+  import textFields from "examples/text-fields.txt";
 </script>
 
 <h6 class="mb-3 mt-6">Basic</h6>
@@ -18,6 +18,6 @@
 <h6 class="mb-3 mt-6">Outlined with error</h6>
 <TextField label="Test label" outlined error="Test error" />
 <h6 class="mb-3 mt-6">Outlined textarea</h6>
-<TextField label="Test label" textarea rows=5 outlined />
+<TextField label="Test label" textarea rows="5" outlined />
 
 <Code code={textFields} />

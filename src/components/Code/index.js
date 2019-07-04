@@ -1,3 +1,3 @@
-import Code from './Code.svelte';
+import Code from "./Code.svelte";
 
 export default Code;

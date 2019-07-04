@@ -1,5 +1,5 @@
 <script>
-  export let color = 'primary';
+  export let color = "primary";
 </script>
 
 <style>
@@ -11,7 +11,6 @@
 <span
   class="z-40 p-2 rounded-full flex items-center justify-center top-0 left-0"
   class:ripple-primary={color === 'primary'}
-  class:ripple-gray={color === 'gray'}
-><slot />
+  class:ripple-gray={color === 'gray'}>
+  <slot />
 </span>
-  

@@ -1,8 +1,8 @@
 <script>
-  import { slide } from 'svelte/transition'
+  import { slide } from "svelte/transition";
   export let width = 0;
   export let left = 0;
-  export let color = 'primary-700';
+  export let color = "primary-700";
 </script>
 
 <div

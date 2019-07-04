@@ -1,3 +1,3 @@
-import Snackbar from './Snackbar.svelte';
+import Snackbar from "./Snackbar.svelte";
 
 export default Snackbar;

@@ -1,3 +1,3 @@
-import ProgressLinear from './ProgressLinear.svelte';
+import ProgressLinear from "./ProgressLinear.svelte";
 
 export default ProgressLinear;

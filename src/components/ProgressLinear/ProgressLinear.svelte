@@ -1,10 +1,10 @@
 <script>
-  import { onMount } from 'svelte';
-  import { fly } from 'svelte/transition';
+  import { onMount } from "svelte";
+  import { fly } from "svelte/transition";
 
   export let app = false;
   export let progress = 0;
-  export let color = 'primary';
+  export let color = "primary";
 
   let initialized = false;
 
@@ -18,7 +18,7 @@
 
   const inProps = { y: 10, duration: 50 };
 
-  color = color.includes('-') ? color.split('-')[0] : color;
+  color = color.includes("-") ? color.split("-")[0] : color;
 </script>
 
 <style>
@@ -31,12 +31,24 @@
   }
 
   @keyframes increase {
-    from { left: -5%; width: 5%; }
-    to { left: 130%; width: 150%;}
+    from {
+      left: -5%;
+      width: 5%;
+    }
+    to {
+      left: 130%;
+      width: 150%;
+    }
   }
   @keyframes decrease {
-    from { left: -90%; width: 90%; }
-    to { left: 110%; width: 10%;}
+    from {
+      left: -90%;
+      width: 90%;
+    }
+    to {
+      left: 110%;
+      width: 10%;
+    }
   }
 </style>
 
@@ -45,16 +57,11 @@
   class:z-50={app}
   class="top-0 left-0 w-full h-1 bg-{color}-100 overflow-hidden relative"
   class:hidden={app && !initialized}
-  in:fly={inProps}
->
+  in:fly={inProps}>
   <div
     class="bg-{color}-500 h-1 absolute"
     class:inc={!progress}
     class:transition={progress}
-    style={progress ? `width: ${progress}%` : ''}
-  />
-  <div
-    class="bg-{color}-500 h-1 absolute dec"
-    class:hidden={progress}
-  />
+    style={progress ? `width: ${progress}%` : ''} />
+  <div class="bg-{color}-500 h-1 absolute dec" class:hidden={progress} />
 </div>
