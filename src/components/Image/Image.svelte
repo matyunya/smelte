@@ -24,7 +24,7 @@
   }
 </script>
 
-<Waypoint {c} once on:enter={load} style="height: {height}" offset="200">
+<Waypoint {c} once on:enter={load} style="height: {height}px" offset="0">
   {#if loaded}
     <img class={c} {src} {alt} {width} {height} />
   {:else if thumbnail}
