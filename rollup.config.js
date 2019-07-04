@@ -96,7 +96,7 @@ export default {
       }),
       resolve(),
       commonjs(),
-      includePaths({ paths: ["./src"] }),
+      includePaths({ paths: ["./src", "./"] }),
 
       !legacy &&
         babel({
