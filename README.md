@@ -57,7 +57,8 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [ ] Svelte template (without Sapper)
 - [ ] Other icons
 - [ ] Document API
+- [ ] Improve Purge CSS (right now dynamic classes need to be whitelisted manually)
 - [ ] JS ripple animation
 - [ ] IE 11 support
-- [ ] Image processing (minification and such, similar to (this)[https://www.gatsbyjs.org/packages/gatsby-image/])
+- [ ] Image processing (minification and such, similar to [this](https://www.gatsbyjs.org/packages/gatsby-image/))
 - [ ] Scaffoldable CLI version
