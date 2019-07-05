@@ -26,22 +26,37 @@ $ yarn now
 
 Smelte is still in very early stage, so please feel free to submit any feedback.
 
+### Components
+- [x] Text field
+- [x] Button
+- [x] Select
+- [x] Checkbox
+- [x] Radio
+- [x] List
+- [x] Chip
+- [x] Menu
+- [x] Navigation drawer
+- [x] Snackbar
+- [x] Dialog
+- [x] Card
+- [ ] Autocomplete (sort of there but buggy)
+- [ ] Slider
+- [ ] Tooltip
+- [ ] Revise events (on:change, on:focus, on:input...)
+- [ ] Proper customization
+
 ### Features
 - [x] Default typography per Material design spec
-- [x] Selection controls (checkboxes, radios, switches)
-- [x] Progress indicators, default progress indicator on top
-- [x] Responsive navigation drawer
 - [x] Material icons
 - [x] CSS ripple animation
 - [x] Image lazy loading
 - [x] Now SSR deployment
 - [x] Color palette generator
-- [ ] Autocomplete component (extending select)
-- [ ] Scaffoldable CLI version
-- [ ] Sliders and tooltips
+- [ ] Theming
+- [ ] Dark mode
+- [ ] Svelte template (without Sapper)
 - [ ] Other icons
 - [ ] JS ripple animation
 - [ ] IE 11 support
 - [ ] Image processing (minification and such, similar to (this)[https://www.gatsbyjs.org/packages/gatsby-image/])
-- [ ] Theming
-- [ ] Dark mode
+- [ ] Scaffoldable CLI version
