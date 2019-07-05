@@ -20,7 +20,9 @@ const postcssPlugins = (purge = false) => {
     require("postcss-import")(),
     require("postcss-url")(),
     require("postcss-nesting")(),
-    require("postcss-custom-properties")(),
+    require("postcss-custom-properties")({
+      importFrom: "./src/utils/cssVars.js"
+    }),
     require("tailwindcss")("./tailwind.config.js"),
     require("autoprefixer")(),
     purge &&
@@ -62,7 +64,9 @@ const postcssPlugins = (purge = false) => {
           /yellow-a200/,
           /language/,
           /namespace/,
-          /token/
+          /token/,
+          // These are from button examples, infer required classes.
+          /(bg|ripple|text|border)-(red|teal|yellow|lime|primary)-(400|500|200|50)$/
         ]
       })
   ].filter(Boolean);

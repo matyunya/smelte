@@ -1,5 +1,6 @@
 <script>
   import Icon from "components/Icon";
+  import utils from "utils/classes.js";
 
   export let value = false;
   export let outlined = false;
@@ -13,37 +14,44 @@
   const basic = !outlined && !text;
   const fab = text && icon;
 
-  // TODO:
-  // extract colored styles
-  // iterate with variables
+  export let color = "primary";
+  
+  let classes = "";
+
+  const {
+    bg,
+    border,
+    txt,
+    ripple,
+  } = utils(color);
+
+  $: {
+    if (basic) {
+      classes = `${bg()} hover:${bg(400)} hover:elevation-5 elevation-3 transition`;
+    }
+
+    if (outlined) {
+      classes = `${border(400)} ${txt()} ${ripple()} bg-transparent hover:${bg(50)}`;
+    }
+
+    if (light) {
+      classes = `${bg(200)} hover:${bg(50)}`;
+    }
+
+    if (text) {
+      classes = `${ripple()} ${txt(400)}`;
+    }
+  }
 </script>
 
 <style>
-  .any {
+  .button {
     letter-spacing: 0.0892857143em;
     transition: box-shadow 0.9s ease;
   }
 
-  .basic {
-    @apply elevation-3 bg-primary-500;
-
-    &:hover {
-      @apply elevation-5 bg-primary-400;
-      transition: box-shadow 0.2s ease;
-    }
-  }
-
   .outlined {
-    background: transparent;
-    @apply border border-primary-400 border-solid rounded text-primary-500;
-
-    &:hover {
-      @apply bg-primary-50;
-    }
-  }
-
-  .light:hover {
-    @apply bg-primary-200;
+    @apply border border-solid rounded;
   }
 
   .icon {
@@ -51,7 +59,7 @@
   }
 
   .text {
-    @apply bg-transparent border-none text-primary-400 ripple-primary px-3;
+    @apply bg-transparent border-none ripple-primary px-3;
 
     &:hover {
       @apply bg-transparent;
@@ -78,7 +86,7 @@
 </style>
 
 <button
-  class:basic
+  class="{classes} button py-2 px-4 rounded text-white border-none uppercase text-sm font-medium"
   class:outlined
   class:icon
   class:text
@@ -87,14 +95,11 @@
   class:fab
   class:small
   class:light
-  class="any py-2 px-4 rounded text-white border-none uppercase text-sm
-  font-medium"
-  class:ripple-primary={outlined || text}
   class:ripple-white={basic || fab}
   on:click
   on:click={() => (value = !value)}>
   {#if icon}
-    <Icon color={light ? 'text-primary-500' : 'white'} {small}>{icon}</Icon>
+    <Icon color={light ? `text-${color}-500` : 'white'} {small}>{icon}</Icon>
   {/if}
   <slot />
 </button>

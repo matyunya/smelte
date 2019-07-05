@@ -61,4 +61,14 @@ function buildPalette(hex) {
   };
 }
 
-module.exports = buildPalette;
+function generate(colors) {
+  return Object.keys(colors).reduce(
+    (acc, cur) => ({
+      ...acc,
+      [cur]: buildPalette(colors[cur])
+    }),
+    {}
+  );
+}
+
+module.exports = generate;
