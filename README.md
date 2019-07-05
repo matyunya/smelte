@@ -25,3 +25,23 @@ $ yarn now
 ### Issues
 
 Smelte is still in very early stage, so please feel free to submit any feedback.
+
+### Features
+- [x] Default typography per Material design spec
+- [x] Selection controls (checkboxes, radios, switches)
+- [x] Progress indicators, default progress indicator on top
+- [x] Responsive navigation drawer
+- [x] Material icons
+- [x] CSS ripple animation
+- [x] Image lazy loading
+- [x] Now SSR deployment
+- [x] Color palette generator
+- [ ] Autocomplete component (extending select)
+- [ ] Scaffoldable CLI version
+- [ ] Sliders and tooltips
+- [ ] Other icons
+- [ ] JS ripple animation
+- [ ] IE 11 support
+- [ ] Image processing (minification and such, similar to (this)[https://www.gatsbyjs.org/packages/gatsby-image/])
+- [ ] Theming
+- [ ] Dark mode
