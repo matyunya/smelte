@@ -39,7 +39,7 @@ const postcssPlugins = (purge = false) => {
 
               return [
                 ...(content.match(/[A-Za-z0-9-_:\/]+/g) || []),
-                ...fromClasses.map(c => c.replace("class:"))
+                ...fromClasses.map(c => c.replace("class:", ""))
               ];
             },
             extensions: ["svelte"]
