@@ -56,6 +56,7 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [ ] Dark mode
 - [ ] Svelte template (without Sapper)
 - [ ] Other icons
+- [ ] Document API
 - [ ] JS ripple animation
 - [ ] IE 11 support
 - [ ] Image processing (minification and such, similar to (this)[https://www.gatsbyjs.org/packages/gatsby-image/])
