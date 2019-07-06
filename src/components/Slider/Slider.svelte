@@ -48,6 +48,7 @@
   {min}
   {max}
   {step}
+  {disabled}
   style="background: linear-gradient(to right, #bc47bc 0%, #bc47bc {value}%, #f6e5f6 {value}%, #f6e5f6 100%)"
   class:disabled
   bind:value
