@@ -2,7 +2,7 @@
   export let segment = '';
 
   $: n = segment.replace('-', ' ');
-  let name = n.length ? n.charAt(0).toUpperCase() + n.slice(1) : '';
+  $: name = n.length ? n.charAt(0).toUpperCase() + n.slice(1) : '';
 
 </script>
 
