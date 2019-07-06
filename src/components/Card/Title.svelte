@@ -1,13 +1,12 @@
 <script>
+  export let c = "";
   export let hover = true;
   export let title = "";
   export let subheader = "";
   export let avatar = "";
-
-  export let c = "";
 </script>
 
-<div class="flex px-4 py-2 items-center">
+<div class="{c} flex px-4 py-2 items-center">
   <div>
     <img
       class="rounded-full"

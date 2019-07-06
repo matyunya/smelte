@@ -4,8 +4,9 @@
 
   import Icon from "components/Icon";
 
-  export let removable;
-  export let icon;
+  export let c = '';
+  export let removable = false;
+  export let icon = '';
   export let outlined = false;
   export let selected = false;
   export let selectable = true;
@@ -51,7 +52,7 @@
 </style>
 
 {#if value}
-  <span class="mx-1 inline-block" out:scale={{ duration: 100 }}>
+  <span class="{c} mx-1 inline-block" out:scale={{ duration: 100 }}>
     <button
       class="flex items-center rounded-full bg-gray-300 px-2 py-1"
       on:click

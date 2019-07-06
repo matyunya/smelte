@@ -66,6 +66,7 @@
     { to: "/components/cards", text: "Cards" },
     { to: "/components/menus", text: "Menus" },
     { to: "/components/images", text: "Images" },
+    { to: "/components/sliders", text: "Sliders" },
 
     { to: "/typography", text: "Typography" },
     { to: "/color", text: "Color" }

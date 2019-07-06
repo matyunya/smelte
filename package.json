@@ -43,6 +43,7 @@
     "postcss": "^7.0.16",
     "postcss-custom-properties": "^9.0.1",
     "postcss-import": "^12.0.1",
+    "postcss-input-range": "^4.0.0",
     "postcss-nesting": "^7.0.0",
     "postcss-url": "^8.0.0",
     "pre-commit": "^1.2.2",

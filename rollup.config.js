@@ -20,6 +20,7 @@ const postcssPlugins = (purge = false) => {
     require("postcss-import")(),
     require("postcss-url")(),
     require("postcss-nesting")(),
+    require("postcss-input-range")(),
     require("postcss-custom-properties")({
       importFrom: "./src/utils/cssVars.js"
     }),

@@ -2,6 +2,7 @@
   import Icon from "components/Icon";
   import utils from "utils/classes.js";
 
+  export let c = "";
   export let value = false;
   export let outlined = false;
   export let text = false;
@@ -86,7 +87,7 @@
 </style>
 
 <button
-  class="{classes} button py-2 px-4 rounded text-white border-none uppercase text-sm font-medium"
+  class="{c} {classes} button py-2 px-4 rounded text-white border-none uppercase text-sm font-medium"
   class:outlined
   class:icon
   class:text

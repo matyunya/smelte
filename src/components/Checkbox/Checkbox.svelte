@@ -2,6 +2,7 @@
   import Icon from "components/Icon";
   import { Ripple } from "components/Util";
 
+  export let c = "";
   export let value = false;
   export let label = "";
   export let color = "text-primary-500";
@@ -14,7 +15,7 @@
   }
 </script>
 
-<div class="inline-flex items-center mb-2 cursor-pointer z-10" on:click={check}>
+<div class="{c} inline-flex items-center mb-2 cursor-pointer z-10" on:click={check}>
   <input bind:checked={value} class="hidden" type="checkbox" on:change />
   <div class="relative w-auto h-auto z-0">
     <Ripple color={value && !disabled ? 'primary' : 'gray'}>
