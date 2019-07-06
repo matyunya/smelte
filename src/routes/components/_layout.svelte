@@ -1,8 +1,8 @@
 <script>
-  export let segment;
+  export let segment = '';
 
-  const n = segment.replace('-', ' ');
-  const name = n.charAt(0).toUpperCase() + n.slice(1)
+  $: n = segment.replace('-', ' ');
+  let name = n.length ? n.charAt(0).toUpperCase() + n.slice(1) : '';
 
 </script>
 
