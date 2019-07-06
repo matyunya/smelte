@@ -24,8 +24,8 @@ const postcssPlugins = (purge = false) => {
     require("postcss-custom-properties")({
       importFrom: "./src/utils/cssVars.js"
     }),
-    require("tailwindcss")("./tailwind.config.js"),
     require("autoprefixer")(),
+    require("tailwindcss")("./tailwind.config.js"),
     purge &&
       require("cssnano")({
         preset: "default"

@@ -7,12 +7,14 @@
   export let disabled = false;
   export let min = 0;
   export let max = 100;
+  export let step = null;
+
 </script>
 
 <style>
 .slider {
   -webkit-appearance: none;
-  @apply bg-primary-100 w-full rounded cursor-pointer;
+  @apply bg-primary-50 w-full rounded cursor-pointer;
   height: 4px;
 }
 .slider::-ms-thumb {
@@ -34,15 +36,20 @@
 }
 
 .slider:focus::range-track {
-  @apply bg-primary-100 rounded;
+  @apply rounded;
   height: 4px;
 }
-
-.slider::range-lower {
-  @apply bg-primary-400;
-}
-
 </style>
 
 <label for="slider" class="label">{label}</label>
-<input type="range" {min} {max} class:disabled bind:value class="slider">
+<input
+  class="slider"
+  type="range"
+  {min}
+  {max}
+  {step}
+  style="background: linear-gradient(to right, #bc47bc 0%, #bc47bc {value}%, #f6e5f6 {value}%, #f6e5f6 100%)"
+  class:disabled
+  bind:value
+  on:change
+>
