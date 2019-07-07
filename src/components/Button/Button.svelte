@@ -52,11 +52,11 @@
   }
 
   .outlined {
-    @apply border border-solid rounded;
+    @apply border border-solid;
   }
 
   .icon {
-    @apply rounded-full p-4 m-4 flex items-center elevation-10;
+    @apply p-4 m-4 flex items-center elevation-10;
   }
 
   .text {
@@ -87,7 +87,9 @@
 </style>
 
 <button
-  class="{c} {classes} button py-2 px-4 rounded text-white border-none uppercase text-sm font-medium"
+  class="{c} {classes} button py-2 px-4 text-white rounded uppercase text-sm font-medium"
+  class:border-solid={outlined}
+  class:rounded-full={icon}
   class:outlined
   class:icon
   class:text
