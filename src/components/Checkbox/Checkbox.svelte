@@ -7,6 +7,7 @@
   export let label = "";
   export let color = "text-primary-500";
   export let disabled = false;
+  export let wrapperClasses = "inline-flex items-center mb-2 cursor-pointer z-10";
 
   function check() {
     if (disabled) return;
@@ -15,7 +16,7 @@
   }
 </script>
 
-<div class="{c} inline-flex items-center mb-2 cursor-pointer z-10" on:click={check}>
+<div class="{c} {wrapperClasses}" on:click={check}>
   <input bind:checked={value} class="hidden" type="checkbox" on:change />
   <div class="relative w-auto h-auto z-0">
     <Ripple color={value && !disabled ? 'primary' : 'gray'}>

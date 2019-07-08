@@ -4,9 +4,11 @@
   export let title = "";
   export let subheader = "";
   export let avatar = "";
+
+  export let wrapperClasses = "flex px-4 py-2 items-center";
 </script>
 
-<div class="{c} flex px-4 py-2 items-center">
+<div class="{c} {wrapperClasses}">
   <div>
     <img
       class="rounded-full"

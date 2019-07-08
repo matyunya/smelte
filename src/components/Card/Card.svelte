@@ -1,13 +1,11 @@
 <script>
   export let hover = true;
-
   export let c = "";
+  export let wrapperClasses = "rounded inline-flex flex-col overflow-hidden";
 </script>
 
 <div
-  class="{c}
-  {hover ? 'elevation-1 hover:elevation-8' : ''} rounded inline-flex flex-col
-  overflow-hidden ">
+  class="{c} {hover ? 'elevation-1 hover:elevation-8' : ''} {wrapperClasses}">
   <slot name="title" />
   <slot name="media" />
   <slot />

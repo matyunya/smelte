@@ -1,6 +1,6 @@
 <script>
   import Icon from "components/Icon";
-  import utils from "utils/classes.js";
+  import utils, { ClassBuilder } from "utils/classes.js";
 
   export let c = "";
   export let value = false;
@@ -40,7 +40,6 @@
   $: normal = 500 - shade;
   $: lighter = 400 - shade;
 
-
   const {
     bg,
     border,
@@ -48,38 +47,20 @@
     ripple,
   } = utils(color);
 
+  const cb = new ClassBuilder();
+
   $: {
-    if (basic) {
-      classes += `${bg(normal)} hover:${bg(lighter)} ${basicClasses}`;
-    }
-
-    if (elevation) {
-      classes += ` ${elevationClasses}`;
-    }
-
-    if (outlined) {
-      classes += ` ${border(lighter)} ${txt(normal)} ${ripple(normal)} hover:${bg(50)} ${outlinedClasses}`;
-    }
-
-    if (text) {
-      classes += ` ${ripple(normal)} ${txt(lighter)} ${textClasses}`;
-    }
-
-    if (icon) {
-      classes += ` ${iconClasses}`;
-    }
-
-    if (fab) {
-      classes += ` ${ripple(normal)} ${fabClasses}`;
-    }
-
-    if (small) {
-      classes += ` ${smallClasses}`;
-    }
-
-    if (disabled) {
-      classes += ` ${disabledClasses}`;
-    }
+      classes = cb
+        .flush()
+        .add(`${bg(normal)} hover:${bg(lighter)} ${basicClasses}`, basic)
+        .add(elevationClasses, elevation)
+        .add(`${border(lighter)} ${txt(normal)} ${ripple()} hover:${bg(50)} ${outlinedClasses}`, outlined)
+        .add(`${ripple()} ${txt(lighter)} ${textClasses}`, text)
+        .add(iconClasses, icon)
+        .add(`${ripple()} ${fabClasses}`, fab)
+        .add(smallClasses, small)
+        .add(disabledClasses, disabled)
+        .get();
   }
 </script>
 
