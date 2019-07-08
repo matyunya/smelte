@@ -63,6 +63,12 @@ p,
   letter-spacing: 0.25px;
 }
 
+.button {
+  letter-spacing: 0.0892857143em;
+  transition: box-shadow 0.2s ease;
+  @apply py-2 px-4 uppercase text-sm font-medium;
+}
+
 caption,
 .caption {
   font-size: 0.625rem;

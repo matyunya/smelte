@@ -11,13 +11,35 @@
   export let icon = null;
   export let small = false;
   export let light = false;
-
-  const basic = !outlined && !text;
-  const fab = text && icon;
-
+  export let dark = false;
+  export let flat = false;
   export let color = "primary";
+
+  export let basicClasses = 'text-white transition';
+  export let outlinedClasses = 'bg-transparent border border-solid';
+  export let textClasses = 'bg-transparent border-none ripple-primary px-3 hover:bg-transparent';
+  export let iconClasses = 'p-4 m-4 flex items-center';
+  export let fabClasses = 'text-white px-4 hover:bg-transparent';
+  export let smallClasses = 'p-2';
+  export let disabledClasses = `
+    bg-gray-300 text-gray-500 elevation-none pointer-events-none hover:bg-gray-300 cursor-default
+  `;
+  let elevationClasses = 'hover:elevation-5 elevation-3';
+
+  const fab = text && icon;
+  const basic = !outlined && !text && !fab;
+  const elevation = (basic || icon) && !disabled && !flat;
   
   let classes = "";
+  let shade = 0;
+
+  $: {
+    shade = light ? 200 : 0;
+    shade = dark ? -400 : shade;
+  }
+  $: normal = 500 - shade;
+  $: lighter = 400 - shade;
+
 
   const {
     bg,
@@ -28,77 +50,47 @@
 
   $: {
     if (basic) {
-      classes = `${bg()} hover:${bg(400)} hover:elevation-5 elevation-3 transition`;
+      classes += `${bg(normal)} hover:${bg(lighter)} ${basicClasses}`;
+    }
+
+    if (elevation) {
+      classes += ` ${elevationClasses}`;
     }
 
     if (outlined) {
-      classes = `${border(400)} ${txt()} ${ripple()} bg-transparent hover:${bg(50)}`;
-    }
-
-    if (light) {
-      classes = `${bg(200)} hover:${bg(50)}`;
+      classes += ` ${border(lighter)} ${txt(normal)} ${ripple(normal)} hover:${bg(50)} ${outlinedClasses}`;
     }
 
     if (text) {
-      classes = `${ripple()} ${txt(400)}`;
+      classes += ` ${ripple(normal)} ${txt(lighter)} ${textClasses}`;
+    }
+
+    if (icon) {
+      classes += ` ${iconClasses}`;
+    }
+
+    if (fab) {
+      classes += ` ${fabClasses}`;
+    }
+
+    if (small) {
+      classes += ` ${smallClasses}`;
+    }
+
+    if (disabled) {
+      classes += ` ${disabledClasses}`;
     }
   }
 </script>
 
-<style>
-  .button {
-    letter-spacing: 0.0892857143em;
-    transition: box-shadow 0.9s ease;
-  }
-
-  .outlined {
-    @apply border border-solid;
-  }
-
-  .icon {
-    @apply p-4 m-4 flex items-center elevation-10;
-  }
-
-  .text {
-    @apply bg-transparent border-none ripple-primary px-3;
-
-    &:hover {
-      @apply bg-transparent;
-    }
-  }
-
-  .disabled {
-    @apply bg-gray-300 text-gray-500 elevation-0 pointer-events-none;
-    &:hover {
-      @apply elevation-0 bg-gray-300 cursor-default;
-    }
-  }
-
-  .fab {
-    @apply elevation-0 text-white px-4;
-    &:hover {
-      @apply bg-transparent;
-    }
-  }
-
-  .small {
-    @apply p-2;
-  }
-</style>
-
 <button
-  class="{c} {classes} button py-2 px-4 text-white rounded uppercase text-sm font-medium"
   class:border-solid={outlined}
   class:rounded-full={icon}
-  class:outlined
-  class:icon
-  class:text
-  class:disabled
   class:w-full={block}
-  class:fab
-  class:small
-  class:light
+  class:rounded={basic || outlined || text}
   class:ripple-white={basic || fab}
+  class="{classes} button"
+  class:button={!icon}
   on:click
   on:click={() => (value = !value)}>
   {#if icon}

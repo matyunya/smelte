@@ -1,6 +1,7 @@
 <script>
   export let data = [];
-  export let columns = Object.keys(data[0] || {}).map(i => ({ label: i, field: i }));
+  export let columns = Object.keys(data[0] || {})
+    .map(i => ({ label: (i || '').replace('_', ' '), field: i }));
 </script>
 
 <style>

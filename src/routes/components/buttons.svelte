@@ -10,6 +10,16 @@
 <div class="py-2">
   <Button>Button</Button>
 </div>
+
+<h6 class="mb-3 mt-6">Light</h6>
+<div class="py-2">
+  <Button light>Button</Button>
+</div>
+
+<h6 class="mb-3 mt-6">Dark</h6>
+<div class="py-2">
+  <Button dark>Button</Button>
+</div>
 <h6 class="mb-3 mt-6">Block</h6>
 <div class="py-2">
   <Button color="red" block>Button</Button>
@@ -32,7 +42,7 @@
 </div>
 <h6 class="mb-3 mt-6">Fab flat</h6>
 <div class="py-2">
-  <Button color="lime" icon="change_history" text light />
+  <Button color="lime" icon="change_history" text light flat />
 </div>
 
 <Code code={buttons} />
