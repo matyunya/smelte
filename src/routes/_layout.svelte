@@ -67,6 +67,7 @@
     { to: "/components/menus", text: "Menus" },
     { to: "/components/images", text: "Images" },
     { to: "/components/sliders", text: "Sliders" },
+    { to: "/components/data-tables", text: "Data tables" },
 
     { to: "/typography", text: "Typography" },
     { to: "/color", text: "Color" }
