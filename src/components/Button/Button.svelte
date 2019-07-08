@@ -15,9 +15,9 @@
   export let flat = false;
   export let color = "primary";
 
-  export let basicClasses = 'text-white transition';
+  export let basicClasses = 'text-white transition ripple-white';
   export let outlinedClasses = 'bg-transparent border border-solid';
-  export let textClasses = 'bg-transparent border-none ripple-primary px-3 hover:bg-transparent';
+  export let textClasses = 'bg-transparent border-none px-3 hover:bg-transparent';
   export let iconClasses = 'p-4 m-4 flex items-center';
   export let fabClasses = 'text-white px-4 hover:bg-transparent';
   export let smallClasses = 'p-2';
@@ -70,7 +70,7 @@
     }
 
     if (fab) {
-      classes += ` ${fabClasses}`;
+      classes += ` ${ripple(normal)} ${fabClasses}`;
     }
 
     if (small) {
@@ -88,7 +88,6 @@
   class:rounded-full={icon}
   class:w-full={block}
   class:rounded={basic || outlined || text}
-  class:ripple-white={basic || fab}
   class="{classes} button"
   class:button={!icon}
   on:click
