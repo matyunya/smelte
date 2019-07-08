@@ -106,7 +106,7 @@
     <h6 class="pl-3 text-white tracking-widest font-thin text-lg">SMELTE</h6>
   </a>
   <Spacer />
-  <Tabs c="sm:hidden md:flex" items={topMenu} bind:selected={path} />
+  <Tabs navigation items={topMenu} bind:selected={path} />
   <div class="md:hidden">
     <Button icon="menu" small text on:click={toggleNav} />
   </div>

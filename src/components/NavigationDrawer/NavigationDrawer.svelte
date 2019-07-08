@@ -64,7 +64,7 @@
     <nav
       role="navigation"
       class="h-screen bg-white absolute flex w-auto z-20 drawer
-      pointer-events-auto overflow-y-auto"
+      pointer-events-auto overflow-y-scroll"
       class:elevation-4={elevation}
       class:bordered={!elevation}
       transition:fly={transitionProps}>

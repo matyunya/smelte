@@ -6,6 +6,7 @@
   import Tab from "./TabButton.svelte";
 
   export let selected = null;
+  export let navigation = false;
   export let items = [];
   export let indicator = true;
   export let color = "white";
@@ -33,7 +34,7 @@
 </script>
 
 <div
-  class="{c} py-0 h-full flex items-center relative mx-auto z-20"
+  class="{c} py-0 h-full {navigation ? 'hidden md:flex' : 'flex'} items-center relative mx-auto z-20"
   bind:this={node}>
   {#each items as item, i}
     <slot name="item">
