@@ -2,6 +2,7 @@
   import Icon from "components/Icon";
   import utils, { ClassBuilder } from "utils/classes.js";
 
+  export let c = "";
   export let value = false;
   export let outlined = false;
   export let text = false;
@@ -69,7 +70,7 @@
   class:rounded-full={icon}
   class:w-full={block}
   class:rounded={basic || outlined || text}
-  class="{classes} button"
+  class="{c} {classes} button"
   class:button={!icon}
   on:click
   on:click={() => (value = !value)}>
