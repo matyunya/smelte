@@ -4,7 +4,8 @@ module.exports = {
     `ripple-${color}-500`,
     `ripple-${color}`,
     `bg-${color}`,
-    `text-${color}`
+    `text-${color}`,
+    `text-${color}-500`
   ],
   normal: color => [
     `text-${color}-500`,

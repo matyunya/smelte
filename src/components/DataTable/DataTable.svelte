@@ -1,19 +1,46 @@
 <script>
+  import Icon from "components/Icon";
+
   export let data = [];
   export let columns = Object.keys(data[0] || {})
     .map(i => ({ label: (i || '').replace('_', ' '), field: i }));
+
+  export let asc = false;
+  let sortBy = null;
+
+  $: sorted = sort(sortBy);
+
+  function sort(col) {
+    if (!col) return data;
+
+    if (col.sort) return col.sort(data);
+
+    const sorted = data.sort((a, b) => {
+      const valA = col.value ? col.value(a) : a[col.field];
+      const valB = col.value ?  col.value(b) : b[col.field];
+
+      const first = asc ? valA : valB;
+      const second = asc ? valB : valA;
+
+      if (typeof valA === 'number') {
+        return first - second;
+      }
+
+      return ('' + first).localeCompare(second);
+    });
+
+    return sorted;
+  }
+  
+
 </script>
 
 <style>
   table {
-    @apply rounded elevation-3 p-1;
+    @apply rounded elevation-3 p-2 text-sm;
 
     & th, & td {
-      @apply px-3 py-4 font-normal text-right;
-    }
-
-    & td {
-      @apply text-sm;
+      @apply p-3 font-normal text-right;
     }
 
     & th:first-child, & td:first-child {
@@ -21,7 +48,22 @@
     }
 
     & th {
-      @apply text-gray-600 text-xs;
+      @apply text-gray-600 text-xs cursor-pointer;
+
+      & .asc {
+        transform: rotate(180deg);
+      }
+
+      & .sort {
+        @apply w-4 h-4 opacity-0 transition-fast;
+      }
+
+      &:hover {
+        @apply text-black transition-fast;
+        & .sort {
+          @apply opacity-100;
+        }
+      }
     }
 
     & tr {
@@ -34,17 +76,31 @@
 </style>
 
 <table class="p-1">
-  <thead>
+  <thead class="items-center">
     {#each columns as column, i}
       <slot name="header">
         <th
           class="capitalize"
-        >{column.label || column.field}</th>
+          on:click={() => {
+            if (column.sortable === false) return;
+            asc = sortBy === column ? !asc : false;
+            sortBy = column;
+          }}
+        >
+          <div class="flex items-center">
+            {#if column.sortable !== false}
+              <span class="sort" class:asc={!asc && sortBy === column}>
+                <Icon small color="text-gray-400">arrow_downward</Icon>
+              </span>
+            {/if}
+            <span>{column.label || column.field}</span>
+          </div>
+        </th>
       </slot>
     {/each}
   </thead>
   <tbody>
-  {#each data as item}
+  {#each sorted as item}
     <slot name="item">
       <tr>
         {#each columns as column, i}

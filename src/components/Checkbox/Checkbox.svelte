@@ -21,9 +21,9 @@
   <div class="relative w-auto h-auto z-0">
     <Ripple color={value && !disabled ? 'primary' : 'gray'}>
       {#if value}
-        <Icon color={disabled ? 'text-gray-500' : color}>check_box</Icon>
+        <Icon c={disabled ? 'text-gray-500' : color}>check_box</Icon>
       {:else}
-        <Icon color={disabled ? 'text-gray-500' : 'text-gray-600'}>
+        <Icon c={disabled ? 'text-gray-500' : 'text-gray-600'}>
           check_box_outline_blank
         </Icon>
       {/if}

@@ -61,7 +61,7 @@
       class:ripple-primary={selectable}
       on:click={select}>
       {#if icon}
-        <Icon small color={selected ? 'text-primary-400' : 'text-gray-600'}>
+        <Icon small c={selected ? 'text-primary-400' : 'text-gray-600'}>
           {icon}
         </Icon>
       {/if}
@@ -74,7 +74,7 @@
           class:bg-gray-500={!selected}
           class:bg-primary-400={selected}
           on:click|stopPropagation={close}>
-          <Icon color="text-white" xs>clear</Icon>
+          <Icon c="text-white" xs>clear</Icon>
         </span>
       {/if}
     </button>

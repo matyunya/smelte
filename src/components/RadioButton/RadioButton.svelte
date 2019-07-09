@@ -27,11 +27,11 @@
     selected={selected === value} />
   <Ripple color={value && !disabled ? color : 'gray'}>
     {#if selected === value}
-      <Icon color="text-{disabled ? 'gray' : color}-500">
+      <Icon c="text-{disabled ? 'gray' : color}-500">
         radio_button_checked
       </Icon>
     {:else}
-      <Icon color={disabled ? 'text-gray-500' : 'text-gray-600'}>
+      <Icon c={disabled ? 'text-gray-500' : 'text-gray-600'}>
         radio_button_unchecked
       </Icon>
     {/if}

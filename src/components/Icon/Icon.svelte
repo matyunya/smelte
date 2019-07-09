@@ -9,8 +9,7 @@
 
 <i
   aria-hidden="true"
-  class="material-icons {color}
-  {c}"
+  class="material-icons {c}"
   class:text-base={small}
   class:text-xs={xs}>
   <slot />

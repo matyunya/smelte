@@ -73,7 +73,7 @@
   on:click
   on:click={() => (value = !value)}>
   {#if icon}
-    <Icon color={light ? `text-${color}-500` : 'white'} {small}>{icon}</Icon>
+    <Icon c={light ? txt() : 'white'} {small}>{icon}</Icon>
   {/if}
   <slot />
 </button>

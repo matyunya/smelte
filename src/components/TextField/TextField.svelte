@@ -96,7 +96,7 @@
 
     {#if append}
       <div class="absolute right-0 top-0 pb-2 pr-4 pt-4">
-        <Icon color={focused ? txt() : 'text-gray-700'}>
+        <Icon c={focused ? txt() : 'text-gray-700'}>
           {append}
         </Icon>
       </div>

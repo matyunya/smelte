@@ -1,5 +1,9 @@
 # Smelte changelog
 
+## 0.0.7
+* Improve data table styles, add sorting
+* Remove color prop from icon to use parent text color
+
 ## 0.0.6
 * Class builder for adding/removing classes dynamically
 * Rewrite buttons and text fields to use class builder
