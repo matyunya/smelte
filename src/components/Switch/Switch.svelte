@@ -24,7 +24,7 @@
       <div class="w-full h-full absolute" />
     </Ripple>
     <div
-      class="rounded-full p-2 w-5 h-5 absolute elevation-3 transition"
+      class="rounded-full p-2 w-5 h-5 absolute elevation-3 transition-fast"
       class:bg-white={!value}
       class:bg-primary-400={value}
       class:left-0={!value}

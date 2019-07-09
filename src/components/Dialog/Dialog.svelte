@@ -6,8 +6,11 @@
 
   export let c = "";
   export let value;
+  export let wrapperClasses = "items-center z-50 rounded bg-white p-4 elevation-4";
+  export let titleClasses = "text-lg font-bold pb-4";
+  export let actionsClasses = "flex w-full justify-end pt-4";
 
-  const transitionProps = { duration: 300, easing: quadIn, delay: 150 };
+  const transitionProps = { duration: 150, easing: quadIn, delay: 150 };
 </script>
 
 {#if value}
@@ -16,12 +19,12 @@
     <div class="h-screen w-full absolute flex items-center justify-center">
       <div
         transition:scale={transitionProps}
-        class="{c} items-center z-50 rounded bg-white p-4 elevation-4">
-        <div class="text-lg font-bold pb-4">
+        class="{c} {wrapperClasses}">
+        <div class={titleClasses}>
           <slot name="title" />
         </div>
         <slot />
-        <div class="flex w-full justify-end pt-4">
+        <div class={actionsClasses}>
           <slot name="actions" />
         </div>
       </div>

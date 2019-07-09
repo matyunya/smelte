@@ -1,5 +1,7 @@
 <script>
   export let progress = null;
+  export let color = "primary";
+  export let width = 3;
 </script>
 
 <style>
@@ -42,12 +44,12 @@
 
 <svg class="circular">
   <circle
-    class="path stroke-primary"
+    class="path stroke-{color}"
     cx="35"
     cy="35"
     r="20"
     fill="none"
-    stroke-width="3"
+    stroke-width={width}
     stroke-miterlimit="10"
     style="{progress > 0 ? `
         animation: none;

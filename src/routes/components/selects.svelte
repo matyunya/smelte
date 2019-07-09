@@ -27,7 +27,7 @@
   .
 </p>
 <caption>Selected: {value2 || 'nothing'}</caption>
-<Select bind:value={value2} {label} {items} />
+<Select color="cyan" bind:value={value2} {label} {items} />
 
 <p>Select may be outlined.</p>
 <Select bind:value={value2} outlined {label} {items} />

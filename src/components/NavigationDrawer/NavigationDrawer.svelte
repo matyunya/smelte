@@ -9,6 +9,9 @@
   export let showMobile = false;
   export let showDesktop = true;
   export let breakpoint = "";
+  export let asideClasses = "fixed h-full top-0 md:mt-16 w-auto drawer";
+  export let navClasses = `h-full bg-white absolute flex w-auto z-20 drawer
+     pointer-events-auto overflow-y-scroll`;
 
   function shouldShowWithScrim(mobile, persist, bp) {
     if (bp === "sm") {
@@ -51,7 +54,7 @@
 
 {#if show}
   <aside
-    class="fixed h-screen top-0 md:mt-16 w-auto drawer"
+    class={asideClasses}
     class:right-0={right}
     class:left-0={!right}
     class:pointer-events-none={!showWithScrim}
@@ -63,8 +66,7 @@
     {/if}
     <nav
       role="navigation"
-      class="h-screen bg-white absolute flex w-auto z-20 drawer
-      pointer-events-auto overflow-y-scroll"
+      class={navClasses}
       class:elevation-4={elevation}
       class:bordered={!elevation}
       transition:fly={transitionProps}>

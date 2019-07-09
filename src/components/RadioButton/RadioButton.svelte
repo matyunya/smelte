@@ -4,7 +4,7 @@
 
   export let selected = "";
   export let label = "";
-  export let color = "text-primary-500";
+  export let color = "primary";
   export let disabled = false;
   export let name = "";
   export let value = "";
@@ -25,9 +25,9 @@
     type="radio"
     role="radio"
     selected={selected === value} />
-  <Ripple color={value && !disabled ? 'primary' : 'gray'}>
+  <Ripple color={value && !disabled ? color : 'gray'}>
     {#if selected === value}
-      <Icon color={disabled ? 'text-gray-500' : color}>
+      <Icon color="text-{disabled ? 'gray' : color}-500">
         radio_button_checked
       </Icon>
     {:else}

@@ -121,6 +121,9 @@ module.exports = {
         },
         [".transition"]: {
           transition: ".2s ease-in"
+        },
+        [".transition-fast"]: {
+          transition: ".1s"
         }
       });
     },

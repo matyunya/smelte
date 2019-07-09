@@ -9,6 +9,7 @@
   export let value = "";
   export let text = "";
   export let label = "";
+  export let color = "primary";
   export let outlined = false;
   export let placeholder = "";
   export let hint = "";
@@ -27,7 +28,8 @@
     hint,
     error,
     append,
-    persistentHint
+    persistentHint,
+    color
   };
 
   const inProps = { y: 10, duration: 50, easing: quadIn };
@@ -50,32 +52,36 @@
 <svelte:window on:click={() => (showList = false)} />
 
 <div class="cursor-pointer relative pb-4">
-  <TextField
-    select
-    {autocomplete}
-    value={selectedLabel}
-    {...props}
-    on:click={e => {
-      e.stopPropagation();
-      showList = true;
-    }}
-    on:input={filterItems}
-    append={showList ? 'arrow_drop_up' : 'arrow_drop_down'} />
+  <slot name="select">
+    <TextField
+      select
+      {autocomplete}
+      value={selectedLabel}
+      {...props}
+      on:click={e => {
+        e.stopPropagation();
+        showList = true;
+      }}
+      on:input={filterItems}
+      append={showList ? 'arrow_drop_up' : 'arrow_drop_down'} />
+  </slot>
 
   {#if showList}
-    <div
-      class="list"
-      on:click={() => (showList = false)}
-      in:fly={inProps}
-      out:fly={outProps}
-      class:rounded-t-none={!outlined}>
-      <List
-        bind:value
-        select
-        items={filteredItems}
-        on:change={({ detail }) => {
-          dispatch('change', detail);
-        }} />
-    </div>
+    <slot name="options">
+      <div
+        class="list"
+        on:click={() => (showList = false)}
+        in:fly={inProps}
+        out:fly={outProps}
+        class:rounded-t-none={!outlined}>
+        <List
+          bind:value
+          select
+          items={filteredItems}
+          on:change={({ detail }) => {
+            dispatch('change', detail);
+          }} />
+      </div>
+    </slot>
   {/if}
 </div>

@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { fly } from "svelte/transition";
 
   import Indicator from "./Indicator.svelte";
   import ProgressLinear from "components/ProgressLinear";

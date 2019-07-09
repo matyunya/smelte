@@ -12,44 +12,31 @@
   export let navigation = false;
   export let to = "";
   export let selected = false;
+  export let basicClasses = "transition p-4 cursor-pointer text-gray-700 flex items-center z-10";
 
   const dispatch = createEventDispatcher();
 </script>
 
 <style>
-  .list-item {
-    transition: background-color 0.2s ease-out;
-  }
-
   .basic {
-    &:hover {
-      @apply bg-gray-300;
-      transition: background-color 0.2s ease-in;
-    }
-
     &.selected {
       @apply bg-gray-200;
-      transition: background-color 0.2s ease-in;
     }
   }
   .navigation {
     @apply mx-3 rounded text-sm;
-    &:hover {
-      @apply bg-local;
-    }
 
     &.selected {
       @apply bg-primary-50 text-primary-500;
-      transition: background-color 0.2s ease-in;
     }
   }
 </style>
 
 <li
-  class="list-item p-4 cursor-pointer text-gray-700 flex items-center z-10"
+  class={basicClasses}
   class:navigation
   class:selected
-  class:basic={!navigation}
+  class:hover:bg-gray-300={!navigation}
   class:ripple-white={navigation}
   class:ripple-gray={!navigation}
   class:py-2={dense}
