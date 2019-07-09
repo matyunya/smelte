@@ -31,8 +31,6 @@
 
     return sorted;
   }
-  
-
 </script>
 
 <style>
@@ -52,6 +50,14 @@
 
       & .asc {
         transform: rotate(180deg);
+      }
+
+      & .sort-wrapper {
+        @apply flex items-center justify-end;
+      }
+
+      &:first-child .sort-wrapper {
+        @apply justify-start;
       }
 
       & .sort {
@@ -87,7 +93,7 @@
             sortBy = column;
           }}
         >
-          <div class="flex items-center">
+          <div class="sort-wrapper">
             {#if column.sortable !== false}
               <span class="sort" class:asc={!asc && sortBy === column}>
                 <Icon small color="text-gray-400">arrow_downward</Icon>
