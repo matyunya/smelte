@@ -19,7 +19,7 @@
     persistent,
     showNav,
     showNavMobile,
-    breakpoint,
+    breakpoint
   } from "stores.js";
 
   const { preloading, page } = stores();
@@ -28,7 +28,6 @@
   const bp = breakpoint();
   $: path = $page.path;
 </script>
-
 
 {#each navMenu as link}
   <a href={link.to} class="hidden">{link.text}</a>
@@ -50,7 +49,11 @@
   <Spacer />
   <Tabs navigation items={topMenu} bind:selected={path} />
   <div class="md:hidden">
-    <Button icon="menu" small text on:click={() => showNavMobile.set(!$showNavMobile)} />
+    <Button
+      icon="menu"
+      small
+      text
+      on:click={() => showNavMobile.set(!$showNavMobile)} />
   </div>
   <a href="https://github.com/matyunya/smelte" class="px-4">
     <img src="/github.png" alt="Github Smelte" width="24" height="24" />
