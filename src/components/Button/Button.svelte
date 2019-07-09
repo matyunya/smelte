@@ -25,7 +25,7 @@
 
   const fab = text && icon;
   const basic = !outlined && !text && !fab;
-  const elevation = (basic || icon) && !disabled && !flat;
+  const elevation = (basic || icon) && !disabled && !flat && !text;
   
   let classes = "";
   let shade = 0;
@@ -57,6 +57,7 @@
         .add(`${ripple()} ${txt(lighter)} ${textClasses}`, text)
         .add(iconClasses, icon)
         .add(`${ripple()} ${fabClasses}`, fab)
+        .remove(`${txt(lighter)} ${ripple()}`, fab)
         .add(smallClasses, small)
         .add(disabledClasses, disabled)
         .get();
