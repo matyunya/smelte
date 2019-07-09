@@ -60,8 +60,6 @@ export default function extractor(content) {
 
   const fromClasses = content.match(/class:[A-Za-z0-9-_]+/g) || [];
 
-  console.log(flatten(classesPerComponent(usedColors)));
-
   return [
     ...(content.match(/[A-Za-z0-9-_:\/]+/g) || []),
     ...fromClasses.map(c => c.replace("class:", "")),

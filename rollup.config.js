@@ -61,6 +61,9 @@ export default {
         "process.browser": true,
         "process.env.NODE_ENV": JSON.stringify(mode)
       }),
+      json({
+        includes: "**./*.json",
+      }),
       string({
         include: "**/*.txt"
       }),
@@ -124,7 +127,9 @@ export default {
         "process.browser": false,
         "process.env.NODE_ENV": JSON.stringify(mode)
       }),
-      json(),
+      json({
+        includes: "**./*.json",
+      }),
       svelte({
         generate: "ssr",
         dev,

@@ -9,7 +9,11 @@
     @apply rounded elevation-3 p-1;
 
     & th, & td {
-      @apply px-6 py-4 font-normal text-sm text-right;
+      @apply px-3 py-4 font-normal text-right;
+    }
+
+    & td {
+      @apply text-sm;
     }
 
     & th:first-child, & td:first-child {
@@ -18,11 +22,10 @@
 
     & th {
       @apply text-gray-600 text-xs;
-      letter-spacing: 0.0892857143em;
     }
 
     & tr {
-      @apply border-gray-200 border-t border-b px-4;
+      @apply border-gray-200 border-t border-b px-3;
       &:hover {
         @apply bg-gray-50;
       }
@@ -30,13 +33,13 @@
   }
 </style>
 
-<table>
+<table class="p-1">
   <thead>
     {#each columns as column, i}
       <slot name="header">
         <th
           class="capitalize"
-        >{column.label}</th>
+        >{column.label || column.field}</th>
       </slot>
     {/each}
   </thead>
@@ -45,8 +48,12 @@
     <slot name="item">
       <tr>
         {#each columns as column, i}
-          <td>
-            {item[column.field]}  
+          <td class={column.class || ''}>
+            {#if column.value}
+              {@html column.value(item)}
+            {:else}
+              {item[column.field]}
+            {/if}
           </td>
         {/each}
       </tr>

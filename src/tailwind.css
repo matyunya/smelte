@@ -52,7 +52,6 @@ hr {
   letter-spacing: 0.15px;
 }
 
-p,
 .body-1 {
   @apply text-base;
   letter-spacing: 0.5px;
