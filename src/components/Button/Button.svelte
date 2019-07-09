@@ -2,7 +2,6 @@
   import Icon from "components/Icon";
   import utils, { ClassBuilder } from "utils/classes.js";
 
-  export let c = "";
   export let value = false;
   export let outlined = false;
   export let text = false;
@@ -21,10 +20,8 @@
   export let iconClasses = 'p-4 m-4 flex items-center';
   export let fabClasses = 'text-white px-4 hover:bg-transparent';
   export let smallClasses = 'p-2';
-  export let disabledClasses = `
-    bg-gray-300 text-gray-500 elevation-none pointer-events-none hover:bg-gray-300 cursor-default
-  `;
-  let elevationClasses = 'hover:elevation-5 elevation-3';
+  export let disabledClasses = 'bg-gray-300 text-gray-500 elevation-none pointer-events-none hover:bg-gray-300 cursor-default';
+  export let elevationClasses = 'hover:elevation-5 elevation-3';
 
   const fab = text && icon;
   const basic = !outlined && !text && !fab;
@@ -39,6 +36,8 @@
   }
   $: normal = 500 - shade;
   $: lighter = 400 - shade;
+  // normal - 500, 300, 900
+  // lighter - 400, 100, 800
 
   const {
     bg,

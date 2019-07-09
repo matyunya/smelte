@@ -10,6 +10,7 @@ import config from "sapper/config/rollup.js";
 import getPreprocessor from "svelte-preprocess";
 import postcss from "rollup-plugin-postcss";
 import includePaths from "rollup-plugin-includepaths";
+import extractor from "./src/utils/css-extractor.js";
 import path from "path";
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
@@ -21,9 +22,6 @@ const postcssPlugins = (purge = false) => {
     require("postcss-url")(),
     require("postcss-nesting")(),
     require("postcss-input-range")(),
-    require("postcss-custom-properties")({
-      importFrom: "./src/utils/cssVars.js"
-    }),
     require("autoprefixer")(),
     require("tailwindcss")("./tailwind.config.js"),
     purge &&
@@ -35,40 +33,13 @@ const postcssPlugins = (purge = false) => {
         content: ["./**/*.svelte"],
         extractors: [
           {
-            extractor: content => {
-              const fromClasses = content.match(/class:[A-Za-z0-9-_]+/g) || [];
-
-              return [
-                ...(content.match(/[A-Za-z0-9-_:\/]+/g) || []),
-                ...fromClasses.map(c => c.replace("class:", ""))
-              ];
-            },
+            extractor,
             extensions: ["svelte"]
           }
         ],
-        whitelist: [
-          "html",
-          "body",
-          "ripple-gray",
-          "ripple-primary",
-          "ripple-white",
-          "cursor-pointer",
-          "navigation:hover",
-          "navigation.selected",
-          "outline-none",
-          "text-xs",
-          "transition"
-        ],
-        whitelistPatterns: [
-          /bg-gray/,
-          /text-gray/,
-          /yellow-a200/,
-          /language/,
-          /namespace/,
-          /token/,
-          // These are from button examples, infer required classes.
-          /(bg|ripple|text|border)-(red|teal|yellow|lime|primary)-(400|500|200|50|900|700)$/
-        ]
+        whitelist: ["html", "body", "stroke-primary"],
+        // for Prismjs code highlighting
+        whitelistPatterns: [/language/, /namespace/, /token/]
       })
   ].filter(Boolean);
 };
@@ -122,7 +93,8 @@ export default {
             [
               "@babel/preset-env",
               {
-                targets: "> 0.25%, ie >= 11, not dead"
+                targets: "> 0.25%"
+                // , ie >= 11, not dead
               }
             ]
           ],

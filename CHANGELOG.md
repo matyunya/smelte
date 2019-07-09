@@ -7,6 +7,7 @@
 * Disabled slider styling
 * Color customization and slots for selects and radios
 * Improve animations
+* Automatic purge css preprocessor
 
 ## 0.0.5
 * Basic data tables
