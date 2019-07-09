@@ -38,11 +38,11 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [x] Snackbar
 - [x] Dialog
 - [x] Card
+- [x] Slider
+- [x] Proper customization via class props
 - [ ] Autocomplete (sort of there but buggy)
-- [ ] Slider
 - [ ] Tooltip
 - [ ] Revise events (on:change, on:focus, on:input...)
-- [ ] Proper customization
 
 ### Features
 - [x] Default typography per Material design spec
@@ -51,12 +51,12 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [x] Image lazy loading
 - [x] Now SSR deployment
 - [x] Color palette generator
-- [ ] Theming
+- [x] Improve Purge CSS (right now dynamic classes need to be whitelisted manually)
+- [x] Theming
 - [ ] Dark mode
 - [ ] Svelte template (without Sapper)
 - [ ] Other icons
 - [ ] Document API
-- [ ] Improve Purge CSS (right now dynamic classes need to be whitelisted manually)
 - [ ] JS ripple animation
 - [ ] IE 11 support
 - [ ] Image processing (minification and such, similar to [this](https://www.gatsbyjs.org/packages/gatsby-image/))
