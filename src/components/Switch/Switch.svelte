@@ -3,7 +3,7 @@
 
   export let value = false;
   export let label = "";
-  export let color = "text-primary-500";
+  export let color = "primary";
   export let disabled = false;
 
   function check() {
@@ -20,7 +20,7 @@
     items-center justify-center"
     class:bg-gray-300={!value}
     class:bg-primary-200={value}>
-    <Ripple color={value && !disabled ? 'primary' : 'gray'}>
+    <Ripple color={value && !disabled ? color : 'gray'}>
       <div class="w-full h-full absolute" />
     </Ripple>
     <div

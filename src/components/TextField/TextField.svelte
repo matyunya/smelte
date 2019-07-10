@@ -58,7 +58,7 @@
       .add(inputBaseClasses)
       .remove('pt-6 pb-2', outlined)
       .add('border rounded bg-transparent py-4 transition', outlined)
-      .add('border-red-500', error)
+      .add('border-error-500', error)
       .add(border(), focused && !error)
       .add('border-gray-600', !error && !focused)
       .add('bg-gray-100', !outlined)
@@ -89,7 +89,7 @@
   class="mt-2 relative pb-6 text-gray-600"
   class:select={select || autocomplete}
 >
-  <div class="relative" class:text-red-500={error}>
+  <div class="relative" class:text-error-500={error}>
     <label class={labelClasses}>
       {label}
     </label>
@@ -122,7 +122,7 @@
         aria-label={label}
         class={inputClasses}
         class:bg-gray-300={focused && !outlined}
-        class:caret-red-500={error}
+        class:caret-error-500={error}
         on:change
         on:input
         on:click
@@ -151,7 +151,7 @@
       <div
         class="mx-auto w-0 {focused ? bg() : ""}"
         class:w-full={focused || error}
-        class:bg-red-500={error}
+        class:bg-error-500={error}
         style="height: 2px; transition: width .2s ease" />
     </div>
   </div>
@@ -160,7 +160,7 @@
     <div
       class="text-xs py-1 pl-4 absolute bottom-0 left-0"
       class:text-gray-600={hint}
-      class:text-red-500={error}
+      class:text-error-500={error}
       transition:fly={{ y: -10, duration: 100, easing: quadOut }}>
       {showHint}
     </div>

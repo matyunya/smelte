@@ -20,29 +20,35 @@
 <div class="py-2">
   <Button dark>Button</Button>
 </div>
+
 <h6 class="mb-3 mt-6">Block</h6>
 <div class="py-2">
-  <Button color="red" block>Button</Button>
+  <Button color="alert" dark block>Button</Button>
 </div>
+
 <h6 class="mb-3 mt-6">Outlined</h6>
 <div class="py-2">
-  <Button color="teal" block outlined>Button</Button>
+  <Button color="secondary" light block outlined>Button</Button>
 </div>
+
 <h6 class="mb-3 mt-6">Text</h6>
 <div class="py-2">
   <Button text>Button</Button>
 </div>
+
 <h6 class="mb-3 mt-6">Disabled</h6>
 <div class="py-2">
   <Button block disabled>Button</Button>
 </div>
+
 <h6 class="mb-3 mt-6">Fab</h6>
 <div class="py-2">
-  <Button color="yellow" icon="change_history" />
+  <Button color="alert" icon="change_history" />
 </div>
+
 <h6 class="mb-3 mt-6">Fab flat</h6>
 <div class="py-2">
-  <Button color="lime" icon="change_history" text light flat />
+  <Button color="error" icon="change_history" text light flat />
 </div>
 
 <Code code={buttons} />

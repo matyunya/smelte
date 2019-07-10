@@ -28,7 +28,7 @@
   <Tabs
     selected="1"
     c="bg-black elevation-10 mt-6 text-white rounded-t-lg"
-    color="yellow-a200"
+    color="secondary"
     let:selected
     {loading}
     items={[{ id: '1', text: 'Cats', icon: 'alarm_on' }, { id: '2', text: 'Kittens', icon: 'bug_report' }, { id: '3', text: 'Kitties', icon: 'eject' }]}>

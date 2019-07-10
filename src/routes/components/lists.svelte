@@ -69,10 +69,10 @@
 <List bind:value={selected} items={menu} dense navigation>
   <li slot="item" let:item>
     <div
-      class="cursor-pointer ripple-green p-4 border-green-50 border my-2
+      class="cursor-pointer ripple-secondary p-4 border-secondary-50 border my-2
       border-solid"
       on:click={() => (selected = item.text)}
-      class:bg-green-50={selected === item.text}>
+      class:bg-secondary-50={selected === item.text}>
       {selected === item.text ? '👌' : '🙅‍'} {item.text}
     </div>
   </li>

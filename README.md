@@ -14,13 +14,6 @@ yarn && yarn dev
 (or npm install && npm run dev)
 ```
 
-### Deployment to now
-Smelte comes preconfigured to work with [now.sh](https://now.sh) SSR build deployment.
-Configuration is located at `./now.json`.
-```
-$ yarn now
-```
-
 ### Issues
 
 Smelte is still in very early stage, so please feel free to submit any feedback.
@@ -53,11 +46,11 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [x] Color palette generator
 - [x] Improve Purge CSS (right now dynamic classes need to be whitelisted manually)
 - [x] Theming
+- [x] Image processing (done [here](https://github.com/matyunya/svelte-image))
 - [ ] Dark mode
 - [ ] Svelte template (without Sapper)
 - [ ] Other icons
 - [ ] Document API
 - [ ] JS ripple animation
 - [ ] IE 11 support
-- [ ] Image processing (minification and such, similar to [this](https://www.gatsbyjs.org/packages/gatsby-image/))
 - [ ] Scaffoldable CLI version
