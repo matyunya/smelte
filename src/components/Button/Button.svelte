@@ -15,6 +15,10 @@
   export let flat = false;
   export let color = "primary";
 
+  export let removeClasses = "";
+  export let addClasses = "";
+
+  export let commonClasses = 'py-2 px-4 uppercase text-sm font-medium';
   export let basicClasses = 'text-white transition ripple-white';
   export let outlinedClasses = 'bg-transparent border border-solid';
   export let textClasses = 'bg-transparent border-none px-3 hover:bg-transparent';
@@ -52,15 +56,19 @@
   $: {
       classes = cb
         .flush()
+        .add(commonClasses)
         .add(`${bg(normal)} hover:${bg(lighter)} ${basicClasses}`, basic)
         .add(elevationClasses, elevation)
         .add(`${border(lighter)} ${txt(normal)} ${ripple()} hover:${bg(50)} ${outlinedClasses}`, outlined)
         .add(`${ripple()} ${txt(lighter)} ${textClasses}`, text)
         .add(iconClasses, icon)
+        .remove('py-2', icon)
         .add(`${ripple()} ${fabClasses}`, fab)
         .remove(`${txt(lighter)} ${ripple()}`, fab)
         .add(smallClasses, small)
         .add(disabledClasses, disabled)
+        .remove(removeClasses)
+        .add(addClasses)
         .get();
   }
 </script>
@@ -70,7 +78,7 @@
   class:rounded-full={icon}
   class:w-full={block}
   class:rounded={basic || outlined || text}
-  class="{c} {classes} button"
+  class="{classes} button"
   class:button={!icon}
   on:click
   on:click={() => (value = !value)}>

@@ -3942,10 +3942,10 @@ svelte-preprocess@^2.9.0:
     postcss-load-config "^2.0.0"
     strip-indent "^2.0.0"
 
-svelte-waypoint@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/svelte-waypoint/-/svelte-waypoint-0.1.1.tgz#8540d5f1a8a46e583d7ae2313ed4a9c11dafff3a"
-  integrity sha512-oDbeyNunfg141/00JlxeR0I6BHKNIem2Wg9uKeo1S153EOmn8fGP6y4OX4sqSxIIdxlgwsy90U/vAIc1UIfCYA==
+svelte-waypoint@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/svelte-waypoint/-/svelte-waypoint-0.1.2.tgz#2b371231fabc7fbe70e271d96fe4b9da5b8eecb3"
+  integrity sha512-ttmToaOdshUqfH4EOwL8xkmPPP13sEh6j5R6yCo08aR5DrHTs/3bi/EwoioyBlC3O72+zevSsjfj1VPpkVZntA==
 
 svelte@^3.6.5:
   version "3.6.5"

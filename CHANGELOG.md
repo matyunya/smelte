@@ -3,6 +3,8 @@
 ## 0.0.7
 * Improve data table styles, add sorting
 * Remove color prop from icon to use parent text color
+* Fix navbars scroll behavior
+* Add add/remove classes prop to buttons
 
 ## 0.0.6
 * Class builder for adding/removing classes dynamically

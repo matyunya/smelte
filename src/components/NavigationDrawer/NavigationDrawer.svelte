@@ -9,7 +9,7 @@
   export let showMobile = false;
   export let showDesktop = true;
   export let breakpoint = "";
-  export let asideClasses = "fixed h-full top-0 md:mt-16 w-auto drawer";
+  export let asideClasses = "aside fixed top-0 md:mt-16 w-auto drawer";
   export let navClasses = `h-full bg-white absolute flex w-auto z-20 drawer
      pointer-events-auto overflow-y-scroll`;
 
@@ -44,6 +44,9 @@
 </script>
 
 <style>
+  .aside {
+    height: calc(100% - 4rem);
+  }
   .drawer {
     min-width: 216px;
   }
