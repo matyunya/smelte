@@ -1,5 +1,5 @@
 # Smelte
-[Demo](https://smelte.matyunya.now.sh)
+[Demo](https://smelte.netlify.com/)
 
 Smelte is a UI framework built on top of Svelte and Tailwind CSS using Material Design spec (hence the name).
 It comes with many components and utility functions making it easy to build beautiful responsive layouts while keeping
