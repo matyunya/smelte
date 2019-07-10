@@ -1,5 +1,10 @@
 # Smelte changelog
 
+## 0.0.8
+* Make svelte usable without sapper
+* Create svelte template without sapper
+* Color stying fixes
+
 ## 0.0.7
 * Improve data table styles, add sorting
 * Remove color prop from icon to use parent text color

@@ -6,12 +6,18 @@ It comes with many components and utility functions making it easy to build beau
 bundle size and performance at check all thanks to Svelte.
 
 ### Installation
-Clone the project, install the dependencies and write some pretty code!
+Clone the project's sapper template, install the dependencies and write some pretty code!
 ```
 npx degit matyunya/smelte-template my-svelte-project
 cd my-svelte-project
 yarn && yarn dev
 (or npm install && npm run dev)
+```
+
+If you don't want to use sapper you can use raw template:
+
+```
+npx degit matyunya/smelte-template#no-sapper my-svelte-project
 ```
 
 ### Issues
@@ -47,8 +53,8 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [x] Improve Purge CSS (right now dynamic classes need to be whitelisted manually)
 - [x] Theming
 - [x] Image processing (done [here](https://github.com/matyunya/svelte-image))
+- [x] Svelte template (without Sapper)
 - [ ] Dark mode
-- [ ] Svelte template (without Sapper)
 - [ ] Other icons
 - [ ] Document API
 - [ ] JS ripple animation
