@@ -19,7 +19,7 @@ module.exports = {
     `text-${color}-300`,
     `bg-${color}-400`,
     `bg-${color}-300`,
-    `border-${color}-300`
+    `border-${color}-200`
   ],
   dark: color => [
     `text-${color}-900`,

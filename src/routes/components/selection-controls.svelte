@@ -13,16 +13,16 @@
 
 <h5 class="pb-8 pt-10" id="radio-buttons">Radio buttons</h5>
 
-<RadioButton.Group
+<RadioButton
   name="test"
   items={[{ value: 1, label: 'One' }, { value: 2, label: 'Two' }]} />
 
-<RadioButton.Group
+<RadioButton
   name="Colored test"
   color="blue"
   items={[{ value: 1, label: 'One' }, { value: 2, label: 'Two' }]} />
 
-<RadioButton.Group
+<RadioButton
   name="test-disabled"
   disabled
   items={[{ value: 1, label: 'One' }, { value: 2, label: 'Two' }]} />

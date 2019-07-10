@@ -15,13 +15,21 @@ function getProp(node, attr) {
   return (node.attributes.find(a => a.name === attr) || {}).value;
 }
 
+function getComponent(name) {
+  try {
+    return require(path.resolve("./src/components", name, "variants.js"));
+  } catch (e) {
+    return {
+      all: color => [`text-${color}-500`]
+    };
+  }
+}
+
 const defs = {};
 
 function classesPerComponent(colors) {
   return Object.keys(colors).reduce((acc, component) => {
-    const def =
-      defs[component] ||
-      require(path.resolve("./src/components", component, "variants.js"));
+    const def = defs[component] || getComponent(component);
 
     defs[component] = def;
 

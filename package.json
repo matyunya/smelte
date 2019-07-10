@@ -26,7 +26,7 @@
     "express": "^4.17.1",
     "postcss-nesting": "^7.0.0",
     "sirv": "^0.4.0",
-    "svelte": "^3.6.5",
+    "svelte": "^3.6.7",
     "svelte-waypoint": "^0.1.2",
     "tailwindcss": "^1.0.1",
     "tailwindcss-elevation": "^0.3.0",
