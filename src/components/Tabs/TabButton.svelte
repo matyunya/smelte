@@ -1,5 +1,5 @@
 <script>
-  import Icon from "components/Icon";
+  import Icon from "../Icon";
 
   export let icon = "";
   export let id = "";

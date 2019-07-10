@@ -1,6 +1,6 @@
 <script>
-  import Icon from "components/Icon";
-  import utils, { ClassBuilder } from "utils/classes.js";
+  import Icon from "../Icon";
+  import utils, { ClassBuilder } from "../../utils/classes.js";
 
   export let c = "";
   export let value = false;

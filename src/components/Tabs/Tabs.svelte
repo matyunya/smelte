@@ -3,7 +3,7 @@
   import { fly } from "svelte/transition";
 
   import Indicator from "./Indicator.svelte";
-  import ProgressLinear from "components/ProgressLinear";
+  import ProgressLinear from "../ProgressLinear";
   import Tab from "./TabButton.svelte";
 
   export let selected = null;

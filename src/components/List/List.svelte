@@ -1,5 +1,5 @@
 <script>
-  import ListItem from "components/List/ListItem.svelte";
+  import ListItem from "./ListItem.svelte";
 
   export let items = [];
   export let item = {};

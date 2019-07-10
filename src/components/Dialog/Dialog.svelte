@@ -2,7 +2,7 @@
   import { scale } from "svelte/transition";
   import { onMount } from "svelte";
   import { quadOut, quadIn } from "svelte/easing";
-  import { Scrim } from "components/Util";
+  import { Scrim } from "../Util";
 
   export let c = "";
   export let value;

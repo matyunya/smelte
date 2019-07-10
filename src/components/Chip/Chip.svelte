@@ -2,7 +2,7 @@
   import { createEventDispatcher } from "svelte";
   import { scale } from "svelte/transition";
 
-  import Icon from "components/Icon";
+  import Icon from "../Icon";
 
   export let c = '';
   export let removable = false;

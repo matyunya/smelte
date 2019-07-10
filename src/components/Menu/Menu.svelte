@@ -2,8 +2,8 @@
   import { createEventDispatcher } from "svelte";
   import { fly } from "svelte/transition";
   import { quadOut, quadIn } from "svelte/easing";
-  import List from "components/List";
-  import TextField from "components/TextField";
+  import List from "../List";
+  import TextField from "../TextField";
 
   export let items = [];
   export let open = false;

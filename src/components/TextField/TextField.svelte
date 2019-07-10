@@ -1,9 +1,9 @@
 <script>
   import { fly } from "svelte/transition";
   import { quadOut } from "svelte/easing";
-  import utils, { ClassBuilder } from "utils/classes.js";
+  import utils, { ClassBuilder } from "../../utils/classes.js";
 
-  import Icon from "components/Icon";
+  import Icon from "../Icon";
   export let c = "";
   export let outlined = false;
   export let value = null;
