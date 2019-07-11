@@ -6,6 +6,7 @@
   import TextField from "../TextField";
 
   export let items = [];
+  export let c = "";
   export let value = "";
   export let text = "";
   export let label = "";
@@ -17,6 +18,14 @@
   export let append = "";
   export let persistentHint = false;
   export let autocomplete = false;
+  export let noUnderline = false;
+  export let wrapperClasses = "cursor-pointer relative pb-4";
+  export let wrapperBaseClasses = i => i;
+  export let appendBaseClasses = i => i;
+
+  export let add = "";
+  export let remove = "";
+  export let replace = "";
 
   let showList = false;
   let filteredItems = items;
@@ -29,7 +38,13 @@
     error,
     append,
     persistentHint,
-    color
+    color,
+    add,
+    remove,
+    replace,
+    noUnderline,
+    wrapperBaseClasses,
+    appendBaseClasses,
   };
 
   $: itemsProcessed = items.map(i => typeof i !== 'object'
@@ -55,7 +70,7 @@
 
 <svelte:window on:click={() => (showList = false)} />
 
-<div class="cursor-pointer relative pb-4">
+<div class="{wrapperClasses} {c}">
   <slot name="select">
     <TextField
       select
@@ -68,7 +83,9 @@
       }}
       on:click
       on:input={filterItems}
-      append={showList ? 'arrow_drop_up' : 'arrow_drop_down'} />
+      append="arrow_drop_down"
+      appendReverse={showList}
+    />
   </slot>
 
   {#if showList}

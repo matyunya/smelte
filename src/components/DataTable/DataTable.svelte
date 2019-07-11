@@ -1,12 +1,10 @@
 <script>
+  import { createEventDispatcher } from "svelte";
   import Icon from "../Icon";
   import Button from "../Button";
   import Select from "../Select";
   import { Spacer } from "../Util";
 
-  import { createEventDispatcher } from "svelte";
-
-  // todo dynamic import if sort is set
   import defaultSort from "./sort.js";
 
   export let data = [];
@@ -16,23 +14,23 @@
   export let sort = defaultSort;
   export let perPage = 10;
   export let perPageOptions = [10, 20, 50];
+  export let asc = false;
+  export let wrapperClasses = "rounded elevation-3";
   export let paginatorProps = {
     color: "gray",
     text: true,
     flat: true,
     dark: true,
-    replace: {
-      'm-4': 'm-2',
-      'px-*': null,
-      'p-*': null,
-    },
-    add: 'ripple-gray text-gray-700',
+    remove: 'px-4 px-3',
+    iconClasses: (c) => c.replace('p-4', ''),
+    disabledClasses: (c) => c
+      .replace('text-gray-500', 'text-gray-200')
+      .replace('bg-gray-300', 'bg-transparent')
+      .replace('text-gray-700', ''),
+    add: 'ripple-gray',
   };
 
-  export let wrapperClasses = "rounded elevation-3";
-  let paginationNode = "";
-
-  export let asc = false;
+  let table = "";
   let sortBy = null;
 
   $: {
@@ -41,6 +39,7 @@
   }
   $: offset = (page * perPage) - perPage;
   $: sorted = sort(data, sortBy, asc).slice(offset, perPage + offset);
+  $: pagesCount = Math.ceil(data.length / perPage);
 
   const dispatch = createEventDispatcher();
 </script>
@@ -94,7 +93,7 @@
 </style>
 
 <div class={wrapperClasses}>
-  <table class="p-3">
+  <table class="p-3" bind:this={table}>
     <thead class="items-center">
       {#each columns as column, i}
         <slot name="header">
@@ -121,50 +120,57 @@
       {/each}
     </thead>
     <tbody>
-    {#each sorted as item}
-      <slot name="item">
-        <tr>
-          {#each columns as column, i}
-            <td class={column.class || ''}>
-              {#if column.value}
-                {@html column.value(item)}
-              {:else}
-                {item[column.field]}
-              {/if}
-            </td>
-          {/each}
-        </tr>
-      </slot>
-    {/each}
+      {#each sorted as item, j}
+        <slot name="item">
+          <tr>
+            {#each columns as column, i}
+              <td class={column.class || ''}>
+                {#if column.value}
+                  {@html column.value(item)}
+                {:else}
+                  {item[column.field]}
+                {/if}
+              </td>
+            {/each}
+          </tr>
+        </slot>
+      {/each}
     </tbody>
   </table>
 
   <slot name="pagination">
     <div
       id="pagination"
-      bind:this={paginationNode}
-      class="flex justify-between items-center text-gray-500 text-sm">
+      class="flex justify-between items-center text-gray-700 text-sm">
       <Spacer />
-      <div>
+      <div class="mr-1 py-1">
       Rows per page:
       </div>
-      <Select bind:value={perPage} items={perPageOptions} on:click={() => console.log('d')} />
+      <Select
+        c="w-16"
+        remove="bg-gray-300 bg-gray-100"
+        replace={{ 'pt-6': 'pt-4' }}
+        wrapperBaseClasses={(c) => c.replace('select', 'h-8')}
+        appendBaseClasses={(c) => c.replace('pt-4', 'pt-3').replace('pr-4', 'pr-2')}
+        noUnderline
+        bind:value={perPage} items={perPageOptions} />
       <Spacer />
-      <div>{offset}-{offset + perPage} of {data.length}</div>
+      <div>{offset}-{offset + perPage > data.length ? data.length : offset + perPage} of {data.length}</div>
       <Button
         disabled={(page - 1) < 1}
         icon="keyboard_arrow_left"
         {...paginatorProps}
         on:click={() => {
           page -= 1;
-          paginationNode.scrollTo({top: -500});
+          table.scrollIntoView({ behaviour: 'smooth' });
         }} />
       <Button
+        disabled={page === pagesCount}
         icon="keyboard_arrow_right"
         {...paginatorProps}
         on:click={() => {
           page += 1;
-          paginationNode.scrollTo({top: -500});
+          table.scrollIntoView({ behaviour: 'smooth' });
         }} />
     </div>
   </slot>

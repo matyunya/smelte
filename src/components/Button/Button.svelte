@@ -17,19 +17,29 @@
 
   export let remove = "";
   export let add = "";
+  export let replace = {};
 
-  // array of [{from: String|Regex, to: string}]
-  export let replace = [];
+  let commonDefault = 'py-2 px-4 uppercase text-sm font-medium';
+  let basicDefault = 'text-white transition ripple-white';
+  let outlinedDefault = 'bg-transparent border border-solid';
+  let textDefault = 'bg-transparent border-none px-3 hover:bg-transparent';
+  let iconDefault = 'p-4 m-4 flex items-center';
+  let fabDefault = 'px-4 hover:bg-transparent';
+  let smallDefault = 'p-1 h-4 w-4';
+  let disabledDefault = 'bg-gray-300 text-gray-500 elevation-none pointer-events-none hover:bg-gray-300 cursor-default';
+  let elevationDefault = 'hover:elevation-5 elevation-3';
 
-  export let commonClasses = 'py-2 px-4 uppercase text-sm font-medium';
-  export let basicClasses = 'text-white transition ripple-white';
-  export let outlinedClasses = 'bg-transparent border border-solid';
-  export let textClasses = 'bg-transparent border-none px-3 hover:bg-transparent';
-  export let iconClasses = 'p-4 m-4 flex items-center';
-  export let fabClasses = 'text-white px-4 hover:bg-transparent';
-  export let smallClasses = 'p-1 h-4 w-4';
-  export let disabledClasses = 'bg-gray-300 text-gray-500 elevation-none pointer-events-none hover:bg-gray-300 cursor-default';
-  export let elevationClasses = 'hover:elevation-5 elevation-3';
+  const identity = i => i;
+
+  export let commonClasses = identity;
+  export let basicClasses = identity;
+  export let outlinedClasses = identity;
+  export let textClasses = identity;
+  export let iconClasses = identity;
+  export let fabClasses = identity;
+  export let smallClasses = identity;
+  export let disabledClasses = identity;
+  export let elevationClasses = identity;
 
   const fab = text && icon;
   const basic = !outlined && !text && !fab;
@@ -59,17 +69,19 @@
   $: {
       classes = cb
         .flush()
-        .add(commonClasses)
-        .add(`${bg(normal)} hover:${bg(lighter)} ${basicClasses}`, basic)
-        .add(elevationClasses, elevation)
-        .add(`${border(lighter)} ${txt(normal)} ${ripple()} hover:${bg(50)} ${outlinedClasses}`, outlined)
-        .add(`${ripple()} ${txt(lighter)} ${textClasses}`, text)
-        .add(iconClasses, icon)
+        .add(commonClasses(commonDefault))
+        .add(`${bg(normal)} hover:${bg(lighter)} ${basicClasses(basicDefault)}`, basic)
+        .add(elevationClasses(elevationDefault), elevation)
+        .add(
+          `${border(lighter)} ${txt(normal)} ${ripple()} hover:${bg(50)} ${outlinedClasses(outlinedDefault)}`,
+          outlined)
+        .add(`${ripple()} ${txt(lighter)} ${textClasses(textDefault)}`, text)
+        .add(iconClasses(iconDefault), icon)
         .remove('py-2', icon)
-        .add(`${ripple()} ${fabClasses}`, fab)
-        .remove(`${txt(lighter)} ${ripple()}`, fab)
-        .add(disabledClasses, disabled)
-        .add(smallClasses, small)
+        .add(`${ripple()} ${fabClasses(fabDefault)}`, fab)
+        .remove(`${txt(lighter)}`, fab)
+        .add(disabledClasses(disabledDefault), disabled)
+        .add(smallClasses(smallDefault), small)
         .remove(remove)
         .replace(replace)
         .add(add)
@@ -85,6 +97,7 @@
   class="{classes} button"
   class:button={!icon}
   on:click
+  {disabled}
   on:click={() => (value = !value)}>
   {#if icon}
     <Icon c={light ? txt() : 'white'} {small}>{icon}</Icon>
