@@ -3,11 +3,25 @@
   import Code from "components/Code";
   import table from "examples/table.txt";
 
-  import data from "./data.json";
+  let data = [];
+  let loading = true;
+
+  async function getData() {
+    loading = true;
+    const res = await fetch("data.json");
+    const body = await res.json();
+
+    data = body._embedded.episodes;
+
+    setTimeout(() => loading = false, 500);
+  }
+
+  getData();
 </script>
 
 <DataTable
-  data={data._embedded.episodes}
+  {data}
+  {loading}
   columns={[
     { label: "ID", field: "id", class: "w-10", },
     {

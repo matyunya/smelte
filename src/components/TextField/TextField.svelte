@@ -4,6 +4,7 @@
   import utils, { ClassBuilder } from "../../utils/classes.js";
 
   import Icon from "../Icon";
+
   export let c = "";
   export let outlined = false;
   export let value = null;
@@ -24,7 +25,7 @@
 
   let labelDefault = `pt-4 absolute top-0 label-transition block pb-2 px-4 pointer-events-none cursor-text`;
   let inputDefault = `transition pb-2 pt-6 px-4 rounded-t text-black w-full`;
-  let wrapperDefault = "mt-2 relative pb-6 text-gray-600 " + (select || autocomplete) ? "select" : "";
+  let wrapperDefault = "mt-2 relative pb-6 text-gray-600" + ((select || autocomplete) ? " select" : "");
   let appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 pointer-events-none";
 
   export let add = "";
@@ -51,6 +52,7 @@
   let focused = false;
   let labelClasses = "";
   let inputClasses = "";
+  let wrapperClasses = "";
 
   function toggleFocused() {
     focused = !focused;
@@ -83,6 +85,10 @@
       .remove(remove)
       .replace(replace)
       .get();
+    
+    wrapperClasses = (new ClassBuilder())
+      .add(wrapperBaseClasses(wrapperDefault))
+      .get();
   }
 </script>
 
@@ -106,7 +112,7 @@
 <svelte:window on:click={() => (select ? (focused = false) : null)} />
 
 <div
-  class={wrapperBaseClasses(wrapperDefault)}
+  class={wrapperClasses}
 >
   <div class="relative" class:text-error-500={error}>
     <label class={labelClasses}>

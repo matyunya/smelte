@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { fly } from "svelte/transition";
+  import { slide } from "svelte/transition";
 
   export let app = false;
   export let progress = 0;
@@ -15,8 +15,6 @@
       initialized = true;
     }, 200);
   });
-
-  const inProps = { y: 10, duration: 50 };
 
   color = color.includes("-") ? color.split("-")[0] : color;
 </script>
@@ -57,7 +55,7 @@
   class:z-50={app}
   class="top-0 left-0 w-full h-1 bg-{color}-100 overflow-hidden relative"
   class:hidden={app && !initialized}
-  in:fly={inProps}>
+  transition:slide={{ duration: 300 }}>
   <div
     class="bg-{color}-500 h-1 absolute"
     class:inc={!progress}

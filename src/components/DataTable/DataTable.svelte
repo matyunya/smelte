@@ -1,9 +1,11 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { slide } from "svelte/transition";
   import Icon from "../Icon";
   import Button from "../Button";
   import Select from "../Select";
   import { Spacer } from "../Util";
+  import ProgressLinear from "../ProgressLinear";
 
   import defaultSort from "./sort.js";
 
@@ -15,6 +17,8 @@
   export let perPage = 10;
   export let perPageOptions = [10, 20, 50];
   export let asc = false;
+  export let loading = false;
+  export let hideProgress = false;
   export let wrapperClasses = "rounded elevation-3";
   export let paginatorProps = {
     color: "gray",
@@ -119,6 +123,11 @@
         </slot>
       {/each}
     </thead>
+    {#if loading && !hideProgress}
+      <div class="absolute w-full" transition:slide>
+        <ProgressLinear />
+      </div>
+    {/if}
     <tbody>
       {#each sorted as item, j}
         <slot name="item">
@@ -150,7 +159,7 @@
         c="w-16"
         remove="bg-gray-300 bg-gray-100"
         replace={{ 'pt-6': 'pt-4' }}
-        wrapperBaseClasses={(c) => c.replace('select', 'h-8')}
+        wrapperBaseClasses={(c) => c.replace('select', 'h-8').replace('mt-2', '')}
         appendBaseClasses={(c) => c.replace('pt-4', 'pt-3').replace('pr-4', 'pr-2')}
         noUnderline
         bind:value={perPage} items={perPageOptions} />
