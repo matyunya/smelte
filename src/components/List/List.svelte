@@ -15,7 +15,7 @@
     navigation
   };
 
-  const id = item => item.id || item.value || item.to || item.text;
+  const id = item => item.id || item.value || item.to || item.text || item;
 </script>
 
 <div class={c}>
@@ -38,7 +38,7 @@
             selected={value === id(item)}
             {...props}
             on:change>
-            {item.text}
+            {item.text || item.value || item}
           </ListItem>
         </slot>
       {/if}

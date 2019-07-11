@@ -15,8 +15,11 @@
   export let flat = false;
   export let color = "primary";
 
-  export let removeClasses = "";
-  export let addClasses = "";
+  export let remove = "";
+  export let add = "";
+
+  // array of [{from: String|Regex, to: string}]
+  export let replace = [];
 
   export let commonClasses = 'py-2 px-4 uppercase text-sm font-medium';
   export let basicClasses = 'text-white transition ripple-white';
@@ -24,7 +27,7 @@
   export let textClasses = 'bg-transparent border-none px-3 hover:bg-transparent';
   export let iconClasses = 'p-4 m-4 flex items-center';
   export let fabClasses = 'text-white px-4 hover:bg-transparent';
-  export let smallClasses = 'p-2';
+  export let smallClasses = 'p-1 h-4 w-4';
   export let disabledClasses = 'bg-gray-300 text-gray-500 elevation-none pointer-events-none hover:bg-gray-300 cursor-default';
   export let elevationClasses = 'hover:elevation-5 elevation-3';
 
@@ -65,10 +68,11 @@
         .remove('py-2', icon)
         .add(`${ripple()} ${fabClasses}`, fab)
         .remove(`${txt(lighter)} ${ripple()}`, fab)
-        .add(smallClasses, small)
         .add(disabledClasses, disabled)
-        .remove(removeClasses)
-        .add(addClasses)
+        .add(smallClasses, small)
+        .remove(remove)
+        .replace(replace)
+        .add(add)
         .get();
   }
 </script>

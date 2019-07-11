@@ -32,18 +32,22 @@
     color
   };
 
+  $: itemsProcessed = items.map(i => typeof i !== 'object'
+     ? ({ value: i, text: i })
+     : i);
+
   const inProps = { y: 10, duration: 50, easing: quadIn };
   const outProps = { y: -10, duration: 100, easing: quadOut, delay: 50 };
   const dispatch = createEventDispatcher();
 
   function getLabel(value) {
-    return value ? (items.find(i => i.value === value) || {}).text : "";
+    return value ? (itemsProcessed.find(i => i.value === value) || {}).text : "";
   }
 
   $: selectedLabel = getLabel(value);
 
   function filterItems({ target }) {
-    filteredItems = items.filter(i =>
+    filteredItems = itemsProcessed.filter(i =>
       i.text.toLowerCase().includes(target.value.toLowerCase())
     );
   }
@@ -62,6 +66,7 @@
         e.stopPropagation();
         showList = true;
       }}
+      on:click
       on:input={filterItems}
       append={showList ? 'arrow_drop_up' : 'arrow_drop_down'} />
   </slot>

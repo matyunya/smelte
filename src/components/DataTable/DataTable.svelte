@@ -1,41 +1,53 @@
 <script>
   import Icon from "../Icon";
+  import Button from "../Button";
+  import Select from "../Select";
+  import { Spacer } from "../Util";
+
+  import { createEventDispatcher } from "svelte";
+
+  // todo dynamic import if sort is set
+  import defaultSort from "./sort.js";
 
   export let data = [];
   export let columns = Object.keys(data[0] || {})
     .map(i => ({ label: (i || '').replace('_', ' '), field: i }));
+  export let page = 1;
+  export let sort = defaultSort;
+  export let perPage = 10;
+  export let perPageOptions = [10, 20, 50];
+  export let paginatorProps = {
+    color: "gray",
+    text: true,
+    flat: true,
+    dark: true,
+    replace: {
+      'm-4': 'm-2',
+      'px-*': null,
+      'p-*': null,
+    },
+    add: 'ripple-gray text-gray-700',
+  };
+
+  export let wrapperClasses = "rounded elevation-3";
+  let paginationNode = "";
 
   export let asc = false;
   let sortBy = null;
 
-  $: sorted = sort(sortBy);
-
-  function sort(col) {
-    if (!col) return data;
-
-    if (col.sort) return col.sort(data);
-
-    const sorted = data.sort((a, b) => {
-      const valA = col.value ? col.value(a) : a[col.field];
-      const valB = col.value ?  col.value(b) : b[col.field];
-
-      const first = asc ? valA : valB;
-      const second = asc ? valB : valA;
-
-      if (typeof valA === 'number') {
-        return first - second;
-      }
-
-      return ('' + first).localeCompare(second);
-    });
-
-    return sorted;
+  $: {
+    perPage = perPage;
+    page = 1;
   }
+  $: offset = (page * perPage) - perPage;
+  $: sorted = sort(data, sortBy, asc).slice(offset, perPage + offset);
+
+  const dispatch = createEventDispatcher();
 </script>
 
 <style>
   table {
-    @apply rounded elevation-3 p-2 text-sm;
+    @apply text-sm;
 
     & th, & td {
       @apply p-3 font-normal text-right;
@@ -81,48 +93,81 @@
   }
 </style>
 
-<table class="p-1">
-  <thead class="items-center">
-    {#each columns as column, i}
-      <slot name="header">
-        <th
-          class="capitalize"
-          on:click={() => {
-            if (column.sortable === false) return;
-            asc = sortBy === column ? !asc : false;
-            sortBy = column;
-          }}
-        >
-          <div class="sort-wrapper">
-            {#if column.sortable !== false}
-              <span class="sort" class:asc={!asc && sortBy === column}>
-                <Icon small color="text-gray-400">arrow_downward</Icon>
-              </span>
-            {/if}
-            <span>{column.label || column.field}</span>
-          </div>
-        </th>
+<div class={wrapperClasses}>
+  <table class="p-3">
+    <thead class="items-center">
+      {#each columns as column, i}
+        <slot name="header">
+          <th
+            class="capitalize"
+            on:click={() => {
+              if (column.sortable === false) return;
+              dispatch("sort", column);
+
+              asc = sortBy === column ? !asc : false;
+              sortBy = column;
+            }}
+          >
+            <div class="sort-wrapper">
+              {#if column.sortable !== false}
+                <span class="sort" class:asc={!asc && sortBy === column}>
+                  <Icon small color="text-gray-400">arrow_downward</Icon>
+                </span>
+              {/if}
+              <span>{column.label || column.field}</span>
+            </div>
+          </th>
+        </slot>
+      {/each}
+    </thead>
+    <tbody>
+    {#each sorted as item}
+      <slot name="item">
+        <tr>
+          {#each columns as column, i}
+            <td class={column.class || ''}>
+              {#if column.value}
+                {@html column.value(item)}
+              {:else}
+                {item[column.field]}
+              {/if}
+            </td>
+          {/each}
+        </tr>
       </slot>
     {/each}
-  </thead>
-  <tbody>
-  {#each sorted as item}
-    <slot name="item">
-      <tr>
-        {#each columns as column, i}
-          <td class={column.class || ''}>
-            {#if column.value}
-              {@html column.value(item)}
-            {:else}
-              {item[column.field]}
-            {/if}
-          </td>
-        {/each}
-      </tr>
-    </slot>
-  {/each}
-  </tbody>
-  <tfoot>
-    <slot name="footer" />
-  </tfoot>
-</table>
+    </tbody>
+  </table>
+
+  <slot name="pagination">
+    <div
+      id="pagination"
+      bind:this={paginationNode}
+      class="flex justify-between items-center text-gray-500 text-sm">
+      <Spacer />
+      <div>
+      Rows per page:
+      </div>
+      <Select bind:value={perPage} items={perPageOptions} on:click={() => console.log('d')} />
+      <Spacer />
+      <div>{offset}-{offset + perPage} of {data.length}</div>
+      <Button
+        disabled={(page - 1) < 1}
+        icon="keyboard_arrow_left"
+        {...paginatorProps}
+        on:click={() => {
+          page -= 1;
+          paginationNode.scrollTo({top: -500});
+        }} />
+      <Button
+        icon="keyboard_arrow_right"
+        {...paginatorProps}
+        on:click={() => {
+          page += 1;
+          paginationNode.scrollTo({top: -500});
+        }} />
+    </div>
+  </slot>
+
+  <slot name="footer" />
+</div>

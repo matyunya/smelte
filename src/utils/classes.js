@@ -23,11 +23,25 @@ export class ClassBuilder {
     return this.classes;
   }
 
+  replace(classes, cond = true) {
+    if (cond && classes) {
+      this.classes = Object.keys(classes).reduce(
+        (acc, from) => acc.replace(new RegExp(from, "g"), classes[from]),
+        this.classes
+      );
+    }
+
+    return this;
+  }
+
   remove(classes, cond = true) {
     if (cond && classes) {
       this.classes = classes
         .split(" ")
-        .reduce((acc, cur) => acc.replace(cur, ""), this.classes);
+        .reduce(
+          (acc, cur) => acc.replace(new RegExp(cur, "g"), ""),
+          this.classes
+        );
     }
 
     return this;
