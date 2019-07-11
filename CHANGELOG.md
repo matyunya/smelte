@@ -4,6 +4,8 @@
 * Make svelte usable without sapper
 * Create svelte template without sapper
 * Color stying fixes
+* Add pagination to table
+* Improve animations and component customizations
 
 ## 0.0.7
 * Improve data table styles, add sorting

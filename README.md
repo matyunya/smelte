@@ -42,6 +42,8 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [ ] Autocomplete (sort of there but buggy)
 - [ ] Tooltip
 - [ ] Revise events (on:change, on:focus, on:input...)
+- [ ] Treeview
+- [ ] Date picker
 
 ### Features
 - [x] Default typography per Material design spec
@@ -60,3 +62,4 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [ ] JS ripple animation
 - [ ] IE 11 support
 - [ ] Scaffoldable CLI version
+- [ ] CDN version
