@@ -62,6 +62,8 @@
     class:left-0={!right}
     class:pointer-events-none={!showWithScrim}
     class:z-50={showWithScrim}
+    class:elevation-4={elevation}
+    class:bordered={!elevation}
     class:z-20={!showWithScrim}
     on:click={() => (showMobile = false)}>
     {#if showWithScrim}
@@ -70,8 +72,6 @@
     <nav
       role="navigation"
       class={navClasses}
-      class:elevation-4={elevation}
-      class:bordered={!elevation}
       transition:fly={transitionProps}>
       <div class="w-full">
         <slot />
