@@ -4,9 +4,9 @@
   import Icon from "../Icon";
   import Button from "../Button";
   import Select from "../Select";
+  import TextField from "../TextField";
   import { Spacer } from "../Util";
   import ProgressLinear from "../ProgressLinear";
-
   import defaultSort from "./sort.js";
 
   export let data = [];
@@ -19,7 +19,8 @@
   export let asc = false;
   export let loading = false;
   export let hideProgress = false;
-  export let wrapperClasses = "rounded elevation-3";
+  export let wrapperClasses = "rounded elevation-3 relative";
+  export let editable = false;
   export let paginatorProps = {
     color: "gray",
     text: true,
@@ -46,6 +47,8 @@
   $: pagesCount = Math.ceil(data.length / perPage);
 
   const dispatch = createEventDispatcher();
+
+  let editing = false;
 </script>
 
 <style>
@@ -107,6 +110,7 @@
               if (column.sortable === false) return;
               dispatch("sort", column);
 
+              editing = false;
               asc = sortBy === column ? !asc : false;
               sortBy = column;
             }}
@@ -131,9 +135,22 @@
     <tbody>
       {#each sorted as item, j}
         <slot name="item">
-          <tr>
+          <tr on:click={(e) => {
+            editing = { [j]: (e.path.find(a => a.localName === 'td') || {}).cellIndex }
+          }}> 
             {#each columns as column, i}
-              <td class={column.class || ''}>
+              <td class="relative {column.class}">
+                {#if editing[j] === i}
+                  <slot name="edit-dialog">
+                    <div class="absolute left-0 top-0">
+                      <TextField
+                        value={item[column.field]}
+                        on:change
+                        on:blur={() => editing = false}
+                      />
+                    </div>
+                  </slot>
+                {/if}
                 {#if column.value}
                   {@html column.value(item)}
                 {:else}
