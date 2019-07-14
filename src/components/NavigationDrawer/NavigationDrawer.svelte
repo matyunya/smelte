@@ -60,11 +60,12 @@
     class={asideClasses}
     class:right-0={right}
     class:aside={breakpoint !== "sm"}
+    class:h-full={breakpoint === "sm"}
     class:left-0={!right}
     class:pointer-events-none={!showWithScrim}
     class:z-50={showWithScrim}
     class:elevation-4={elevation}
-    class:bordered={!elevation}
+    class:bordered={!elevation && !showWithScrim}
     class:z-20={!showWithScrim}
     on:click={() => (showMobile = false)}>
     {#if showWithScrim}

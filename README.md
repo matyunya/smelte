@@ -44,6 +44,7 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [x] Card
 - [x] Slider
 - [x] Proper customization via class props
+- [x] Data table
 - [ ] Autocomplete (sort of there but buggy)
 - [ ] Tooltip
 - [ ] Revise events (on:change, on:focus, on:input...)
@@ -66,5 +67,4 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [ ] Document API
 - [ ] JS ripple animation
 - [ ] IE 11 support
-- [ ] Scaffoldable CLI version
 - [ ] CDN version

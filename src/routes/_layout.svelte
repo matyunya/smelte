@@ -52,6 +52,9 @@
     <Button
       icon="menu"
       small
+      flat
+      add="text-white"
+      remove="p-1 h-4 w-4"
       text
       on:click={() => showNavMobile.set(!$showNavMobile)} />
   </div>
