@@ -62,8 +62,7 @@
 
 {#if $bp}
   <main
-    class="container relative p-8 lg:max-w-3xl lg:ml-64 mx-auto mb-10 mt-24
-    md:ml-56 md:max-w-md md:px-3"
+    class="container relative p-8 lg:max-w-3xl lg:ml-64 mx-auto mb-10 mt-24 md:ml-56 md:max-w-md md:px-3"
     transition:fade={{ duration: 300 }}>
     <NavigationDrawer
       bind:showDesktop={$showNav}

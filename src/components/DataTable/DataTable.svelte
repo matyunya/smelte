@@ -20,7 +20,7 @@
   export let loading = false;
   export let hideProgress = false;
   export let wrapperClasses = "rounded elevation-3 relative";
-  export let editable = false;
+  export let editable = true;
   export let paginatorProps = {
     color: "gray",
     text: true,
@@ -95,6 +95,10 @@
       &:hover {
         @apply bg-gray-50;
       }
+
+      &.selected {
+        @apply bg-primary-50;
+      }
     }
   }
 </style>
@@ -135,18 +139,34 @@
     <tbody>
       {#each sorted as item, j}
         <slot name="item">
-          <tr on:click={(e) => {
-            editing = { [j]: (e.path.find(a => a.localName === 'td') || {}).cellIndex }
-          }}> 
+          <tr
+            on:click={(e) => {
+            if (!editable) return;
+              editing = { [j]: (e.path.find(a => a.localName === 'td') || {}).cellIndex }
+            }}
+            class:selected={editing[j]}
+          > 
             {#each columns as column, i}
-              <td class="relative {column.class}">
-                {#if editing[j] === i}
+              <td
+                class="relative {column.class}"
+                class:cursor-pointer={editable && column.editable !== false}
+              >
+                {#if editable && column.editable !== false && editing[j] === i}
                   <slot name="edit-dialog">
-                    <div class="absolute left-0 top-0">
+                    <div class="absolute left-0 top-0 z-10 bg-white p-2 elevation-3 rounded" style="width: 300px">
                       <TextField
                         value={item[column.field]}
+                        textarea={column.textarea}
                         on:change
-                        on:blur={() => editing = false}
+                        remove="bg-gray-100 bg-gray-300"
+                        on:blur={({ target }) => {
+                          editing = false;
+                          dispatch('update', {
+                            item,
+                            column,
+                            value: target.value
+                          });
+                        }}
                       />
                     </div>
                   </slot>

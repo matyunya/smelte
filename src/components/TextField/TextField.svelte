@@ -139,6 +139,7 @@
         class={inputClasses}
         on:focus={toggleFocused}
         on:blur={toggleFocused}
+        on:blur
         bind:value
         on:change
         on:input
@@ -154,6 +155,7 @@
         on:input
         on:click
         on:focus
+        on:blur
         bind:value
         on:focus={toggleFocused}
         on:blur={toggleFocused}
@@ -165,6 +167,7 @@
         on:change
         on:input
         on:click
+        on:blur
         on:focus>
         {value}
       </div>
