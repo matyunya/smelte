@@ -1,10 +1,11 @@
 {
   "name": "smelte",
-  "description": "Material design components for Svelte using Tailwind CSS",
+  "description": "UI framework for Svelte using Tailwind CSS",
   "version": "0.0.8",
   "scripts": {
     "dev": "sapper dev -p 7777",
-    "build": "sapper build --legacy",
+    "build": "rollup -c --config rollup-publish.config.js",
+    "build:site": "sapper build --legacy",
     "export": "sapper export --legacy",
     "start": "node __sapper__/build",
     "serve": "serve __sapper__/export",
@@ -13,19 +14,22 @@
     "lint": "prettier --write --plugin-search-dir=. ./src/**/*",
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run",
-    "now": "yarn build && now",
+    "now": "yarn build:site && now",
     "now-build": "sapper build --export"
   },
   "pre-commit": [
     "lint"
   ],
+  "files": [
+    "dist",
+    "src"
+  ],
+  "module": "dist/module.js",
+  "main": "dist/index.js",
   "browserslist": "last 3 version",
   "svelte": "src/index.js",
   "dependencies": {
-    "compression": "^1.7.1",
-    "express": "^4.17.1",
     "postcss-nesting": "^7.0.0",
-    "sirv": "^0.4.0",
     "svelte": "^3.6.7",
     "svelte-waypoint": "^0.1.2",
     "tailwindcss": "^1.0.1",
@@ -41,9 +45,11 @@
     "@fullhuman/postcss-purgecss": "^1.2.0",
     "@now/node": "^0.9.0",
     "autoprefixer": "^9.5.1",
+    "compression": "^1.7.1",
     "cssnano": "^4.1.10",
     "eslint": "^6.0.1",
     "eslint-plugin-svelte3": "^2.1.0",
+    "express": "^4.17.1",
     "npm-run-all": "^4.1.5",
     "postcss": "^7.0.16",
     "postcss-import": "^12.0.1",
@@ -54,7 +60,9 @@
     "prettier-plugin-svelte": "^0.6.0",
     "prismjs": "^1.16.0",
     "rollup": "^1.0.0",
+    "rollup-plugin-analyzer": "^3.1.1",
     "rollup-plugin-babel": "^4.0.2",
+    "rollup-plugin-bundle-size": "^1.0.3",
     "rollup-plugin-commonjs": "^9.1.6",
     "rollup-plugin-includepaths": "^0.2.3",
     "rollup-plugin-json": "^4.0.0",
@@ -65,6 +73,7 @@
     "rollup-plugin-svelte": "^5.0.1",
     "rollup-plugin-terser": "^4.0.4",
     "sapper": "^0.27.0",
+    "sirv": "^0.4.0",
     "svelte-preprocess": "^2.9.0"
   }
 }

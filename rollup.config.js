@@ -10,7 +10,6 @@ import config from "sapper/config/rollup.js";
 import getPreprocessor from "svelte-preprocess";
 import postcss from "rollup-plugin-postcss";
 import includePaths from "rollup-plugin-includepaths";
-import extractor from "./src/utils/css-extractor.js";
 import path from "path";
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
@@ -62,7 +61,7 @@ export default {
         "process.env.NODE_ENV": JSON.stringify(mode)
       }),
       json({
-        includes: "**./*.json",
+        includes: "**./*.json"
       }),
       string({
         include: "**/*.txt"
@@ -128,7 +127,7 @@ export default {
         "process.env.NODE_ENV": JSON.stringify(mode)
       }),
       json({
-        includes: "**./*.json",
+        includes: "**./*.json"
       }),
       svelte({
         generate: "ssr",

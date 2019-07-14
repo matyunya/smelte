@@ -1,5 +1,5 @@
-import { parse, walk } from "svelte/compiler";
-import path from "path";
+const { parse, walk } = require("svelte/compiler");
+const path = require("path");
 
 function flatten(arr) {
   return arr.reduce(function(flat, toFlatten) {
@@ -41,7 +41,7 @@ function classesPerComponent(colors) {
   }, []);
 }
 
-export default function extractor(content) {
+module.exports = function extractor(content) {
   let ast;
   const usedColors = {};
 
@@ -73,4 +73,4 @@ export default function extractor(content) {
     ...fromClasses.map(c => c.replace("class:", "")),
     ...flatten(classesPerComponent(usedColors))
   ];
-}
+};
