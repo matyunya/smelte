@@ -1,8 +1,8 @@
 # Smelte
-[![NPM version](https://img.shields.io/npm/l/smelte.svg)](https://img.shields.io/npm/l/smelte.svg)
-[!(https://img.shields.io/bundlephobia/minzip/smelte.svg)](https://img.shields.io/bundlephobia/minzip/smelte.svg)
-[!(https://img.shields.io/npm/dm/smelte.svg)](https://img.shields.io/npm/dm/smelte.svg)
-[!(https://img.shields.io/npm/v/smelte.svg)](https://img.shields.io/npm/v/smelte.svg)
+[![license](https://img.shields.io/npm/l/smelte.svg)](https://img.shields.io/npm/l/smelte.svg)
+[![zip size](https://img.shields.io/bundlephobia/minzip/smelte.svg)](https://img.shields.io/bundlephobia/minzip/smelte.svg)
+[![downloads](https://img.shields.io/npm/dm/smelte.svg)](https://img.shields.io/npm/dm/smelte.svg)
+[![version](https://img.shields.io/npm/v/smelte.svg)](https://img.shields.io/npm/v/smelte.svg)
 
 [Demo](https://smelte.netlify.com/)
 
