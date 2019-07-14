@@ -1,9 +1,11 @@
 import Button from "./components/Button";
 import Card from "./components/Card";
 import Chip from "./components/Chip";
+import Code from "./components/Code";
 import Dialog from "./components/Dialog";
 import Image from "./components/Image";
 import List from "./components/List";
+import ListItem from "./components/List/ListItem";
 import Icon from "./components/Icon";
 import Menu from "./components/Menu";
 import NavigationDrawer from "./components/NavigationDrawer";
@@ -19,17 +21,24 @@ import Tabs from "./components/Tabs";
 import TextField from "./components/TextField";
 import DataTable from "./components/DataTable";
 import Switch from "./components/Switch";
-import Spacer from "./components/Util";
+
+export {
+  Scrim,
+  Ripple,
+  Spacer
+} from "./components/Util";
 
 export {
   Button,
   Card,
   Chip,
+  Code,
   Dialog,
   Image,
   Checkbox,
   RadioButton,
   List,
+  ListItem,
   Menu,
   NavigationDrawer,
   Icon,
@@ -42,6 +51,5 @@ export {
   TextField,
   AppBar,
   DataTable,
-  Switch,
-  Spacer
+  Switch
 };
