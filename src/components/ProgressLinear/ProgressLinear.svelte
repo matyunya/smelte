@@ -15,8 +15,6 @@
       initialized = true;
     }, 200);
   });
-
-  color = color.includes("-") ? color.split("-")[0] : color;
 </script>
 
 <style>

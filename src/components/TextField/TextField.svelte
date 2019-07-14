@@ -76,7 +76,7 @@
       .add(inputBaseClasses(inputDefault))
       .remove('pt-6 pb-2', outlined)
       .add('border rounded bg-transparent py-4 transition', outlined)
-      .add('border-error-500', error)
+      .add('border-error-500 caret-error-500', error)
       .add(border(), focused && !error)
       .add('border-gray-600', !error && !focused)
       .add('bg-gray-100', !outlined)
@@ -101,7 +101,7 @@
   line-height: 0.05;
 }
 .select {
-  @apply pb-0;
+  @apply pb-0 cursor-pointer;
   height: 3.5rem;
 }
 .label-transition {
@@ -137,7 +137,6 @@
       <input
         aria-label={label}
         class={inputClasses}
-        class:cursor-pointer={select}
         on:focus={toggleFocused}
         on:blur={toggleFocused}
         bind:value
@@ -151,7 +150,6 @@
         {rows}
         aria-label={label}
         class={inputClasses}
-        class:caret-error-500={error}
         on:change
         on:input
         on:click
@@ -163,7 +161,6 @@
     {:else if select && !autocomplete}
       <div
         class="select {inputClasses}"
-        class:cursor-pointer={select}
         on:click={toggleFocused}
         on:change
         on:input
