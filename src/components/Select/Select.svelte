@@ -29,6 +29,7 @@
 
   let showList = false;
   let filteredItems = items;
+  let itemsProcessed = [];
 
   const props = {
     outlined,
