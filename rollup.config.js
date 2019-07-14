@@ -15,38 +15,10 @@ const mode = process.env.NODE_ENV;
 const dev = mode === "development";
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
-const postcssPlugins = (purge = false) => {
-  return [
-    require("postcss-import")(),
-    require("postcss-url")(),
-    require("postcss-nesting")(),
-    require("postcss-input-range")(),
-    require("autoprefixer")(),
-    require("tailwindcss")("./tailwind.config.js"),
-    purge &&
-      require("cssnano")({
-        preset: "default"
-      }),
-    purge &&
-      require("@fullhuman/postcss-purgecss")({
-        content: ["./**/*.svelte"],
-        extractors: [
-          {
-            extractor,
-            extensions: ["svelte"]
-          }
-        ],
-        whitelist: ["html", "body", "stroke-primary"],
-        // for Prismjs code highlighting
-        whitelistPatterns: [/language/, /namespace/, /token/]
-      })
-  ].filter(Boolean);
-};
-
 const preprocess = getPreprocessor({
   transformers: {
     postcss: {
-      plugins: postcssPlugins()
+      plugins: require("./postcss.config.js")()
     }
   }
 });
@@ -141,7 +113,7 @@ export default {
       includePaths({ paths: ["./src", "./"] }),
       commonjs(),
       postcss({
-        plugins: postcssPlugins(!dev),
+        plugins: require("./postcss.config.js")(!dev),
         extract: path.resolve(__dirname, "./static/global.css")
       })
     ],

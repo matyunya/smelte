@@ -5,7 +5,7 @@ import Code from "./components/Code";
 import Dialog from "./components/Dialog";
 import Image from "./components/Image";
 import List from "./components/List";
-import ListItem from "./components/List/ListItem";
+import { ListItem } from "./components/List/";
 import Icon from "./components/Icon";
 import Menu from "./components/Menu";
 import NavigationDrawer from "./components/NavigationDrawer";
@@ -22,11 +22,7 @@ import TextField from "./components/TextField";
 import DataTable from "./components/DataTable";
 import Switch from "./components/Switch";
 
-export {
-  Scrim,
-  Ripple,
-  Spacer
-} from "./components/Util";
+export { Scrim, Ripple, Spacer } from "./components/Util";
 
 export {
   Button,
