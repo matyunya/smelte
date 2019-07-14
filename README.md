@@ -1,11 +1,10 @@
 # Smelte
 [Demo](https://smelte.netlify.com/)
 
-https://img.shields.io/npm/l/smelte.svg
-https://img.shields.io/bundlephobia/minzip/smelte.svg
-https://img.shields.io/npm/dm/smelte.svg
-https://img.shields.io/github/commit-activity/m/matyunya/smelte.svg
-https://img.shields.io/npm/v/smelte.svg
+<img src="https://img.shields.io/npm/l/smelte.svg">
+<img src="https://img.shields.io/bundlephobia/minzip/smelte.svg">
+<img src="https://img.shields.io/npm/dm/smelte.svg">
+<img src="https://img.shields.io/npm/v/smelte.svg">
 
 Smelte is a UI framework built on top of Svelte and Tailwind CSS using Material Design spec (hence the name).
 It comes with many components and utility functions making it easy to build beautiful responsive layouts while keeping
