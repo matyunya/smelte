@@ -47,6 +47,7 @@
     appendBaseClasses,
   };
 
+  let itemsProcessed;
   $: itemsProcessed = items.map(i => typeof i !== 'object'
      ? ({ value: i, text: i })
      : i);
@@ -56,7 +57,7 @@
   const dispatch = createEventDispatcher();
 
   function getLabel(value) {
-    return value ? (itemsProcessed.find(i => i.value === value) || {}).text : "";
+    return value && itemsProcessed ? (itemsProcessed.find(i => i.value === value) || {}).text : "";
   }
 
   let selectedLabel = getLabel(value);
