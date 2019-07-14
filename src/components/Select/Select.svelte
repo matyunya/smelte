@@ -59,7 +59,7 @@
     return value ? (itemsProcessed.find(i => i.value === value) || {}).text : "";
   }
 
-  $: selectedLabel = getLabel(value);
+  let selectedLabel = getLabel(value);
 
   function filterItems({ target }) {
     filteredItems = itemsProcessed.filter(i =>
@@ -101,6 +101,7 @@
           select
           items={filteredItems}
           on:change={({ detail }) => {
+            selectedLabel = getLabel(detail);
             dispatch('change', detail);
           }} />
       </div>

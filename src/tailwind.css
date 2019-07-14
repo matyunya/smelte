@@ -76,7 +76,8 @@ caption,
 input:focus,
 button:focus,
 textarea:focus,
-select:focus {
+select:focus,
+li:focus {
   @apply outline-none;
 }
 

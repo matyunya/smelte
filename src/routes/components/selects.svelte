@@ -7,7 +7,13 @@
   let value2 = "";
   let value3 = "";
 
-  const items = [{ value: 1, text: "One" }, { value: 2, text: "Two" }];
+  const items = [
+    { value: 1, text: "One" },
+    { value: 2, text: "Two" },
+    { value: 3, text: "Three" },
+    { value: 4, text: "Four" },
+  ];
+
   const label = "A select";
 </script>
 
@@ -35,3 +41,5 @@
 <p>Select may even be an autocomplete search component.</p>
 <caption>Selected: {value3 || 'nothing'}</caption>
 <Select bind:value={value3} outlined autocomplete {label} {items} />
+
+<div class="w-full pb-64" />

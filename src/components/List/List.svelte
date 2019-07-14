@@ -23,7 +23,7 @@
     {#each items as item, i}
       {#if item.to}
         <slot name="item" {item} {dense} {navigation} {value}>
-          <a href={item.to}>
+          <a tabindex={i + 1} href={item.to}>
             <ListItem bind:value {...item} id={id(item)} {...props} on:change>
               {item.text}
             </ListItem>
@@ -34,6 +34,7 @@
           <ListItem
             bind:value
             {...item}
+            tabindex={i + 1}
             id={id(item)}
             selected={value === id(item)}
             {...props}

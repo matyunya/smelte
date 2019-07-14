@@ -12,17 +12,27 @@
   export let navigation = false;
   export let to = "";
   export let selected = false;
+  export let tabindex = null;
   export let basicClasses = "transition p-4 cursor-pointer text-gray-700 flex items-center z-10";
 
   const dispatch = createEventDispatcher();
+
+  function change() {
+    if (disabled) return;
+    value = id;
+    dispatch('change', id);
+  }
 </script>
 
 <style>
-  .basic {
-    &.selected {
-      @apply bg-gray-200;
-    }
+  li.selected {
+    @apply bg-gray-200;
   }
+
+  li:focus {
+    @apply bg-gray-50;
+  }
+
   .navigation {
     @apply mx-3 rounded text-sm;
 
@@ -41,11 +51,9 @@
   class:ripple-gray={!navigation}
   class:py-2={dense}
   class:text-gray-600={disabled}
-  on:click={() => {
-    if (disabled) return;
-    value = id;
-    dispatch('change', id);
-  }}
+  {tabindex}
+  on:keypress={change}
+  on:click={change}
   on:click>
   {#if icon}
     <Icon

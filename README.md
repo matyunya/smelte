@@ -58,7 +58,7 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [x] Image lazy loading
 - [x] Now SSR deployment
 - [x] Color palette generator
-- [x] Improve Purge CSS (right now dynamic classes need to be whitelisted manually)
+- [x] Improve Purge CSS
 - [x] Theming
 - [x] Image processing (done [here](https://github.com/matyunya/svelte-image))
 - [x] Svelte template (without Sapper)
