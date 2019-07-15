@@ -11,7 +11,7 @@
   export let breakpoint = "";
   export let asideClasses = "fixed top-0 md:mt-16 w-auto drawer overflow-hidden";
   export let navClasses = `h-full bg-white absolute flex w-auto z-20 drawer
-     pointer-events-auto overflow-y-scroll`;
+     pointer-events-auto overflow-y-auto`;
 
   function shouldShowWithScrim(mobile, persist, bp) {
     if (bp === "sm") {
