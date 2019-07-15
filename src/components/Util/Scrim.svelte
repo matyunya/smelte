@@ -7,7 +7,7 @@
 </script>
 
 <div
-  class="opacity-50 bg-black fixed top-0 left-0 z-10 w-full h-screen"
+  class="opacity-50 bg-black fixed top-0 left-0 z-10 w-full h-full"
   in:fade={inProps}
   out:fade={outProps}
   on:click />

@@ -30,14 +30,14 @@
     data[index][column.field] = value;
   }}
   columns={[
-    { label: "ID", field: "id", class: "w-10", },
+    { label: "ID", field: "id", class: "md:w-10", },
     {
-      label: "Season/Episode",
+      label: "Ep.",
       value: (v) => `S${v.season}E${v.number}`,
-      class: "w-10",
+      class: "md:w-10",
       editable: false,
     },
-    { field: "name", class: "w-10" },
+    { field: "name", class: "md:w-10" },
     {
       field: "summary",
       textarea: true,

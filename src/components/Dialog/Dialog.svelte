@@ -14,9 +14,9 @@
 </script>
 
 {#if value}
-  <div class="fixed w-full h-screen top-0 left-0 z-30">
+  <div class="fixed w-full h-full top-0 left-0 z-30">
     <Scrim on:click={() => (value = false)} />
-    <div class="h-screen w-full absolute flex items-center justify-center">
+    <div class="h-full w-full absolute flex items-center justify-center">
       <div
         transition:scale={transitionProps}
         class="{c} {wrapperClasses}">

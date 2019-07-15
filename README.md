@@ -45,7 +45,7 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [x] Slider
 - [x] Proper customization via class props
 - [x] Data table
-- [ ] Autocomplete (sort of there but buggy)
+- [x] Autocomplete
 - [ ] Tooltip
 - [ ] Revise events (on:change, on:focus, on:input...)
 - [ ] Treeview
