@@ -1,4 +1,5 @@
 # Smelte
+<img src="https://smelte.netlify.com/logo.png" width="300" style="display: block; margin-bottom: 2rem">
 [![license](https://img.shields.io/npm/l/smelte.svg)](https://img.shields.io/npm/l/smelte.svg)
 [![downloads](https://img.shields.io/npm/dm/smelte.svg)](https://img.shields.io/npm/dm/smelte.svg)
 [![version](https://img.shields.io/npm/v/smelte.svg)](https://img.shields.io/npm/v/smelte.svg)
