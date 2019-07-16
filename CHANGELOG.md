@@ -2,6 +2,7 @@
 
 ## 0.0.12
 * Add tooltip
+* Add horizontal scroll to table
 
 ## 0.0.11
 * Finish autocomplete
