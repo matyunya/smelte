@@ -53,7 +53,7 @@
 
 <style>
   table {
-    @apply text-sm;
+    @apply text-sm overflow-x-auto;
 
     & th, & td {
       @apply p-3 font-normal text-right;
