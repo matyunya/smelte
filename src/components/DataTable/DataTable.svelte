@@ -206,7 +206,7 @@
             {...paginatorProps}
             on:click={() => {
               page -= 1;
-              table.scrollIntoView({ behaviour: 'smooth' });
+              table.scrollIntoView({ behavior: 'smooth' });
             }} />
           <Button
             disabled={page === pagesCount}
@@ -214,7 +214,7 @@
             {...paginatorProps}
             on:click={() => {
               page += 1;
-              table.scrollIntoView({ behaviour: 'smooth' });
+              table.scrollIntoView({ behavior: 'smooth' });
             }} />
           </div>
         </td>
