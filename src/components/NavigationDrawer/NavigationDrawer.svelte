@@ -22,9 +22,7 @@
   }
 
   $: showWithScrim = shouldShowWithScrim(showMobile, persistent, breakpoint);
-
   $: show = breakpoint === "sm" ? showMobile : showDesktop;
-
   $: transitionProps = showWithScrim
     ? {
         duration: 200,

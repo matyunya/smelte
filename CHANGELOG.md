@@ -1,5 +1,8 @@
 # Smelte changelog
 
+## 0.0.12
+* Add tooltip
+
 ## 0.0.11
 * Finish autocomplete
 * Add focus events to selects

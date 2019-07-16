@@ -1,0 +1,11 @@
+<script>
+  import Tooltip from "components/Tooltip";
+  import Button from "components/Button";
+</script>
+
+<Tooltip>
+  <div slot="activator">
+    <Button>Hover me</Button>
+  </div>
+  How are you doing?
+</Tooltip>

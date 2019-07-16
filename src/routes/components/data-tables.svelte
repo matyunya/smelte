@@ -42,7 +42,8 @@
       field: "summary",
       textarea: true,
       value: v => v && v.summary ? v.summary : "",
-      class: "text-sm text-gray-700 caption w-full" },
+      class: "text-sm text-gray-700 caption w-full"
+    },
     {
       field: "thumbnail",
       value: (v) => v && v.image
