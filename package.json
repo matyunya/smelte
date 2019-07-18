@@ -22,7 +22,8 @@
   ],
   "files": [
     "dist",
-    "src"
+    "src",
+    "tailwind.config.js"
   ],
   "module": "dist/module.js",
   "main": "dist/index.js",
