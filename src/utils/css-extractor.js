@@ -1,5 +1,6 @@
 const { parse, walk } = require("svelte/compiler");
 const path = require("path");
+const fs = require('fs');
 
 function flatten(arr) {
   return arr.reduce(function(flat, toFlatten) {
@@ -17,7 +18,11 @@ function getProp(node, attr) {
 
 function getComponent(name) {
   try {
-    return require(path.resolve("./src/components", name, "variants.js"));
+    let componentPath = path.resolve("./src/components", name, "variants.js");
+    if (!fs.existsSync(componentPath)) {
+      componentPath = path.resolve("./node_modules/smelte/src/components", name, "variants.js");
+    }
+    return require(componentPath);
   } catch (e) {
     return {
       all: color => [`text-${color}-500`]
