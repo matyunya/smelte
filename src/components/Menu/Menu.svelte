@@ -23,17 +23,16 @@
   <div class={wrapperClasses} on:click|stopPropagation>
     <slot name="activator" />
     {#if open}
-      <div class={listWrapperClasses}>
+      <div class={listWrapperClasses} in:fly={inProps} out:fly={outProps}>
         <List
           bind:value
           select
           dense
           {items}
           c="list"
-          on:change={({ detail }) => {
-            dispatch('change', detail);
-            open = false;
-          }} />
+          on:change
+          on:change={() => open = false}
+        />
       </div>
     {/if}
   </div>

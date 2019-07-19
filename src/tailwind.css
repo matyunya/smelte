@@ -73,11 +73,7 @@ caption,
   display: inline-block;
 }
 
-input:focus,
-button:focus,
-textarea:focus,
-select:focus,
-li:focus {
+*:focus {
   @apply outline-none;
 }
 
