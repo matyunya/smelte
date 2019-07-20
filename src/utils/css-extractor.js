@@ -1,6 +1,6 @@
 const { parse, walk } = require("svelte/compiler");
 const path = require("path");
-const fs = require('fs');
+const fs = require("fs");
 
 function flatten(arr) {
   return arr.reduce(function(flat, toFlatten) {
@@ -20,7 +20,11 @@ function getComponent(name) {
   try {
     let componentPath = path.resolve("./src/components", name, "variants.js");
     if (!fs.existsSync(componentPath)) {
-      componentPath = path.resolve("./node_modules/smelte/src/components", name, "variants.js");
+      componentPath = path.resolve(
+        "./node_modules/smelte/src/components",
+        name,
+        "variants.js"
+      );
     }
     return require(componentPath);
   } catch (e) {
