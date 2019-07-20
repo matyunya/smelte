@@ -8,7 +8,8 @@
   export let dense = false;
   export let navigation = false;
   export let select = false;
-  export let c = "";
+  let className = "";
+  export {className as class};
 
   const props = {
     dense,
@@ -18,7 +19,7 @@
   const id = item => item.id || item.value || item.to || item.text || item;
 </script>
 
-<div class={c}>
+<div class={className}>
   <ul class="py-2 rounded" class:rounded-t-none={select}>
     {#each items as item, i}
       {#if item.to}

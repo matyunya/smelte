@@ -1,5 +1,6 @@
 <script>
-  export let c = "";
+  let className = "";
+  export {className as class};
   export let hover = true;
   export let title = "";
   export let subheader = "";
@@ -8,7 +9,7 @@
   export let wrapperClasses = "flex px-4 py-2 items-center";
 </script>
 
-<div class="{c} {wrapperClasses}">
+<div class="{className} {wrapperClasses}">
   <div>
     <img
       class="rounded-full"

@@ -16,6 +16,7 @@ export const navMenu = [
   { to: "/components/sliders", text: "Sliders" },
   { to: "/components/data-tables", text: "Data tables" },
   { to: "/components/tooltips", text: "Tooltips" },
+  { to: "/examples/search-bar", text: "Search bar" },
   { to: "/typography", text: "Typography" },
   { to: "/color", text: "Color" }
 ];

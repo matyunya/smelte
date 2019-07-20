@@ -2,7 +2,8 @@
   import Icon from "../Icon";
   import utils, { ClassBuilder } from "../../utils/classes.js";
 
-  export let c = "";
+  let className = "";
+  export {className as class};
   export let value = false;
   export let outlined = false;
   export let text = false;
@@ -82,6 +83,7 @@
         .remove(`${txt(lighter)}`, fab)
         .add(disabledClasses(disabledDefault), disabled)
         .add(smallClasses(smallDefault), small)
+        .add('flex items-center justify-center', small && icon)
         .remove(remove)
         .replace(replace)
         .add(add)
@@ -94,13 +96,13 @@
   class:rounded-full={icon}
   class:w-full={block}
   class:rounded={basic || outlined || text}
-  class="{classes} button"
+  class="{classes} {className} button"
   class:button={!icon}
   on:click
   {disabled}
   on:click={() => (value = !value)}>
   {#if icon}
-    <Icon c={light ? txt() : 'white'} {small}>{icon}</Icon>
+    <Icon class={light ? txt() : "text-white"} {small}>{icon}</Icon>
   {/if}
   <slot />
 </button>

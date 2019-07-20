@@ -27,7 +27,7 @@
 <div style="max-width: 400px">
   <Tabs
     selected="1"
-    c="bg-black elevation-10 mt-6 text-white rounded-t-lg"
+    class="bg-black elevation-10 mt-6 text-white rounded-t-lg"
     color="secondary"
     let:selected
     {loading}
@@ -40,7 +40,7 @@
       <Tab id="1" {selected}>
         <Image
           alt="kitten 1"
-          c="w-full"
+          class="w-full"
           src="https://placekitten.com/400/250"
           width="400"
           height="250" />
@@ -48,7 +48,7 @@
       <Tab id="2" {selected}>
         <Image
           alt="kitten 1"
-          c="w-full"
+          class="w-full"
           src="https://placekitten.com/400/251"
           width="400"
           height="250" />
@@ -56,7 +56,7 @@
       <Tab id="3" {selected}>
         <Image
           alt="kitten 3"
-          c="w-full"
+          class="w-full"
           src="https://placekitten.com/400/253"
           width="400"
           height="250" />

@@ -2,7 +2,11 @@
   import Button from "components/Button";
   import Menu from "components/Menu";
   import List from "components/List";
+  import Select from "components/Select";
+  import Icon from "components/Icon";
+  import TextField from "components/TextField";
   import Code from "components/Code";
+  import Slider from "components/Slider";
 
   import menus from "examples/menus.txt";
 

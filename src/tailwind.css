@@ -73,7 +73,7 @@ caption,
   display: inline-block;
 }
 
-*:focus {
+button:focus, input:focus, li:focus, div:focus {
   @apply outline-none;
 }
 

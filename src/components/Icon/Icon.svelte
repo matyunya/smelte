@@ -1,11 +1,9 @@
 <script>
-  export let c = "";
-  export let color = "text-gray-700";
+  let className = "";
+  export {className as class};
   export let small = false;
   export let xs = false;
   export let reverse = false;
-
-  let colorClass;
 </script>
 
 <style>
@@ -16,9 +14,10 @@
 
 <i
   aria-hidden="true"
-  class="material-icons {c} transition"
+  class="material-icons {className} transition"
   class:reverse
   class:text-base={small}
+  class:absolute={small}
   class:text-xs={xs}>
   <slot />
 </i>

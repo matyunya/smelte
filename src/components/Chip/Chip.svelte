@@ -4,7 +4,8 @@
 
   import Icon from "../Icon";
 
-  export let c = '';
+  let className = "";
+  export {className as class};
   export let removable = false;
   export let icon = '';
   export let outlined = false;
@@ -52,7 +53,7 @@
 </style>
 
 {#if value}
-  <span class="{c} mx-1 inline-block" out:scale={{ duration: 100 }}>
+  <span class="{className} mx-1 inline-block" out:scale={{ duration: 100 }}>
     <button
       class="flex items-center rounded-full bg-gray-300 px-2 py-1"
       on:click
@@ -61,7 +62,7 @@
       class:ripple-primary={selectable}
       on:click={select}>
       {#if icon}
-        <Icon small c={selected ? 'text-primary-400' : 'text-gray-600'}>
+        <Icon small class={selected ? 'text-primary-400' : 'text-gray-600'}>
           {icon}
         </Icon>
       {/if}
@@ -74,7 +75,7 @@
           class:bg-gray-500={!selected}
           class:bg-primary-400={selected}
           on:click|stopPropagation={close}>
-          <Icon c="text-white" xs>clear</Icon>
+          <Icon class="text-white" xs>clear</Icon>
         </span>
       {/if}
     </button>

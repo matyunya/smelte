@@ -22,7 +22,7 @@
     class:uppercase={icon}>
     <div class="flex flex-col items-center content-center mx-auto">
       {#if icon}
-        <Icon c="mb-1" color={isSelected ? `text-${color}` : ''}>{icon}</Icon>
+        <Icon class="mb-1" color={isSelected ? `text-${color}` : ''}>{icon}</Icon>
       {/if}
 
       <div>
@@ -40,7 +40,7 @@
     class:uppercase={icon}>
     <div class="flex flex-col items-center content-center mx-auto">
       {#if icon}
-        <Icon c="mb-1" color={isSelected ? `text-${color}` : ''}>{icon}</Icon>
+        <Icon class="mb-1" color={isSelected ? `text-${color}` : ''}>{icon}</Icon>
       {/if}
 
       <div>

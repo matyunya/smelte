@@ -6,7 +6,8 @@
   import TextField from "../TextField";
 
   export let items = [];
-  export let c = "";
+  let className = "";
+  export {className as class};
   export let value = "";
   export let text = "";
   export let label = "";
@@ -16,6 +17,7 @@
   export let hint = "";
   export let error = false;
   export let append = "";
+  export let dense = false;
   export let persistentHint = false;
   export let autocomplete = false;
   export let noUnderline = false;
@@ -78,7 +80,7 @@
 
 <svelte:window on:click={() => (showList = false)} />
 
-<div class="{wrapperClasses} {c}">
+<div class="{wrapperClasses} {className}">
   <slot name="select">
     <TextField
       select
@@ -107,6 +109,7 @@
         <List
           bind:value
           select
+          {dense}
           items={filteredItems}
           on:change={({ detail }) => {
             selectedLabel = getLabel(detail);

@@ -16,7 +16,7 @@
       avatar="https://placekitten.com/64/64" />
   </div>
   <div slot="media">
-    <Image c="w-full" src="https://placekitten.com/300/200" alt="kitty" />
+    <Image class="w-full" src="https://placekitten.com/300/200" alt="kitty" />
   </div>
   <div slot="text" class="p-5 pb-0 pt-3 text-gray-700 body-2">
     The three little kittens, they lost their mittens,

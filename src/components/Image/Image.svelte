@@ -7,7 +7,8 @@
   export let height = "";
   export let src = "";
   export let thumbnail = "";
-  export let c = "";
+  let className = "";
+  export {className as class};
 
   let loaded = false;
   let loading = false;
@@ -24,11 +25,11 @@
   }
 </script>
 
-<Waypoint {c} once on:enter={load} style="height: {height}px" offset="0">
+<Waypoint class={className} once on:enter={load} style="height: {height}px" offset="0">
   {#if loaded}
-    <img class={c} {src} {alt} {width} {height} />
+    <img class={className} {src} {alt} {width} {height} />
   {:else if thumbnail}
-    <img class={c} src={thumbnail} {alt} {width} {height} />
+    <img class={className} src={thumbnail} {alt} {width} {height} />
   {:else if loading}
     <slot name="loading" />
   {/if}

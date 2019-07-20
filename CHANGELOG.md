@@ -1,5 +1,10 @@
 # Smelte changelog
 
+## 0.0.16
+* Add fonts search bar example
+* Fix focused select color
+* Rename `c` class prop to `class`
+
 ## 0.0.15
 * Fix purgecss settings
 

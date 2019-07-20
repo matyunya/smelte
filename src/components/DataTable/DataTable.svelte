@@ -191,7 +191,7 @@
           Rows per page:
           </div>
           <Select
-            c="w-16"
+            class="w-16"
             remove="bg-gray-300 bg-gray-100"
             replace={{ 'pt-6': 'pt-4' }}
             wrapperBaseClasses={(c) => c.replace('select', 'h-8').replace('mt-2', '')}

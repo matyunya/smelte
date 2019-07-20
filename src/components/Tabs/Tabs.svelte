@@ -11,7 +11,8 @@
   export let items = [];
   export let indicator = true;
   export let color = "white";
-  export let c = "";
+  let className = "";
+  export {className as class};
   export let loading = false;
 
   let node;
@@ -35,7 +36,7 @@
 </script>
 
 <div
-  class="{c} py-0 h-full {navigation ? 'hidden md:flex' : 'flex'} items-center relative mx-auto z-20"
+  class="{className} py-0 h-full {navigation ? 'hidden md:flex' : 'flex'} items-center relative mx-auto z-20"
   bind:this={node}>
   {#each items as item, i}
     <slot name="item">

@@ -5,7 +5,8 @@
 
   import Icon from "../Icon";
 
-  export let c = "";
+  let className = "";
+  export {className as class};
   export let outlined = false;
   export let value = null;
   export let label = "";
@@ -13,6 +14,7 @@
   export let hint = "";
   export let error = false;
   export let append = "";
+  export let prepend = "";
   export let persistentHint = false;
   export let textarea = false;
   export let rows = 5;
@@ -20,13 +22,17 @@
   export let autocomplete = false;
   export let noUnderline = false;
   export let appendReverse = false;
+  export let prependReverse = false;
   export let color = "primary";
-
+  export let bgColor = "white";
+  export let iconClasses = "";
+  export let small = false;
 
   let labelDefault = `pt-4 absolute top-0 label-transition block pb-2 px-4 pointer-events-none cursor-text`;
   let inputDefault = `transition pb-2 pt-6 px-4 rounded-t text-black w-full`;
   let wrapperDefault = "mt-2 relative pb-6 text-gray-600" + ((select || autocomplete) ? " select" : "");
   let appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 pointer-events-none";
+  let prependDefault = "absolute left-0 top-0 pointer-events-none text-xs";
 
   export let add = "";
   export let remove = "";
@@ -38,6 +44,7 @@
   export let labelBaseClasses = identity;
   export let wrapperBaseClasses = identity;
   export let appendBaseClasses = identity;
+  export let prependBaseClasses = identity;
 
   const {
     bg,
@@ -68,19 +75,26 @@
       .add(txt(), focused && !error)
       .add('label-top text-xs', labelOnTop)
       .remove('pt-4 pb-2 px-4 px-1 pt-0', labelOnTop && outlined)
-      .add('ml-3 p-1 pt-0 mt-0 bg-white', labelOnTop && outlined)
+      .add(`ml-3 p-1 pt-0 mt-0 ${bgColor}`, labelOnTop && outlined)
+      .remove('px-4', prepend)
+      .add('pr-4 pl-6', prepend)
       .get();
  
     inputClasses = i
       .flush()
+      .add(className)
       .add(inputBaseClasses(inputDefault))
       .remove('pt-6 pb-2', outlined)
       .add('border rounded bg-transparent py-4 transition', outlined)
       .add('border-error-500 caret-error-500', error)
+      .remove(caret(), error)
+      .add(caret(), !error)
       .add(border(), focused && !error)
       .add('border-gray-600', !error && !focused)
       .add('bg-gray-100', !outlined)
       .add('bg-gray-300', focused && !outlined)
+      .remove('px-4', prepend)
+      .add('pr-4 pl-6', prepend)
       .add(add)
       .remove(remove)
       .replace(replace)
@@ -127,7 +141,8 @@
       <div class={appendBaseClasses(appendDefault)}>
         <Icon
           reverse={appendReverse}
-          c={focused ? txt() : 'text-gray-700'}>
+          class="{focused ? txt() : 'text-gray-700'} {iconClasses}"
+        >
           {append}
         </Icon>
       </div>
@@ -170,6 +185,21 @@
         on:blur
         on:focus>
         {value}
+      </div>
+    {/if}
+
+    <div class={prependBaseClasses(prependDefault)}>
+      <slot name="prepend" />
+    </div>
+
+    {#if prepend}
+      <div class={prependBaseClasses(prependDefault)}>
+        <Icon
+          reverse={prependReverse}
+          class="{focused ? txt() : 'text-gray-700'} {iconClasses}"
+        >
+          {prepend}
+        </Icon>
       </div>
     {/if}
 

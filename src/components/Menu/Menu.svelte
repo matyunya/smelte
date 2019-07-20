@@ -29,7 +29,7 @@
           select
           dense
           {items}
-          c="list"
+          class="list"
           on:change
           on:change={() => open = false}
         />

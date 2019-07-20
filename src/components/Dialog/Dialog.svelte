@@ -4,7 +4,8 @@
   import { quadOut, quadIn } from "svelte/easing";
   import { Scrim } from "../Util";
 
-  export let c = "";
+  let className = "";
+  export {className as class};
   export let value;
   export let wrapperClasses = "items-center z-50 rounded bg-white p-4 elevation-4";
   export let titleClasses = "text-lg font-bold pb-4";
@@ -19,7 +20,7 @@
     <div class="h-full w-full absolute flex items-center justify-center">
       <div
         transition:scale={transitionProps}
-        class="{c} {wrapperClasses}">
+        class="{className} {wrapperClasses}">
         <div class={titleClasses}>
           <slot name="title" />
         </div>

@@ -13,7 +13,8 @@
 		/>
 	</div>
 	<div slot="media">
-		<Image c="w-full"
+		<Image
+			class="w-full"
 			src="https://placekitten.com/300/200"
 			alt="kitty"
 		/>
