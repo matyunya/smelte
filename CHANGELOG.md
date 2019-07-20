@@ -1,5 +1,8 @@
 # Smelte changelog
 
+## 0.0.15
+* Fix purgecss settings
+
 ## 0.0.12
 * Add tooltip
 * Add horizontal scroll to table
