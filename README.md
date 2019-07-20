@@ -48,7 +48,13 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [x] Tooltip
 - [x] Revise events (on:change, on:focus, on:input...)
 - [ ] Treeview
+- [ ] Form
 - [ ] Date picker
+- [ ] Stepper
+- [ ] Upload
+- [ ] Rating
+- [ ] Pagination
+- [ ] Breadcrumbs
 
 ### Features
 - [x] Default typography per Material design spec
