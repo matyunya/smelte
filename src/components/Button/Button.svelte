@@ -1,6 +1,6 @@
 <script>
   import Icon from "../Icon";
-  import utils, { ClassBuilder } from "../../utils/classes.js";
+  import utils, { ClassBuilder, filterProps } from "../../utils/classes.js";
 
   let className = "";
   export {className as class};
@@ -101,6 +101,18 @@
       iClasses = iconCb.flush().add(txt(), fab && !iconClass).get();
     }
   }
+
+  const props = filterProps([
+    'outlined',
+    'text',
+    'block',
+    'disabled',
+    'icon',
+    'small',
+    'light',
+    'dark',
+    'flat',
+  ], $$props);
 </script>
 
 <button
@@ -111,6 +123,7 @@
   class="{classes} {className} button"
   class:button={!icon}
   on:click
+  {...props}
   {disabled}
   on:click={() => (value = !value)}>
   {#if icon}

@@ -1,7 +1,7 @@
 <script>
   import { fly } from "svelte/transition";
   import { quadOut } from "svelte/easing";
-  import utils, { ClassBuilder } from "../../utils/classes.js";
+  import utils, { ClassBuilder, filterProps } from "../../utils/classes.js";
 
   import Icon from "../Icon";
 
@@ -104,6 +104,27 @@
   $: wrapperClasses, wClasses = (new ClassBuilder(wrapperClasses, wrapperDefault)).get();
   $: appendClasses, aClasses = (new ClassBuilder(appendClasses, appendDefault)).get();
   $: prependClasses, pClasses = (new ClassBuilder(prependClasses, prependDefault)).get();
+
+  const props = filterProps([
+    'outlined',
+    'label',
+    'placeholder',
+    'hint',
+    'error',
+    'append',
+    'prepend',
+    'persistentHint',
+    'textarea',
+    'rows',
+    'select',
+    'autocomplete',
+    'noUnderline',
+    'appendReverse',
+    'prependReverse',
+    'color',
+    'bgColor',
+    'small',
+  ], $$props);
 </script>
 
 <style>
@@ -158,6 +179,7 @@
         on:input
         on:click
         on:focus
+        {...props}
         placeholder={!value ? placeholder : ''} />
     {:else if textarea && !select}
       <textarea
@@ -170,6 +192,7 @@
         on:focus
         on:blur
         bind:value
+        {...props}
         on:focus={toggleFocused}
         on:blur={toggleFocused}
         placeholder={!value ? placeholder : ''} />

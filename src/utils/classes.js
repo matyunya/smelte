@@ -64,3 +64,17 @@ export class ClassBuilder {
     }
   }
 }
+
+const defaultReserved = ["class", "add", "remove", "replace", "value"];
+
+export function filterProps(reserved, props) {
+  const r = [...reserved, ...defaultReserved];
+
+  return Object.keys(props).reduce(
+    (acc, cur) =>
+      cur.includes("$$") || cur.includes("Class") || reserved.includes(cur)
+        ? acc
+        : { ...acc, [cur]: props[cur] },
+    {}
+  );
+}

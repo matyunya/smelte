@@ -93,3 +93,12 @@ html {
 .code-inline {
   @apply body-2 bg-secondary-50 text-secondary-900 rounded-sm p-1;
 }
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
