@@ -1,5 +1,9 @@
 # Smelte changelog
 
+# 0.0.24
+* Expose text field classes in select
+* Improve custom select example
+
 # 0.0.23
 * Add example with custom multiselect
 * Few refactoring fixes
