@@ -1,6 +1,6 @@
 # Smelte changelog
 
-## 0.0.21
+## 0.0.22
 * Fix styles on the data table
 * Refactor style function props to accept strings,
   eg. `<Button outlinedClasses="bg-transparent border border-solid text-green-500">` means the same as
