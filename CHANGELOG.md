@@ -1,5 +1,8 @@
 # Smelte changelog
 
+## 0.0.17
+* Fix dependencies
+
 ## 0.0.16
 * Add fonts search bar example
 * Fix focused select color
