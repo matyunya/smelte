@@ -8,12 +8,10 @@
   import searchBar from "examples/search-bar.txt";
 
   const selectProps = {
-    remove:"bg-gray-300 bg-gray-100",
+    remove:"bg-gray-300 bg-gray-100 select",
     replace: {
       'pt-6': 'pt-3'
     },
-    wrapperClasses: (c) => c.replace('select', 'h-8').replace('mt-2', ''),
-    appendClasses: (c) => c.replace('pt-4', 'pt-2').replace('pr-4', 'pr-2'),
     noUnderline: true,
     dense: true,
   };
@@ -31,6 +29,7 @@
 
   const buttonProps = {
      color: "gray",
+     iconClass: "text-gray-800 absolute",
      text: true,
      add: "mx-auto",
      remove: "m-4",
@@ -63,6 +62,8 @@
     <Select
         value="Sentence"
         {...selectProps}
+        inputWrapperClasses={(c) => c.replace('select', 'h-8').replace('mt-2', '')}
+        appendClasses={(c) => c.replace('pt-4', 'pt-2').replace('pr-4', 'pr-2')}
         items={["Sentence", "Word"]}
       />
   </div>
@@ -78,6 +79,8 @@
       value="40px"
       class="w-20"
       {...selectProps}
+      inputWrapperClasses={(c) => c.replace('select', 'h-8').replace('mt-2', '')}
+      appendClasses={(c) => c.replace('pt-4', 'pt-2').replace('pr-4', 'pr-2')}
       items={["40px", "42px"]}
     />
   </div>

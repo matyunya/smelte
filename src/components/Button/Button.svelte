@@ -46,6 +46,7 @@
   const elevation = (basic || icon) && !disabled && !flat && !text;
   
   let classes = "";
+  let iClasses = "";
   let shade = 0;
 
   $: {
@@ -63,6 +64,11 @@
   } = utils(color);
 
   const cb = new ClassBuilder(commonClasses, commonDefault);
+  let iconCb;
+
+  if (icon) {
+    iconCb = new ClassBuilder(iconClass);
+  }
 
   $: {
       classes = cb
@@ -89,6 +95,12 @@
         .add(add)
         .get();
   }
+
+  $: {
+    if (iconCb) {
+      iClasses = iconCb.flush().add(txt(), fab && !iconClass).get();
+    }
+  }
 </script>
 
 <button
@@ -102,7 +114,7 @@
   {disabled}
   on:click={() => (value = !value)}>
   {#if icon}
-    <Icon class={iconClass} {small}>{icon}</Icon>
+    <Icon class={iClasses} {small}>{icon}</Icon>
   {/if}
   <slot />
 </button>

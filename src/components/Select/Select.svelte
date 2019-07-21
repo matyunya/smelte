@@ -11,6 +11,7 @@
   export let value = "";
   export let text = "";
   export let label = "";
+  export let selectedLabel = "";
   export let color = "primary";
   export let outlined = false;
   export let placeholder = "";
@@ -32,7 +33,6 @@
   let showList = false;
   let filteredItems = items;
   let itemsProcessed = [];
-  let selectedLabel = '';
 
   const props = {
     outlined,
@@ -47,8 +47,6 @@
     remove,
     replace,
     noUnderline,
-    wrapperClasses: inputWrapperClasses,
-    appendClasses,
   };
 
   function process(it) {
@@ -87,6 +85,8 @@
       {autocomplete}
       value={selectedLabel}
       {...props}
+      wrapperClasses={inputWrapperClasses}
+      {appendClasses}
       on:click={e => {
         e.stopPropagation();
         showList = true;
@@ -103,8 +103,6 @@
       <div
         class="list"
         on:click={() => (showList = false)}
-        in:fly={inProps}
-        out:fly={outProps}
         class:rounded-t-none={!outlined}>
         <List
           bind:value

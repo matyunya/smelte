@@ -126,7 +126,7 @@
 <svelte:window on:click={() => (select ? (focused = false) : null)} />
 
 <div
-  class={wrapperClasses}
+  class={wClasses}
 >
   <div class="relative" class:text-error-500={error}>
     <label class={lClasses}>

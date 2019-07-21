@@ -11,6 +11,7 @@
   import menus from "examples/menus.txt";
 
   let open = false;
+  let open2 = false;
   let selected = "";
 
   const items = [
