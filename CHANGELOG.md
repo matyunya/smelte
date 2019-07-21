@@ -1,5 +1,8 @@
 # Smelte changelog
 
+# 0.0.26
+* Passing escaped props to text fields and buttons
+
 # 0.0.25
 * Fix class builder calls on wrapper/append/prepend in text field
 
