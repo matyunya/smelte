@@ -30,12 +30,7 @@
   "browserslist": "last 3 version",
   "svelte": "src/index.js",
   "dependencies": {
-    "postcss-nesting": "^7.0.0",
-    "svelte": "^3.6.7",
-    "svelte-waypoint": "^0.1.2",
-    "tailwindcss": "^1.0.1",
-    "tailwindcss-elevation": "^0.3.0",
-    "tinycolor2": "^1.4.1"
+    "svelte-waypoint": "^0.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -54,6 +49,11 @@
     "npm-run-all": "^4.1.5",
     "postcss": "^7.0.16",
     "postcss-import": "^12.0.1",
+    "postcss-nesting": "^7.0.0",
+    "svelte": "^3.6.7",
+    "tailwindcss": "^1.0.1",
+    "tailwindcss-elevation": "^0.3.0",
+    "tinycolor2": "^1.4.1",
     "postcss-input-range": "^4.0.0",
     "postcss-url": "^8.0.0",
     "pre-commit": "^1.2.2",
