@@ -1,5 +1,9 @@
 # Smelte changelog
 
+## 0.0.19
+* Remove Code from default export
+* Move tailwind elevation to deps
+
 ## 0.0.18
 * Move tinycolor2 to dependencies
 
