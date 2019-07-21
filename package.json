@@ -70,7 +70,7 @@
     "rollup-plugin-string": "^3.0.0",
     "rollup-plugin-svelte": "^5.0.1",
     "rollup-plugin-terser": "^4.0.4",
-    "sapper": "^0.27.0",
+    "sapper": "^0.27.4",
     "sirv": "^0.4.0",
     "svelte": "^3.6.7",
     "svelte-preprocess": "^2.9.0",

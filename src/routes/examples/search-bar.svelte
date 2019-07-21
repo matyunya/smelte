@@ -25,7 +25,7 @@
     },
     remove: 'pt-6 px-4 bg-gray-100 bg-gray-300',
     small: true,
-    iconClasses: 'text-sm',
+    iconClasses: 'text-sm absolute',
     wrapperBaseClasses: (i) => i.replace('pb-6', ''),
   };
 

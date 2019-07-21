@@ -17,7 +17,6 @@
   class="material-icons {className} transition"
   class:reverse
   class:text-base={small}
-  class:absolute={small}
   class:text-xs={xs}>
   <slot />
 </i>
