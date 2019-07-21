@@ -32,8 +32,8 @@
   let labelDefault = `pt-4 absolute top-0 label-transition block pb-2 px-4 pointer-events-none cursor-text`;
   let inputDefault = `transition pb-2 pt-6 px-4 rounded-t text-black w-full`;
   let wrapperDefault = "mt-2 relative pb-6 text-gray-600" + ((select || autocomplete) ? " select" : "");
-  let appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 pointer-events-none";
-  let prependDefault = "absolute left-0 top-0 pointer-events-none text-xs";
+  let appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 pointer-events-none text-gray-700";
+  let prependDefault = "absolute left-0 top-0 pointer-events-none text-xs text-gray-700";
 
   export let add = "";
   export let remove = "";
@@ -141,7 +141,7 @@
       <div class={aClasses}>
         <Icon
           reverse={appendReverse}
-          class="{focused ? txt() : 'text-gray-700'} {iconClasses}"
+          class="{focused ? txt() : ''} {iconClasses}"
         >
           {append}
         </Icon>
@@ -196,7 +196,7 @@
       <div class={pClasses}>
         <Icon
           reverse={prependReverse}
-          class="{focused ? txt() : 'text-gray-700'} {iconClasses}"
+          class="{focused ? txt() : ''} {iconClasses}"
         >
           {prepend}
         </Icon>

@@ -25,6 +25,9 @@
   export let wrapperClasses = "cursor-pointer relative pb-4";
   export let inputWrapperClasses = i => i;
   export let appendClasses = i => i;
+  export let labelClasses = i => i;
+  export let inputClasses = i => i;
+  export let prependClasses = i => i;
 
   export let add = "";
   export let remove = "";
@@ -87,6 +90,9 @@
       {...props}
       wrapperClasses={inputWrapperClasses}
       {appendClasses}
+      {labelClasses}
+      {inputClasses}
+      {prependClasses}
       on:click={e => {
         e.stopPropagation();
         showList = true;

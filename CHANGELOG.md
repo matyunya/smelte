@@ -1,5 +1,9 @@
 # Smelte changelog
 
+# 0.0.23
+* Add example with custom multiselect
+* Few refactoring fixes
+
 ## 0.0.22
 * Fix styles on the data table
 * Refactor style function props to accept strings,
