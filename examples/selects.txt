@@ -62,7 +62,8 @@
 <Select
   {selectedLabel}
   outlined
-  inputWrapperClasses={i => `${i} rounded-full`}
+  inputClasses={i => i.replace('rounded-t', 'rounded-full')}
+  appendClasses={i => i.replace('text-gray-700', 'text-red-700')}
   label="Categories"
   {items}
 >
