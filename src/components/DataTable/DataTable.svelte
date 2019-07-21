@@ -192,8 +192,9 @@
           </div>
           <Select
             class="w-16 h-8 mb-5"
-            remove="bg-gray-300 bg-gray-100 select mt-2"
+            remove="bg-gray-300 bg-gray-100 select"
             replace={{ 'pt-6': 'pt-4' }}
+            inputWrapperClasses={(c) => c.replace('mt-2', '').replace('pb-6', '')}
             appendClasses={(c) => c.replace('pt-4', 'pt-3').replace('pr-4', 'pr-2')}
             noUnderline
             dense

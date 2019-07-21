@@ -101,9 +101,9 @@
       .replace(replace)
       .get();
     
-  $: wrapperClasses, wClasses = w.get();
-  $: appendClasses, aClasses = a.get();
-  $: prependClasses, pClasses = p.get();
+  $: wrapperClasses, wClasses = (new ClassBuilder(wrapperClasses, wrapperDefault)).get();
+  $: appendClasses, aClasses = (new ClassBuilder(appendClasses, appendDefault)).get();
+  $: prependClasses, pClasses = (new ClassBuilder(prependClasses, prependDefault)).get();
 </script>
 
 <style>
@@ -125,9 +125,7 @@
 
 <svelte:window on:click={() => (select ? (focused = false) : null)} />
 
-<div
-  class={wClasses}
->
+<div class={wClasses}>
   <div class="relative" class:text-error-500={error}>
     <label class={lClasses}>
       {label}
