@@ -1,5 +1,8 @@
 # Smelte changelog
 
+## 0.0.20
+* Fix icons absolute position
+
 ## 0.0.19
 * Remove Code from default export
 * Move tailwind elevation to deps
