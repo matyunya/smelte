@@ -1,5 +1,8 @@
 # Smelte changelog
 
+## 0.0.18
+* Move tinycolor2 to dependencies
+
 ## 0.0.17
 * Fix dependencies
 
