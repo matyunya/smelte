@@ -29,7 +29,7 @@
     remove: 'px-4 px-3',
     iconClasses: (c) => c.replace('p-4', ''),
     disabledClasses: (c) => c
-      .replace('text-gray-500', 'text-gray-200')
+      .replace('text-white', 'text-gray-200')
       .replace('bg-gray-300', 'bg-transparent')
       .replace('text-gray-700', ''),
     add: 'ripple-gray',
@@ -185,19 +185,21 @@
   <tfoot>
     <tr>
       <td colspan="100%">
-        <div class="flex justify-between items-center text-gray-700 text-sm w-full">
+        <div class="flex justify-between items-center text-gray-700 text-sm w-full h-8">
           <Spacer />
           <div class="mr-1 py-1">
           Rows per page:
           </div>
           <Select
-            class="w-16"
-            remove="bg-gray-300 bg-gray-100"
+            class="w-16 h-8 mb-5"
+            remove="bg-gray-300 bg-gray-100 select mt-2"
             replace={{ 'pt-6': 'pt-4' }}
-            wrapperBaseClasses={(c) => c.replace('select', 'h-8').replace('mt-2', '')}
-            appendBaseClasses={(c) => c.replace('pt-4', 'pt-3').replace('pr-4', 'pr-2')}
+            appendClasses={(c) => c.replace('pt-4', 'pt-3').replace('pr-4', 'pr-2')}
             noUnderline
-            bind:value={perPage} items={perPageOptions} />
+            dense
+            bind:value={perPage}
+            items={perPageOptions}
+          />
           <Spacer />
           <div>{offset}-{offset + perPage > data.length ? data.length : offset + perPage} of {data.length}</div>
           <Button

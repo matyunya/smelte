@@ -9,12 +9,16 @@ export default function utils(color, defaultDepth = 500) {
 }
 
 export class ClassBuilder {
-  constructor() {
-    this.classes = "";
+  constructor(classes, defaultClasses) {
+    console.log("classes", classes, typeof classes);
+    this.defaults =
+      typeof classes === "function" ? classes(defaultClasses) : classes;
+
+    this.classes = this.defaults;
   }
 
   flush() {
-    this.classes = "";
+    this.classes = this.defaults;
 
     return this;
   }
@@ -47,11 +51,17 @@ export class ClassBuilder {
     return this;
   }
 
-  add(className, cond = true) {
-    if (cond && className) {
-      this.classes += ` ${className} `;
-    }
+  add(className, cond = true, defaultValue) {
+    if (!cond || !className) return this;
 
-    return this;
+    switch (typeof className) {
+      case "string":
+      default:
+        this.classes += ` ${className} `;
+        return this;
+      case "function":
+        this.classes += ` ${className(defaultValue)} `;
+        return this;
+    }
   }
 }

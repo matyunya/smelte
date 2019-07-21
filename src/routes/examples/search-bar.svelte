@@ -12,8 +12,8 @@
     replace: {
       'pt-6': 'pt-3'
     },
-    wrapperBaseClasses: (c) => c.replace('select', 'h-8').replace('mt-2', ''),
-    appendBaseClasses: (c) => c.replace('pt-4', 'pt-2').replace('pr-4', 'pr-2'),
+    wrapperClasses: (c) => c.replace('select', 'h-8').replace('mt-2', ''),
+    appendClasses: (c) => c.replace('pt-4', 'pt-2').replace('pr-4', 'pr-2'),
     noUnderline: true,
     dense: true,
   };
@@ -26,7 +26,7 @@
     remove: 'pt-6 px-4 bg-gray-100 bg-gray-300',
     small: true,
     iconClasses: 'text-sm absolute',
-    wrapperBaseClasses: (i) => i.replace('pb-6', ''),
+    wrapperClasses: (i) => i.replace('pb-6', ''),
   };
 
   const buttonProps = {

@@ -22,8 +22,8 @@
   export let autocomplete = false;
   export let noUnderline = false;
   export let wrapperClasses = "cursor-pointer relative pb-4";
-  export let wrapperBaseClasses = i => i;
-  export let appendBaseClasses = i => i;
+  export let inputWrapperClasses = i => i;
+  export let appendClasses = i => i;
 
   export let add = "";
   export let remove = "";
@@ -47,8 +47,8 @@
     remove,
     replace,
     noUnderline,
-    wrapperBaseClasses,
-    appendBaseClasses,
+    wrapperClasses: inputWrapperClasses,
+    appendClasses,
   };
 
   function process(it) {

@@ -24,6 +24,7 @@
   export let appendReverse = false;
   export let prependReverse = false;
   export let color = "primary";
+  // for outlined button label
   export let bgColor = "white";
   export let iconClasses = "";
   export let small = false;
@@ -38,13 +39,11 @@
   export let remove = "";
   export let replace = "";
 
-  const identity = i => i;
-
-  export let inputBaseClasses = identity;
-  export let labelBaseClasses = identity;
-  export let wrapperBaseClasses = identity;
-  export let appendBaseClasses = identity;
-  export let prependBaseClasses = identity;
+  export let labelClasses = labelDefault;
+  export let inputClasses = inputDefault;
+  export let wrapperClasses = wrapperDefault;
+  export let appendClasses = appendDefault;
+  export let prependClasses = prependDefault;
 
   const {
     bg,
@@ -53,13 +52,18 @@
     caret,
   } = utils(color);
 
-  const l = new ClassBuilder();
-  const i = new ClassBuilder();
+  const l = new ClassBuilder(labelClasses, labelDefault);
+  const i = new ClassBuilder(inputClasses, inputDefault);
+  const w = new ClassBuilder(wrapperClasses, wrapperDefault);
+  const a = new ClassBuilder(appendClasses, appendDefault);
+  const p = new ClassBuilder(prependClasses, prependDefault);
 
   let focused = false;
-  let labelClasses = "";
-  let inputClasses = "";
-  let wrapperClasses = "";
+  let lClasses = "";
+  let iClasses = "";
+  let wClasses = "";
+  let aClasses = "";
+  let pClasses = "";
 
   function toggleFocused() {
     focused = !focused;
@@ -68,22 +72,19 @@
   $: showHint = error || (persistentHint ? hint : focused && hint);
   $: labelOnTop = placeholder || focused || value;
 
-  $: {
-    labelClasses = l
+  $: lClasses = l
       .flush()
-      .add(labelBaseClasses(labelDefault))
       .add(txt(), focused && !error)
       .add('label-top text-xs', labelOnTop)
       .remove('pt-4 pb-2 px-4 px-1 pt-0', labelOnTop && outlined)
-      .add(`ml-3 p-1 pt-0 mt-0 ${bgColor}`, labelOnTop && outlined)
+      .add(`ml-3 p-1 pt-0 mt-0 bg-${bgColor}`, labelOnTop && outlined)
       .remove('px-4', prepend)
       .add('pr-4 pl-6', prepend)
       .get();
- 
-    inputClasses = i
+
+  $: iClasses = i
       .flush()
       .add(className)
-      .add(inputBaseClasses(inputDefault))
       .remove('pt-6 pb-2', outlined)
       .add('border rounded bg-transparent py-4 transition', outlined)
       .add('border-error-500 caret-error-500', error)
@@ -100,10 +101,9 @@
       .replace(replace)
       .get();
     
-    wrapperClasses = (new ClassBuilder())
-      .add(wrapperBaseClasses(wrapperDefault))
-      .get();
-  }
+  $: wrapperClasses, wClasses = w.get();
+  $: appendClasses, aClasses = a.get();
+  $: prependClasses, pClasses = p.get();
 </script>
 
 <style>
@@ -129,16 +129,16 @@
   class={wrapperClasses}
 >
   <div class="relative" class:text-error-500={error}>
-    <label class={labelClasses}>
+    <label class={lClasses}>
       {label}
     </label>
 
-    <div class={appendBaseClasses(appendDefault)}>
+    <div class={aClasses}>
       <slot name="append" />
     </div>
 
     {#if append}
-      <div class={appendBaseClasses(appendDefault)}>
+      <div class={aClasses}>
         <Icon
           reverse={appendReverse}
           class="{focused ? txt() : 'text-gray-700'} {iconClasses}"
@@ -151,7 +151,7 @@
     {#if (!textarea && !select) || autocomplete}
       <input
         aria-label={label}
-        class={inputClasses}
+        class={iClasses}
         on:focus={toggleFocused}
         on:blur={toggleFocused}
         on:blur
@@ -165,7 +165,7 @@
       <textarea
         {rows}
         aria-label={label}
-        class={inputClasses}
+        class={iClasses}
         on:change
         on:input
         on:click
@@ -177,7 +177,7 @@
         placeholder={!value ? placeholder : ''} />
     {:else if select && !autocomplete}
       <div
-        class="select {inputClasses}"
+        class="select {iClasses}"
         on:click={toggleFocused}
         on:change
         on:input
@@ -188,12 +188,12 @@
       </div>
     {/if}
 
-    <div class={prependBaseClasses(prependDefault)}>
+    <div class={pClasses}>
       <slot name="prepend" />
     </div>
 
     {#if prepend}
-      <div class={prependBaseClasses(prependDefault)}>
+      <div class={pClasses}>
         <Icon
           reverse={prependReverse}
           class="{focused ? txt() : 'text-gray-700'} {iconClasses}"
