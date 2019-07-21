@@ -1,5 +1,8 @@
 # Smelte changelog
 
+# 0.0.25
+* Fix class builder calls on wrapper/append/prepend in text field
+
 # 0.0.24
 * Expose text field classes in select
 * Improve custom select example
