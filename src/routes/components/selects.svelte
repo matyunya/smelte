@@ -73,6 +73,7 @@
         <Checkbox
           value={selectedItems.includes(item)}
           class="block my-2"
+          color="red"
           label={item.text}
           on:change={toggle(item)}
         />
