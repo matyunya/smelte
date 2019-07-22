@@ -23,6 +23,7 @@
   export let autocomplete = false;
   export let noUnderline = false;
   export let wrapperClasses = "cursor-pointer relative pb-4";
+  export let showList = false;
   export let inputWrapperClasses = i => i;
   export let appendClasses = i => i;
   export let labelClasses = i => i;
@@ -33,7 +34,6 @@
   export let remove = "";
   export let replace = "";
 
-  let showList = false;
   let filteredItems = items;
   let itemsProcessed = [];
 
