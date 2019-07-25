@@ -1,5 +1,9 @@
 # Smelte changelog
 
+# 0.0.27
+* Add alias plugin
+* Remove postcss nesting
+
 # 0.0.26
 * Passing escaped props to text fields and buttons
 
