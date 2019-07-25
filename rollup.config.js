@@ -10,6 +10,7 @@ import config from "sapper/config/rollup.js";
 import getPreprocessor from "svelte-preprocess";
 import postcss from "rollup-plugin-postcss";
 import includePaths from "rollup-plugin-includepaths";
+import alias from 'rollup-plugin-alias';
 import path from "path";
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
@@ -47,6 +48,7 @@ export default {
       resolve(),
       commonjs(),
       includePaths({ paths: ["./src", "./"] }),
+      alias({ smelte: 'src/index.js' }),
 
       !legacy &&
         babel({
@@ -110,7 +112,8 @@ export default {
         include: "**/*.txt"
       }),
       resolve(),
-      includePaths({ paths: ["./src", "./"] }),
+      alias({ smelte: 'src/index.js' }),
+      includePaths({ paths: ["./src", "./"] }),      
       commonjs(),
       postcss({
         plugins: require("./postcss.config.js")(!dev),

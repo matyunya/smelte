@@ -1,8 +1,8 @@
 <script>
-  import Checkbox from "components/Checkbox";
-  import RadioButton from "components/RadioButton";
-  import Switch from "components/Switch";
-  import Icon from "components/Icon";
+  import { Checkbox } from "smelte";
+  import { RadioButton } from "smelte";
+  import { Switch } from "smelte";
+  import { Icon } from "smelte";
 </script>
 
 <h5 class="pb-8 pt-10" id="checkboxes">Checkboxes</h5>

@@ -1,5 +1,5 @@
 <script>
-  import TextField from "components/TextField";
+  import { TextField } from "smelte";
 
   // TODO: components introduction
 </script>

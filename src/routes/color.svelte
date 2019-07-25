@@ -1,5 +1,5 @@
 <script>
-  import TextField from "components/TextField";
+  import { TextField } from "smelte";
   import Code from "components/Code";
 
   import ripple from "examples/ripple.txt";

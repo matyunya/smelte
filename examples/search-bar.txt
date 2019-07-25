@@ -1,8 +1,8 @@
 <script>
-  import TextField from "components/TextField";
-  import Select from "components/Select";
-  import Slider from "components/Slider";
-  import Button from "components/Button";
+  import { TextField } from "smelte";
+  import { Select } from "smelte";
+  import { Slider } from "smelte";
+  import { Button } from "smelte";
   import Code from "components/Code";
 
   import searchBar from "examples/search-bar.txt";

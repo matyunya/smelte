@@ -1,5 +1,5 @@
 <script>
-  import DataTable from "components/DataTable";
+  import { DataTable } from "smelte";
   import Code from "components/Code";
   import table from "examples/table.txt";
 
