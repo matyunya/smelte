@@ -3,15 +3,15 @@
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
 
-  import AppBar from "components/AppBar";
-  import Tabs from "components/Tabs";
-  import Button from "components/Button";
-  import { Spacer } from "components/Util";
-  import List from "components/List";
-  import ListItem from "components/List/ListItem.svelte";
-  import NavigationDrawer from "components/NavigationDrawer";
-  import ProgressLinear from "components/ProgressLinear";
-  import { navMenu, topMenu } from "utils/menu.js";
+  import { AppBar } from "smelte";
+  import { Tabs } from "smelte";
+  import { Button } from "smelte";
+  import { Spacer } from "smelte";
+  import { List } from "smelte";
+  import { ListItem } from "smelte";
+  import { NavigationDrawer } from "smelte";
+  import { ProgressLinear } from "smelte";
+  import { navMenu, topMenu } from "../utils/menu.js";
 
   import {
     right,

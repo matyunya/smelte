@@ -1,6 +1,6 @@
 <script>
-  import Button from "components/Button";
-  import Icon from "components/Icon";
+  import { Button } from "smelte";
+  import { Icon } from "smelte";
   import Code from "components/Code";
   
   import buttons from "examples/buttons.txt";

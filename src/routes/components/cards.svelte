@@ -1,7 +1,7 @@
 <script>
-  import Card from "components/Card";
-  import Button from "components/Button";
-  import Image from "components/Image";
+  import { Card} from "smelte";
+  import { Button } from "smelte";
+  import { Image } from "smelte";
 
   import Code from "components/Code";
 

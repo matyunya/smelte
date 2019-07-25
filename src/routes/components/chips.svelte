@@ -1,7 +1,7 @@
 <script>
-  import Chip from "components/Chip";
-  import Snackbar from "components/Snackbar";
-  import Button from "components/Button";
+  import { Chip } from "smelte";
+  import { Snackbar } from "smelte";
+  import { Button } from "smelte";
   import Code from "components/Code";
 
   import chip from "examples/chip.txt";

@@ -1,6 +1,6 @@
 <script>
-  import Snackbar from "components/Snackbar";
-  import Button from "components/Button";
+  import { Snackbar } from "smelte";
+  import { Button } from "smelte";
   import Code from "components/Code";
   import snakebars from "examples/snakebars.txt";
 

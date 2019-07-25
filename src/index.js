@@ -16,10 +16,11 @@ import ProgressLinear from "./components/ProgressLinear";
 import ProgressCircular from "./components/ProgressCircular";
 import Slider from "./components/Slider";
 import Snackbar from "./components/Snackbar";
-import Tabs from "./components/Tabs";
+import { TabButton, Tab, Tabs } from "./components/Tabs";
 import TextField from "./components/TextField";
 import DataTable from "./components/DataTable";
 import Switch from "./components/Switch";
+import Tooltip from "./components/Tooltip";
 
 export { Scrim, Ripple, Spacer } from "./components/Util";
 
@@ -41,9 +42,12 @@ export {
   Select,
   Slider,
   Snackbar,
+  Tab, 
   Tabs,
+  TabButton, 
   TextField,
   AppBar,
   DataTable,
-  Switch
+  Switch,
+  Tooltip
 };
