@@ -20,37 +20,37 @@ input {
   -webkit-appearance: none;
   @apply bg-primary-50 w-full rounded cursor-pointer;
   height: 4px;
+}
 
-  &:disabled {
-    @apply bg-gray-300;
-  }
+input:disabled {
+  @apply bg-gray-300;
+}
 
-  &::range-thumb {
-    -webkit-appearance: none;
-    @apply rounded-full p-1 w-5 h-5 elevation-3 bg-primary-500;
-  }
-  
-  &:disabled::range-thumb {
-    @apply bg-gray-400;
-  }
+input::range-thumb {
+  -webkit-appearance: none;
+  @apply rounded-full p-1 w-5 h-5 elevation-3 bg-primary-500;
+}
 
-  &::-ms-thumb {
-    margin: 0;
-  }
-  &:focus {
-    outline: none;
+input:disabled::range-thumb {
+  @apply bg-gray-400;
+}
 
-    &::range-thumb {
-      -webkit-appearance: none;
-      @apply rounded-full p-1 w-5 h-5 elevation-3 bg-primary-500;
-      margin-top: -0.5rem;
-    }
+input::-ms-thumb {
+  margin: 0;
+}
+input:focus {
+  outline: none;
+}
 
-    &::range-track {
-      @apply rounded;
-      height: 4px;
-    }
-  }
+input:focus::range-thumb {
+  -webkit-appearance: none;
+  @apply rounded-full p-1 w-5 h-5 elevation-3 bg-primary-500;
+  margin-top: -0.5rem;
+}
+
+input:focus::range-track {
+  @apply rounded;
+  height: 4px;
 }
 </style>
 

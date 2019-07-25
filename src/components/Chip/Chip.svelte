@@ -37,18 +37,18 @@
 
   .outlined {
     @apply bg-transparent border border-gray-400 border-solid;
+  }
 
-    &:hover {
-      @apply bg-gray-50;
-    }
+  .outlined:hover {
+    @apply bg-gray-50;
   }
 
   .selected {
     @apply border-primary-500 text-primary-500 bg-primary-100;
+  }
 
-    &:hover {
-      @apply bg-primary-50;
-    }
+  .selected:hover {
+    @apply bg-primary-50;
   }
 </style>
 

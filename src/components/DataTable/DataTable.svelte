@@ -54,52 +54,54 @@
 <style>
   table {
     @apply text-sm overflow-x-auto;
+  }
 
-    & th, & td {
-      @apply p-3 font-normal text-right;
-    }
+  th, td {
+    @apply p-3 font-normal text-right;
+  }
 
-    & th:first-child, & td:first-child {
-      @apply text-left border-r;
-    }
+  th:first-child, td:first-child {
+    @apply text-left border-r;
+  }
 
-    & th {
-      @apply text-gray-600 text-xs cursor-pointer;
+  th {
+    @apply text-gray-600 text-xs cursor-pointer;
+  }
 
-      & .asc {
-        transform: rotate(180deg);
-      }
+  th .asc {
+    transform: rotate(180deg);
+  }
 
-      & .sort-wrapper {
-        @apply flex items-center justify-end;
-      }
+  th .sort-wrapper {
+    @apply flex items-center justify-end;
+  }
 
-      &:first-child .sort-wrapper {
-        @apply justify-start;
-      }
+  th:first-child .sort-wrapper {
+    @apply justify-start;
+  }
 
-      & .sort {
-        @apply w-4 h-4 opacity-0 transition-fast;
-      }
+  th .sort {
+    @apply w-4 h-4 opacity-0 transition-fast;
+  }
 
-      &:hover {
-        @apply text-black transition-fast;
-        & .sort {
-          @apply opacity-100;
-        }
-      }
-    }
+  th:hover {
+    @apply text-black transition-fast;
+  }
 
-    & tr {
-      @apply border-gray-200 border-t border-b px-3;
-      &:hover {
-        @apply bg-gray-50;
-      }
+  th:hover .sort {
+    @apply opacity-100;
+  }
 
-      &.selected {
-        @apply bg-primary-50;
-      }
-    }
+  tr {
+    @apply border-gray-200 border-t border-b px-3;
+  }
+
+  tr:hover {
+    @apply bg-gray-50;
+  }
+
+  tr.selected {
+    @apply bg-primary-50;
   }
 </style>
 

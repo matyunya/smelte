@@ -35,10 +35,10 @@
 
   .navigation {
     @apply mx-3 rounded text-sm;
+  }
 
-    &.selected {
-      @apply bg-primary-50 text-primary-500;
-    }
+  .navigation.selected {
+    @apply bg-primary-50 text-primary-500;
   }
 </style>
 
