@@ -19,7 +19,7 @@
   export let asc = false;
   export let loading = false;
   export let hideProgress = false;
-  export let wrapperClasses = "rounded elevation-3 relative";
+  export let wrapperClasses = "rounded elevation-3 relative text-sm overflow-x-auto";
   export let editable = true;
   export let paginatorProps = {
     color: "gray",
@@ -52,10 +52,6 @@
 </script>
 
 <style>
-  table {
-    @apply text-sm overflow-x-auto;
-  }
-
   th, td {
     @apply p-3 font-normal text-right;
   }
