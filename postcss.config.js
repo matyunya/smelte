@@ -2,7 +2,6 @@ const extractor = require("./src/utils/css-extractor.js");
 
 module.exports = (purge = false) => {
   return [
-    require("postcss-nesting")(),
     require("postcss-import")(),
     require("postcss-url")(),
     require("postcss-input-range")(),
