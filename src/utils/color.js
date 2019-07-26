@@ -14,13 +14,25 @@ const o = (value, name) => ({
   [name]: tinycolor(value).toHexString()
 });
 
+function transparent(color) {
+  return {
+    trans: tinycolor(color[50])
+      .toRgbString()
+      .replace(")", ", 0.7)")
+  };
+}
+
+const baseLight = tinycolor("#ffffff");
+
 function buildPalette(hex) {
-  const baseLight = tinycolor("#ffffff");
   const baseDark = multiply(tinycolor(hex).toRgb(), tinycolor(hex).toRgb());
   const baseTriad = tinycolor(hex).tetrad();
 
+  const lightest = o(tinycolor.mix(baseLight, hex, 12), "50");
+
   return {
-    ...o(tinycolor.mix(baseLight, hex, 12), "50"),
+    ...transparent(lightest),
+    ...lightest,
     ...o(tinycolor.mix(baseLight, hex, 30), "100"),
     ...o(tinycolor.mix(baseLight, hex, 50), "200"),
     ...o(tinycolor.mix(baseLight, hex, 70), "300"),

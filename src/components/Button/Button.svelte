@@ -78,7 +78,7 @@
         .add(elevationClasses, elevation, elevationDefault)
         .add(outlinedClasses, outlined, outlinedDefault)
         .add(
-          `${border(lighter)} ${txt(normal)} ${ripple()} hover:${bg(50)}`,
+          `${border(lighter)} ${txt(normal)} ${ripple()} hover:${bg("trans")}`,
           outlined)
         .add(`${ripple()} ${txt(lighter)}`, text)
         .add(textClasses, text, textDefault)
