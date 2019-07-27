@@ -21,6 +21,7 @@ import TextField from "./components/TextField";
 import DataTable from "./components/DataTable";
 import Switch from "./components/Switch";
 import Tooltip from "./components/Tooltip";
+import Treeview from "./components/Treeview";
 
 export { Scrim, Ripple, Spacer } from "./components/Util";
 
@@ -42,12 +43,13 @@ export {
   Select,
   Slider,
   Snackbar,
-  Tab, 
+  Tab,
   Tabs,
-  TabButton, 
+  TabButton,
   TextField,
   AppBar,
   DataTable,
+  Treeview,
   Switch,
   Tooltip
 };

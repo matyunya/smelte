@@ -22,8 +22,10 @@
   ],
   "files": [
     "dist",
-    "src",
-    "tailwind.config.js"
+    "src/utils",
+    "src/components",
+    "tailwind.config.js",
+    "postcss.config.js"
   ],
   "module": "dist/module.js",
   "main": "dist/index.js",

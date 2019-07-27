@@ -14,6 +14,7 @@
   export let selected = false;
   export let tabindex = null;
   export let basicClasses = "transition p-4 cursor-pointer text-gray-700 flex items-center z-10";
+  export let itemClasses = "";
 
   const dispatch = createEventDispatcher();
 
@@ -46,7 +47,7 @@
   class={basicClasses}
   class:navigation
   class:selected
-  class:hover:bg-gray-300={!navigation}
+  class:hover:bg-gray-trans={!navigation}
   class:ripple-white={navigation}
   class:ripple-gray={!navigation}
   class:py-2={dense}
@@ -65,7 +66,7 @@
   {/if}
 
   <div class="flex flex-col p-0">
-    <div>
+    <div class={itemClasses}>
       <slot>{text}</slot>
     </div>
     {#if subheading}

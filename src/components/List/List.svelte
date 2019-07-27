@@ -11,6 +11,8 @@
   let className = "";
   export {className as class};
 
+  export let listClasses = "py-2 rounded";
+
   const props = {
     dense,
     navigation
@@ -20,7 +22,7 @@
 </script>
 
 <div class={className}>
-  <ul class="py-2 rounded" class:rounded-t-none={select}>
+  <ul class={listClasses} class:rounded-t-none={select}>
     {#each items as item, i}
       {#if item.to}
         <slot name="item" {item} {dense} {navigation} {value}>
@@ -39,7 +41,8 @@
             id={id(item)}
             selected={value === id(item)}
             {...props}
-            on:change>
+            on:change
+            on:click>
             {item.text || item.value || item}
           </ListItem>
         </slot>
