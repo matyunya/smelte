@@ -1,7 +1,6 @@
 <script>
   import { Snackbar } from "smelte";
   import { Button } from "smelte";
-  import Code from "components/Code";
   import snackbars from "examples/snackbars.txt";
 
   let showSnackbar = false;
@@ -30,5 +29,3 @@
   <Button on:click={() => (showSnackbarTop = true)}>Show snackbar on top</Button>
   <Button on:click={() => (showSnackbarBottomLeft = true)}>Show snackbar on the bottom left</Button>
 </div>
-
-<Code code={snackbars} />
