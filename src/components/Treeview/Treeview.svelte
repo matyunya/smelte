@@ -12,6 +12,7 @@
   export let showArrow = true;
   export let selectable = true;
   export let listClasses = "rounded";
+  export let selectedClasses = "bg-primary-trans";
   let className = "";
   export {className as class};
 
@@ -26,15 +27,16 @@
 
 
 <List items={items} {...$$props} {listClasses}>
-  <span slot="item" let:item {dense} {navigation} {value}>
+  <span slot="item" let:item>
     <ListItem
       {item}
       {...$$props}
       {...item}
       selected={selectable && expanded.includes(item)}
+      {selectedClasses}
       on:click={() => toggle(item) }
       on:click
-      itemClasses="flex items-center pl-{level * 5} items-center">
+      itemClasses="flex items-center pl-{level * 3} items-center">
       {#if showArrow && !item.hideArrow && item.items}
         <Icon tip={expanded.includes(item)}>arrow_right</Icon>
       {/if}

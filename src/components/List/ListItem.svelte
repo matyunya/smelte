@@ -15,6 +15,7 @@
   export let tabindex = null;
   export let basicClasses = "transition p-4 cursor-pointer text-gray-700 flex items-center z-10";
   export let itemClasses = "";
+  export let selectedClasses = "bg-gray-200";
 
   const dispatch = createEventDispatcher();
 
@@ -26,10 +27,6 @@
 </script>
 
 <style>
-  li.selected {
-    @apply bg-gray-200;
-  }
-
   li:focus {
     @apply bg-gray-50;
   }
@@ -44,9 +41,8 @@
 </style>
 
 <li
-  class={basicClasses}
+  class="{basicClasses} {selected ? selectedClasses : ''}"
   class:navigation
-  class:selected
   class:hover:bg-gray-trans={!navigation}
   class:ripple-white={navigation}
   class:ripple-gray={!navigation}
