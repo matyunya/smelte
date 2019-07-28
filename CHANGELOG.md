@@ -1,14 +1,12 @@
 # Smelte changelog
 
-# 0.0.29
-* Add class builder to snackbars
-* Add position and color props to snackbar
-* Expose transition props on snackbars
-
 # 0.0.28
 * Add transparent variant to all colors
 * Give ripple elements transparent hover
 * Fix outlined button hover
+* Add class builder to snackbars
+* Add position and color props to snackbar
+* Expose transition props on snackbars
 
 # 0.0.27
 * Add alias plugin
