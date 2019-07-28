@@ -1,6 +1,6 @@
 <script>
-  import { fade, fly } from "svelte/transition";
-  import { onMount, onDestroy } from "svelte";
+  import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
   import { quadOut, quadIn } from "svelte/easing";
   import { List, Spacer, Button } from "smelte";
   import utils, { ClassBuilder } from "../../utils/classes.js";
@@ -16,6 +16,7 @@
   export let right = false;
   export let left = false;
   export let noAction = false;
+  export let transition = fade;
 
   const classesDefault = `pointer-events-auto flex absolute py-2 px-4 z-30 mb-4 content-between mx-auto
       rounded items-center elevation-2 h-12`;
@@ -65,10 +66,10 @@
 
 {#if value}
   <div class="fixed w-full h-full top-0 left-0 z-30 pointer-events-none">
-    <div class={wClasses} transition:fly>
+    <div class={wClasses}>
       <div
-        in:fade={inProps}
-        out:fade={outProps}
+        in:transition={inProps}
+        out:transition={outProps}
         class={classes}>
         <slot />
         {#if !noAction}
