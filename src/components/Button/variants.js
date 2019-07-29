@@ -1,5 +1,8 @@
 module.exports = {
   all: color => [
+    `bg-${color}-transDark`,
+    `bg-${color}-transLight`,
+    `bg-${color}-trans`,
     `bg-${color}-50`,
     `bg-${color}`,
     `text-${color}`,
