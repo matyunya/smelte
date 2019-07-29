@@ -1,5 +1,5 @@
 <script>
-  import { Ripple } from "../Util";
+  import Ripple from "../Ripple";
 
   export let value = false;
   export let label = "";

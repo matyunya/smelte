@@ -18,6 +18,7 @@
   export let selected = null;
   export let listClasses = "rounded";
   export let selectedClasses = "bg-primary-trans";
+
   let className = "";
   export {className as class};
 

@@ -10,7 +10,7 @@ import config from "sapper/config/rollup.js";
 import getPreprocessor from "svelte-preprocess";
 import postcss from "rollup-plugin-postcss";
 import includePaths from "rollup-plugin-includepaths";
-import alias from 'rollup-plugin-alias';
+import alias from "rollup-plugin-alias";
 import path from "path";
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
@@ -48,7 +48,7 @@ export default {
       resolve(),
       commonjs(),
       includePaths({ paths: ["./src", "./"] }),
-      alias({ smelte: 'src/index.js' }),
+      alias({ smelte: "src/index.js" }),
 
       !legacy &&
         babel({
@@ -63,7 +63,7 @@ export default {
       legacy &&
         babel({
           extensions: [".js", ".mjs", ".html", ".svelte"],
-          runtimeHelpers: true,
+          // runtimeHelpers: true,
           exclude: ["node_modules/@babel/**"],
           presets: [
             [
@@ -73,16 +73,16 @@ export default {
                 // , ie >= 11, not dead
               }
             ]
-          ],
-          plugins: [
-            "@babel/plugin-syntax-dynamic-import",
-            [
-              "@babel/plugin-transform-runtime",
-              {
-                useESModules: true
-              }
-            ]
           ]
+          // plugins: [
+          //   "@babel/plugin-syntax-dynamic-import",
+          //   [
+          //     "@babel/plugin-transform-runtime",
+          //     {
+          //       useESModules: true
+          //     }
+          //   ]
+          // ]
         }),
 
       !dev &&
@@ -112,8 +112,8 @@ export default {
         include: "**/*.txt"
       }),
       resolve(),
-      alias({ smelte: 'src/index.js' }),
-      includePaths({ paths: ["./src", "./"] }),      
+      alias({ smelte: "src/index.js" }),
+      includePaths({ paths: ["./src", "./"] }),
       commonjs(),
       postcss({
         plugins: require("./postcss.config.js")(!dev),

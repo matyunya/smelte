@@ -22,8 +22,9 @@ import DataTable from "./components/DataTable";
 import Switch from "./components/Switch";
 import Tooltip from "./components/Tooltip";
 import Treeview from "./components/Treeview";
+import Ripple from "./components/Ripple";
 
-export { Scrim, Ripple, Spacer } from "./components/Util";
+export { Scrim, Spacer } from "./components/Util";
 
 export {
   Button,
@@ -51,5 +52,6 @@ export {
   DataTable,
   Treeview,
   Switch,
-  Tooltip
+  Tooltip,
+  Ripple
 };

@@ -1,7 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte";
   import Icon from "../Icon";
-  import { Ripple } from "../Util";
+  import Ripple from "../Ripple";
 
   let className = "";
   export {className as class};

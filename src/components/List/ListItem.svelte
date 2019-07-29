@@ -13,7 +13,7 @@
   export let to = "";
   export let selected = false;
   export let tabindex = null;
-  export let basicClasses = "transition p-4 cursor-pointer text-gray-700 flex items-center z-10";
+  export let basicClasses = "my-1 ripple-gray hover:bg-gray-trans transition p-4 cursor-pointer text-gray-700 flex items-center z-10";
   export let itemClasses = "";
   export let selectedClasses = "bg-gray-200";
 
@@ -43,9 +43,6 @@
 <li
   class="{basicClasses} {selected ? selectedClasses : ''}"
   class:navigation
-  class:hover:bg-gray-trans={!navigation}
-  class:ripple-white={navigation}
-  class:ripple-gray={!navigation}
   class:py-2={dense}
   class:text-gray-600={disabled}
   {tabindex}

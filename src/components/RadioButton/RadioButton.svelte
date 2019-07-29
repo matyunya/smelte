@@ -1,6 +1,6 @@
 <script>
   import Icon from "../Icon";
-  import { Ripple } from "../Util";
+  import Ripple from "../Ripple";
 
   export let selected = "";
   export let label = "";
