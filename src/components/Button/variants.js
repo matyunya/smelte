@@ -1,8 +1,6 @@
 module.exports = {
   all: color => [
     `bg-${color}-50`,
-    `ripple-${color}-500`,
-    `ripple-${color}`,
     `bg-${color}`,
     `text-${color}`,
     `text-${color}-500`

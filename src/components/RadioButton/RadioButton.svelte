@@ -15,6 +15,8 @@
 
     selected = value;
   }
+
+  $: rippleColor = value && !disabled ? color : 'gray';
 </script>
 
 <div
@@ -26,17 +28,19 @@
     type="radio"
     role="radio"
     selected={selected === value} />
-  <Ripple color={value && !disabled ? color : 'gray'}>
-    {#if selected === value}
-      <Icon class="text-{disabled ? 'gray' : color}-500">
-        radio_button_checked
-      </Icon>
-    {:else}
-      <Icon class={disabled ? 'text-gray-500' : 'text-gray-600'}>
-        radio_button_unchecked
-      </Icon>
-    {/if}
-  </Ripple>
+  <div class="relative">
+    <Ripple color={rippleColor}>
+      {#if selected === value}
+        <Icon class="text-{disabled ? 'gray' : color}-500">
+          radio_button_checked
+        </Icon>
+      {:else}
+        <Icon class={disabled ? 'text-gray-500' : 'text-gray-600'}>
+          radio_button_unchecked
+        </Icon>
+      {/if}
+    </Ripple>
+  </div>
   <label
     aria-hidden="true"
     class="pl-2"

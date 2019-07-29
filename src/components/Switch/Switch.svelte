@@ -23,15 +23,15 @@
     class={trackClasses}
     class:bg-gray-300={!value}
     class:bg-primary-200={value}>
-    <Ripple color={value && !disabled ? color : 'gray'}>
-      <div class="w-full h-full absolute" />
+    <div class="w-full h-full absolute" />
+    <Ripple color={value && !disabled ? color : 'gray'} noHover>
+      <div
+        class={thumbClasses}
+        class:bg-white={!value}
+        class:bg-primary-400={value}
+        class:left-0={!value}
+        style={value ? 'left: 1.25rem' : ''} />
     </Ripple>
-    <div
-      class={thumbClasses}
-      class:bg-white={!value}
-      class:bg-primary-400={value}
-      class:left-0={!value}
-      style={value ? 'left: 1.25rem' : ''} />
   </div>
   <label
     aria-hidden="true"

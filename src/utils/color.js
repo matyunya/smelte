@@ -14,30 +14,30 @@ const o = (value, name) => ({
   [name]: tinycolor(value).toHexString()
 });
 
-function transparent(color) {
-  return {
-    trans: tinycolor(color[50])
-      .toRgbString()
-      .replace(")", ", 0.7)")
-  };
-}
-
-const baseLight = tinycolor("#ffffff");
+const white = tinycolor("#ffffff");
 
 function buildPalette(hex) {
   const baseDark = multiply(tinycolor(hex).toRgb(), tinycolor(hex).toRgb());
   const baseTriad = tinycolor(hex).tetrad();
 
-  const lightest = o(tinycolor.mix(baseLight, hex, 12), "50");
+  const lightest = o(tinycolor.mix(white, hex, 12), "50");
 
   return {
-    ...transparent(lightest),
     ...lightest,
-    ...o(tinycolor.mix(baseLight, hex, 30), "100"),
-    ...o(tinycolor.mix(baseLight, hex, 50), "200"),
-    ...o(tinycolor.mix(baseLight, hex, 70), "300"),
-    ...o(tinycolor.mix(baseLight, hex, 85), "400"),
-    ...o(tinycolor.mix(baseLight, hex, 100), "500"),
+    transLight: tinycolor(lightest[50])
+      .toRgbString()
+      .replace(")", ", 0.6)"),
+    trans: tinycolor(lightest[50])
+      .toRgbString()
+      .replace(")", ", 0.7)"),
+    transDark: tinycolor(hex)
+      .toRgbString()
+      .replace(")", ", 0.15)"),
+    ...o(tinycolor.mix(white, hex, 30), "100"),
+    ...o(tinycolor.mix(white, hex, 50), "200"),
+    ...o(tinycolor.mix(white, hex, 70), "300"),
+    ...o(tinycolor.mix(white, hex, 85), "400"),
+    ...o(tinycolor.mix(white, hex, 100), "500"),
     ...o(tinycolor.mix(baseDark, hex, 87), "600"),
     ...o(tinycolor.mix(baseDark, hex, 70), "700"),
     ...o(tinycolor.mix(baseDark, hex, 54), "800"),

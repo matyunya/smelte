@@ -1,9 +1,4 @@
-const {
-  rippleAfter,
-  ripple,
-  rippleActiveAfter,
-  addUtility
-} = require("./src/utils/style.js");
+const { addUtility } = require("./src/utils/style.js");
 
 const buildPalette = require("./src/utils/color.js");
 
@@ -65,10 +60,16 @@ module.exports = {
       loose: 2
     },
     colors: {
+      transparent: "transparent",
       white: "#fff",
+      "white-trans": "rgba(255,255,255,0.5)",
+      "white-transLight": "rgba(255,255,255,0.6)",
+      "white-transDark": "rgba(255,255,255,0.2)",
+      "black-trans": "rgba(0,0,0,0.5)",
+      "black-transLight": "rgba(0,0,0,0.7)",
+      "black-transDark": "rgba(0,0,0,0.35)",
       "white-500": "#fff",
       black: "#000",
-      transparent: "transparent",
 
       ...buildPalette(colors),
 
@@ -83,7 +84,9 @@ module.exports = {
         "700": "#5d4037",
         "800": "#4e342e",
         "900": "#3e2723",
-        trans: "rgba(62,39,35,0.5)"
+        trans: "rgba(62,39,35,0.5)",
+        transLight: "rgba(62,39,35,0.7)",
+        transDark: "rgba(62,39,35,0.35)"
       },
 
       gray: {
@@ -97,7 +100,9 @@ module.exports = {
         "700": "#616161",
         "800": "#424242",
         "900": "#212121",
-        trans: "rgba(250, 250, 250, 0.7)"
+        trans: "rgba(250, 250, 250, 0.5)",
+        transLight: "rgba(250, 250, 250, 0.6)",
+        transDark: "rgba(100, 100, 100, 0.2)"
       },
 
       "blue-gray": {
@@ -111,7 +116,9 @@ module.exports = {
         "700": "#455a64",
         "800": "#37474f",
         "900": "#263238",
-        trans: "rgb(236,239,241,0.5)"
+        trans: "rgb(236,239,241,0.5)",
+        transLight: "rgb(236,239,241,0.6)",
+        transDark: "rgb(236,239,241,0.2)"
       }
     }
   },
@@ -137,53 +144,6 @@ module.exports = {
           transition: ".1s"
         }
       });
-    },
-    // Ripples
-    function({ addUtilities, theme, e }) {
-      const colors = theme("colors");
-
-      const ripples = Object.keys(colors).reduce((acc, key) => {
-        if (typeof colors[key] === "string") {
-          return {
-            ...acc,
-            [`.ripple-${e(key)}`]: ripple,
-            [`.ripple-${e(key)}:after`]: {
-              ...rippleAfter,
-              backgroundImage: `radial-gradient(circle, ${colors[key]} 20%, transparent 10.01%)`
-            },
-            [`.ripple-${e(key)}:active:after`]: rippleActiveAfter
-          };
-        }
-
-        const variants = Object.keys(colors[key]);
-
-        return {
-          ...acc,
-          [`.ripple-${e(key)}`]: ripple,
-          [`.ripple-${e(key)}:after`]: {
-            ...rippleAfter,
-            backgroundImage: `radial-gradient(circle, ${
-              colors[key][500]
-            } 20%, transparent 10.01%)`
-          },
-          [`.ripple-${e(key)}:active:after`]: rippleActiveAfter,
-
-          ...variants.reduce(
-            (a, variant) => ({
-              ...a,
-              [`.ripple-${e(key)}-${variant}`]: ripple,
-              [`.ripple-${e(key)}-${variant}:after`]: {
-                ...rippleAfter,
-                backgroundImage: `radial-gradient(circle, ${colors[key][variant]} 20%, transparent 10.01%)`
-              },
-              [`.ripple-${e(key)}-${variant}:active:after`]: rippleActiveAfter
-            }),
-            {}
-          )
-        };
-      }, {});
-
-      addUtilities(ripples);
     },
     addUtility({
       prop: "caret-color",

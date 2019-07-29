@@ -1,5 +1,11 @@
 # Smelte changelog
 
+# 0.0.29
+* Better transparent variants
+* JS ripple animation
+* Yet better treeview
+* PurgeCSS preserve default component styles and styles from *Classes props
+
 # 0.0.28
 * Add transparent variant to all colors
 * Give ripple elements transparent hover

@@ -32,7 +32,6 @@
       .replace('text-white', 'text-gray-200')
       .replace('bg-gray-300', 'bg-transparent')
       .replace('text-gray-700', ''),
-    add: 'ripple-gray',
   };
 
   let table = "";

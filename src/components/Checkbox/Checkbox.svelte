@@ -5,9 +5,10 @@
 
   let className = "";
   export {className as class};
-  export let value = false;
+  export let value = "";
   export let label = "";
   export let color = "primary";
+  export let checked = false;
   export let disabled = false;
   export let wrapperClasses = "inline-flex items-center mb-2 cursor-pointer z-10";
 
@@ -16,17 +17,19 @@
   function check() {
     if (disabled) return;
 
-    value = !value;
-    dispatch('change', value);
+    checked = !checked;
+    dispatch('change', checked);
   }
+
+  $: rippleColor = checked && !disabled ? color : 'gray';
 </script>
 
 <div class={className}>
   <div class={wrapperClasses} on:click={check}>
-    <input bind:checked={value} class="hidden" type="checkbox" on:change />
+    <input bind:checked class="hidden" type="checkbox" on:change {value} />
     <div class="relative w-auto h-auto z-0">
-      <Ripple color={value && !disabled ? color : 'gray'}>
-        {#if value}
+      <Ripple color={rippleColor}>
+        {#if checked}
           <Icon class={disabled ? 'text-gray-500' : `text-${color}-500`}>check_box</Icon>
         {:else}
           <Icon class={disabled ? 'text-gray-500' : 'text-gray-600'}>

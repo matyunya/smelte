@@ -1,8 +1,6 @@
 <script>
   import { TextField } from "smelte";
   import Code from "components/Code";
-
-  import ripple from "examples/ripple.txt";
 </script>
 
 <h4 class="pb-8">Color helper classes</h4>
@@ -51,20 +49,3 @@ helpers.
   code={'<div class="border-2 border-amber-600 p-4">This div has amber border</div>'} />
 
 <div class="border-2 border-amber-600 p-4">This div has amber border</div>
-
-<h5 class="mt-6 mb-2">Ripple</h5>
-This is css only version of the infamous ripple effect taken from
-<a
-  class="a"
-  href="https://codeburst.io/create-a-material-design-ripple-effect-without-js-9d3cbee25b3e">
-  this great blog
-</a>
-and turned into a Tailwind utility
-<span class="body-2">.ripple-{'{color}'}</span>
-<Code code={ripple} />
-
-<div
-  class="text-center cursor-pointer w-64 p-4 border-pink-200 border-2
-  ripple-pink">
-  I ripple pink
-</div>

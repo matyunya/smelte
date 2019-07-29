@@ -1,5 +1,6 @@
 <script>
   import Icon from "../Icon";
+  import createRipple from "../Ripple/ripple.js";
 
   export let icon = "";
   export let id = "";
@@ -8,16 +9,19 @@
   export let selected = "";
   export let color = "primary";
 
+  const ripple = createRipple(color);
+
   $: isSelected = selected === id;
 
   const classes =
-    "text-center w-40 p-4 cursor-pointer flex mx-auto items-center opacity-75 text-sm h-full";
+    "relative overflow-hidden text-center w-40 p-4 cursor-pointer flex mx-auto items-center opacity-75 text-sm h-full";
 </script>
 
 {#if to}
   <a
+    use:ripple
     href={to}
-    class="{classes} ripple-{color}-500 text-white {isSelected ? `text-${color}-500` : ''}"
+    class="{classes} text-white {isSelected ? `text-${color}-500` : ''}"
     on:click
     class:uppercase={icon}>
     <div class="flex flex-col items-center content-center mx-auto">
@@ -32,7 +36,8 @@
   </a>
 {:else}
   <li
-    class="{classes} ripple-{color}-500 text-white {isSelected ? `text-${color}-500` : ''}"
+    use:ripple
+    class="{classes} text-white {isSelected ? `text-${color}-500` : ''}"
     on:click={() => {
       selected = id;
     }}

@@ -1,6 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte";
   import { scale } from "svelte/transition";
+  import createRipple from "../Ripple/ripple.js";
 
   import Icon from "../Icon";
 
@@ -11,6 +12,8 @@
   export let outlined = false;
   export let selected = false;
   export let selectable = true;
+
+  const ripple = createRipple("primary");
 
   let value = true;
 
@@ -55,11 +58,11 @@
 {#if value}
   <span class="{className} mx-1 inline-block" out:scale={{ duration: 100 }}>
     <button
-      class="flex items-center rounded-full bg-gray-300 px-2 py-1"
+      class="relative overflow-hidden flex items-center rounded-full bg-gray-300 px-2 py-1"
       on:click
+      use:ripple
       class:outlined
       class:selected
-      class:ripple-primary={selectable}
       on:click={select}>
       {#if icon}
         <Icon small class={selected ? 'text-primary-400' : 'text-gray-600'}>

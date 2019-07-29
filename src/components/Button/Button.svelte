@@ -1,6 +1,7 @@
 <script>
   import Icon from "../Icon";
   import utils, { ClassBuilder, filterProps } from "../../utils/classes.js";
+  import createRipple from "../Ripple/ripple.js";
 
   let className = "";
   export {className as class};
@@ -21,8 +22,8 @@
   export let add = "";
   export let replace = {};
 
-  let commonDefault = 'py-2 px-4 uppercase text-sm font-medium';
-  let basicDefault = 'text-white transition ripple-white';
+  let commonDefault = 'py-2 px-4 uppercase text-sm font-medium relative overflow-hidden';
+  let basicDefault = 'text-white transition';
   let outlinedDefault = 'bg-transparent border border-solid';
   let textDefault = 'bg-transparent border-none px-3 hover:bg-transparent';
   let iconDefault = 'p-4 m-4 flex items-center';
@@ -60,7 +61,6 @@
     bg,
     border,
     txt,
-    ripple,
   } = utils(color);
 
   const cb = new ClassBuilder(commonClasses, commonDefault);
@@ -78,13 +78,12 @@
         .add(elevationClasses, elevation, elevationDefault)
         .add(outlinedClasses, outlined, outlinedDefault)
         .add(
-          `${border(lighter)} ${txt(normal)} ${ripple()} hover:${bg("trans")}`,
+          `${border(lighter)} ${txt(normal)} hover:${bg("trans")}`,
           outlined)
-        .add(`${ripple()} ${txt(lighter)}`, text)
+        .add(`${txt(lighter)}`, text)
         .add(textClasses, text, textDefault)
         .add(iconClasses, icon, iconDefault)
         .remove('py-2', icon)
-        .add(ripple(), fab)
         .add(fabClasses, fab, fabDefault)
         .remove(txt(lighter), fab)
         .add(disabledClasses, disabled, disabledDefault)
@@ -102,9 +101,12 @@
     }
   }
 
+  const ripple = createRipple((text || fab) ? color : "white");
+
   const props = filterProps([
     'outlined',
     'text',
+    'color',
     'block',
     'disabled',
     'icon',
@@ -116,6 +118,7 @@
 </script>
 
 <button
+  use:ripple
   class:border-solid={outlined}
   class:rounded-full={icon}
   class:w-full={block}

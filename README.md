@@ -47,7 +47,7 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [x] Autocomplete
 - [x] Tooltip
 - [x] Revise events (on:change, on:focus, on:input...)
-- [ ] Treeview
+- [x] Treeview
 - [ ] Form
 - [ ] Date picker
 - [ ] Stepper
@@ -67,9 +67,9 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [x] Theming
 - [x] Image processing (done [here](https://github.com/matyunya/svelte-image))
 - [x] Svelte template (without Sapper)
+- [x] JS ripple animation
 - [ ] Dark mode
 - [ ] Other icons
 - [ ] Document API
-- [ ] JS ripple animation
 - [ ] IE 11 support
 - [ ] CDN version
