@@ -21,8 +21,14 @@ module.exports = (purge = false) => {
           }
         ],
         whitelist: ["html", "body", "stroke-primary"],
-        // for Prismjs code highlighting
-        whitelistPatterns: [/language/, /namespace/, /token/]
+        whitelistPatterns: [
+          // for Prismjs code highlighting
+          /language/,
+          /namespace/,
+          /token/,
+          // for JS ripple
+          /ripple/
+        ]
       })
   ].filter(Boolean);
 };

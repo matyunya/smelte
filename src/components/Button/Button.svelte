@@ -101,7 +101,7 @@
     }
   }
 
-  const ripple = createRipple((text || fab) ? color : "white");
+  const ripple = createRipple((text || fab || outlined) ? color : "white");
 
   const props = filterProps([
     'outlined',
