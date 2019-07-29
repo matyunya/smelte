@@ -78,10 +78,15 @@ module.exports = function extractor(content) {
   });
 
   const fromClasses = content.match(/class:[A-Za-z0-9-_]+/g) || [];
+  const defaultComponentClasses =
+    content.match(/lasses = ("[a-zA-Z0-9-_ ]+")/g) || [];
 
   return [
     ...(content.match(/[A-Za-z0-9-_:\/]+/g) || []),
     ...fromClasses.map(c => c.replace("class:", "")),
-    ...flatten(classesPerComponent(usedColors))
+    ...flatten(classesPerComponent(usedColors)),
+    ...defaultComponentClasses.map(c =>
+      c.replace('lasses = "', "").replace('"', "")
+    )
   ];
 };

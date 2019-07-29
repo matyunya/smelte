@@ -39,7 +39,11 @@
 </script>
 
 
-<List items={items} {...$$props} listClasses="{listClasses} ml-{level * 6} my-3" >
+<List
+  items={items}
+  {...$$props}
+  listClasses="{listClasses} my-3"
+  >
   <span slot="item" let:item>
     <ListItem
       {item}
@@ -57,7 +61,7 @@
     </ListItem>
 
     {#if item.items && expanded.includes(item)}
-      <div transition:slide>
+      <div transition:slide class="ml-6">
         <svelte:self {...$$props} items={item.items} level={level + 1} />
       </div>
     {/if}
