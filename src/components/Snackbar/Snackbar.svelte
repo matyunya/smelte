@@ -2,7 +2,8 @@
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
   import { quadOut, quadIn } from "svelte/easing";
-  import { List, Spacer, Button } from "smelte";
+  import Button from "../Button";
+  import { Spacer } from "../Util";
   import utils, { ClassBuilder } from "../../utils/classes.js";
 
   export let value = false;
