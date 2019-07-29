@@ -76,7 +76,7 @@
         {#if !noAction}
           <Spacer />
           <slot name="action">
-            <Button text on:click={() => value = false}>Dismiss</Button>
+            <Button text on:click={() => value = false}>Close</Button>
           </slot>
         {/if}
       </div>

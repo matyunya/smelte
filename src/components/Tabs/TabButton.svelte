@@ -6,7 +6,7 @@
   export let text = "";
   export let to = "";
   export let selected = "";
-  export let color = "primary-500";
+  export let color = "primary";
 
   $: isSelected = selected === id;
 
@@ -17,12 +17,12 @@
 {#if to}
   <a
     href={to}
-    class="{classes} ripple-{color} text-white {isSelected ? `text-${color}` : ''}"
+    class="{classes} ripple-{color}-500 text-white {isSelected ? `text-${color}-500` : ''}"
     on:click
     class:uppercase={icon}>
     <div class="flex flex-col items-center content-center mx-auto">
       {#if icon}
-        <Icon class="mb-1" color={isSelected ? `text-${color}` : ''}>{icon}</Icon>
+        <Icon class="mb-1" color={isSelected ? `text-${color}-500` : ''}>{icon}</Icon>
       {/if}
 
       <div>
@@ -32,7 +32,7 @@
   </a>
 {:else}
   <li
-    class="{classes} ripple-{color} text-white {isSelected ? `text-${color}` : ''}"
+    class="{classes} ripple-{color}-500 text-white {isSelected ? `text-${color}-500` : ''}"
     on:click={() => {
       selected = id;
     }}
@@ -40,7 +40,7 @@
     class:uppercase={icon}>
     <div class="flex flex-col items-center content-center mx-auto">
       {#if icon}
-        <Icon class="mb-1" color={isSelected ? `text-${color}` : ''}>{icon}</Icon>
+        <Icon class="mb-1" color={isSelected ? `text-${color}-500` : ''}>{icon}</Icon>
       {/if}
 
       <div>

@@ -62,10 +62,6 @@ module.exports = function extractor(content) {
     enter: function(node) {
       const color = getProp(node, "color");
       if (color && color[0].data) {
-        // TODO: variants for buttons
-        // const light = getProp(node, "light") ? "light" : null;
-        // const dark = getProp(node, "dark") ? "dark" : null;
-
         if (!usedColors[node.name]) {
           usedColors[node.name] = new Set(["primary", "white"]);
         }
