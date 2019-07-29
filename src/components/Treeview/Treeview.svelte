@@ -1,5 +1,6 @@
 <script>
-  import { List, ListItem, Icon } from "smelte";
+  import List, { ListItem } from "../List";
+  import Icon from "../Icon";
   import { slide } from "svelte/transition";
 
   export let items = [];
