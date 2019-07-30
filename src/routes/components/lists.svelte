@@ -1,5 +1,5 @@
 <script>
-  import Code from "components/Code";
+  import Code from "docs/Code.svelte";
   import { List } from "smelte";
   import { Icon } from "smelte";
 

@@ -1,6 +1,6 @@
 <script>
   import { DataTable } from "smelte";
-  import Code from "components/Code";
+  import Code from "docs/Code.svelte";
   import table from "examples/table.txt";
 
   let data = [];

@@ -3,7 +3,7 @@
   import { Select } from "smelte";
   import { Slider } from "smelte";
   import { Button } from "smelte";
-  import Code from "components/Code";
+  import Code from "docs/Code.svelte";
 
   import searchBar from "examples/search-bar.txt";
 

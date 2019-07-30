@@ -2,7 +2,7 @@
   import { ProgressLinear } from "smelte";
   import { ProgressCircular } from "smelte";
 
-  import Code from "components/Code";
+  import Code from "docs/Code.svelte";
   import indicators from "examples/progress-indicators.txt";
 
   let progress = 0;

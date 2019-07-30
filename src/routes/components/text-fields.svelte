@@ -1,7 +1,7 @@
 <script>
   import { TextField, DataTable } from "smelte";
-  import Code from "components/Code";
-
+  import Code from "docs/Code.svelte";
+  import PropsTable from "docs/PropsTable.svelte";
   import textFields from "examples/text-fields.txt";
 </script>
 
@@ -12,36 +12,26 @@
 <p class="mb-5 mt-3">Inputs accept any props that a normal input element can take,
 like <span class="code-inline">max-length</span> or <span class="code-inline">type</span>.</p>
 
-<DataTable
-  editable={false}
-  pagination={false}
-  sortable={false}
-  data={[
-    {prop: "value", description: "Input value", type: "Boolean", default: "null"},
-    {prop: "color", description: "Color variant, accepts any of the main colors described in Tailwind config", type: "String", default: "primary"},
-    {prop: "label", description: "Input label", type: "String", default: "Empty&nbsp;string"},
-    {prop: "placeholder", description: "Input placeholder", type: "String", default: "Empty&nbsp;string"},
-    {prop: "outlined", description: "Outlined variant", type: "Boolean", default: "false"},
-    {prop: "hint", description: "Hint text appearing under the input", type: "String", default: "Empty&nbsp;string"},
-    {prop: "error", description: "Error text under the input", type: "String | Boolean", default: "false"},
-    {prop: "append", description: "Append icon name", type: "String", default: "Empty&nbsp;string"},
-    {prop: "prepend", description: "Prepend icon name", type: "String", default: "Empty&nbsp;string"},
-    {prop: "persistentHint", description: "Always show hint, not only on focus", type: "Boolean", default: "false"},
-    {prop: "textarea", description: "Whether text field is textarea", type: "Boolean", default: "false"},
-    {prop: "rows", description: "Rows count for textarea", type: "Integer", default: 5},
-    {prop: "select", description: "Whether text field is select", type: "Boolean", default: "false"},
-    {prop: "autocomplete", description: "Whether select field is autocomplete", type: "Boolean", default: "false"},
-    {prop: "noUnderline", description: "Hide focus underline element", type: "Boolean", default: "false"},
-    {prop: "appendReverse", description: "Reverse appended icon", type: "Boolean", default: "false"},
-    {prop: "prependReverse", description: "Reverse prepended icon", type: "Boolean", default: "false"},
-    {prop: "bgColor", description: "Background color to match for outlined elevated label", type: "String", default: "white"},
-    {prop: "iconClasses", description: "Classes to pass down to icon component", type: "String", default: "Empty&nbsp;string"},
-  ]}
-  columns={[
-    { field: "prop" },
-    { field: "description" },
-    { field: "type", class: "text-xs text-gray-700 nowrap" },
-    { field: "default", label: "Default value", class: "text-xs text-gray-700" },
+<PropsTable data={[
+    { prop: "value", description: "Input value", type: "Boolean", default: "null" },
+    { prop: "color", description: "Color variant, accepts any of the main colors described in Tailwind config", type: "String", default: "primary" },
+    { prop: "label", description: "Input label", type: "String", default: "Empty&nbsp;string" },
+    { prop: "placeholder", description: "Input placeholder", type: "String", default: "Empty&nbsp;string" },
+    { prop: "outlined", description: "Outlined variant", type: "Boolean", default: "false" },
+    { prop: "hint", description: "Hint text appearing under the input", type: "String", default: "Empty&nbsp;string" },
+    { prop: "error", description: "Error text under the input", type: "String | Boolean", default: "false" },
+    { prop: "append", description: "Append icon name", type: "String", default: "Empty&nbsp;string" },
+    { prop: "prepend", description: "Prepend icon name", type: "String", default: "Empty&nbsp;string" },
+    { prop: "persistentHint", description: "Always show hint, not only on focus", type: "Boolean", default: "false" },
+    { prop: "textarea", description: "Whether text field is textarea", type: "Boolean", default: "false" },
+    { prop: "rows", description: "Rows count for textarea", type: "Integer", default: 5 },
+    { prop: "select", description: "Whether text field is select", type: "Boolean", default: "false" },
+    { prop: "autocomplete", description: "Whether select field is autocomplete", type: "Boolean", default: "false" },
+    { prop: "noUnderline", description: "Hide focus underline element", type: "Boolean", default: "false" },
+    { prop: "appendReverse", description: "Reverse appended icon", type: "Boolean", default: "false" },
+    { prop: "prependReverse", description: "Reverse prepended icon", type: "Boolean", default: "false" },
+    { prop: "bgColor", description: "Background color to match for outlined elevated label", type: "String", default: "white" },
+    { prop: "iconClasses", description: "Classes to pass down to icon component", type: "String", default: "Empty&nbsp;string" },
   ]}
 />
 

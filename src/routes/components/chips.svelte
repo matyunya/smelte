@@ -2,7 +2,7 @@
   import { Chip } from "smelte";
   import { Snackbar } from "smelte";
   import { Button } from "smelte";
-  import Code from "components/Code";
+  import Code from "docs/Code.svelte";
 
   import chip from "examples/chip.txt";
   import chipOutlined from "examples/chip-outlined.txt";

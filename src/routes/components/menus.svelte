@@ -5,7 +5,7 @@
   import { Select } from "smelte";
   import { Icon } from "smelte";
   import { TextField } from "smelte";
-  import Code from "components/Code";
+  import Code from "docs/Code.svelte";
   import { Slider } from "smelte";
 
   import menus from "examples/menus.txt";

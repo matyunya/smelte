@@ -1,7 +1,7 @@
 <script>
   import { Snackbar } from "smelte";
   import { Button } from "smelte";
-  import Code from "components/Code";
+  import Code from "docs/Code.svelte";
   import snackbars from "examples/snackbars.txt";
 
   let showSnackbar = false;

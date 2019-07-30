@@ -3,7 +3,7 @@
   import { Button } from "smelte";
   import { Image } from "smelte";
 
-  import Code from "components/Code";
+  import Code from "docs/Code.svelte";
 
   import card from "examples/card.txt";
 </script>

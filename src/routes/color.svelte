@@ -1,6 +1,6 @@
 <script>
   import { TextField } from "smelte";
-  import Code from "components/Code";
+  import Code from "docs/Code.svelte";
 </script>
 
 <h4 class="pb-8">Color helper classes</h4>

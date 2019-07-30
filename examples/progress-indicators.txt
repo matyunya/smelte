@@ -2,7 +2,7 @@
   import ProgressLinear from 'components/ProgressLinear';
   import ProgressCircular from 'components/ProgressCircular';
 
-  import Code from 'components/Code';
+  import Code from 'docs/Code.svelte';
 
   let progress = 0;
 

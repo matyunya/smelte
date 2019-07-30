@@ -1,7 +1,7 @@
 <script>
   import { Tooltip } from "smelte";
   import { Button } from "smelte";
-  import Code from "components/Code";
+  import Code from "docs/Code.svelte";
   import tooltip from "examples/tooltip.txt";
 </script>
 
