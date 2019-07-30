@@ -38,7 +38,7 @@
 
   $: classes = cb
     .flush()
-    .add("relative overflow-hidden flex items-center rounded-full px-2 py-1")
+    .add('relative overflow-hidden flex items-center rounded-full px-2 py-1')
     .add('bg-transparent border', outlined)
     .add('border-gray-400 border-solid hover:bg-gray-50 bg-gray-300', !selected)
     .add(`${border()} ${txt()} ${bg(100)} hover:${bg(50)}`, selected)
