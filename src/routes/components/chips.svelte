@@ -14,7 +14,6 @@
 <h5 class="mt-6 mb-2">Basic</h5>
 <Chip
   icon="face"
-  removable
   selectable
   on:close={() => (closed = true)}
   on:click={() => (clicked = true)}>

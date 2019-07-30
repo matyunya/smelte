@@ -31,7 +31,11 @@
     color="secondary"
     let:selected
     {loading}
-    items={[{ id: '1', text: 'Cats', icon: 'alarm_on' }, { id: '2', text: 'Kittens', icon: 'bug_report' }, { id: '3', text: 'Kitties', icon: 'eject' }]}>
+    items={[
+      { id: '1', text: 'Cats', icon: 'alarm_on' },
+      { id: '2', text: 'Kittens', icon: 'bug_report' },
+      { id: '3', text: 'Kitties', icon: 'eject' }
+    ]}>
     <div
       slot="content"
       class="flex items-center content-center overflow-hidden w-full bg-gray-900

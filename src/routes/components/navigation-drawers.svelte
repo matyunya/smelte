@@ -8,19 +8,19 @@
 </script>
 
 <Checkbox
-  bind:value={$showNav}
+  bind:checked={$showNav}
   label="Show drawer"
   on:change={persistent.update} />
 <Checkbox
-  bind:value={$elevation}
+  bind:checked={$elevation}
   label="With elevation"
   on:change={elevation.update} />
 <Checkbox
-  bind:value={$right}
+  bind:checked={$right}
   label="Placed on the right"
   on:change={right.update} />
 <Checkbox
-  bind:value={$persistent}
+  bind:checked={$persistent}
   label="Persistent"
   on:change={persistent.update} />
 

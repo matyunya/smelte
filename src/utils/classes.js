@@ -1,9 +1,18 @@
+const noDepth = ["white", "black", "transparent"];
+
+function getClass(prop, color, depth, defaultDepth) {
+  if (noDepth.includes(color)) {
+    return `${prop}-${color}`;
+  }
+  return `${prop}-${color}-${depth || defaultDepth} `;
+}
+
 export default function utils(color, defaultDepth = 500) {
   return {
-    bg: depth => `bg-${color}-${depth || defaultDepth} `,
-    border: depth => `border-${color}-${depth || defaultDepth} `,
-    txt: depth => `text-${color}-${depth || defaultDepth} `,
-    caret: depth => `caret-${color}-${depth || defaultDepth} `
+    bg: depth => getClass("bg", color, depth, defaultDepth),
+    border: depth => getClass("border", color, depth, defaultDepth),
+    txt: depth => getClass("text", color, depth, defaultDepth),
+    caret: depth => getClass("caret", color, depth, defaultDepth)
   };
 }
 
