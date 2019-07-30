@@ -23,6 +23,8 @@
   "files": [
     "dist",
     "src/utils",
+    "src/tailwind.css",
+    "src/index.js",
     "src/stores.js",
     "src/components",
     "tailwind.config.js",
