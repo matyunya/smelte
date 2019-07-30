@@ -21,6 +21,8 @@
   export let hideProgress = false;
   export let wrapperClasses = "rounded elevation-3 relative text-sm overflow-x-auto";
   export let editable = true;
+  export let sortable = true;
+  export let pagination = true;
   export let paginatorProps = {
     color: "gray",
     text: true,
@@ -38,7 +40,7 @@
   let sortBy = null;
 
   $: {
-    perPage = perPage;
+    perPage = pagination ? perPage : data.length;
     page = 1;
   }
   $: offset = (page * perPage) - perPage;
@@ -60,7 +62,7 @@
   }
 
   th {
-    @apply text-gray-600 text-xs cursor-pointer;
+    @apply text-gray-600 text-xs;
   }
 
   th .asc {
@@ -106,8 +108,9 @@
       <slot name="header">
         <th
           class="capitalize"
+          class:cursor-pointer={sortable || column.sortable}
           on:click={() => {
-            if (column.sortable === false) return;
+            if (column.sortable === false || !sortable) return;
             dispatch("sort", column);
 
             editing = false;
@@ -116,7 +119,7 @@
           }}
         >
           <div class="sort-wrapper">
-            {#if column.sortable !== false}
+            {#if sortable && column.sortable !== false}
               <span class="sort" class:asc={!asc && sortBy === column}>
                 <Icon small color="text-gray-400">arrow_downward</Icon>
               </span>
@@ -170,7 +173,7 @@
               {#if column.value}
                 {@html column.value(item)}
               {:else}
-                {item[column.field]}
+                {@html item[column.field]}
               {/if}
             </td>
           {/each}
@@ -178,49 +181,51 @@
       </slot>
     {/each}
   </tbody>
-  <slot name="pagination">
-  <tfoot>
-    <tr>
-      <td colspan="100%">
-        <div class="flex justify-between items-center text-gray-700 text-sm w-full h-8">
-          <Spacer />
-          <div class="mr-1 py-1">
-          Rows per page:
-          </div>
-          <Select
-            class="w-16 h-8 mb-5"
-            remove="bg-gray-300 bg-gray-100 select"
-            replace={{ 'pt-6': 'pt-4' }}
-            inputWrapperClasses={(c) => c.replace('mt-2', '').replace('pb-6', '')}
-            appendClasses={(c) => c.replace('pt-4', 'pt-3').replace('pr-4', 'pr-2')}
-            noUnderline
-            dense
-            bind:value={perPage}
-            items={perPageOptions}
-          />
-          <Spacer />
-          <div>{offset}-{offset + perPage > data.length ? data.length : offset + perPage} of {data.length}</div>
-          <Button
-            disabled={(page - 1) < 1}
-            icon="keyboard_arrow_left"
-            {...paginatorProps}
-            on:click={() => {
-              page -= 1;
-              table.scrollIntoView({ behavior: 'smooth' });
-            }} />
-          <Button
-            disabled={page === pagesCount}
-            icon="keyboard_arrow_right"
-            {...paginatorProps}
-            on:click={() => {
-              page += 1;
-              table.scrollIntoView({ behavior: 'smooth' });
-            }} />
-          </div>
-        </td>
-      </tr>
-    </tfoot>
-  </slot>
+  {#if pagination}
+    <slot name="pagination">
+      <tfoot>
+        <tr>
+          <td colspan="100%">
+            <div class="flex justify-between items-center text-gray-700 text-sm w-full h-8">
+              <Spacer />
+              <div class="mr-1 py-1">
+              Rows per page:
+              </div>
+              <Select
+                class="w-16 h-8 mb-5"
+                remove="bg-gray-300 bg-gray-100 select"
+                replace={{ 'pt-6': 'pt-4' }}
+                inputWrapperClasses={(c) => c.replace('mt-2', '').replace('pb-6', '')}
+                appendClasses={(c) => c.replace('pt-4', 'pt-3').replace('pr-4', 'pr-2')}
+                noUnderline
+                dense
+                bind:value={perPage}
+                items={perPageOptions}
+              />
+              <Spacer />
+              <div>{offset}-{offset + perPage > data.length ? data.length : offset + perPage} of {data.length}</div>
+              <Button
+                disabled={(page - 1) < 1}
+                icon="keyboard_arrow_left"
+                {...paginatorProps}
+                on:click={() => {
+                  page -= 1;
+                  table.scrollIntoView({ behavior: 'smooth' });
+                }} />
+              <Button
+                disabled={page === pagesCount}
+                icon="keyboard_arrow_right"
+                {...paginatorProps}
+                on:click={() => {
+                  page += 1;
+                  table.scrollIntoView({ behavior: 'smooth' });
+                }} />
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+    </slot>
+  {/if}
 
   <slot name="footer" />
 </table>

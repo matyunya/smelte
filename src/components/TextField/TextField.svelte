@@ -26,8 +26,7 @@
   export let color = "primary";
   // for outlined button label
   export let bgColor = "white";
-  export let iconClasses = "";
-  export let small = false;
+  export let iconClass = "";
 
   let labelDefault = `pt-4 absolute top-0 label-transition block pb-2 px-4 pointer-events-none cursor-text`;
   let inputDefault = `transition pb-2 pt-6 px-4 rounded-t text-black w-full`;
@@ -123,7 +122,6 @@
     'prependReverse',
     'color',
     'bgColor',
-    'small',
   ], $$props);
 </script>
 
@@ -160,7 +158,7 @@
       <div class={aClasses}>
         <Icon
           reverse={appendReverse}
-          class="{focused ? txt() : ''} {iconClasses}"
+          class="{focused ? txt() : ''} {iconClass}"
         >
           {append}
         </Icon>
@@ -217,7 +215,7 @@
       <div class={pClasses}>
         <Icon
           reverse={prependReverse}
-          class="{focused ? txt() : ''} {iconClasses}"
+          class="{focused ? txt() : ''} {iconClass}"
         >
           {prepend}
         </Icon>
