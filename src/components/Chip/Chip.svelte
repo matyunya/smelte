@@ -2,6 +2,7 @@
   import { createEventDispatcher } from "svelte";
   import { scale } from "svelte/transition";
   import createRipple from "../Ripple/ripple.js";
+  import utils, { ClassBuilder, filterProps } from "../../utils/classes.js";
 
   import Icon from "../Icon";
 
@@ -12,12 +13,11 @@
   export let outlined = false;
   export let selected = false;
   export let selectable = true;
+  export let color = "primary";
 
-  const ripple = createRipple("primary");
+  $: ripple = createRipple(color);
 
   let value = true;
-
-  $: hoverClass = selected ? "hover:bg-primary-300" : "hover:bg-gray-400";
 
   const dispatch = createEventDispatcher();
 
@@ -31,41 +31,47 @@
 
     selected = true;
   }
+
+  const { bg, txt, border } = utils(color);
+
+  const cb = new ClassBuilder();
+
+  $: classes = cb
+    .flush()
+    .add("relative overflow-hidden flex items-center rounded-full px-2 py-1")
+    .add('bg-transparent border', outlined)
+    .add('border-gray-400 border-solid hover:bg-gray-50 bg-gray-300', !selected)
+    .add(`${border()} ${txt()} ${bg(100)} hover:${bg(50)}`, selected)
+    .get();
+
+  const props = filterProps([
+    'removable',
+    'icon',
+    'outlined',
+    'selected',
+    'selectable',
+    'color',
+  ], $$props);
+
+  $: iconClass = selected ? `hover:${bg(300)} ${bg(400)}` : "hover:bg-gray-400 bg-gray-500";
 </script>
 
 <style>
   .p-1\/2 {
     padding: 0.125rem;
   }
-
-  .outlined {
-    @apply bg-transparent border border-gray-400 border-solid;
-  }
-
-  .outlined:hover {
-    @apply bg-gray-50;
-  }
-
-  .selected {
-    @apply border-primary-500 text-primary-500 bg-primary-100;
-  }
-
-  .selected:hover {
-    @apply bg-primary-50;
-  }
 </style>
 
 {#if value}
   <span class="{className} mx-1 inline-block" out:scale={{ duration: 100 }}>
     <button
-      class="relative overflow-hidden flex items-center rounded-full bg-gray-300 px-2 py-1"
+      class={classes}
       on:click
       use:ripple
-      class:outlined
-      class:selected
+      {...props}
       on:click={select}>
       {#if icon}
-        <Icon small class={selected ? 'text-primary-400' : 'text-gray-600'}>
+        <Icon small class={selected ? txt(400) : 'text-gray-600'}>
           {icon}
         </Icon>
       {/if}
@@ -74,9 +80,7 @@
       </span>
       {#if removable}
         <span
-          class="rounded-full p-1/2 inline-flex items-center cursor-pointer {hoverClass}"
-          class:bg-gray-500={!selected}
-          class:bg-primary-400={selected}
+          class="rounded-full p-1/2 inline-flex items-center cursor-pointer {iconClass}"
           on:click|stopPropagation={close}>
           <Icon class="text-white" xs>clear</Icon>
         </span>

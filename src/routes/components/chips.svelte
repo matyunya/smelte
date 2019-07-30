@@ -39,6 +39,7 @@
   outlined
   removable
   selectable
+  color="blue"
   on:close={() => (closed = true)}
   on:click={() => (clicked = true)}>
   Dogs
@@ -48,6 +49,7 @@
   outlined
   removable
   selectable
+  color="yellow"
   on:close={() => (closed = true)}
   on:click={() => (clicked = true)}>
   Plants
@@ -57,6 +59,7 @@
   outlined
   removable
   selectable
+  color="teal"
   on:close={() => (closed = true)}
   on:click={() => (clicked = true)}>
   Parents
