@@ -197,7 +197,7 @@
     {:else if select && !autocomplete}
       <input
         readonly
-        class="select {iClasses}"
+        class="{iClasses}"
         on:click={toggleFocused}
         on:change
         on:input
