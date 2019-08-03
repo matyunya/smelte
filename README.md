@@ -10,9 +10,9 @@ It comes with many components and utility functions making it easy to build beau
 bundle size and performance at check all thanks to Svelte.
 
 ### Installation
-Clone the project's sapper template, install the dependencies and write some pretty code!
+Clone the project's template, install the dependencies and write some pretty code!
 ```
-npx degit matyunya/smelte-template my-svelte-project
+npx degit matyunya/smelte-sapper-template my-svelte-project
 cd my-svelte-project
 yarn && yarn dev
 (or npm install && npm run dev)
@@ -21,12 +21,75 @@ yarn && yarn dev
 If you don't want to use sapper you can use raw template:
 
 ```
-npx degit matyunya/smelte-template#no-sapper my-svelte-project
+npx degit matyunya/smelte-template my-svelte-project
 ```
 
-### Issues
+### Adding to existing project
+First add the dependencies:
+```
+yarn add smelte tailwindcss rollup-plugin-postcss svelte-preprocess @fullhuman/postcss-purgecss postcss-import tailwindcss-elevation
+```
 
-Smelte is still in very early stage, so please feel free to submit any feedback.
+Add following to `postcss.config.js` in your project's root directory
+```
+const production = !process.env.ROLLUP_WATCH;
+const purgecss = require("@fullhuman/postcss-purgecss");
+
+module.exports = {
+  plugins: [
+    require("postcss-import")(),
+    require("tailwindcss")("./node_modules/smelte/tailwind.config.js"),
+    require("autoprefixer"),
+    production &&
+      purgecss({
+        content: ["./**/*.html", "./**/*.svelte"],
+        defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+      })
+  ]
+};
+```
+
+Add postcss to your Rollup config:
+```
+import postcss from "rollup-plugin-postcss";
+import autoPreprocess from "svelte-preprocess";
+
+...
+
+plugins: [
+  svelte({
+    preprocess: autoPreprocess({
+      postcss: true
+    }),
+    // enable run-time checks when not in production
+    dev: !production,
+    // we'll extract any component CSS out into
+    // a separate file — better for performance
+    css: css => {
+      css.write("public/bundle.css");
+    }
+  }),
+  postcss({
+    extract: "public/utils.css"
+  }),
+```
+
+Add exported css file to `public/index.html`:
+```
+<link rel='stylesheet' href='/utils.css'>
+```
+
+Create `smelte.css` in `src` folder with this line:
+```
+@import 'smelte/src/tailwind';
+```
+
+And import it in your `src/main.js`:
+```
+import './tailwind.css';
+```
+
+That's it! The process is quite tedious at the moment. Please send feedback if you know how to make it better.
 
 ### Components
 - [x] Text field
@@ -72,4 +135,3 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [ ] Other icons
 - [ ] Document API
 - [ ] IE 11 support
-- [ ] CDN version

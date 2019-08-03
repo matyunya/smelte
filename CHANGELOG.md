@@ -1,5 +1,13 @@
 # Smelte changelog
 
+# 0.1.0
+* Start API docs
+* Expose tailwind config
+* Add colors to chips
+* More consistent API
+* New props for data tables
+* Split docs components (props table and code)
+
 # 0.0.29
 * Better transparent variants
 * JS ripple animation
