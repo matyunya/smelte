@@ -25,6 +25,8 @@ npx degit matyunya/smelte-template my-svelte-project
 ```
 
 ### Adding to existing project
+Basically you need to add Tailwind to your project and import Smelte's configuration.
+
 First add the dependencies:
 ```
 yarn add smelte tailwindcss rollup-plugin-postcss svelte-preprocess @fullhuman/postcss-purgecss postcss-import tailwindcss-elevation
@@ -38,15 +40,28 @@ const purgecss = require("@fullhuman/postcss-purgecss");
 module.exports = {
   plugins: [
     require("postcss-import")(),
-    require("tailwindcss")("./node_modules/smelte/tailwind.config.js"),
+    require("tailwindcss")("./tailwind.config.js"),
     require("autoprefixer"),
     production &&
       purgecss({
         content: ["./**/*.html", "./**/*.svelte"],
-        defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+        defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+        whitelistPatterns: [
+          // for JS ripple
+          /ripple/
+        ]
       })
   ]
 };
+  
+```
+
+Then to `tailwind.config.js`
+```
+// Extend your config here.
+const config = require("smelte/tailwind.config.js");
+
+module.exports = config;
 ```
 
 Add postcss to your Rollup config:
