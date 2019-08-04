@@ -195,16 +195,16 @@
         on:blur={toggleFocused}
         placeholder={!value ? placeholder : ''} />
     {:else if select && !autocomplete}
-      <div
-        class="select {iClasses}"
+      <input
+        readonly
+        class="{iClasses}"
         on:click={toggleFocused}
         on:change
         on:input
         on:click
         on:blur
-        on:focus>
-        {value}
-      </div>
+        on:focus
+        {value} />
     {/if}
 
     <div class={pClasses}>
