@@ -19,6 +19,12 @@
   };
 
   const id = item => item.id || item.value || item.to || item.text || item;
+
+  function getText(item) {
+    if (item.text !== undefined) return item.text;
+    if (item.value !== undefined) return item.value;
+    return item;
+  }
 </script>
 
 <div class={className}>
@@ -43,7 +49,7 @@
             {...props}
             on:change
             on:click>
-            {item.text || item.value || item}
+            {getText(item)}
           </ListItem>
         </slot>
       {/if}
