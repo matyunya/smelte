@@ -69,7 +69,7 @@
   const dispatch = createEventDispatcher();
 
   function getLabel(value) {
-    return value ? (itemsProcessed.find(i => i.value === value) || {}).text : "";
+    return value ? (itemsProcessed.find(i => i.value === value) || { text: "" }).text : "";
   }
 
   function filterItems({ target }) {
