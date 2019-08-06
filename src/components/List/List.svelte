@@ -20,10 +20,9 @@
 
   const id = item => item.id || item.value || item.to || item.text || item;
 
-  function getText(item, keys) { 
-    for (let key of keys) {
-      if (item[key] !== undefined) return item[key];
-    }
+  function getText(item) {
+    if (item.text !== undefined) return item.text;
+    if (item.value !== undefined) return item.value;
     return item;
   }
 </script>
@@ -50,7 +49,7 @@
             {...props}
             on:change
             on:click>
-            {getText(item, ['text', 'value'])}
+            {getText(item)}
           </ListItem>
         </slot>
       {/if}
