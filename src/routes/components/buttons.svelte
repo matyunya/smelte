@@ -8,12 +8,17 @@
 
 <h6 class="mb-3 mt-6">Basic</h6>
 <div class="py-2">
-  <Button>Button</Button>
+  <Button
+    on:click={() => console.log('click')}
+    on:mouseover={() => console.log('its over')}
+  >Button</Button>
 </div>
 
 <h6 class="mb-3 mt-6">Light</h6>
 <div class="py-2">
-  <Button light>Button</Button>
+  <Button
+    light
+  >Button</Button>
 </div>
 
 <h6 class="mb-3 mt-6">Dark</h6>

@@ -125,10 +125,13 @@
   class:rounded={basic || outlined || text}
   class="{classes} {className} button"
   class:button={!icon}
-  on:click
   {...props}
   {disabled}
-  on:click={() => (value = !value)}>
+  on:click={() => (value = !value)}
+  on:click
+  on:mouseover
+  on:*
+>
   {#if icon}
     <Icon class={iClasses} {small}>{icon}</Icon>
   {/if}

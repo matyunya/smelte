@@ -1,5 +1,9 @@
 # Smelte changelog
 
+# 0.1.2
+* Upgrade svelte
+* Fix bugs from upgrading svelte
+
 # 0.1.0
 * Start API docs
 * Expose tailwind config

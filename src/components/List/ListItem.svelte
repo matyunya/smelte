@@ -14,9 +14,9 @@
   export let to = "";
   export let selected = false;
   export let tabindex = null;
-  export let basicClasses = "relative overflow-hidden my-1 transition p-4 cursor-pointer text-gray-700 flex items-center z-10";
+  export let basicClasses = "hover:bg-gray-transDark relative overflow-hidden my-1 transition p-4 cursor-pointer text-gray-700 flex items-center z-10";
   export let itemClasses = "";
-  export let selectedClasses = "bg-gray-200";
+  export let selectedClasses = "bg-gray-200 hover:bg-primary-transDark";
 
   const ripple = createRipple();
   const dispatch = createEventDispatcher();
@@ -32,21 +32,12 @@
   li:focus {
     @apply bg-gray-50;
   }
-
-  .navigation {
-    @apply mx-3 rounded text-sm;
-  }
-
-  .navigation.selected {
-    @apply bg-primary-50 text-primary-500;
-  }
 </style>
 
 <li
   use:ripple
   class="{basicClasses} {selected ? selectedClasses : ''}"
-  class:navigation
-  class:hover:bg-gray-transLight={!navigation}
+  class:text-sm={navigation}
   class:py-2={dense}
   class:text-gray-600={disabled}
   {tabindex}

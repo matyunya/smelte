@@ -90,9 +90,11 @@
 
           <a href={item.to}>
             <ListItem
+              id={item.id}
+              text={item.text}
+              to={item.to}
               selected={path.includes(item.to)}
-              selectedClasses="bg-primary-trans hover:bg-primary-trans"
-              {...item}
+              selectedClasses="bg-primary-transLight hover:bg-primary-transLight text-primary-700"
               dense
               navigation />
           </a>
