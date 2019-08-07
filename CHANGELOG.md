@@ -3,6 +3,7 @@
 # 0.1.2
 * Upgrade svelte
 * Fix bugs from upgrading svelte
+* Empty select item
 
 # 0.1.0
 * Start API docs

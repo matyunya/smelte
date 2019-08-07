@@ -94,7 +94,7 @@
               text={item.text}
               to={item.to}
               selected={path.includes(item.to)}
-              selectedClasses="bg-primary-transLight hover:bg-primary-transLight text-primary-700"
+              selectedClasses="bg-primary-transLight hover:bg-primary-transLight"
               dense
               navigation />
           </a>
