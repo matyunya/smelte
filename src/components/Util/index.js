@@ -6,6 +6,5 @@ export const Spacer = spacer;
 
 export default {
   Scrim,
-  Ripple,
   Spacer
 };
