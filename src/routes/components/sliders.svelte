@@ -9,7 +9,7 @@
 </script>
 
 <div class="my-4">
-  <Checkbox label="Disabled" bind:value={disabled} />
+  <Checkbox label="Disabled" bind:checked={disabled} />
 </div>
 
 <h6>Basic</h6>
