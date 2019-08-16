@@ -23,9 +23,19 @@
   function calcIndicator() {
     indicatorWidth = node ? node.offsetWidth / items.length : 0;
 
-    const left = selected
-      ? items.findIndex(i => selected.includes(i.to || i.id))
-      : 0;
+    let left = 0;
+    if (selected) {
+      const longestMatch = items
+        .map((item, index) => [index, item])
+        .filter(([index, item]) => selected.includes(item.to || item.id))
+        .sort(
+          ([index1, item1], [index2, item2]) =>
+            (item2.to || item2.id).length - (item1.to || item1.id).length
+        )[0];
+      if (longestMatch) {
+        left = longestMatch[0];
+      }
+    }
 
     offset = left * indicatorWidth;
   }
