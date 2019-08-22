@@ -49,7 +49,7 @@
   class="{className} py-0 h-full {navigation ? 'hidden md:flex' : 'flex'} items-center relative mx-auto z-20"
   bind:this={node}>
   {#each items as item, i}
-    <slot name="item">
+    <slot name="item" {color} {item}>
       <Tab bind:selected {...item} {color}>{item.text}</Tab>
     </slot>
   {/each}
