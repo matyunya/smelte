@@ -94,7 +94,7 @@ Add exported css file to `public/index.html`:
 <link rel='stylesheet' href='/utils.css'>
 ```
 
-Create `smelte.css` in `src` folder with this line:
+Create `tailwind.css` in `src` folder with this line:
 ```
 @import 'smelte/src/tailwind';
 ```
