@@ -1,5 +1,9 @@
 # Smelte changelog
 
+# 0.1.3
+* Update dependencies
+* Fix pagination in the data table
+
 # 0.1.2
 * Upgrade svelte
 * Fix bugs from upgrading svelte
