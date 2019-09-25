@@ -11,8 +11,10 @@
   export let titleClasses = "text-lg font-bold pb-4";
   export let actionsClasses = "flex w-full justify-end pt-4";
   export let opacity = 0.5;
+  export let duration = 150;
+  export let delay = 150;
 
-  const transitionProps = { duration: 150, easing: quadIn, delay: 150 };
+  const transitionProps = { duration, easing: quadIn, delay };
 </script>
 
 {#if value}
