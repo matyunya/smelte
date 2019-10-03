@@ -32,9 +32,9 @@
       selected = i;
     }
 
-    return i && !expanded.includes(i)
-      ? expanded.push(i)
-      : expanded = expanded.filter(si => si !== i);   
+    expanded = i && !expanded.includes(i)
+      ? [...expanded, i]
+      : expanded.filter(si => si !== i);
   }
 </script>
 
@@ -43,7 +43,7 @@
   items={items}
   {...$$props}
   listClasses="{listClasses} my-3"
-  >
+>
   <span slot="item" let:item>
     <ListItem
       {item}

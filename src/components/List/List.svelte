@@ -7,6 +7,7 @@
   export let text = "";
   export let dense = false;
   export let navigation = false;
+  export let level = null;
   export let select = false;
   let className = "";
   export {className as class};

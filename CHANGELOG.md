@@ -1,5 +1,9 @@
 # Smelte changelog
 
+# 0.1.4
+* Fix treeview
+* Add notSelectedColor prop to icon
+
 # 0.1.3
 * Update dependencies
 * Fix pagination in the data table
