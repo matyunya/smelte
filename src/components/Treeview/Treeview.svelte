@@ -40,9 +40,9 @@
 
 
 <List
-  items={items}
+  {items}
   {...$$props}
-  listClasses="{listClasses} my-3"
+  {listClasses}
 >
   <span slot="item" let:item>
     <ListItem

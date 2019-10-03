@@ -1,7 +1,5 @@
 <script>
   import { Treeview } from "smelte";
-  import Code from "docs/Code.svelte";
-  import treeview from "examples/treeview.txt";
 </script>
 
 <Treeview items={[
@@ -40,5 +38,3 @@
     ]
   }
 ]} />
-
-<Code code={treeview} />

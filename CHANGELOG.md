@@ -1,5 +1,9 @@
 # Smelte changelog
 
+# 0.1.5
+* Fix jerkiness in expanding treeview
+* Add code example to treeview
+
 # 0.1.4
 * Fix treeview
 * Add notSelectedColor prop to icon
