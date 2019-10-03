@@ -11,6 +11,7 @@
   export let items = [];
   export let indicator = true;
   export let color = "white";
+  export let notselectedcolor = "white";
   let className = "";
   export {className as class};
   export let loading = false;
@@ -50,7 +51,7 @@
   bind:this={node}>
   {#each items as item, i}
     <slot name="item" {color} {item}>
-      <Tab bind:selected {...item} {color}>{item.text}</Tab>
+      <Tab bind:selected {...item} {color} {notselectedcolor}>{item.text}</Tab>
     </slot>
   {/each}
   {#if indicator}
