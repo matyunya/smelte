@@ -9,7 +9,7 @@
   export let to = "";
   export let selected = "";
   export let color = "primary";
-  export let notselectedcolor = "white";
+  export let notSelectedColor = "white";
 
   let className = "";
   export {className as class};
@@ -22,7 +22,7 @@
 
   const { txt } = utils(color);
 
-  $: textColor = selected === id ? txt() : "text-" + notselectedcolor;
+  $: textColor = selected === id ? txt() : "text-" + notSelectedColor;
 </script>
 
 {#if to}
