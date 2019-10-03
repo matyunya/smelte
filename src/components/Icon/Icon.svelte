@@ -5,6 +5,7 @@
   export let xs = false;
   export let reverse = false;
   export let tip = false;
+  export let color = "";
 </script>
 
 <style>
@@ -23,6 +24,7 @@
   class:reverse
   class:tip
   class:text-base={small}
-  class:text-xs={xs}>
+  class:text-xs={xs}
+  style="color: {color}">
   <slot />
 </i>
