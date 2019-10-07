@@ -8,10 +8,7 @@
 
 <h6 class="mb-3 mt-6">Basic</h6>
 <div class="py-2">
-  <Button
-    on:click={() => console.log('click')}
-    on:mouseover={() => console.log('its over')}
-  >Button</Button>
+  <Button>Button</Button>
 </div>
 
 <h6 class="mb-3 mt-6">Light</h6>
@@ -34,6 +31,18 @@
 <h6 class="mb-3 mt-6">Outlined</h6>
 <div class="py-2">
   <Button color="secondary" light block outlined>Button</Button>
+</div>
+
+<h6 class="mb-3 mt-6">As anchor</h6>
+<div class="py-2">
+  <Button
+    color="secondary"
+    light
+    block
+    outlined
+    href="https://smelte.netlify.com/components/buttons"
+    target="_blank"
+  >Button</Button>
 </div>
 
 <h6 class="mb-3 mt-6">Text</h6>

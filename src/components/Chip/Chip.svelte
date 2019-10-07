@@ -14,6 +14,9 @@
   export let selected = false;
   export let selectable = true;
   export let color = "primary";
+  export let remove = "";
+  export let add = "";
+  export let replace = {};
 
   $: ripple = createRipple(color);
 
@@ -42,6 +45,9 @@
     .add('bg-transparent border', outlined)
     .add('border-gray-400 border-solid hover:bg-gray-50 bg-gray-300', !selected)
     .add(`${border()} ${txt()} ${bg(100)} hover:${bg(50)}`, selected)
+    .remove(remove)
+    .replace(replace)
+    .add(add)
     .get();
 
   const props = filterProps([

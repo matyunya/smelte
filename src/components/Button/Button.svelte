@@ -17,6 +17,7 @@
   export let flat = false;
   export let iconClass = "";
   export let color = "primary";
+  export let href = null;
 
   export let remove = "";
   export let add = "";
@@ -117,23 +118,52 @@
   ], $$props);
 </script>
 
-<button
-  use:ripple
-  class:border-solid={outlined}
-  class:rounded-full={icon}
-  class:w-full={block}
-  class:rounded={basic || outlined || text}
-  class="{classes} {className} button"
-  class:button={!icon}
-  {...props}
-  {disabled}
-  on:click={() => (value = !value)}
-  on:click
-  on:mouseover
-  on:*
->
-  {#if icon}
-    <Icon class={iClasses} {small}>{icon}</Icon>
-  {/if}
-  <slot />
-</button>
+
+{#if href}
+  <a
+    {href}
+    {...props}
+  >
+    <button
+      use:ripple
+      class:border-solid={outlined}
+      class:rounded-full={icon}
+      class:w-full={block}
+      class:rounded={basic || outlined || text}
+      class="{classes} {className} button"
+      class:button={!icon}
+      {...props}
+      {disabled}
+      on:click={() => (value = !value)}
+      on:click
+      on:mouseover
+      on:*
+    >
+      {#if icon}
+        <Icon class={iClasses} {small}>{icon}</Icon>
+      {/if}
+      <slot />
+    </button>
+  </a>
+{:else}
+  <button
+    use:ripple
+    class:border-solid={outlined}
+    class:rounded-full={icon}
+    class:w-full={block}
+    class:rounded={basic || outlined || text}
+    class="{classes} {className} button"
+    class:button={!icon}
+    {...props}
+    {disabled}
+    on:click={() => (value = !value)}
+    on:click
+    on:mouseover
+    on:*
+  >
+    {#if icon}
+      <Icon class={iClasses} {small}>{icon}</Icon>
+    {/if}
+    <slot />
+  </button>
+{/if}
