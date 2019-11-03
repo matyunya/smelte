@@ -6,8 +6,8 @@ function ripple(color, centered) {
     const d = Math.max(target.clientWidth, target.clientHeight);
 
     const removeCircle = () => {
-      circle.removeEventListener("animationend", removeCircle);
       circle.remove();
+      circle.removeEventListener("animationend", removeCircle);
     };
 
     circle.addEventListener("animationend", removeCircle);

@@ -1,5 +1,8 @@
 # Smelte changelog
 
+# 0.1.7
+* Fix ripple div not getting removed after animation
+
 # 0.1.6
 * Add/replace/remove to chips
 * Add anchor to buttons
