@@ -2,7 +2,7 @@
 function ripple(color, centered) {
   return function(event) {
     const target = event.currentTarget;
-    const circle = document.createElement("div");
+    const circle = document.createElement("span");
     const d = Math.max(target.clientWidth, target.clientHeight);
 
     const removeCircle = () => {
