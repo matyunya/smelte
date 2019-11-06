@@ -1,5 +1,11 @@
 # Smelte changelog
 
+# 0.1.10
+* Supress sapper warning messages
+
+# 0.1.8
+* Fix ripple on fab buttons and chips on mobile
+
 # 0.1.7
 * Fix ripple div not getting removed after animation
 

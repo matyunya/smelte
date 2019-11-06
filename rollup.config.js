@@ -24,10 +24,17 @@ const preprocess = getPreprocessor({
   }
 });
 
+const onwarn = (warning, onwarn) =>
+  (warning.code === "CIRCULAR_DEPENDENCY" &&
+    /[/\\]@sapper[/\\]/.test(warning.message)) ||
+  warning.message.includes("Use of eval is strongly discouraged") ||
+  onwarn(warning);
+
 export default {
   client: {
     input: config.client.input(),
     output: config.client.output(),
+    onwarn,
     plugins: [
       replace({
         "process.browser": true,
@@ -95,6 +102,7 @@ export default {
   server: {
     input: config.server.input(),
     output: config.server.output(),
+    onwarn,
     plugins: [
       replace({
         "process.browser": false,
