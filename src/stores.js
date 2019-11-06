@@ -3,7 +3,7 @@ import { onDestroy } from "svelte";
 
 export const right = writable(false);
 export const persistent = writable(true);
-export const elevation = writable(false);
+export const elevation = writable(true);
 export const showNav = writable(true);
 export const showNavMobile = writable(false);
 

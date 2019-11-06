@@ -40,8 +40,6 @@
     light
     block
     outlined
-    href="https://smelte.netlify.com/components/buttons"
-    target="_blank"
   >Button</Button>
 </div>
 

@@ -12,8 +12,6 @@ function ripple(color, centered) {
 
     circle.addEventListener("animationend", removeCircle);
     circle.style.width = circle.style.height = `${d}px`;
-    target.appendChild(circle);
-
     const rect = target.getBoundingClientRect();
 
     if (centered) {
@@ -32,6 +30,8 @@ function ripple(color, centered) {
     }
 
     circle.classList.add("ripple");
+
+    target.appendChild(circle);
   };
 }
 
