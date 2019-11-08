@@ -33,7 +33,7 @@ yarn add smelte tailwindcss rollup-plugin-postcss svelte-preprocess @fullhuman/p
 ```
 
 Add following to `postcss.config.js` in your project's root directory
-```
+```js
 const production = !process.env.ROLLUP_WATCH;
 const purgecss = require("@fullhuman/postcss-purgecss");
 
@@ -57,7 +57,7 @@ module.exports = {
 ```
 
 Then to `tailwind.config.js`
-```
+```js
 // Extend your config here.
 const config = require("smelte/tailwind.config.js");
 
@@ -65,7 +65,7 @@ module.exports = config;
 ```
 
 Add postcss to your Rollup config:
-```
+```js
 import postcss from "rollup-plugin-postcss";
 import autoPreprocess from "svelte-preprocess";
 
@@ -90,17 +90,17 @@ plugins: [
 ```
 
 Add exported css file to `public/index.html`:
-```
+```html
 <link rel='stylesheet' href='/utils.css'>
 ```
 
 Create `tailwind.css` in `src` folder with this line:
-```
+```js
 @import 'smelte/src/tailwind';
 ```
 
 And import it in your `src/main.js`:
-```
+```js
 import './tailwind.css';
 ```
 
