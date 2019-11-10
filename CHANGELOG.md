@@ -1,5 +1,8 @@
 # Smelte changelog
 
+# 0.1.11
+* Fix drawer docs
+
 # 0.1.10
 * Supress sapper warning messages
 
