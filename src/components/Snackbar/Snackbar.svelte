@@ -51,7 +51,7 @@
 
 
   onMount(() => {
-    if (!process.browser || !timeout) return;
+    if (!window || !timeout) return;
 
     setTimeout(() => {
       value = false;
