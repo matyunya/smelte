@@ -9,7 +9,7 @@
   let className = "";
   export {className as class};
   export let value = "";
-  export let text = "";
+  export const text = "";
   export let label = "";
   export let selectedLabel = "";
   export let color = "primary";

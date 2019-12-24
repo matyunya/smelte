@@ -6,11 +6,11 @@
   import { slide } from "svelte/transition";
 
   export let items = [];
-  export let value = "";
-  export let text = "";
-  export let dense = false;
-  export let navigation = false;
-  export let select = false;
+  export const value = "";
+  export const text = "";
+  export const dense = false;
+  export const navigation = false;
+  export const select = false;
   export let level = 0;
   export let showExpandIcon = true;
   export let expandIcon = "arrow_right";
@@ -19,7 +19,7 @@
   export let listClasses = "rounded";
   export let selectedClasses = "bg-primary-trans";
 
-  let className = "";
+  const className = "";
   export {className as class};
 
   let expanded = [];

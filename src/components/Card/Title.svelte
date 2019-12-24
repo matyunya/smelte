@@ -1,7 +1,7 @@
 <script>
   let className = "";
   export {className as class};
-  export let hover = true;
+  export const hover = true;
   export let title = "";
   export let subheader = "";
   export let avatar = "";

@@ -3,7 +3,7 @@
 
   export let value = 0;
   export let label = "";
-  export let color = "primary";
+  export const color = "primary";
   export let disabled = false;
   export let min = 0;
   export let max = 100;
