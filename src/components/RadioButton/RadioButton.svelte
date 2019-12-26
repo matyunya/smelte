@@ -6,7 +6,7 @@
   export let label = "";
   export let color = "primary";
   export let disabled = false;
-  export let name = "";
+  export const name = "";
   export let value = "";
   export let wrapperClasses = "inline-flex block items-center mb-2 cursor-pointer z-0";
 

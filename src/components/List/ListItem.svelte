@@ -11,12 +11,12 @@
   export let disabled = false;
   export let dense = false;
   export let navigation = false;
-  export let to = "";
+  export const to = "";
   export let selected = false;
   export let tabindex = null;
-  export let item = null;
-  export let items = [];
-  export let level = null;
+  export const item = null;
+  export const items = [];
+  export const level = null;
   export let basicClasses = "hover:bg-gray-transDark relative overflow-hidden transition p-4 cursor-pointer text-gray-700 flex items-center z-10";
   export let itemClasses = "";
   export let selectedClasses = "bg-gray-200 hover:bg-primary-transDark";

@@ -2,12 +2,12 @@
   import ListItem from "./ListItem.svelte";
 
   export let items = [];
-  export let item = {};
+  export const item = {};
   export let value = "";
-  export let text = "";
+  export const text = "";
   export let dense = false;
   export let navigation = false;
-  export let level = null;
+  export const level = null;
   export let select = false;
   let className = "";
   export {className as class};
