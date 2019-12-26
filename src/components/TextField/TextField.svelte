@@ -151,19 +151,15 @@
     </label>
 
     <div class={aClasses}>
-      <slot name="append" />
-    </div>
-
-    {#if append}
-      <div class={aClasses}>
+      <slot name="append">
         <Icon
           reverse={appendReverse}
           class="{focused ? txt() : ''} {iconClass}"
         >
           {append}
         </Icon>
-      </div>
-    {/if}
+      </slot>
+    </div>
 
     {#if (!textarea && !select) || autocomplete}
       <input
@@ -207,20 +203,18 @@
         {value} />
     {/if}
 
-    <div class={pClasses}>
-      <slot name="prepend" />
-    </div>
-
-    {#if prepend}
       <div class={pClasses}>
-        <Icon
-          reverse={prependReverse}
-          class="{focused ? txt() : ''} {iconClass}"
-        >
-          {prepend}
-        </Icon>
+        <slot name="prepend">
+        {#if prepend}
+          <Icon
+            reverse={prependReverse}
+            class="{focused ? txt() : ''} {iconClass}"
+          >
+            {prepend}
+          </Icon>
+        {/if}
+        </slot>
       </div>
-    {/if}
 
     <div
       class="line absolute bottom-0 left-0 w-full bg-gray-600"

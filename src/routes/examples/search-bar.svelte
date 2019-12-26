@@ -1,8 +1,11 @@
 <script>
-  import { TextField } from "smelte";
-  import { Select } from "smelte";
-  import { Slider } from "smelte";
-  import { Button } from "smelte";
+  import {
+    TextField,
+    Select,
+    Slider,
+    Button,
+    Icon,
+  } from "smelte";
   import Code from "docs/Code.svelte";
 
   import searchBar from "examples/search-bar.txt";
@@ -56,7 +59,12 @@
       placeholder="Search fonts"
       {...inputProps}
       noUnderline
-      prepend="search" />
+      prepend
+    >
+      <span slot="prepend">
+        <Icon small>search</Icon>
+      </span>
+    </TextField>
   </div>
   <div class="w-1/6 border-r full-border">
     <Select

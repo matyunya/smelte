@@ -122,11 +122,6 @@ module.exports = {
       }
     }
   },
-  extend: {
-    fontFamily: {
-      sans: "Roboto"
-    }
-  },
   plugins: [
     require("tailwindcss-elevation")(["hover"]),
     function({ addUtilities }) {

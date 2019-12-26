@@ -20,7 +20,7 @@
 
 <i
   aria-hidden="true"
-  class="material-icons {className} transition"
+  class="material-icons text-xl {className} transition"
   class:reverse
   class:tip
   class:text-base={small}

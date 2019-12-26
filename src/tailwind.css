@@ -1,6 +1,5 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
-@import "tailwindcss/utilities";
 
 h1,
 .h1 {
@@ -77,10 +76,6 @@ button:focus, input:focus, li:focus, div:focus, textarea:focus {
   @apply outline-none;
 }
 
-html {
-  font-family: "Roboto", sans-serif;
-}
-
 .list {
   @apply absolute left-0 bg-white rounded elevation-3 w-full z-10;
   margin-top: 2px;
@@ -93,6 +88,13 @@ html {
 .code-inline {
   @apply body-2 bg-secondary-50 text-secondary-900 rounded-sm p-1;
 }
+
+@import "tailwindcss/utilities";
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
 
 input[type='number'] {
     -moz-appearance:textfield;

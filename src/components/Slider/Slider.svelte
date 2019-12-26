@@ -18,7 +18,6 @@
 <style>
 input {
   -webkit-appearance: none;
-  @apply bg-primary-50 w-full rounded cursor-pointer;
   height: 4px;
 }
 
@@ -54,9 +53,10 @@ input:focus::range-track {
 }
 </style>
 
-<label class="label">{label}</label>
+<label>{label}</label>
 <input
   type="range"
+  class="bg-primary-50 w-full rounded cursor-pointer"
   {min}
   {max}
   {step}

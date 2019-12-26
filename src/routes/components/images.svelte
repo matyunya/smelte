@@ -7,6 +7,11 @@
   const range = [...new Array(50)];
 </script>
 
+<p>
+  Smelte includes convenience image component which is useful for lazyloading, but generally we recommend
+  using <a href="https://github.com/matyunya/svelte-image">Svelte Image</a>.
+</p>
+
 <Code code={images} />
 
 {#each range as _, i}

@@ -8,10 +8,8 @@ import { string } from "rollup-plugin-string";
 import json from "rollup-plugin-json";
 import config from "sapper/config/rollup.js";
 import getPreprocessor from "svelte-preprocess";
-import postcss from "rollup-plugin-postcss";
 import includePaths from "rollup-plugin-includepaths";
 import alias from "rollup-plugin-alias";
-import path from "path";
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
@@ -70,26 +68,15 @@ export default {
       legacy &&
         babel({
           extensions: [".js", ".mjs", ".html", ".svelte"],
-          // runtimeHelpers: true,
           exclude: ["node_modules/@babel/**"],
           presets: [
             [
               "@babel/preset-env",
               {
                 targets: "> 0.25%"
-                // , ie >= 11, not dead
               }
             ]
           ]
-          // plugins: [
-          //   "@babel/plugin-syntax-dynamic-import",
-          //   [
-          //     "@babel/plugin-transform-runtime",
-          //     {
-          //       useESModules: true
-          //     }
-          //   ]
-          // ]
         }),
 
       !dev &&
@@ -122,11 +109,7 @@ export default {
       resolve(),
       alias({ smelte: "src/index.js" }),
       includePaths({ paths: ["./src", "./"] }),
-      commonjs(),
-      postcss({
-        plugins: require("./postcss.config.js")(!dev),
-        extract: path.resolve(__dirname, "./static/global.css")
-      })
+      commonjs()
     ],
     external: [].concat(
       require("module").builtinModules ||

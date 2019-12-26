@@ -79,7 +79,7 @@
     "sirv": "^0.4.0",
     "svelte": "^3.7.1",
     "svelte-preprocess": "^2.9.0",
-    "tailwindcss": "^1.0.1",
+    "tailwindcss": "^1.1.3",
     "tailwindcss-elevation": "^0.3.0"
   }
 }

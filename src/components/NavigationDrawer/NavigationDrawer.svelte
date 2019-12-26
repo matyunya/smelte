@@ -48,11 +48,8 @@
   .drawer {
     min-width: 216px;
   }
-  .bordered {
-    @apply border-gray-400 border-r border-l;
-  }
 </style>
-
+  
 {#if show}
   <aside
     class={asideClasses}
@@ -63,7 +60,9 @@
     class:pointer-events-none={!showWithScrim}
     class:z-50={showWithScrim}
     class:elevation-4={elevation}
-    class:bordered={!elevation && !showWithScrim}
+    class:border-gray-400={!elevation && !showWithScrim}
+    class:border-r={!elevation && !showWithScrim}
+    class:border-l={!elevation && !showWithScrim}
     class:z-20={!showWithScrim}
     on:click={() => (showMobile = false)}>
     {#if showWithScrim}
