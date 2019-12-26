@@ -1,5 +1,14 @@
 # Smelte changelog
 
+
+# 0.1.13
+* Remove unused PostCSS config section
+* Add code examples to sliders and selection controls
+* Remove `@apply` where possible
+* Remove `extend` from tailwind config
+* Put tailwind utilities import after `@apply` classes
+* Fix setting font size class to icon
+
 # 0.1.11
 * Fix drawer docs
 
