@@ -8,8 +8,10 @@ import { string } from "rollup-plugin-string";
 import json from "rollup-plugin-json";
 import config from "sapper/config/rollup.js";
 import getPreprocessor from "svelte-preprocess";
+import postcss from "rollup-plugin-postcss";
 import includePaths from "rollup-plugin-includepaths";
 import alias from "rollup-plugin-alias";
+import path from "path";
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
@@ -109,7 +111,12 @@ export default {
       resolve(),
       alias({ smelte: "src/index.js" }),
       includePaths({ paths: ["./src", "./"] }),
-      commonjs()
+      commonjs(),
+      !dev &&
+        postcss({
+          plugins: require("./postcss.config.js")(),
+          extract: path.resolve(__dirname, "./static/global.css")
+        })
     ],
     external: [].concat(
       require("module").builtinModules ||
