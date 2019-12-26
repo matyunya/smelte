@@ -1,7 +1,6 @@
 <script>
-  import { Slider, Checkbox } from "smelte";
-  import Code from "docs/Code.svelte";
-  import sliders from "examples/sliders.txt";
+  import { Slider } from "smelte";
+  import { Checkbox } from "smelte";
 
   let value = 0;
   let value2 = 0;
@@ -23,5 +22,3 @@
 <caption>Value: {value2}</caption>
 
 <Slider min="0" step="20" max="100" bind:value={value2} {disabled} />
-
-<Code code={sliders} />

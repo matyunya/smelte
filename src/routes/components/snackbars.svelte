@@ -1,6 +1,5 @@
 <script>
-  import { Snackbar } from "smelte";
-  import { Button } from "smelte";
+  import { Snackbar, Button } from "smelte";
   import Code from "docs/Code.svelte";
   import snackbars from "examples/snackbars.txt";
 

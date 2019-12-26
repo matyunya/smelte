@@ -1,8 +1,7 @@
 <script>
-  import { Button } from "smelte";
-  import { Icon } from "smelte";
+  import { Button, Icon } from "smelte";
   import Code from "docs/Code.svelte";
-  
+
   import buttons from "examples/buttons.txt";
 </script>
 

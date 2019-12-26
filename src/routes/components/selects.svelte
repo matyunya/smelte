@@ -1,8 +1,6 @@
 <script>
-  import { Select } from "smelte";
+  import { Select, Card, Checkbox } from "smelte";
   import Code from "docs/Code.svelte";
-  import { Checkbox } from "smelte";
-  import { Card} from "smelte";
   import selects from "examples/selects.txt";
 
   let value1 = "";

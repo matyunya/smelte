@@ -5,9 +5,6 @@
     Switch,
     Icon,
    } from "smelte";
-
-  import Code from "docs/Code.svelte";
-  import code from "examples/checkboxes.txt";
 </script>
 
 <h5 class="pb-8 pt-10" id="checkboxes">Checkboxes</h5>
@@ -37,5 +34,3 @@
 <Switch />
 
 <Switch color="error" />
-
-<Code {code} />
