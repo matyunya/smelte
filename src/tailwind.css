@@ -1,5 +1,6 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 h1,
 .h1 {
@@ -88,8 +89,6 @@ button:focus, input:focus, li:focus, div:focus, textarea:focus {
 .code-inline {
   @apply body-2 bg-secondary-50 text-secondary-900 rounded-sm p-1;
 }
-
-@import "tailwindcss/utilities";
 
 html {
   font-family: "Roboto", sans-serif;

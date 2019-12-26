@@ -112,11 +112,10 @@ export default {
       alias({ smelte: "src/index.js" }),
       includePaths({ paths: ["./src", "./"] }),
       commonjs(),
-      !dev &&
-        postcss({
-          plugins: require("./postcss.config.js")(),
-          extract: path.resolve(__dirname, "./static/global.css")
-        })
+      postcss({
+        plugins: require("./postcss.config.js")(!dev),
+        extract: path.resolve(__dirname, "./static/global.css")
+      })
     ],
     external: [].concat(
       require("module").builtinModules ||
