@@ -13,13 +13,14 @@
   export let opacity = 0.5;
   export let duration = 150;
   export let delay = 150;
+  export let persistent = false;
 
   const transitionProps = { duration, easing: quadIn, delay };
 </script>
 
 {#if value}
   <div class="fixed w-full h-full top-0 left-0 z-30">
-    <Scrim {opacity} on:click={() => (value = false)} />
+    <Scrim {opacity} on:click={() => !persistent && (value = false)} />
     <div class="h-full w-full absolute flex items-center justify-center">
       <div
         in:scale={transitionProps}
