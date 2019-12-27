@@ -62,7 +62,13 @@
 
     {#if item.items && expanded.includes(item)}
       <div transition:slide class="ml-6">
-        <svelte:self {...$$props} items={item.items} level={level + 1} />
+        <svelte:self
+          {...$$props}
+          items={item.items}
+          level={level + 1}
+          on:click
+          on:select
+        />
       </div>
     {/if}
   </span> 

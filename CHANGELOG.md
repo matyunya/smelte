@@ -1,5 +1,9 @@
 # Smelte changelog
 
+# 0.1.16
+* Propagate treeview events in nested items
+* Add persistent prop to dialogs
+
 # 0.1.15
 * Refactor navigation drawer
 * Export breakpoints store, add breakpoints page

@@ -2,9 +2,14 @@
   import { Treeview } from "smelte";
   import Code from "docs/Code.svelte";
   import treeview from "examples/treeview.txt";
+
+  let selected = 'nothing';
 </script>
 
-<Treeview items={[
+<small>I selected {selected}</small>
+<Treeview
+  on:select={i => selected = i.detail.text}
+  items={[
   {
     text: "test",
     items: [
