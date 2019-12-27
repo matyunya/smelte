@@ -13,17 +13,12 @@
   import { ProgressLinear } from "smelte";
   import { navMenu, topMenu } from "../utils/menu.js";
 
-  import {
-    right,
-    elevation,
-    persistent,
-    showNav,
-  } from "stores.js";
+  import { right, elevation, persistent, showNav } from "stores.js";
 
   const { preloading, page } = stores();
 
   let selected = "";
-  
+
   $: path = $page.path;
 </script>
 
@@ -70,8 +65,7 @@
     bind:show={$showNav}
     right={$right}
     persistent={$persistent}
-    elevation={$elevation}
-  >
+    elevation={$elevation}>
     <h6 class="px-3 ml-1 pb-2 pt-4 text-xs text-gray-900">Components</h6>
     <List items={navMenu}>
       <span slot="item" let:item class="cursor-pointer">
