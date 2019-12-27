@@ -1,5 +1,8 @@
 # Smelte changelog
 
+# 0.1.15
+* Refactor navigation drawer
+* Export breakpoints store, add breakpoints page
 
 # 0.1.13
 * Remove unused PostCSS config section

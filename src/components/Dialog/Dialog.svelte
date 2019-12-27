@@ -1,7 +1,7 @@
 <script>
   import { scale } from "svelte/transition";
   import { onMount } from "svelte";
-  import { quadOut, quadIn } from "svelte/easing";
+  import { quadIn } from "svelte/easing";
   import { Scrim } from "../Util";
 
   let className = "";
@@ -22,7 +22,7 @@
     <Scrim {opacity} on:click={() => (value = false)} />
     <div class="h-full w-full absolute flex items-center justify-center">
       <div
-        transition:scale={transitionProps}
+        in:scale={transitionProps}
         class="{className} {wrapperClasses}">
         <div class={titleClasses}>
           <slot name="title" />

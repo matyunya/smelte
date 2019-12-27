@@ -19,7 +19,8 @@ export const navMenu = [
   { to: "/components/treeviews", text: "Treeviews" },
   { to: "/examples/search-bar", text: "Search bar" },
   { to: "/typography", text: "Typography" },
-  { to: "/color", text: "Color" }
+  { to: "/color", text: "Color" },
+  { to: "/breakpoints", text: "Breakpoints" }
 ];
 
 export const topMenu = [

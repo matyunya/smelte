@@ -18,14 +18,12 @@
     elevation,
     persistent,
     showNav,
-    showNavMobile,
-    breakpoint
   } from "stores.js";
 
   const { preloading, page } = stores();
 
   let selected = "";
-  const bp = breakpoint();
+  
   $: path = $page.path;
 </script>
 
@@ -57,52 +55,49 @@
       iconClass="text-white"
       iconClasses={i => i.replace('p-4', 'p-3').replace('m-4', 'm-3')}
       text
-      on:click={() => showNavMobile.set(!$showNavMobile)} />
+      on:click={() => showNav.set(!$showNav)} />
   </div>
   <a href="https://github.com/matyunya/smelte" class="px-4">
     <img src="/github.png" alt="Github Smelte" width="24" height="24" />
   </a>
 </AppBar>
 
-{#if $bp}
-  <main
-    class="container relative p-8 lg:max-w-3xl lg:ml-64 mx-auto mb-10 mt-24
-    md:ml-56 md:max-w-md md:px-3"
-    transition:fade={{ duration: 300 }}>
-    <NavigationDrawer
-      bind:showDesktop={$showNav}
-      bind:showMobile={$showNavMobile}
-      right={$right}
-      persistent={$persistent}
-      elevation={$elevation}
-      breakpoint={$bp}>
-      <h6 class="px-3 ml-1 pb-2 pt-4 text-xs text-gray-900">Components</h6>
-      <List items={navMenu}>
-        <span slot="item" let:item class="cursor-pointer">
-          {#if item.to === '/examples/search-bar'}
-            <hr class="mt-4" />
-            <h6 class="px-3 ml-1 pb-2 pt-4 text-xs text-gray-900">Examples</h6>
-          {/if}
-          {#if item.to === '/typography'}
-            <hr class="mt-4" />
-            <h6 class="px-3 ml-1 pb-2 pt-4 text-xs text-gray-900">Utilities</h6>
-          {/if}
+<main
+  class="container relative p-8 lg:max-w-3xl lg:ml-64 mx-auto mb-10 mt-24
+  md:ml-56 md:max-w-md md:px-3"
+  transition:fade={{ duration: 300 }}>
+  <NavigationDrawer
+    bind:show={$showNav}
+    right={$right}
+    persistent={$persistent}
+    elevation={$elevation}
+  >
+    <h6 class="px-3 ml-1 pb-2 pt-4 text-xs text-gray-900">Components</h6>
+    <List items={navMenu}>
+      <span slot="item" let:item class="cursor-pointer">
+        {#if item.to === '/examples/search-bar'}
+          <hr class="mt-4" />
+          <h6 class="px-3 ml-1 pb-2 pt-4 text-xs text-gray-900">Examples</h6>
+        {/if}
+        {#if item.to === '/typography'}
+          <hr class="mt-4" />
+          <h6 class="px-3 ml-1 pb-2 pt-4 text-xs text-gray-900">Utilities</h6>
+        {/if}
 
-          <a href={item.to}>
-            <ListItem
-              id={item.id}
-              text={item.text}
-              to={item.to}
-              selected={path.includes(item.to)}
-              selectedClasses="bg-primary-transLight hover:bg-primary-transLight"
-              dense
-              navigation />
-          </a>
-        </span>
-      </List>
-      <hr />
-    </NavigationDrawer>
+        <a href={item.to}>
+          <ListItem
+            id={item.id}
+            text={item.text}
+            to={item.to}
+            selected={path.includes(item.to)}
+            selectedClasses="bg-primary-transLight hover:bg-primary-transLight"
+            dense
+            navigation />
+        </a>
+      </span>
+    </List>
+    <hr />
+  </NavigationDrawer>
 
-    <slot />
-  </main>
-{/if}
+  <slot />
+</main>

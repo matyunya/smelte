@@ -23,6 +23,7 @@ import Switch from "./components/Switch";
 import Tooltip from "./components/Tooltip";
 import Treeview from "./components/Treeview";
 import Ripple from "./components/Ripple";
+import breakpoints from "./breakpoints";
 
 export { Scrim, Spacer } from "./components/Util";
 
@@ -53,5 +54,6 @@ export {
   Treeview,
   Switch,
   Tooltip,
-  Ripple
+  Ripple,
+  breakpoints
 };

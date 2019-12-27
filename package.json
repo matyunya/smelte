@@ -1,7 +1,7 @@
 {
   "name": "smelte",
   "description": "UI framework for Svelte using Tailwind CSS",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "scripts": {
     "dev": "sapper dev -p 7777",
     "build": "rollup -c --config rollup-publish.config.js",
@@ -25,7 +25,7 @@
     "src/utils",
     "src/tailwind.css",
     "src/index.js",
-    "src/stores.js",
+    "src/breakpoints.js",
     "src/components",
     "tailwind.config.js",
     "postcss.config.js"
