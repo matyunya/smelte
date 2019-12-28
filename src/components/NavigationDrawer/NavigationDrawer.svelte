@@ -11,8 +11,9 @@
   export let elevation = true;
   export let show = $bp !== 'sm';
   export let asideClasses = "fixed top-0 md:mt-16 w-auto drawer overflow-hidden";
-  export let navClasses = `h-full bg-white absolute flex w-auto z-20 drawer
+  export let navClasses = `h-full w-full bg-white absolute flex w-auto z-20 drawer
     pointer-events-auto overflow-y-auto`;
+  export let borderClasses = "border-gray-400 border-r border-l";
 
   export let transitionProps = {
     duration: 200,
@@ -38,7 +39,7 @@
   
 {#if show}
   <aside
-    class={asideClasses}
+    class="{asideClasses} {!elevation && persistent ? borderClasses : ""}"
     class:right-0={right}
     class:aside={$bp !== "sm"}
     class:h-full={$bp === "sm"}
@@ -46,9 +47,6 @@
     class:pointer-events-none={persistent}
     class:z-50={!persistent}
     class:elevation-4={elevation}
-    class:border-gray-400={!elevation && persistent}
-    class:border-r={!elevation && persistent}
-    class:border-l={!elevation && persistent}
     class:z-20={persistent}
     transition:fly={transitionProps}
   >

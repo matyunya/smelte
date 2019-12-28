@@ -35,7 +35,7 @@
   "browserslist": "last 3 version",
   "svelte": "src/index.js",
   "dependencies": {
-    "svelte-waypoint": "^0.1.2",
+    "svelte-waypoint": "^0.1.4",
     "tinycolor2": "^1.4.1"
   },
   "devDependencies": {

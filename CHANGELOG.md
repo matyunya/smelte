@@ -1,5 +1,9 @@
 # Smelte changelog
 
+# 0.1.17
+* Dispatch select on any tree view item
+* Bump waypoint
+
 # 0.1.16
 * Propagate treeview events in nested items
 * Add persistent prop to dialogs

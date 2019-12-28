@@ -27,8 +27,9 @@
   const dispatch = createEventDispatcher();
 
   function toggle(i) {
+    dispatch("select", i);
+
     if (selectable && !i.items) {
-      dispatch("select", i);
       selected = i;
     }
 
@@ -61,7 +62,7 @@
     </ListItem>
 
     {#if item.items && expanded.includes(item)}
-      <div transition:slide class="ml-6">
+      <div in:slide class="ml-6">
         <svelte:self
           {...$$props}
           items={item.items}
