@@ -23,17 +23,19 @@
   <div class={wrapperClasses} on:click|stopPropagation>
     <slot name="activator" />
     {#if open}
-      <div class={listWrapperClasses} in:fly={inProps} out:fly={outProps}>
-        <List
-          bind:value
-          select
-          dense
-          {items}
-          class="list"
-          on:change
-          on:change={() => open = false}
-        />
-      </div>
+      <slot name="menu">
+        <div class={listWrapperClasses} in:fly={inProps} out:fly={outProps}>
+          <List
+            bind:value
+            select
+            dense
+            {items}
+            class="list"
+            on:change
+            on:change={() => open = false}
+          />
+        </div>
+      </slot>
     {/if}
   </div>
 </div>

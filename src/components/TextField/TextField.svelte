@@ -94,8 +94,10 @@
       .replace({ 'text-gray-600': 'text-error-500' }, error)
       .get();
 
-  $: appendClasses, aClasses = (new ClassBuilder(appendClasses, appendDefault)).get();
-  $: prependClasses, pClasses = (new ClassBuilder(prependClasses, prependDefault)).get();
+  $: appendClasses, aClasses = (new ClassBuilder(appendClasses, appendDefault))
+      .get();
+  $: prependClasses, pClasses = (new ClassBuilder(prependClasses, prependDefault))
+      .get();
 
   const props = filterProps([
     'outlined',
@@ -115,6 +117,8 @@
     'prependReverse',
     'color',
     'bgColor',
+    'onClickAppend',
+    'onClickPrepend',
   ], $$props);
 </script>
 

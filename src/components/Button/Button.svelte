@@ -71,35 +71,31 @@
     iconCb = new ClassBuilder(iconClass);
   }
 
-  $: {
-      classes = cb
-        .flush()
-        .add(basicClasses, basic, basicDefault)
-        .add(`${bg(normal)} hover:${bg(lighter)}`, basic)
-        .add(elevationClasses, elevation, elevationDefault)
-        .add(outlinedClasses, outlined, outlinedDefault)
-        .add(
-          `${border(lighter)} ${txt(normal)} hover:${bg("trans")}`,
-          outlined)
-        .add(`${txt(lighter)}`, text)
-        .add(textClasses, text, textDefault)
-        .add(iconClasses, icon, iconDefault)
-        .remove('py-2', icon)
-        .add(fabClasses, fab, fabDefault)
-        .remove(txt(lighter), fab)
-        .add(disabledClasses, disabled, disabledDefault)
-        .add(smallClasses, small, smallDefault)
-        .add('flex items-center justify-center', small && icon)
-        .remove(remove)
-        .replace(replace)
-        .add(add)
-        .get();
-  }
+  $: classes = cb
+      .flush()
+      .add(basicClasses, basic, basicDefault)
+      .add(`${bg(normal)} hover:${bg(lighter)}`, basic)
+      .add(elevationClasses, elevation, elevationDefault)
+      .add(outlinedClasses, outlined, outlinedDefault)
+      .add(
+        `${border(lighter)} ${txt(normal)} hover:${bg("trans")}`,
+        outlined)
+      .add(`${txt(lighter)}`, text)
+      .add(textClasses, text, textDefault)
+      .add(iconClasses, icon, iconDefault)
+      .remove('py-2', icon)
+      .add(fabClasses, fab, fabDefault)
+      .remove(txt(lighter), fab)
+      .add(disabledClasses, disabled, disabledDefault)
+      .add(smallClasses, small, smallDefault)
+      .add('flex items-center justify-center', small && icon)
+      .remove(remove)
+      .replace(replace)
+      .add(add)
+      .get();
 
-  $: {
-    if (iconCb) {
-      iClasses = iconCb.flush().add(txt(), fab && !iconClass).get();
-    }
+  $: if (iconCb) {
+    iClasses = iconCb.flush().add(txt(), fab && !iconClass).get();
   }
 
   const ripple = createRipple((text || fab || outlined) ? color : "white");
