@@ -30,6 +30,10 @@ export class ClassBuilder {
     return this;
   }
 
+  extend(...fns) {
+    return this;
+  }
+
   get() {
     return this.classes;
   }

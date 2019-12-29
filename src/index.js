@@ -17,7 +17,7 @@ import ProgressCircular from "./components/ProgressCircular";
 import Slider from "./components/Slider";
 import Snackbar from "./components/Snackbar";
 import { TabButton, Tab, Tabs } from "./components/Tabs";
-import TextField from "./components/TextField";
+import TextField, { Label } from "./components/TextField";
 import DataTable from "./components/DataTable";
 import Switch from "./components/Switch";
 import Tooltip from "./components/Tooltip";
@@ -38,6 +38,7 @@ export {
   List,
   ListItem,
   Menu,
+  Label,
   NavigationDrawer,
   Icon,
   ProgressLinear,

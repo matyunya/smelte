@@ -1,5 +1,8 @@
 # Smelte changelog
 
+# 0.1.18
+* Refactor out Label component
+
 # 0.1.17
 * Dispatch select on any tree view item
 * Bump waypoint

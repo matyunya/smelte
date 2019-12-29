@@ -1,9 +1,10 @@
 <script>
-  import { fly } from "svelte/transition";
-  import { quadOut } from "svelte/easing";
   import utils, { ClassBuilder, filterProps } from "../../utils/classes.js";
 
   import Icon from "../Icon";
+  import Label from "./Label.svelte";
+  import Hint from "./Hint.svelte";
+  import Underline from "./Underline.svelte";
 
   let className = "";
   export {className as class};
@@ -28,9 +29,8 @@
   export let bgColor = "white";
   export let iconClass = "";
 
-  let labelDefault = `pt-4 absolute top-0 label-transition block pb-2 px-4 pointer-events-none cursor-text`;
   let inputDefault = `transition pb-2 pt-6 px-4 rounded-t text-black w-full`;
-  let wrapperDefault = "mt-2 relative pb-6 text-gray-600" + ((select || autocomplete) ? " select" : "");
+  let wrapperDefault = "mt-2 mb-6 relative text-gray-600";
   let appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 pointer-events-none text-gray-700";
   let prependDefault = "absolute left-0 top-0 pointer-events-none text-xs text-gray-700";
 
@@ -38,7 +38,7 @@
   export let remove = "";
   export let replace = "";
 
-  export let labelClasses = labelDefault;
+  export let labelClasses = "";
   export let inputClasses = inputDefault;
   export let wrapperClasses = wrapperDefault;
   export let appendClasses = appendDefault;
@@ -51,14 +51,11 @@
     caret,
   } = utils(color);
 
-  const l = new ClassBuilder(labelClasses, labelDefault);
-  const i = new ClassBuilder(inputClasses, inputDefault);
-  const w = new ClassBuilder(wrapperClasses, wrapperDefault);
-  const a = new ClassBuilder(appendClasses, appendDefault);
-  const p = new ClassBuilder(prependClasses, prependDefault);
+  let classes = new ClassBuilder(inputClasses, inputDefault);
+
+  export let extend = () => {};
 
   let focused = false;
-  let lClasses = "";
   let iClasses = "";
   let wClasses = "";
   let aClasses = "";
@@ -71,17 +68,7 @@
   $: showHint = error || (persistentHint ? hint : focused && hint);
   $: labelOnTop = placeholder || focused || value;
 
-  $: lClasses = l
-      .flush()
-      .add(txt(), focused && !error)
-      .add('label-top text-xs', labelOnTop)
-      .remove('pt-4 pb-2 px-4 px-1 pt-0', labelOnTop && outlined)
-      .add(`ml-3 p-1 pt-0 mt-0 bg-${bgColor}`, labelOnTop && outlined)
-      .remove('px-4', prepend)
-      .add('pr-4 pl-6', prepend)
-      .get();
-
-  $: iClasses = i
+  $: iClasses = classes
       .flush()
       .add(className)
       .remove('pt-6 pb-2', outlined)
@@ -98,9 +85,15 @@
       .add(add)
       .remove(remove)
       .replace(replace)
+      .extend(extend)
       .get();
     
-  $: wrapperClasses, wClasses = (new ClassBuilder(wrapperClasses, wrapperDefault)).get();
+  $: wrapperClasses, wClasses = (new ClassBuilder(wrapperClasses, wrapperDefault))
+      .flush()
+      .add('select', select || autocomplete)
+      .replace({ 'text-gray-600': 'text-error-500' }, error)
+      .get();
+
   $: appendClasses, aClasses = (new ClassBuilder(appendClasses, appendDefault)).get();
   $: prependClasses, pClasses = (new ClassBuilder(prependClasses, prependDefault)).get();
 
@@ -130,26 +123,28 @@
   height: 1px;
 }
 
-.label-top {
-  line-height: 0.05;
-}
 .select {
   @apply pb-0 cursor-pointer;
   height: 3.5rem;
-}
-.label-transition {
-  transition: font-size 0.05s, line-height 0.1s;
 }
 </style>
 
 <svelte:window on:click={() => (select ? (focused = false) : null)} />
 
 <div class={wClasses}>
-  <div class="relative" class:text-error-500={error}>
-    <label class={lClasses}>
-      {label}
-    </label>
+  <slot name="label">
+    <Label
+      {labelOnTop}
+      {focused}
+      {error}
+      {outlined}
+      {prepend}
+      {color}
+      {bgColor}
+    >{label}</Label>
+  </slot>
 
+  {#if append}
     <div class={aClasses}>
       <slot name="append">
         <Icon
@@ -160,80 +155,73 @@
         </Icon>
       </slot>
     </div>
+  {/if}
 
-    {#if (!textarea && !select) || autocomplete}
-      <input
-        aria-label={label}
-        class={iClasses}
-        on:focus={toggleFocused}
-        on:blur={toggleFocused}
-        on:blur
-        bind:value
-        on:change
-        on:input
-        on:click
-        on:focus
-        {...props}
-        placeholder={!value ? placeholder : ''} />
-    {:else if textarea && !select}
-      <textarea
-        {rows}
-        aria-label={label}
-        class={iClasses}
-        on:change
-        on:input
-        on:click
-        on:focus
-        on:blur
-        bind:value
-        {...props}
-        on:focus={toggleFocused}
-        on:blur={toggleFocused}
-        placeholder={!value ? placeholder : ''} />
-    {:else if select && !autocomplete}
-      <input
-        readonly
-        class="{iClasses}"
-        on:click={toggleFocused}
-        on:change
-        on:input
-        on:click
-        on:blur
-        on:focus
-        {value} />
-    {/if}
+  {#if (!textarea && !select) || autocomplete}
+    <input
+      aria-label={label}
+      class={iClasses}
+      on:focus={toggleFocused}
+      on:blur={toggleFocused}
+      on:blur
+      bind:value
+      on:change
+      on:input
+      on:click
+      on:focus
+      {...props}
+      placeholder={!value ? placeholder : ''} />
+  {:else if textarea && !select}
+    <textarea
+      {rows}
+      aria-label={label}
+      class={iClasses}
+      on:change
+      on:input
+      on:click
+      on:focus
+      on:blur
+      bind:value
+      {...props}
+      on:focus={toggleFocused}
+      on:blur={toggleFocused}
+      placeholder={!value ? placeholder : ''} />
+  {:else if select && !autocomplete}
+    <input
+      readonly
+      class="{iClasses}"
+      on:click={toggleFocused}
+      on:change
+      on:input
+      on:click
+      on:blur
+      on:focus
+      {value} />
+  {/if}
 
-      <div class={pClasses}>
-        <slot name="prepend">
-        {#if prepend}
-          <Icon
-            reverse={prependReverse}
-            class="{focused ? txt() : ''} {iconClass}"
-          >
-            {prepend}
-          </Icon>
-        {/if}
-        </slot>
-      </div>
-
-    <div
-      class="line absolute bottom-0 left-0 w-full bg-gray-600"
-      class:hidden={noUnderline || outlined}>
-      <div
-        class="mx-auto w-0 {focused ? bg() : ""}"
-        class:w-full={focused || error}
-        class:bg-error-500={error}
-        style="height: 2px; transition: width .2s ease" />
+  {#if prepend}
+    <div class={pClasses}>
+      <slot name="prepend">
+        <Icon
+          reverse={prependReverse}
+          class="{focused ? txt() : ''} {iconClass}"
+        >
+          {prepend}
+        </Icon>
+      </slot>
     </div>
-  </div>
+  {/if}
 
+  <Underline
+    {noUnderline}
+    {outlined}
+    {focused}
+    {error} />
+  
   {#if showHint}
-    <div
-      class="text-xs py-1 pl-4 absolute bottom-0 left-0"
-      class:text-gray-600={hint}
-      class:text-error-500={error}
-      transition:fly={{ y: -10, duration: 100, easing: quadOut }}>
-      {showHint}
-    </div>
+    <Hint
+      {hint}
+      {error}
+      {hint} />
   {/if}
 </div>
