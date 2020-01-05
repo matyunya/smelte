@@ -58,6 +58,6 @@
     class="bg-{color}-500 h-1 absolute"
     class:inc={!progress}
     class:transition={progress}
-    style={progress ? `width: ${progress}%` : ''} />
+    style={progress ? `width: ${progress}%` : ""} />
   <div class="bg-{color}-500 h-1 absolute dec" class:hidden={progress} />
 </div>

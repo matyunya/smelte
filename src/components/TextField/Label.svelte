@@ -64,6 +64,6 @@
 }
 </style>
 
-<label class="{lClasses}" {...props}>
+<label class="{lClasses} {className}" {...props}>
   <slot />
 </label>

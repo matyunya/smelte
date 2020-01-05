@@ -30,7 +30,7 @@
         class:bg-white={!value}
         class:bg-primary-400={value}
         class:left-0={!value}
-        style={value ? 'left: 1.25rem' : ''} />
+        style={value ? 'left: 1.25rem' : ""} />
     </Ripple>
   </div>
   <label

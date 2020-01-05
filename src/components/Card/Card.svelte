@@ -6,7 +6,7 @@
 </script>
 
 <div
-  class="{className} {hover ? 'elevation-1 hover:elevation-8' : ''} {wrapperClasses}">
+  class="{className} {hover ? 'elevation-1 hover:elevation-8' : ""} {wrapperClasses}">
   <slot name="title" />
   <slot name="media" />
   <slot />

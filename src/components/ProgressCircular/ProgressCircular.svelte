@@ -55,5 +55,5 @@
         animation: none;
         stroke-dasharray: ${150000 - progress * 1000};
         stroke-dashoffset: -${124 - (progress * 124) / 100};
-      ` : ''};" />
+      ` : ""};" />
 </svg>

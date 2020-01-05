@@ -24,7 +24,7 @@
     remove: 'pt-6 px-4 bg-gray-100 bg-gray-300',
     small: true,
     iconClass: 'text-sm absolute',
-    wrapperClasses: (i) => i.replace('pb-6', ''),
+    wrapperClasses: (i) => i.replace('pb-6', ""),
   };
 
   const buttonProps = {
@@ -62,7 +62,7 @@
     <Select
         value="Sentence"
         {...selectProps}
-        inputWrapperClasses={(c) => c.replace('select', 'h-8').replace('mt-2', '')}
+        inputWrapperClasses={(c) => c.replace('select', 'h-8').replace('mt-2', "")}
         appendClasses={(c) => c.replace('pt-4', 'pt-2').replace('pr-4', 'pr-2')}
         items={["Sentence", "Word"]}
       />
@@ -79,7 +79,7 @@
       value="40px"
       class="w-20"
       {...selectProps}
-      inputWrapperClasses={(c) => c.replace('select', 'h-8').replace('mt-2', '')}
+      inputWrapperClasses={(c) => c.replace('select', 'h-8').replace('mt-2', "")}
       appendClasses={(c) => c.replace('pt-4', 'pt-2').replace('pr-4', 'pr-2')}
       items={["40px", "42px"]}
     />

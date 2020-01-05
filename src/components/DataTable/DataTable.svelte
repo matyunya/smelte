@@ -11,7 +11,7 @@
 
   export let data = [];
   export let columns = Object.keys(data[0] || {})
-    .map(i => ({ label: (i || '').replace('_', ' '), field: i }));
+    .map(i => ({ label: (i || "").replace('_', ' '), field: i }));
   export let page = 1;
   export let sort = defaultSort;
   export let perPage = 10;
@@ -29,11 +29,11 @@
     flat: true,
     dark: true,
     remove: 'px-4 px-3',
-    iconClasses: (c) => c.replace('p-4', ''),
+    iconClasses: (c) => c.replace('p-4', ""),
     disabledClasses: (c) => c
       .replace('text-white', 'text-gray-200')
       .replace('bg-gray-300', 'bg-transparent')
-      .replace('text-gray-700', ''),
+      .replace('text-gray-700', ""),
   };
 
   let table = "";
@@ -195,7 +195,7 @@
                 class="w-16 h-8 mb-5"
                 remove="bg-gray-300 bg-gray-100 select"
                 replace={{ 'pt-6': 'pt-4' }}
-                inputWrapperClasses={(c) => c.replace('mt-2', '').replace('pb-6', '')}
+                inputWrapperClasses={(c) => c.replace('mt-2', "").replace('pb-6', "")}
                 appendClasses={(c) => c.replace('pt-4', 'pt-3').replace('pr-4', 'pr-2')}
                 noUnderline
                 dense

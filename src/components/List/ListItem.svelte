@@ -39,7 +39,7 @@
 
 <li
   use:ripple
-  class="{basicClasses} {selected ? selectedClasses : ''}"
+  class="{basicClasses} {selected ? selectedClasses : ""}"
   class:text-sm={navigation}
   class:py-2={dense}
   class:text-gray-600={disabled}
@@ -51,7 +51,7 @@
     <Icon
       class="pr-6"
       small={dense}
-      color={selected && navigation ? 'text-primary-500' : ''}>
+      color={selected && navigation ? 'text-primary-500' : ""}>
       {icon}
     </Icon>
   {/if}

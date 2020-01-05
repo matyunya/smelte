@@ -111,6 +111,9 @@
     'light',
     'dark',
     'flat',
+    'add',
+    'remove',
+    'replace',
   ], $$props);
 </script>
 

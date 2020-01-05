@@ -4,7 +4,7 @@
 	import List from 'components/List';
 
   let open = true;
-	let selected = '';
+	let selected = "";
 
   const items = [
 		{ value: 1, text: 'One' },

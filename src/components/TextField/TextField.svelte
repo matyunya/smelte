@@ -148,22 +148,6 @@
     >{label}</Label>
   </slot>
 
-  {#if append}
-    <div
-      class={aClasses}
-      on:click={() => dispatch("click-append")}
-    >
-      <slot name="append">
-        <Icon
-          reverse={appendReverse}
-          class="{focused ? txt() : ''} {iconClass}"
-        >
-          {append}
-        </Icon>
-      </slot>
-    </div>
-  {/if}
-
   {#if (!textarea && !select) || autocomplete}
     <input
       aria-label={label}
@@ -177,7 +161,7 @@
       on:click
       on:focus
       {...props}
-      placeholder={!value ? placeholder : ''} />
+      placeholder={!value ? placeholder : ""} />
   {:else if textarea && !select}
     <textarea
       {rows}
@@ -192,7 +176,7 @@
       {...props}
       on:focus={toggleFocused}
       on:blur={toggleFocused}
-      placeholder={!value ? placeholder : ''} />
+      placeholder={!value ? placeholder : ""} />
   {:else if select && !autocomplete}
     <input
       readonly
@@ -206,12 +190,31 @@
       {value} />
   {/if}
 
+  {#if append}
+    <div
+      class={aClasses}
+      on:click={() => dispatch("click-append")}
+    >
+      <slot name="append">
+        <Icon
+          reverse={appendReverse}
+          class="{focused ? txt() : ""} {iconClass}"
+        >
+          {append}
+        </Icon>
+      </slot>
+    </div>
+  {/if}
+
   {#if prepend}
-    <div class={pClasses}>
+    <div
+      class={pClasses}
+      on:click={() => dispatch("click-prepend")}
+    >
       <slot name="prepend">
         <Icon
           reverse={prependReverse}
-          class="{focused ? txt() : ''} {iconClass}"
+          class="{focused ? txt() : ""} {iconClass}"
         >
           {prepend}
         </Icon>
