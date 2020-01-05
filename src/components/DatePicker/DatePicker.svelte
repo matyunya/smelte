@@ -12,28 +12,22 @@
     console.log('clicked');
     open = !open;
   }
-</script>
 
-<svelte:window on:click={() => open = false} />
+  $: console.log(open);
+
+</script>
 
 <Menu bind:open>
   <div slot="activator">
     <TextField
       {label}
       append={defaultIcon}
-      on:click={togglePicker}
-     />
+      on:click-append={togglePicker}
+    />
   </div>
-  <div slot="menu">
-    <Card>
-      <slot name="header">
-        <div class="bg-primary-700 text-white">
-          current date
-        </div>
-      </slot>
-      <slot>
-        test
-      </slot>
-    </Card>
+  <div slot="menu" class="absolute bottom-0 bg-white">
+    {#if open}
+      <Card class="p-6 w-full">test</Card>
+    {/if}
   </div>
 </Menu>

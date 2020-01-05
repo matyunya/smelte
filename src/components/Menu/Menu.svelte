@@ -14,28 +14,26 @@
   const dispatch = createEventDispatcher();
 
   const inProps = { y: 10, duration: 200, easing: quadIn };
-  const outProps = { y: -10, duration: 100, easing: quadOut, delay: 200 };
+  const outProps = { y: -10, duration: 100, easing: quadOut, delay: 100 };
 </script>
 
 <svelte:window on:click={() => (open = false)} />
 
-<div>
-  <div class={wrapperClasses} on:click|stopPropagation>
-    <slot name="activator" />
+<div class={wrapperClasses} on:click|stopPropagation>
+  <slot name="activator" />
+  <slot name="menu">
     {#if open}
-      <slot name="menu">
-        <div class={listWrapperClasses} in:fly={inProps} out:fly={outProps}>
-          <List
-            bind:value
-            select
-            dense
-            {items}
-            class="list"
-            on:change
-            on:change={() => open = false}
-          />
-        </div>
-      </slot>
+      <div class={listWrapperClasses} in:fly={inProps} out:fly={outProps}>
+        <List
+          bind:value
+          select
+          dense
+          {items}
+          class="list"
+          on:change
+          on:change={() => open = false}
+        />
+      </div>
     {/if}
-  </div>
+  </slot>
 </div>

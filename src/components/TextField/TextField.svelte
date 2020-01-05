@@ -1,4 +1,5 @@
 <script>
+  import { createEventDispatcher } from "svelte";
   import utils, { ClassBuilder, filterProps } from "../../utils/classes.js";
 
   import Icon from "../Icon";
@@ -31,14 +32,13 @@
 
   let inputDefault = `transition pb-2 pt-6 px-4 rounded-t text-black w-full`;
   let wrapperDefault = "mt-2 mb-6 relative text-gray-600";
-  let appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 pointer-events-none text-gray-700";
-  let prependDefault = "absolute left-0 top-0 pointer-events-none text-xs text-gray-700";
+  let appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 text-gray-700 z-50";
+  let prependDefault = "absolute left-0 top-0 text-xs text-gray-700 z-50";
 
   export let add = "";
   export let remove = "";
   export let replace = "";
 
-  export let labelClasses = "";
   export let inputClasses = inputDefault;
   export let wrapperClasses = wrapperDefault;
   export let appendClasses = appendDefault;
@@ -117,9 +117,9 @@
     'prependReverse',
     'color',
     'bgColor',
-    'onClickAppend',
-    'onClickPrepend',
   ], $$props);
+
+  const dispatch = createEventDispatcher();
 </script>
 
 <style>
@@ -149,7 +149,10 @@
   </slot>
 
   {#if append}
-    <div class={aClasses}>
+    <div
+      class={aClasses}
+      on:click={() => dispatch("click-append")}
+    >
       <slot name="append">
         <Icon
           reverse={appendReverse}

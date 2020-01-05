@@ -23,6 +23,7 @@
   class="material-icons text-xl {className} transition"
   class:reverse
   class:tip
+  on:click
   class:text-base={small}
   class:text-xs={xs}
   style="color: {color}">
