@@ -5,6 +5,7 @@
   import TextField from "../TextField";
   import Menu from "../Menu";
   import Button from "../Button";
+  import Ripple from "../Ripple";
   import { getWeekDays, weekStart } from "./util";
 
   const dispatch = createEventDispatcher();
@@ -14,6 +15,9 @@
   export let defaultIcon = "date_range";
   export let value = new Date();
   export let locale = "default";
+  export let todayClasses = "text-black-600 rounded-full border border-black";
+  export let selectedClasses = "bg-primary-600 text-white rounded-full";
+  export let closeOnSelect = false;
   export let paginatorProps = {
     color: "gray",
     text: true,
@@ -27,7 +31,11 @@
       .replace("text-gray-700", ""),
   };
 
-  $: value = value || new Date() && dispatch("update", value);
+  let selected;
+  const today = (new Date()).getDate();
+  const isCurrentMonth = (new Date()).getMonth() === value.getMonth();
+
+  let displayValue = ''; // value.toLocaleDateString();
 
   $: year = value.getFullYear();
   $: month = value.toLocaleString(locale, { month: "short" });
@@ -37,14 +45,25 @@
   $: lastDayOfMonth = new Date(value.getFullYear(), value.getMonth() + 1, 0);
   $: firstDayOfMonth = new Date(value.getFullYear(), value.getMonth(), 1);
 
-  $: daysInMonth = [...new Array(lastDayOfMonth.getDate() || 0)];
+  $: daysInMonth = [...new Array(lastDayOfMonth.getDate() || 0)]
+    .map((i, j) => ({
+      day: j + 1,
+      isToday: isCurrentMonth && j + 1 === today,
+      selected: selected === j + 1,
+    }));
 
   $: if (typeof value === "string") {
     value = new Date(value);
   }
   
-  $: if (!open && value) {
+  $: if (selected) {
+    value = new Date(value.getFullYear(), value.getMonth(), selected);
     dispatch("change", value);
+    displayValue = value.toLocaleDateString();
+
+    if (closeOnSelect) {
+      open = false;
+    }
   }
 
   $: dayOffset = firstDayOfMonth.getDay() - firstDayOfWeek;
@@ -53,6 +72,7 @@
 <Menu bind:open>
   <div slot="activator">
     <TextField
+      bind:value={displayValue}
       {label}
       class="relative"
       append={defaultIcon}
@@ -84,11 +104,17 @@
               </div>
             {/each}
           </div>
-          <div class="flex flex-wrap">
-            <div class="p-1 w-{dayOffset}/7" />
-            {#each daysInMonth as i, j}
-              <div class="p-1 w-1/7 text-center">
-                {j + 1}
+          <div class="flex flex-wrap text-center text-sm">
+            {#if dayOffset}<div class="p-1 w-{dayOffset}/7" />{/if} 
+            {#each daysInMonth as i}
+              <div class="w-1/7 p-1">
+                <div class="w-8 h-8 relative {i.isToday && !i.isSelected ? todayClasses : ""} {i.selected ? selectedClasses : ""}"
+                  on:click={() => selected = i.day}
+                >
+                  <Ripple color="gray" class="p-1 w-full h-full">
+                    {i.day}
+                  </Ripple>
+                </div>
               </div>
             {/each}
           </div>

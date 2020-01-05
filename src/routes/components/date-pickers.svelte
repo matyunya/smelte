@@ -1,9 +1,14 @@
 <script>
   import { DatePicker } from "smelte";
   import Code from "docs/Code.svelte";
+  import datepickers from "examples/date-pickers.txt";
 
+  let selected;
 </script>
 
-<DatePicker />
+<div>
+<small>I selected {selected ? selected.toLocaleDateString() : "nothing"}</small>
+</div>
+<DatePicker on:change={i => selected = i.detail } />
 
-<Code code="test testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest test" />
+<Code code={datepickers} />
