@@ -128,7 +128,7 @@
 }
 
 .select {
-  @apply pb-0 cursor-pointer;
+  @apply pb-0 mb-0 cursor-pointer;
   height: 3.5rem;
 }
 </style>
