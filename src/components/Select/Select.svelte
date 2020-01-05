@@ -85,6 +85,7 @@
   <slot name="select">
     <TextField
       select
+      {dense}
       {autocomplete}
       value={selectedLabel}
       {...props}
