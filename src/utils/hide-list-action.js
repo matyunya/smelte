@@ -29,7 +29,9 @@ export function hideListAction(node, cb) {
 
   const onClick = (e) => {
     if (node.contains(e.target)) {
-      Object.values(handlers).forEach(fn => fn());
+      Object.values(handlers).forEach(fn => {
+        if (cb !== fn) fn();
+      });
     }
   };
 

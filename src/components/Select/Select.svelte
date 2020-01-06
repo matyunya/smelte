@@ -79,7 +79,9 @@
     );
   }
 
-  const onHideListPanel = () => (showList = false);
+  function onHideListPanel() { 
+    showList && (showList = false); 
+  };
 </script>
 
 <div class="{wrapperClasses} {className}" use:hideListAction={onHideListPanel}>
