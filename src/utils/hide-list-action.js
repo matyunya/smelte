@@ -13,9 +13,7 @@ function findHideListPanel(target) {
   let parent = target;
   while (parent) {
     const click = parent[HIDE_PANEL];
-    if (click) {
-      return click;
-    }
+    if (click) return click;
     parent = parent.parentNode;
   }
   return null;
@@ -27,28 +25,23 @@ export function hideListPanel(e) {
 }
 
 export function hideListAction(node, cb) {
-  const key = `click${guid()}`;
+  const key = `click_${guid()}`;
 
   const onClick = (e) => {
-    if (!node.contains(e.target)) {      
-      onWindowClick();
-    } else {
-      // console.log('node.contains(target)', key, node);
+    if (node.contains(e.target)) {
       Object.values(handlers).forEach(fn => fn());
     }
   };
 
-  const onWindowClick = () => cb();
-
   handlers[key] = cb;
   node[HIDE_PANEL] = onClick;
-  window.addEventListener("click", onWindowClick);
+  window.addEventListener("click", cb);
 
   return {
     destroy: () => {
       delete handlers[key];
       delete node[HIDE_PANEL];
-      window.removeEventListener("click", onWindowClick);
+      window.removeEventListener("click", cb);
     }
   };
 }
