@@ -4,7 +4,7 @@
   import { quadOut, quadIn } from "svelte/easing";
   import List from "../List/List.svelte";
   import TextField from "../TextField";
-  import { hideListAction, hideListPanel } from '../../utils/hide-list-action';
+  import { hideListAction } from '../../utils/hide-list-action';
 
   export let items = [];
   let className = "";
@@ -79,9 +79,7 @@
     );
   }
 
-  function onHideListPanel() { 
-    showList && (showList = false); 
-  };
+  const onHideListPanel = () => showList = false;
 </script>
 
 <div class="{wrapperClasses} {className}" use:hideListAction={onHideListPanel}>
@@ -97,11 +95,7 @@
       {labelClasses}
       {inputClasses}
       {prependClasses}
-      on:click={e => {
-        e.stopPropagation();
-        hideListPanel(e);
-        showList = true;
-      }}
+      on:click={e => (showList = true)}
       on:click
       on:input={filterItems}
       append="arrow_drop_down"
