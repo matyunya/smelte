@@ -33,7 +33,6 @@
 
   let selected;
   const today = (new Date()).getDate();
-  const isCurrentMonth = (new Date()).getMonth() === value.getMonth();
 
   let displayValue = ''; // value.toLocaleDateString();
 
@@ -44,6 +43,7 @@
 
   $: lastDayOfMonth = new Date(value.getFullYear(), value.getMonth() + 1, 0);
   $: firstDayOfMonth = new Date(value.getFullYear(), value.getMonth(), 1);
+  $: isCurrentMonth = (new Date()).getMonth() === value.getMonth();
 
   $: daysInMonth = [...new Array(lastDayOfMonth.getDate() || 0)]
     .map((i, j) => ({
@@ -67,6 +67,14 @@
   }
 
   $: dayOffset = firstDayOfMonth.getDay() - firstDayOfWeek;
+
+  function next() {
+    value = new Date(value.setMonth(value.getMonth() - 1));
+  }
+
+  function prev() {
+    value = new Date(value.setMonth(value.getMonth() + 1));
+  }
 </script>
 
 <Menu bind:open>
@@ -89,11 +97,11 @@
               <Button
                 icon="keyboard_arrow_left"
                 {...paginatorProps}
-                on:click={() => value = new Date(value.setMonth(value.getMonth() - 1))} />
+                on:click={prev} />
               <Button
                 icon="keyboard_arrow_right"
                 {...paginatorProps}
-                on:click={() => value = new Date(value.setMonth(value.getMonth() + 1))} />
+                on:click={next} />
             </div>
           </div>
 
