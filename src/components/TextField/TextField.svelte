@@ -21,6 +21,7 @@
   export let textarea = false;
   export let rows = 5;
   export let select = false;
+  export let dense = false;
   export let autocomplete = false;
   export let noUnderline = false;
   export let appendReverse = false;
@@ -91,6 +92,7 @@
   $: wrapperClasses, wClasses = (new ClassBuilder(wrapperClasses, wrapperDefault))
       .flush()
       .add('select', select || autocomplete)
+      .add('dense', dense)
       .replace({ 'text-gray-600': 'text-error-500' }, error)
       .get();
 
@@ -126,10 +128,12 @@
 .line {
   height: 1px;
 }
-
 .select {
   @apply pb-0 mb-0 cursor-pointer;
   height: 3.5rem;
+}
+.select.dense {
+  height: 2.4rem;
 }
 </style>
 
