@@ -4,6 +4,7 @@
   import { quadOut, quadIn } from "svelte/easing";
   import List from "../List/List.svelte";
   import TextField from "../TextField";
+  import { hideListAction } from '../../utils/hide-list-action';
 
   export let items = [];
   let className = "";
@@ -77,11 +78,11 @@
       i.text.toLowerCase().includes(target.value.toLowerCase())
     );
   }
+
+  const onHideListPanel = () => showList = false;
 </script>
 
-<svelte:window on:click={() => (showList = false)} />
-
-<div class="{wrapperClasses} {className}">
+<div class="{wrapperClasses} {className}" use:hideListAction={onHideListPanel}>
   <slot name="select">
     <TextField
       select
@@ -94,10 +95,7 @@
       {labelClasses}
       {inputClasses}
       {prependClasses}
-      on:click={e => {
-        e.stopPropagation();
-        showList = true;
-      }}
+      on:click={e => (showList = true)}
       on:click
       on:input={filterItems}
       append="arrow_drop_down"
