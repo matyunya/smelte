@@ -56,7 +56,7 @@
 
   export let extend = () => {};
 
-  let focused = false;
+  export let focused = false;
   let iClasses = "";
   let wClasses = "";
   let aClasses = "";
@@ -137,8 +137,6 @@
 }
 </style>
 
-<svelte:window on:click={() => (select ? (focused = false) : null)} />
-
 <div class={wClasses}>
   <slot name="label">
     <Label
@@ -185,7 +183,6 @@
     <input
       readonly
       class="{iClasses}"
-      on:click={toggleFocused}
       on:change
       on:input
       on:click
