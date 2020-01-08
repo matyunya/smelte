@@ -87,6 +87,7 @@
     <TextField
       select
       {dense}
+      focused={showList}
       {autocomplete}
       value={selectedLabel}
       {...props}
