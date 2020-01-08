@@ -125,9 +125,6 @@
 </script>
 
 <style>
-.line {
-  height: 1px;
-}
 .select {
   @apply pb-0 mb-0 cursor-pointer;
   height: 3.5rem;
