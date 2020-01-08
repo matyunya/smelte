@@ -1,3 +1,9 @@
+<script context="module">
+  import { writable } from "svelte/store";
+  
+  const count = writable({});
+</script>
+
 <script>
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
@@ -36,6 +42,13 @@
   let classes = "";
   let wClasses = "";
 
+  const hash = `${right ? 'r' : ''}${top ? 't' : ''}${left ? 'l' : ''}${bottom ? 'b' : ''}`;
+
+  $: count.update(u => ({
+    ...u,
+    [hash]: Math.max(value ? u[hash] || 0 + 1 : u[hash] || 0 - 1, 0)
+  }));
+
   classes = cb
     .add(bg(800))
     .add("right-0 mr-2", right)
@@ -49,7 +62,6 @@
     .add(`text-${text}`)
     .get();
 
-
   onMount(() => {
     if (!window || !timeout) return;
 
@@ -57,6 +69,8 @@
       value = false;
     }, timeout);
   });
+
+  $: console.log($count);
 </script>
 
 <style>
@@ -64,6 +78,7 @@
     min-width: 344px;
   }
 </style>
+
 
 {#if value}
   <div class="fixed w-full h-full top-0 left-0 z-30 pointer-events-none">

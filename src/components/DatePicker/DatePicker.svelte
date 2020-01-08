@@ -15,6 +15,7 @@
   export let defaultIcon = "date_range";
   export let value = new Date();
   export let locale = "default";
+  export let yearPicker = false;
   export let todayClasses = "text-black-600 rounded-full border border-black";
   export let selectedClasses = "bg-primary-600 text-white rounded-full";
   export let closeOnSelect = false;
@@ -85,6 +86,7 @@
       class="relative"
       append={defaultIcon}
       on:click-append={() => open = !open}
+      on:
     />
   </div>
   <div slot="menu" class="absolute z-20 bg-white mt-16">
