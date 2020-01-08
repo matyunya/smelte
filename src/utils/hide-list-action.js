@@ -1,5 +1,5 @@
 export function hideListAction(node, cb) {
-  const onWindowClick = (e) => {
+  const onWindowClick = e => {
     if (!node.contains(e.target)) {
       cb();
     }
