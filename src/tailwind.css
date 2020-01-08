@@ -78,7 +78,7 @@ button:focus, input:focus, li:focus, div:focus, textarea:focus {
 }
 
 .list {
-  @apply absolute left-0 bg-white rounded elevation-3 w-full z-10;
+  @apply absolute left-0 bg-white rounded elevation-3 w-full z-20;
   margin-top: 2px;
 }
 

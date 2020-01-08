@@ -33,8 +33,8 @@
 
   let inputDefault = `transition pb-2 pt-6 px-4 rounded-t text-black w-full`;
   let wrapperDefault = "mt-2 mb-6 relative text-gray-600";
-  let appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 text-gray-700 z-50";
-  let prependDefault = "absolute left-0 top-0 text-xs text-gray-700 z-50";
+  let appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 text-gray-700 z-10";
+  let prependDefault = "absolute left-0 top-0 text-xs text-gray-700 z-10";
 
   export let add = "";
   export let remove = "";
