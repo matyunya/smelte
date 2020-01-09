@@ -37,7 +37,7 @@
   let displayValue = '';
 
   $: year = value.toLocaleString(locale, { year: "numeric" });
-  $: month = value.toLocaleString(locale, { month: "long" });
+  $: month = value.toLocaleString(locale, { month: "short" });
   $: firstDayOfWeek = weekStart(locale);
   $: weekdays = getWeekDays(locale, firstDayOfWeek);
 
@@ -69,11 +69,13 @@
   $: dayOffset = Math.abs(firstDayOfMonth.getDay() - firstDayOfWeek);
 
   function next() {
-    value = new Date(value.setMonth(value.getMonth() - 1));
+    value = new Date(value.setMonth(value.getMonth() + 1));
+    selected = false;
   }
 
   function prev() {
-    value = new Date(value.setMonth(value.getMonth() + 1));
+    value = new Date(value.setMonth(value.getMonth() - 1));
+    selected = false;
   }
 
   export let transitionProps = {
