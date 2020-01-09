@@ -33,8 +33,8 @@
 
   let inputDefault = `transition pb-2 pt-6 px-4 rounded-t text-black w-full`;
   let wrapperDefault = "mt-2 mb-6 relative text-gray-600";
-  let appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 text-gray-700 z-50";
-  let prependDefault = "absolute left-0 top-0 text-xs text-gray-700 z-50";
+  let appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 text-gray-700 z-10";
+  let prependDefault = "absolute left-0 top-0 text-xs text-gray-700 z-10";
 
   export let add = "";
   export let remove = "";
@@ -56,7 +56,7 @@
 
   export let extend = () => {};
 
-  let focused = false;
+  export let focused = false;
   let iClasses = "";
   let wClasses = "";
   let aClasses = "";
@@ -125,9 +125,6 @@
 </script>
 
 <style>
-.line {
-  height: 1px;
-}
 .select {
   @apply pb-0 mb-0 cursor-pointer;
   height: 3.5rem;
@@ -136,8 +133,6 @@
   height: 2.4rem;
 }
 </style>
-
-<svelte:window on:click={() => (select ? (focused = false) : null)} />
 
 <div class={wClasses}>
   <slot name="label">
@@ -185,7 +180,6 @@
     <input
       readonly
       class="{iClasses}"
-      on:click={toggleFocused}
       on:change
       on:input
       on:click

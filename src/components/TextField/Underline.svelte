@@ -50,6 +50,12 @@
   ], $$props);
 </script>
 
+<style>
+.line {
+  height: 1px;
+}
+</style>
+
 <div
   class="line absolute bottom-0 left-0 w-full bg-gray-600 {className}"
   class:hidden={noUnderline || outlined}>
