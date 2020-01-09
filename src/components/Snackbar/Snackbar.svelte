@@ -1,7 +1,7 @@
 <script context="module">
   import { writable } from "svelte/store";
   
-  const count = writable({});
+  export const queue = writable([]);
 </script>
 
 <script>
@@ -42,12 +42,21 @@
   let classes = "";
   let wClasses = "";
 
-  const hash = `${right ? 'r' : ''}${top ? 't' : ''}${left ? 'l' : ''}${bottom ? 'b' : ''}`;
+  const hash = Math.random();
 
-  $: count.update(u => ({
-    ...u,
-    [hash]: Math.max(value ? u[hash] || 0 + 1 : u[hash] || 0 - 1, 0)
-  }));
+  $: if (value) {
+    queue.update(u => [...u, hash]);
+    tm();
+  } else {
+    queue.update(u => u.filter(a => a !== hash));
+  }
+
+  function tm() {
+    setTimeout(() => {
+      queue.update(u => u.filter(a => a !== hash));
+      value = false;
+    }, timeout);
+  }
 
   classes = cb
     .add(bg(800))
@@ -64,13 +73,8 @@
 
   onMount(() => {
     if (!window || !timeout) return;
-
-    setTimeout(() => {
-      value = false;
-    }, timeout);
+    tm();
   });
-
-  $: console.log($count);
 </script>
 
 <style>
@@ -80,7 +84,7 @@
 </style>
 
 
-{#if value}
+{#if value && $queue[$queue.length - 1] === hash}
   <div class="fixed w-full h-full top-0 left-0 z-30 pointer-events-none">
     <div class={wClasses}>
       <div
@@ -91,7 +95,9 @@
         {#if !noAction}
           <Spacer />
           <slot name="action">
-            <Button text on:click={() => value = false}>Close</Button>
+            {#if !timeout}
+              <Button text on:click={() => value = false}>Close</Button>
+            {/if}
           </slot>
         {/if}
       </div>

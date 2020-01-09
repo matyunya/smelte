@@ -73,12 +73,6 @@
     value = new Date(value.setMonth(value.getMonth() - 1));
     selected = false;
   }
-
-  export let transitionProps = {
-    duration: 50,
-    x: -100,
-    opacity: 1,
-  };
 </script>
 
 <div in:slide={{duration: 100}} out:fade={{duration: 50}}>
@@ -97,7 +91,7 @@
       </div>
     </div>
 
-    <div transition:fly={transitionProps} class="md:w-64 sm:w-full">
+    <div class="md:w-64 sm:w-full">
       <div class="flex uppercase text-gray-400 text-xs text-left">
         {#each weekdays as weekday}
           <div class="w-1/7 text-center p-1">

@@ -19,29 +19,11 @@
   export let todayClasses = "text-primary-600 rounded-full border border-primary-600";
   export let selectedClasses = "bg-primary-600 text-white rounded-full";
   export let closeOnSelect = false;
-  export let paginatorProps = {
-    color: "gray",
-    text: true,
-    flat: true,
-    dark: true,
-    remove: "px-4 px-3 m-4 p-4",
-    iconClasses: (c) => c.replace("p-4", ""),
-    disabledClasses: (c) => c
-      .replace("text-white", "text-gray-200")
-      .replace("bg-gray-300", "bg-transparent")
-      .replace("text-gray-700", ""),
-  };
 
   const today = (new Date()).getDate();
 
   let selected;
   let displayValue = '';
-
-  export let transitionProps = {
-    duration: 50,
-    x: -100,
-    opacity: 1,
-  };
 
   function valid(date) {
     return (new Date(date) !== "Invalid Date") && !isNaN(new Date(date));
@@ -76,8 +58,6 @@
         {todayClasses}
         {selectedClasses}
         {closeOnSelect}
-        {paginatorProps}
-        {transitionProps}
         on:change
         on:change={e => displayValue = e.detail.toLocaleDateString()}
       />

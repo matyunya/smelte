@@ -15,7 +15,7 @@
   </div>
 </Snackbar>
 
-<Snackbar color="alert" timeout={0} top bind:value={showSnackbarTop}>
+<Snackbar color="alert" top bind:value={showSnackbarTop}>
   <div>Have a nice day.</div>
 </Snackbar>
 
