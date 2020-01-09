@@ -5,7 +5,7 @@
   export let xs = false;
   export let reverse = false;
   export let tip = false;
-  export let color = "inherit";
+  export let color = "default";
 </script>
 
 <style>
@@ -26,6 +26,6 @@
   on:click
   class:text-base={small}
   class:text-xs={xs}
-  style="color: {color}">
+  style={color ? `color: ${color}` : ''}>
   <slot />
 </i>
