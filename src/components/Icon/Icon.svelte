@@ -5,7 +5,7 @@
   export let xs = false;
   export let reverse = false;
   export let tip = false;
-  export let color = "";
+  export let color = "inherit";
 </script>
 
 <style>

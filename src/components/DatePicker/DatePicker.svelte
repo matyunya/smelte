@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  import { slide, fade } from "svelte/transition";
+  import { slide, fade, fly } from "svelte/transition";
   import Card from "../Card/Card.svelte";
   import TextField from "../TextField";
   import Menu from "../Menu";
@@ -15,8 +15,7 @@
   export let defaultIcon = "date_range";
   export let value = new Date();
   export let locale = "default";
-  export let yearPicker = false;
-  export let todayClasses = "text-black-600 rounded-full border border-black";
+  export let todayClasses = "text-primary-600 rounded-full border border-primary-600";
   export let selectedClasses = "bg-primary-600 text-white rounded-full";
   export let closeOnSelect = false;
   export let paginatorProps = {
@@ -32,13 +31,13 @@
       .replace("text-gray-700", ""),
   };
 
-  let selected;
   const today = (new Date()).getDate();
 
-  let displayValue = ''; // value.toLocaleDateString();
+  let selected;
+  let displayValue = '';
 
-  $: year = value.getFullYear();
-  $: month = value.toLocaleString(locale, { month: "short" });
+  $: year = value.toLocaleString(locale, { year: "numeric" });
+  $: month = value.toLocaleString(locale, { month: "long" });
   $: firstDayOfWeek = weekStart(locale);
   $: weekdays = getWeekDays(locale, firstDayOfWeek);
 
@@ -47,11 +46,11 @@
   $: isCurrentMonth = (new Date()).getMonth() === value.getMonth();
 
   $: daysInMonth = [...new Array(lastDayOfMonth.getDate() || 0)]
-    .map((i, j) => ({
-      day: j + 1,
-      isToday: isCurrentMonth && j + 1 === today,
-      selected: selected === j + 1,
-    }));
+      .map((i, j) => ({
+        day: j + 1,
+        isToday: isCurrentMonth && j + 1 === today,
+        selected: selected === j + 1,
+      }));
 
   $: if (typeof value === "string") {
     value = new Date(value);
@@ -67,7 +66,7 @@
     }
   }
 
-  $: dayOffset = firstDayOfMonth.getDay() - firstDayOfWeek;
+  $: dayOffset = Math.abs(firstDayOfMonth.getDay() - firstDayOfWeek);
 
   function next() {
     value = new Date(value.setMonth(value.getMonth() - 1));
@@ -76,17 +75,35 @@
   function prev() {
     value = new Date(value.setMonth(value.getMonth() + 1));
   }
+
+  export let transitionProps = {
+    duration: 50,
+    x: -100,
+    opacity: 1,
+  };
+
+  function valid(date) {
+    return (new Date(date) !== "Invalid Date") && !isNaN(new Date(date));
+  }
+
+  function change(e) {
+    const date = new Date(e.target.value);
+
+    if (valid(date)) {
+      value = date;
+    }
+  }
 </script>
 
 <Menu bind:open>
   <div slot="activator">
     <TextField
-      bind:value={displayValue}
+      value={displayValue}
       {label}
       class="relative"
       append={defaultIcon}
       on:click-append={() => open = !open}
-      on:
+      on:change={change}
     />
   </div>
   <div slot="menu" class="absolute z-20 bg-white mt-16">
@@ -107,26 +124,28 @@
             </div>
           </div>
 
-          <div class="flex uppercase">
-            {#each weekdays as weekday}
-              <div class="w-1/7 p-1 text-gray-400 text-xs text-center">
-                {weekday} 
-              </div>
-            {/each}
-          </div>
-          <div class="flex flex-wrap text-center text-sm">
-            {#if dayOffset}<div class="p-1 w-{dayOffset}/7" />{/if} 
-            {#each daysInMonth as i}
-              <div class="w-1/7 p-1">
-                <div class="w-8 h-8 relative {i.isToday && !i.isSelected ? todayClasses : ""} {i.selected ? selectedClasses : ""}"
-                  on:click={() => selected = i.day}
-                >
-                  <Ripple color="gray" class="p-1 w-full h-full">
-                    {i.day}
-                  </Ripple>
+          <div transition:fly={transitionProps} class="md:w-64 sm:w-full">
+            <div class="flex uppercase text-gray-400 text-xs text-left">
+              {#each weekdays as weekday}
+                <div class="w-1/7 text-center p-1">
+                  {weekday} 
                 </div>
-              </div>
-            {/each}
+              {/each}
+            </div>
+            <div class="flex flex-wrap text-left text-sm">
+              {#if dayOffset}<div class="p-1 w-{dayOffset}/7" />{/if} 
+              {#each daysInMonth as i}
+                <div class="w-1/7 p-1">
+                  <div class="w-8 h-8 relative {i.isToday && !i.selected ? todayClasses : ""} {i.selected ? selectedClasses : ""}"
+                    on:click={() => selected = i.day}
+                  >
+                    <Ripple color="gray" class="p-1 w-full h-full">
+                      {i.day}
+                    </Ripple>
+                  </div>
+                </div>
+              {/each}
+            </div>
           </div>
         </Card>
       </div>

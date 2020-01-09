@@ -9,7 +9,7 @@ export function getWeekDays(locale, firstDayOfWeek) {
   var baseDate = new Date(Date.UTC(2017, 0, firstDayOfWeek + 1));
   var weekDays = [];
   for (i = 0; i < 7; i++) {
-    weekDays.push(baseDate.toLocaleDateString(locale, { weekday: "short" }));
+    weekDays.push(baseDate.toLocaleDateString(locale, { weekday: "narrow" }));
     baseDate.setDate(baseDate.getDate() + 1);
   }
   return weekDays;

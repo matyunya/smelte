@@ -23,6 +23,7 @@
   export let editable = true;
   export let sortable = true;
   export let pagination = true;
+  export let scrollToTop = false;
   export let paginatorProps = {
     color: "gray",
     text: true,
@@ -93,7 +94,7 @@
     @apply border-gray-200 border-t border-b px-3;
   }
 
-  tr:hover {
+  tbody tr:hover {
     @apply bg-gray-50;
   }
 
@@ -210,7 +211,7 @@
                 {...paginatorProps}
                 on:click={() => {
                   page -= 1;
-                  table.scrollIntoView({ behavior: 'smooth' });
+                  if (scrollToTop) table.scrollIntoView({ behavior: 'smooth' });
                 }} />
               <Button
                 disabled={page === pagesCount}
@@ -218,7 +219,7 @@
                 {...paginatorProps}
                 on:click={() => {
                   page += 1;
-                  table.scrollIntoView({ behavior: 'smooth' });
+                  if (scrollToTop) table.scrollIntoView({ behavior: 'smooth' });
                 }} />
               </div>
             </td>
