@@ -1,12 +1,13 @@
 <script context="module">
   import { writable } from "svelte/store";
   
-  export const queue = writable([]);
+  const queue = writable([]);
 </script>
 
 <script>
-  import { fade } from "svelte/transition";
-  import { onMount } from "svelte";
+  import { fade, slide } from "svelte/transition";
+  import { onMount, createEventDispatcher } from "svelte";
+
   import { quadOut, quadIn } from "svelte/easing";
   import Button from "../Button";
   import { Spacer } from "../Util";
@@ -15,7 +16,7 @@
   export let value = false;
   export let timeout = 4000;
   export let inProps = { duration: 100, easing: quadIn };
-  export let outProps = { duration: 200, easing: quadOut, delay: 200 };
+  export let outProps = { duration: 200, easing: quadOut };
   export let color = "gray";
   export let text = "white";
   export let top = false;
@@ -23,7 +24,8 @@
   export let right = false;
   export let left = false;
   export let noAction = false;
-  export let transition = fade;
+
+  const dispatch = createEventDispatcher();
 
   const classesDefault = `pointer-events-auto flex absolute py-2 px-4 z-30 mb-4 content-between mx-auto
       rounded items-center elevation-2 h-12`;
@@ -31,7 +33,6 @@
 
   let className = classesDefault;
   export {className as class};
-
   export let wrapperClasses = wrapperDefault;
 
   const { bg } = utils(color);
@@ -46,15 +47,16 @@
 
   $: if (value) {
     queue.update(u => [...u, hash]);
-    tm();
+    toggle();
   } else {
     queue.update(u => u.filter(a => a !== hash));
   }
 
-  function tm() {
+  function toggle(setVal) {
     setTimeout(() => {
       queue.update(u => u.filter(a => a !== hash));
       value = false;
+      dispatch("finish");
     }, timeout);
   }
 
@@ -73,8 +75,9 @@
 
   onMount(() => {
     if (!window || !timeout) return;
-    tm();
+    toggle();
   });
+
 </script>
 
 <style>
@@ -88,10 +91,10 @@
   <div class="fixed w-full h-full top-0 left-0 z-30 pointer-events-none">
     <div class={wClasses}>
       <div
-        in:transition={inProps}
-        out:transition={outProps}
+        in:slide={inProps}
+        out:fade={outProps}
         class={classes}>
-        <slot />
+        <slot /> 
         {#if !noAction}
           <Spacer />
           <slot name="action">

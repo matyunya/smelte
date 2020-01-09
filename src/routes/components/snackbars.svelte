@@ -1,11 +1,17 @@
 <script>
-  import { Snackbar, Button } from "smelte";
+  import { Snackbar, notifier, Button, Notifications, TextField } from "smelte";
   import Code from "docs/Code.svelte";
   import snackbars from "examples/snackbars.txt";
 
   let showSnackbar = false;
   let showSnackbarTop = false;
   let showSnackbarBottomLeft = false;
+
+  function notify() {
+    notifier.notify(message);
+  }
+
+  let message = "";
 </script>
 
 <blockquote
@@ -57,5 +63,16 @@
     color="alert"
     on:click={() => (showSnackbarBottomLeft = true)}>Show snackbar on the bottom left</Button>
 </div>
+
+<Code code={snackbars} />
+
+<p>Also Smelte comes with a simple notification queue implementation.</p>
+
+<TextField bind:value={message} label="New message" />
+<Button
+  disabled={!message}
+  on:click={notify}>Add message to queue</Button>
+
+<Notifications />
 
 <Code code={snackbars} />
