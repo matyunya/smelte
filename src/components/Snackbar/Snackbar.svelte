@@ -115,7 +115,6 @@
         class:bg-gray-800={color === 'gray'}
         class:bg-alert-800={color === 'alert'}
         on:click={() => value = false}>
-        {classes}
         <slot /> 
         {#if !noAction}
           <Spacer />
