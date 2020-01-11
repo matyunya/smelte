@@ -2,7 +2,7 @@
   import { fly } from "svelte/transition";
   import { quadIn } from "svelte/easing";
   import { Scrim } from "../Util";
-  import { breakpoints } from "smelte";
+  import breakpoints from "../../breakpoints";
 
   const bp = breakpoints();
 

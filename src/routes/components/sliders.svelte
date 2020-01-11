@@ -14,13 +14,13 @@
 
 <h6>Basic</h6>
 
-<caption>Value: {value}</caption>
+<small>Value: {value}</small>
 
 <Slider min="0" max="100" bind:value {disabled} />
 
 <h6 class="mt-8">With steps</h6>
 
-<caption>Value: {value2}</caption>
+<small>Value: {value2}</small>
 
 <Slider min="0" step="20" max="100" bind:value={value2} {disabled} />
 

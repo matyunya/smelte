@@ -35,7 +35,7 @@
   <span class="code-inline">on:change</span>
   event.
 </p>
-<caption>Selected: {value1 || 'nothing'}</caption>
+<small>Selected: {value1 || 'nothing'}</small>
 <Select {label} {items} on:change={v => (value1 = v.detail)} />
 
 <Code code={selects} />
@@ -45,14 +45,14 @@
   <span class="code-inline">on:value</span>
   .
 </p>
-<caption>Selected: {value2 || 'nothing'}</caption>
+<small>Selected: {value2 || 'nothing'}</small>
 <Select color="success" bind:value={value2} {label} {items} />
 
 <p>Select may be outlined.</p>
 <Select bind:value={value2} outlined {label} {items} />
 
 <p>Select may even be an autocomplete search component.</p>
-<caption>Selected: {value3 || 'nothing'}</caption>
+<small>Selected: {value3 || 'nothing'}</small>
 <Select bind:value={value3} outlined autocomplete {label} {items} />
 
 <p>Custom options slot</p>

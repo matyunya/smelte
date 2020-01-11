@@ -1,27 +1,29 @@
 import { writable } from "svelte/store";
 
+function withColor(color, store) {
+  return message =>
+    store.update(u => [
+      ...u,
+      {
+        message,
+        color,
+        toString() {
+          return message;
+        }
+      }
+    ]);
+}
+
 export default function notificationQueue() {
   const store = writable([]);
-
-  let toggle = () => {};
 
   return {
     subscribe: store.subscribe,
 
-    notify: message => {
-      store.update(u => [...u, message]);
-    },
+    notify: withColor("gray", store),
+    error: withColor("error", store),
+    alert: withColor("alert", store),
 
-    error: message => store.update(u => [...u, { message, color: "error" }]),
-    alert: message => store.update(u => [...u, { message, color: "alert" }]),
-
-    next: () => {
-      store.update(u => (u.length === 1 ? [] : u.splice(-1, 1)));
-      toggle();
-    },
-
-    setToggle: s => {
-      toggle = s;
-    }
+    remove: i => store.update(u => u.filter(a => a !== i))
   };
 }

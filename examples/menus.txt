@@ -16,7 +16,7 @@
 
 </script>
 
-<caption>Selected: {selected || 'nothing'}</caption>
+<small>Selected: {selected || 'nothing'}</small>
 
 <Menu bind:open {items} bind:value={selected}>
 	<div slot="activator">

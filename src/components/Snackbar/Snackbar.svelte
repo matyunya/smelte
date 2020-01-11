@@ -2,11 +2,12 @@
   import { writable } from "svelte/store";
   
   const queue = writable([]);
+  let running = false;
 </script>
 
 <script>
-  import { fade, slide } from "svelte/transition";
-  import { onMount, createEventDispatcher } from "svelte";
+  import { fade, scale } from "svelte/transition";
+  import { createEventDispatcher } from "svelte";
 
   import { quadOut, quadIn } from "svelte/easing";
   import Button from "../Button";
@@ -14,16 +15,16 @@
   import utils, { ClassBuilder } from "../../utils/classes.js";
 
   export let value = false;
-  export let timeout = 4000;
+  export let timeout = 2000;
   export let inProps = { duration: 100, easing: quadIn };
-  export let outProps = { duration: 200, easing: quadOut };
+  export let outProps = { duration: 100, easing: quadOut, delay: 150 };
   export let color = "gray";
   export let text = "white";
   export let top = false;
   export let bottom = true;
   export let right = false;
   export let left = false;
-  export let noAction = false;
+  export let noAction = true;
 
   const dispatch = createEventDispatcher();
 
@@ -35,49 +36,64 @@
   export {className as class};
   export let wrapperClasses = wrapperDefault;
 
-  const { bg } = utils(color);
-
   const cb = new ClassBuilder(className, classesDefault);
   const wrapperCb = new ClassBuilder(wrapperClasses, wrapperDefault);
 
   let classes = "";
   let wClasses = "";
+  let tm;
 
-  const hash = Math.random();
+  let bg = () => {};
 
-  $: if (value) {
-    queue.update(u => [...u, hash]);
-    toggle();
-  } else {
-    queue.update(u => u.filter(a => a !== hash));
+  $: {
+    const u = utils(color || "gray");
+    bg = u.bg;
   }
 
-  function toggle(setVal) {
-    setTimeout(() => {
-      queue.update(u => u.filter(a => a !== hash));
-      value = false;
+  // Classes string update properly but aren't applied to the div
+  // hence the temporary with hardcoded values.
+  $: classes = cb
+      .flush()
+      .add(bg(800), color)
+      .add("right-0 mr-2", right)
+      .add("top-0 mt-2", top)
+      .add("left-0 ml-2", left)
+      .add("bottom-0", bottom)
+      .add("snackbar", !noAction)
+      .get();
+
+  $: value = value && (typeof value === 'string' ? value : Math.random());
+
+  const toggler = () => toggle(value);
+
+  $: if (value && !$queue.includes(toggler) && running !== value) {
+    queue.update(u => [...u, toggler]);
+  }
+
+  $: if (!running && value) {
+    $queue.shift()();
+  }
+
+  $: if (!value) clearTimeout(tm);
+
+  function toggle(h) {
+    value = running = h;
+
+    if (!timeout) return;
+
+    tm = setTimeout(() => {
+      value = running = false;
       dispatch("finish");
+
+      if ($queue.length) {
+        $queue.shift()();
+      }
     }, timeout);
   }
-
-  classes = cb
-    .add(bg(800))
-    .add("right-0 mr-2", right)
-    .add("top-0 mt-2", top)
-    .add("left-0 ml-2", left)
-    .add("bottom-0", bottom)
-    .add("snackbar", !noAction)
-    .get();
 
   wClasses = wrapperCb
     .add(`text-${text}`)
     .get();
-
-  onMount(() => {
-    if (!window || !timeout) return;
-    toggle();
-  });
-
 </script>
 
 <style>
@@ -86,14 +102,20 @@
   }
 </style>
 
-
-{#if value && $queue[$queue.length - 1] === hash}
-  <div class="fixed w-full h-full top-0 left-0 z-30 pointer-events-none">
+{#if value && (running === value)}
+  <div
+    class="fixed w-full h-full top-0 left-0 z-30 pointer-events-none"
+  >
     <div class={wClasses}>
       <div
-        in:slide={inProps}
+        in:scale={inProps}
         out:fade={outProps}
-        class={classes}>
+        class={classes}
+        class:bg-error-800={color === 'error'}
+        class:bg-gray-800={color === 'gray'}
+        class:bg-alert-800={color === 'alert'}
+        on:click={() => value = false}>
+        {classes}
         <slot /> 
         {#if !noAction}
           <Spacer />

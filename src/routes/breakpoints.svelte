@@ -18,7 +18,7 @@
 
   <Code
     code={`
-    import { breakpoints } from "smelte";
+    import breakpoints from "smelte/breakpoints";
 
     const bp = breakpoints();
     $: show = $bp !== "sm";

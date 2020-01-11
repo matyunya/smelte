@@ -9,6 +9,17 @@
 
   function notify() {
     notifier.notify(message);
+    message = "";
+  }
+  
+  function alert() {
+    notifier.alert(message);
+    message = "";
+  }
+  
+  function error() {
+    notifier.error(message);
+    message = "";
   }
 
   let message = "";
@@ -64,14 +75,20 @@
     on:click={() => (showSnackbarBottomLeft = true)}>Show snackbar on the bottom left</Button>
 </div>
 
-<Code code={snackbars} />
+<p class="mt-10">Also Smelte comes with a simple notification queue implementation.</p>
 
-<p>Also Smelte comes with a simple notification queue implementation.</p>
-
-<TextField bind:value={message} label="New message" />
+<TextField bind:value={message} label="Message text" />
 <Button
   disabled={!message}
-  on:click={notify}>Add message to queue</Button>
+  on:click={notify}>Add Notification to queue</Button>
+
+<Button
+  disabled={!message}
+  on:click={alert}>Alert message</Button>
+
+<Button
+  disabled={!message}
+  on:click={error}>Error message</Button>
 
 <Notifications />
 

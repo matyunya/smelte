@@ -21,7 +21,7 @@
     <div class="subtitle-2">.subtitle-2</div>
     <div class="body-1">.body-1</div>
     <div class="body-2">.body-2</div>
-    <caption>.caption</caption>
+    <small>.caption</small>
   </div>
 
 </div>

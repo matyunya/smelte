@@ -13,7 +13,10 @@
   let item;
 
   $: {
-    item = item || $queue[$queue.length - 1];
+    if (!item) {
+      item = $queue[0];
+    }
+
     if (typeof item === "string") {
       message = item;
     } else if (item) {
@@ -24,11 +27,12 @@
 </script>
 
 <Snackbar
-  value={$queue.length}
+  value={message}
   {color}
+  {...item}
   on:finish={() => {
+    queue.remove(item);
     item = false;
-    queue.next();
   }}
 >
   {message}
