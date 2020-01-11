@@ -64,7 +64,9 @@
 
   $: value = value && (typeof value === 'string' ? value : Math.random());
 
-  const toggler = () => toggle(value);
+  $: hash = (typeof value === 'string' ? `${value}${Math.random()}` : Math.random())
+
+  const toggler = () => toggle(value, hash);
 
   $: if (value && !$queue.includes(toggler) && running !== value) {
     queue.update(u => [...u, toggler]);
@@ -76,8 +78,8 @@
 
   $: if (!value) clearTimeout(tm);
 
-  function toggle(h) {
-    value = running = h;
+  function toggle(h, id) {
+    value = running = id;
 
     if (!timeout) return;
 
@@ -102,7 +104,7 @@
   }
 </style>
 
-{#if value && (running === value)}
+{#if value && (running === hash)}
   <div
     class="fixed w-full h-full top-0 left-0 z-30 pointer-events-none"
   >

@@ -31,7 +31,7 @@
   {color}
   {...item}
   on:finish={() => {
-    queue.remove(item);
+    queue.remove($queue.indexOf(item));
     item = false;
   }}
 >

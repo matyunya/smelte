@@ -24,6 +24,10 @@ export default function notificationQueue() {
     error: withColor("error", store),
     alert: withColor("alert", store),
 
-    remove: i => store.update(u => u.filter(a => a !== i))
+    remove: i =>
+      store.update(u => {
+        u.splice(i, 1);
+        return u;
+      })
   };
 }
