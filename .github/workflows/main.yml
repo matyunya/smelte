@@ -2,13 +2,12 @@ name: CI
 
 on:
   schedule:
-  - cron: "*/30 * * * *"
+  - cron: "*/20 * * * *"
 
 jobs:
-  test:
-    runs-on: [ubuntu-latest]
-    name: trigger push
+  checkChangesInDocs:
+    name: Trigger push every 30 minutes
+    runs-on: ubuntu-latest
     steps:
-      - run: echo "test"
-
-
+    - name: echo "test"
+    - run: echo "test"
