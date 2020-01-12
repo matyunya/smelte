@@ -1,0 +1,13 @@
+name: CI
+
+on:
+  schedule:
+  - cron: "*/30 * * * *"
+
+jobs:
+  checkChangesInDocs:
+    name: Trigger push every 30 minutes
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: echo "test"
