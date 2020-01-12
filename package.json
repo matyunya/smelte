@@ -26,6 +26,7 @@
     "src/tailwind.css",
     "src/index.js",
     "src/breakpoints.js",
+    "src/notification-queue.js",
     "src/components",
     "tailwind.config.js",
     "postcss.config.js"
