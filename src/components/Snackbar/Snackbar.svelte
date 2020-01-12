@@ -79,6 +79,9 @@
   $: if (!value) clearTimeout(tm);
 
   function toggle(h, id) {
+    if (value === false && running === false) {
+      return;
+    }
     value = running = id;
 
     if (!timeout) return;
