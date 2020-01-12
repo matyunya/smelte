@@ -5,9 +5,10 @@ on:
   - cron: "*/30 * * * *"
 
 jobs:
-  checkChangesInDocs:
-    name: Trigger push every 30 minutes
-    runs-on: ubuntu-latest
+  test:
+    runs-on: [ubuntu-latest]
+    name: trigger push
     steps:
-    - uses: actions/checkout@v1
-    - name: echo "test"
+      - run: echo "test"
+
+
