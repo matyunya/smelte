@@ -2,7 +2,7 @@ name: CI
 
 on:
   schedule:
-  - cron: "*/20 * * * *"
+  - cron: "*/25 * * * *"
 
 jobs:
   checkChangesInDocs:
@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: echo "test"
-    - run: echo "test"
+      run: echo "test"
