@@ -11,7 +11,7 @@
   const dispatch = createEventDispatcher();
 
   export let open = false;
-  export let value = new Date();
+  export let value = null;
   export let locale = "default";
   export let todayClasses = "text-primary-600 rounded-full border border-primary-600";
   export let selectedClasses = "bg-primary-600 text-white rounded-full";
@@ -29,33 +29,52 @@
       .replace("text-gray-700", ""),
   };
 
+  let temp = value || new Date();
+
+  $: temp = value || new Date();
+
+  $: {
+    temp = new Date(temp.valueOf());
+  }
+
+  $: if (typeof temp === "string") {
+    temp = new Date(temp);
+  }
+
   const today = (new Date()).getDate();
 
-  let selected;
-
-  $: year = value.toLocaleString(locale, { year: "numeric" });
-  $: month = value.toLocaleString(locale, { month: "short" });
+  $: year = temp.toLocaleString(locale, { year: "numeric" });
+  $: month = temp.toLocaleString(locale, { month: "short" });
   $: firstDayOfWeek = weekStart(locale);
   $: weekdays = getWeekDays(locale, firstDayOfWeek);
 
-  $: lastDayOfMonth = new Date(value.getFullYear(), value.getMonth() + 1, 0);
-  $: firstDayOfMonth = new Date(value.getFullYear(), value.getMonth(), 1);
-  $: isCurrentMonth = (new Date()).getMonth() === value.getMonth();
+  let selected;
+
+  $: lastDayOfMonth = new Date(temp.getFullYear(), temp.getMonth() + 1, 0);
+  $: firstDayOfMonth = new Date(temp.getFullYear(), temp.getMonth(), 1);
+  $: isCurrentMonth = (new Date()).getMonth() === temp.getMonth();
+
+  function dayIsSelected(day) {
+    if (!value) return false;
+
+    return value.getDate() === day
+     && temp.getYear() === value.getYear()
+     && temp.getMonth() === value.getMonth();
+  }
 
   $: daysInMonth = [...new Array(lastDayOfMonth.getDate() || 0)]
       .map((i, j) => ({
         day: j + 1,
         isToday: isCurrentMonth && j + 1 === today,
-        selected: selected === j + 1,
+        selected: dayIsSelected(j + 1),
       }));
-
-  $: if (typeof value === "string") {
-    value = new Date(value);
-  }
   
-  $: if (selected) {
-    value = new Date(value.getFullYear(), value.getMonth(), selected);
-    dispatch("change", value);
+  function select(day) {
+    selected = day;
+    temp = new Date(temp.getFullYear(), temp.getMonth(), selected);
+    dispatch("change", temp);
+
+    value = temp;
 
     if (closeOnSelect) {
       open = false;
@@ -65,13 +84,11 @@
   $: dayOffset = Math.abs(firstDayOfMonth.getDay() - firstDayOfWeek);
 
   function next() {
-    value = new Date(value.setMonth(value.getMonth() + 1));
-    selected = false;
+    temp = new Date(temp.setMonth(temp.getMonth() + 1));
   }
 
   function prev() {
-    value = new Date(value.setMonth(value.getMonth() - 1));
-    selected = false;
+    temp = new Date(temp.setMonth(temp.getMonth() - 1));
   }
 </script>
 
@@ -104,7 +121,7 @@
         {#each daysInMonth as i}
           <div class="w-1/7 p-1">
             <div class="w-8 h-8 relative {i.isToday && !i.selected ? todayClasses : ""} {i.selected ? selectedClasses : ""}"
-              on:click={() => selected = i.day}
+              on:click={() => select(i.day)}
             >
               <Ripple color="gray" class="p-1 w-full h-full">
                 {i.day}

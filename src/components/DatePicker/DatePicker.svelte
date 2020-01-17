@@ -14,22 +14,26 @@
   export let label = "Date";
   export let open = false;
   export let defaultIcon = "date_range";
-  export let value = new Date();
+  export let value = null;
   export let locale = "default";
   export let todayClasses = "text-primary-600 rounded-full border border-primary-600";
   export let selectedClasses = "bg-primary-600 text-white rounded-full";
   export let closeOnSelect = false;
 
+  let hasUserValue = Boolean(value);
+
   const today = (new Date()).getDate();
 
   let selected;
-  let displayValue = '';
+  let displayValue = value && value.toLocaleDateString
+    ? value.toLocaleDateString()
+    : "";
 
   function valid(date) {
     return (new Date(date) !== "Invalid Date") && !isNaN(new Date(date));
   }
 
-  function change(e) {
+  function changeTextInput(e) {
     const date = new Date(e.target.value);
 
     if (valid(date)) {
@@ -46,7 +50,7 @@
       class="relative"
       append={defaultIcon}
       on:click-append={() => open = !open}
-      on:change={change}
+      on:change={changeTextInput}
     />
   </div>
   <div slot="menu" class="absolute z-20 bg-white mt-16">
@@ -56,10 +60,13 @@
         bind:open
         {locale}
         {todayClasses}
+        {selected}
         {selectedClasses}
         {closeOnSelect}
         on:change
-        on:change={e => displayValue = e.detail.toLocaleDateString()}
+        on:change={e => {
+          displayValue = e.detail.toLocaleDateString();
+        }}
       />
     {/if}
   </div>
