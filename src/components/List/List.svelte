@@ -19,11 +19,13 @@
     navigation
   };
 
-  const id = item => item.id !== undefined ? item.id :
-    item.value !== undefined ? item.value :
-    item.to !== undefined ? item.to :
-    item.text !== undefined ? item.text :
-    item;
+  function id(item) {
+    if(item.id !== undefined) return item.id;
+    if(item.value !== undefined) return item.value;
+    if(item.to !== undefined) return item.to;
+    if(item.text !== undefined) return item.text;
+    return item;
+  }
 
   function getText(item) {
     if (item.text !== undefined) return item.text;
