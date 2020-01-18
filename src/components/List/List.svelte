@@ -20,10 +20,10 @@
   };
 
   function id(item) {
-    if(item.id !== undefined) return item.id;
-    if(item.value !== undefined) return item.value;
-    if(item.to !== undefined) return item.to;
-    if(item.text !== undefined) return item.text;
+    if (item.id !== undefined) return item.id;
+    if (item.value !== undefined) return item.value;
+    if (item.to !== undefined) return item.to;
+    if (item.text !== undefined) return item.text;
     return item;
   }
 
