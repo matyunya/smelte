@@ -60,7 +60,7 @@
   }
 
   $: itemsProcessed = process(items);
-  
+
   onMount(() => {
     selectedLabel = getLabel(value);
   })
@@ -70,7 +70,7 @@
   const dispatch = createEventDispatcher();
 
   function getLabel(value) {
-    return value ? (itemsProcessed.find(i => i.value === value) || { text: "" }).text : "";
+    return value !== undefined ? (itemsProcessed.find(i => i.value === value) || { text: "" }).text : "";
   }
 
   function filterItems({ target }) {
