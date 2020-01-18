@@ -97,6 +97,7 @@
       {inputClasses}
       {prependClasses}
       on:click={e => (showList = true)}
+      on:click-append={(e => showList = !showList)}
       on:click
       on:input={filterItems}
       append="arrow_drop_down"
