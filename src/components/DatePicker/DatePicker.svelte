@@ -47,7 +47,6 @@
     <TextField
       value={displayValue}
       {label}
-      class="relative"
       append={defaultIcon}
       on:click-append={() => open = !open}
       on:change={changeTextInput}
