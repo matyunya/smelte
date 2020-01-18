@@ -19,7 +19,13 @@
     navigation
   };
 
-  const id = item => item.id || item.value || item.to || item.text || item;
+  function id(item) {
+    if (item.id !== undefined) return item.id;
+    if (item.value !== undefined) return item.value;
+    if (item.to !== undefined) return item.to;
+    if (item.text !== undefined) return item.text;
+    return item;
+  }
 
   function getText(item) {
     if (item.text !== undefined) return item.text;
@@ -31,7 +37,7 @@
 <div class={className}>
   <ul class={listClasses} class:rounded-t-none={select}>
     {#each items as item, i}
-      {#if item.to}
+      {#if item.to !== undefined}
         <slot name="item" {item} {dense} {navigation} {value}>
           <a tabindex={i + 1} href={item.to}>
             <ListItem bind:value {...item} id={id(item)} {...props} on:change>

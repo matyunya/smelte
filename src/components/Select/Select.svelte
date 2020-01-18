@@ -60,7 +60,7 @@
   }
 
   $: itemsProcessed = process(items);
-  
+
   onMount(() => {
     selectedLabel = getLabel(value);
   })
@@ -70,7 +70,7 @@
   const dispatch = createEventDispatcher();
 
   function getLabel(value) {
-    return value ? (itemsProcessed.find(i => i.value === value) || { text: "" }).text : "";
+    return value !== undefined ? (itemsProcessed.find(i => i.value === value) || { text: "" }).text : "";
   }
 
   function filterItems({ target }) {
@@ -97,6 +97,7 @@
       {inputClasses}
       {prependClasses}
       on:click={e => (showList = true)}
+      on:click-append={(e => showList = !showList)}
       on:click
       on:input={filterItems}
       append="arrow_drop_down"
