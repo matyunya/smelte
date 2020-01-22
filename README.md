@@ -104,6 +104,11 @@ And import it in your `src/main.js`:
 import './tailwind.css';
 ```
 
+You might also need to include material icons in your template's <head> if you use any:
+```html
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+```
+
 That's it! The process is quite tedious at the moment. Please send feedback if you know how to make it better.
 
 ### Components
@@ -126,8 +131,8 @@ That's it! The process is quite tedious at the moment. Please send feedback if y
 - [x] Tooltip
 - [x] Revise events (on:change, on:focus, on:input...)
 - [x] Treeview
+- [x] Date picker
 - [ ] Form
-- [ ] Date picker
 - [ ] Stepper
 - [ ] Upload
 - [ ] Rating
