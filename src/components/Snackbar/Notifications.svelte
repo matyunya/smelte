@@ -15,9 +15,6 @@
   $: {
     if (!item) {
       item = $queue[0];
-    } else {
-      queue.remove($queue.indexOf(item));
-      item = $queue[0];
     }
 
     if (typeof item === "string") {
@@ -27,10 +24,16 @@
       color = item.color;
     }
   }
+
+  function hash(message) {
+    return message ? `${message}${new Date().valueOf()}` : null;
+  }
+
 </script>
 
 <Snackbar
-  value={message}
+  value={Boolean(message)}
+  hash={hash(message)}
   {color}
   {...item}
   on:finish={() => {

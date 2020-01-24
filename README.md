@@ -152,6 +152,4 @@ That's it! The process is quite tedious at the moment. Please send feedback if y
 - [x] Svelte template (without Sapper)
 - [x] JS ripple animation
 - [ ] Dark mode
-- [ ] Other icons
-- [ ] Document API
 - [ ] IE 11 support

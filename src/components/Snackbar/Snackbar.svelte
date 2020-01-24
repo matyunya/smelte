@@ -25,6 +25,7 @@
   export let right = false;
   export let left = false;
   export let noAction = true;
+  export let hash = false;
 
   const dispatch = createEventDispatcher();
 
@@ -62,17 +63,18 @@
       .add("snackbar", !noAction)
       .get();
 
-  $: value = value && (typeof value === 'string' ? value : Math.random());
-
-  $: hash = (typeof value === 'string' ? `${value}${Math.random()}` : Math.random())
+  $: {
+    hash = hash || (value ? btoa(`${value}${new Date().valueOf()}`) : null);
+    value = value;
+  }
 
   const toggler = () => toggle(value, hash);
 
-  $: if (value && !$queue.includes(toggler) && running !== value) {
+  $: if (value && (running !== hash)) {
     queue.update(u => [...u, toggler]);
   }
 
-  $: if (!running && value) {
+  $: if (!running && value && $queue.length) {
     $queue.shift()();
   }
 
@@ -82,12 +84,12 @@
     if (value === false && running === false) {
       return;
     }
-    value = running = id;
+    hash = running = value = id;
 
     if (!timeout) return;
 
     tm = setTimeout(() => {
-      value = running = false;
+      value = running = hash = false;
       dispatch("finish");
 
       if ($queue.length) {
