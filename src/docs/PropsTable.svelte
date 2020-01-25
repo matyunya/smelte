@@ -16,5 +16,4 @@
   pagination={false}
   sortable={false}
   {data}
-  {columns}
-/>
+  {columns} />

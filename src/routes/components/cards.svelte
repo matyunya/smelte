@@ -4,6 +4,7 @@
   import { Image } from "smelte";
 
   import Code from "docs/Code.svelte";
+  import PropsTable from "docs/PropsTable.svelte";
 
   import card from "examples/card.txt";
 </script>
@@ -34,5 +35,14 @@
     </div>
   </div>
 </Card.Card>
+
+<PropsTable
+  data={[
+    { prop: "hover", default: "true", description: "Enable hover elevation", type: "Boolean" },
+    { prop: "elevation", default: "1", description: "Default elevation value", type: "Number" },
+    { prop: "hoverElevation", default: "8", description: "Hover elevation value", type: "Number" },
+    { prop: "wrapperClasses", default: `rounded inline-flex flex-col overflow-hidden transition`, description: "List of wrapper classes", type: "String" },
+  ]}
+/>
 
 <Code code={card} />
