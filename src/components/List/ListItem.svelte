@@ -11,15 +11,18 @@
   export let disabled = false;
   export let dense = false;
   export let navigation = false;
-  export const to = "";
   export let selected = false;
   export let tabindex = null;
+  export let wrapperClasses = "hover:bg-gray-transDark relative overflow-hidden transition p-4 cursor-pointer text-gray-700 flex items-center z-10";
+  export let selectedClasses = "bg-gray-200 hover:bg-primary-transDark";
+
+  let className = "";
+  export {className as class};
+
+  export const to = "";
   export const item = null;
   export const items = [];
   export const level = null;
-  export let basicClasses = "hover:bg-gray-transDark relative overflow-hidden transition p-4 cursor-pointer text-gray-700 flex items-center z-10";
-  export let itemClasses = "";
-  export let selectedClasses = "bg-gray-200 hover:bg-primary-transDark";
 
   const ripple = createRipple();
   const dispatch = createEventDispatcher();
@@ -39,7 +42,7 @@
 
 <li
   use:ripple
-  class="{basicClasses} {selected ? selectedClasses : ""}"
+  class="{wrapperClasses} {selected ? selectedClasses : ""}"
   class:text-sm={navigation}
   class:py-2={dense}
   class:text-gray-600={disabled}
@@ -57,7 +60,7 @@
   {/if}
 
   <div class="flex flex-col p-0">
-    <div class={itemClasses}>
+    <div class={className}>
       <slot>{text}</slot>
     </div>
     {#if subheading}

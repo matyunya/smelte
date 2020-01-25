@@ -7,8 +7,6 @@
   import { hideListAction } from '../../utils/hide-list-action';
 
   export let items = [];
-  let className = "";
-  export {className as class};
   export let value = "";
   export const text = "";
   export let label = "";
@@ -30,6 +28,9 @@
   export let labelClasses = i => i;
   export let inputClasses = i => i;
   export let prependClasses = i => i;
+
+  let className = "";
+  export {className as class};
 
   export let add = "";
   export let remove = "";

@@ -1,6 +1,8 @@
 <script>
   import DataTable from "../components/DataTable";
 
+  let className = "my-10 w-full";
+  export {className as class};
   export let data = [];
   export let columns = [
     { field: "prop" },
@@ -11,7 +13,7 @@
 </script>
 
 <DataTable
-  class="my-10"
+  class="{className}"
   editable={false}
   pagination={false}
   sortable={false}

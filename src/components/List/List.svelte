@@ -2,35 +2,38 @@
   import ListItem from "./ListItem.svelte";
 
   export let items = [];
-  export const item = {};
   export let value = "";
-  export const text = "";
   export let dense = false;
   export let navigation = false;
-  export const level = null;
   export let select = false;
-  let className = "";
-  export {className as class};
+
+  export const level = null;
+  export const text = "";
+  export const item = {};
+  export const to = null;
 
   export let listClasses = "py-2 rounded";
+
+  let className = "";
+  export {className as class};
 
   const props = {
     dense,
     navigation
   };
 
-  function id(item) {
-    if (item.id !== undefined) return item.id;
-    if (item.value !== undefined) return item.value;
-    if (item.to !== undefined) return item.to;
-    if (item.text !== undefined) return item.text;
-    return item;
+  function id(i) {
+    if (i.id !== undefined) return i.id;
+    if (i.value !== undefined) return i.value;
+    if (i.to !== undefined) return i.to;
+    if (i.text !== undefined) return i.text;
+    return i;
   }
 
-  function getText(item) {
-    if (item.text !== undefined) return item.text;
-    if (item.value !== undefined) return item.value;
-    return item;
+  function getText(i) {
+    if (i.text !== undefined) return i.text;
+    if (i.value !== undefined) return i.value;
+    return i;
   }
 </script>
 
