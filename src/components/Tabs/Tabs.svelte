@@ -4,7 +4,7 @@
 
   import Indicator from "./Indicator.svelte";
   import ProgressLinear from "../ProgressLinear";
-  import Tab from "./TabButton.svelte";
+  import TabButton from "./TabButton.svelte";
 
   export let selected = null;
   export let navigation = false;
@@ -47,11 +47,16 @@
 </script>
 
 <div
-  class="{className} py-0 h-full {navigation ? 'hidden md:flex' : 'flex'} items-center relative mx-auto z-20"
+  class="{className} py-0 h-full {navigation ? 'hidden md:flex w-full max-w-2xl' : 'flex'} items-center relative mx-auto z-20"
   bind:this={node}>
   {#each items as item, i}
     <slot name="item" {color} {item}>
-      <Tab bind:selected {...item} {color} {notSelectedColor}>{item.text}</Tab>
+      <TabButton
+        bind:selected
+        {...item}
+        {color}
+        {notSelectedColor}
+      >{item.text}</TabButton>
     </slot>
   {/each}
   {#if indicator}
