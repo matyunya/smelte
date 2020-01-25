@@ -118,12 +118,13 @@
 
 <h6 class="mb-3 mt-6">Custom list element using let:slots</h6>
 
+<small>I selected {selectedItem || "nothing"}.</small>
+
 <List bind:value={selectedItem} items={menu} dense navigation>
   <li slot="item" let:item>
     <div
-      class="cursor-pointer p-4 border-secondary-50 border my-2
-      border-solid"
-      on:click={() => (selected = item.text)}
+      class="cursor-pointer p-4 border-secondary-50 border my-2 border-solid transition"
+      on:click={() => (selectedItem = item.text)}
       class:bg-secondary-50={selectedItem === item.text}>
       {selectedItem === item.text ? '👌' : '🙅‍'} {item.text}
     </div>
