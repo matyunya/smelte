@@ -29,12 +29,12 @@
   export let inputClasses = i => i;
   export let prependClasses = i => i;
 
-  let className = "";
-  export {className as class};
-
   export let add = "";
   export let remove = "";
   export let replace = "";
+
+  let className = "";
+  export {className as class};
 
   let filteredItems = items;
   let itemsProcessed = [];

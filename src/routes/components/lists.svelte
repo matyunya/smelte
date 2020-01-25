@@ -74,7 +74,7 @@
       <PropsTable
         class="my-0 w-full"
         data={[
-          { prop: "value", description: "Selected item value", type: "String", default: "Empty string" },
+          { prop: "value", description: "Selected item value", type: "String", default: "empty string" },
           { prop: "items", description: "List items (item has id, value, to and text props)", type: "Array", default: "[]" },
           { prop: "dense", description: "Dense variant", type: "Boolean", default: "false" },
           { prop: "navigation", description: "Is navigation drawer list", default: "false", type: "Boolean" },
@@ -86,18 +86,18 @@
       <PropsTable
         class="my-0 w-full"
         data={[
-          { prop: "icon", description: "Prepend item with icon", type: "String", default: "Empty string" },
-          { prop: "id", description: "Item id", type: "String", default: "Empty string" },
-          { prop: "value", description: "Selected item value", type: "String", default: "Empty string" },
-          { prop: "text", description: "Item text", type: "String", default: "Empty string" },
-          { prop: "subheading", description: "Item subheading", type: "String", default: "Empty string" },
+          { prop: "icon", description: "Prepend item with icon", type: "String", default: "empty string" },
+          { prop: "id", description: "Item id", type: "String", default: "empty string" },
+          { prop: "value", description: "Selected item value", type: "String", default: "empty string" },
+          { prop: "text", description: "Item text", type: "String", default: "empty string" },
+          { prop: "subheading", description: "Item subheading", type: "String", default: "empty string" },
           { prop: "disabled", description: "Disabled state", type: "Boolean", default: false },
           { prop: "dense", description: "Dense variant", type: "Boolean", default: false },
           { prop: "navigation", description: "Is navigation item", type: "Boolean", default: false },
           { prop: "selected", description: "Is selected", type: "Boolean", default: false },
           { prop: "tabindex", description: "Tab index", type: "Number", default: null },
           { prop: "wrapperClasses", description: "Item wrapper classes", type: "String", default: "hover:bg-gray-transDark relative overflow-hidden transition p-4 cursor-pointer text-gray-700 flex items-center z-10" },
-          { prop: "itemClasses", description: "Additional item classes", type: "String", default: "Empty string" },
+          { prop: "itemClasses", description: "Additional item classes", type: "String", default: "empty string" },
           { prop: "selectedClasses", description: "Selected item classes", type: "String", default: "bg-gray-200 hover:bg-primary-transDark" },
         ]}
       />
