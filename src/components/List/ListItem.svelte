@@ -14,7 +14,7 @@
   export let selected = false;
   export let tabindex = null;
   export let wrapperClasses = "hover:bg-gray-transDark relative overflow-hidden transition p-4 cursor-pointer text-gray-700 flex items-center z-10";
-  export let selectedClasses = "bg-gray-200 hover:bg-primary-transDark";
+  export let selectedClasses = "bg-gray-200";
 
   let className = "";
   export {className as class};
@@ -54,7 +54,7 @@
     <Icon
       class="pr-6"
       small={dense}
-      color={selected && navigation ? 'text-primary-500' : ""}>
+    >
       {icon}
     </Icon>
   {/if}

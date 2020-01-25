@@ -22,6 +22,15 @@
   $: path = $page.path;
 </script>
 
+<style>
+  .github {
+    transition: 0.1s ease-in-out;
+  }
+  .github:hover {
+    transform: rotate(360deg);
+  }
+</style>
+
 {#each navMenu as link}
   <a href={link.to} class="hidden">{link.text}</a>
 {/each}
@@ -80,7 +89,7 @@
             text={item.text}
             to={item.to}
             selected={path.includes(item.to)}
-            selectedClasses="bg-primary-transLight hover:bg-primary-transLight"
+            selectedClasses="bg-primary-transDark hover:bg-primary-transDark"
             dense
             navigation />
         </a>
@@ -91,12 +100,3 @@
 
   <slot />
 </main>
-
-<style>
-  .github {
-    transition: 0.1s ease-in-out;
-  }
-  .github:hover {
-    transform: rotate(360deg);
-  }
-</style>
