@@ -52,7 +52,7 @@
       text
       on:click={() => showNav.set(!$showNav)} />
   </div>
-  <a href="https://github.com/matyunya/smelte" class="px-4">
+  <a href="https://github.com/matyunya/smelte" class="px-4 github">
     <img src="/github.png" alt="Github Smelte" width="24" height="24" />
   </a>
 </AppBar>
@@ -91,3 +91,12 @@
 
   <slot />
 </main>
+
+<style>
+  .github {
+    transition: 0.1s ease-in-out;
+  }
+  .github:hover {
+    transform: rotate(360deg);
+  }
+</style>

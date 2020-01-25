@@ -20,17 +20,17 @@ function buildPalette(hex) {
   const baseDark = multiply(tinycolor(hex).toRgb(), tinycolor(hex).toRgb());
   const baseTriad = tinycolor(hex).tetrad();
 
-  const lightest = o(tinycolor.mix(white, hex, 30), "100");
+  const lightest = o(tinycolor.mix(white, hex, 30), "50");
   return {
-    transLight: tinycolor(lightest[100])
+    transLight: tinycolor(lightest[50])
       .toRgbString()
-      .replace(")", ", 0.6)"),
-    trans: tinycolor(lightest[100])
+      .replace(")", ", 0.1)"),
+    trans: tinycolor(lightest[50])
       .toRgbString()
       .replace(")", ", 0.7)"),
     transDark: tinycolor(hex)
       .toRgbString()
-      .replace(")", ", 0.15)"),
+      .replace(")", ", 0.1)"),
 
     ...o(tinycolor.mix(white, hex, 12), "50"),
     ...lightest,

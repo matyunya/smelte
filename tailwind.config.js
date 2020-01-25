@@ -72,11 +72,11 @@ module.exports = {
     colors: {
       transparent: "transparent",
       white: "#fff",
-      "white-trans": "rgba(255,255,255,0.5)",
-      "white-transLight": "rgba(255,255,255,0.6)",
+      "white-trans": "rgba(255,255,255,0.2)",
+      "white-transLight": "rgba(255,255,255,0.2)",
       "white-transDark": "rgba(255,255,255,0.2)",
-      "black-trans": "rgba(0,0,0,0.5)",
-      "black-transLight": "rgba(0,0,0,0.7)",
+      "black-trans": "rgba(0,0,0,0.2)",
+      "black-transLight": "rgba(0,0,0,0.2)",
       "black-transDark": "rgba(0,0,0,0.35)",
       "white-500": "#fff",
       black: "#000",
@@ -95,7 +95,7 @@ module.exports = {
         "800": "#4e342e",
         "900": "#3e2723",
         trans: "rgba(62,39,35,0.5)",
-        transLight: "rgba(62,39,35,0.7)",
+        transLight: "rgba(62,39,35,0.1)",
         transDark: "rgba(62,39,35,0.35)"
       },
 
@@ -111,7 +111,7 @@ module.exports = {
         "800": "#424242",
         "900": "#212121",
         trans: "rgba(250, 250, 250, 0.5)",
-        transLight: "rgba(250, 250, 250, 0.6)",
+        transLight: "rgba(250, 250, 250, 0.1)",
         transDark: "rgba(100, 100, 100, 0.2)"
       },
 
