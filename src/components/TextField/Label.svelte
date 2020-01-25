@@ -38,7 +38,7 @@
       .remove('pt-4 pb-2 px-4 px-1 pt-0', labelOnTop && outlined)
       .add(`ml-3 p-1 pt-0 mt-0 bg-${bgColor}`, labelOnTop && outlined)
       .remove('px-4', prepend)
-      .add('pr-4 pl-6', prepend)
+      .add('pr-4 pl-10', prepend)
       .add(add)
       .remove(remove)
       .replace(replace)
@@ -50,7 +50,6 @@
     'outlined',
     'labelOnTop',
     'prepend',
-    'bgcolor',
     'color'
   ], $$props);
 </script>

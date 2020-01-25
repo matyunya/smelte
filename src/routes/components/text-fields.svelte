@@ -49,5 +49,11 @@ like <span class="code-inline">max-length</span> or <span class="code-inline">ty
 <TextField label="Test label" textarea rows="5" outlined />
 <h6 class="mb-3 mt-6">With basic validation (type="number" min="10" max="100")</h6>
 <TextField label="Test label" outlined type="number" min="10" max="100" />
+<h6 class="mb-3 mt-6">With icon</h6>
+<TextField prepend="search" label="Icon before" />
+<TextField append="search" label="Icon after" />
+<h6 class="mb-3 mt-6">Disabled</h6>
+<TextField disabled prepend="search" label="Icon before" />
+<TextField disabled append="search" label="Icon after" />
 
 <Code code={textFields} />
