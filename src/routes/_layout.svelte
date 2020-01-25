@@ -69,10 +69,6 @@
     <h6 class="px-3 ml-1 pb-2 pt-4 text-xs text-gray-900">Components</h6>
     <List items={navMenu}>
       <span slot="item" let:item class="cursor-pointer">
-        {#if item.to === '/examples/search-bar'}
-          <hr class="mt-4" />
-          <h6 class="px-3 ml-1 pb-2 pt-4 text-xs text-gray-900">Examples</h6>
-        {/if}
         {#if item.to === '/typography'}
           <hr class="mt-4" />
           <h6 class="px-3 ml-1 pb-2 pt-4 text-xs text-gray-900">Utilities</h6>

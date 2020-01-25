@@ -122,6 +122,9 @@
     'color',
     'bgColor',
     'disabled',
+    'replace',
+    'remove',
+    'small',
   ], $$props);
 
   const dispatch = createEventDispatcher();

@@ -3,14 +3,15 @@
   import Icon from "../Icon";
   import Ripple from "../Ripple";
 
-  let className = "";
-  export {className as class};
   export let value = "";
   export let label = "";
   export let color = "primary";
   export let checked = false;
   export let disabled = false;
   export let wrapperClasses = "inline-flex items-center mb-2 cursor-pointer z-10";
+
+  let className = "";
+  export {className as class};
 
   const dispatch = createEventDispatcher();
 
