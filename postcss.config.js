@@ -27,7 +27,9 @@ module.exports = (purge = false) => {
           /namespace/,
           /token/,
           // for JS ripple
-          /ripple/
+          /ripple/,
+          // date picker
+          /w\-.\/7/
         ]
       })
   ].filter(Boolean);
