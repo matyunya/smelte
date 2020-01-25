@@ -18,6 +18,7 @@
   export let iconClass = "";
   export let color = "primary";
   export let href = null;
+  export let fab = false;
 
   export let remove = "";
   export let add = "";
@@ -43,7 +44,7 @@
   export let disabledClasses = disabledDefault;
   export let elevationClasses = elevationDefault;
 
-  const fab = text && icon;
+  fab = fab || (text && icon);
   const basic = !outlined && !text && !fab;
   const elevation = (basic || icon) && !disabled && !flat && !text;
   

@@ -9,6 +9,9 @@
   import ProgressLinear from "../ProgressLinear";
   import defaultSort from "./sort.js";
 
+  let className = "";
+  export {className as class};
+
   export let data = [];
   export let columns = Object.keys(data[0] || {})
     .map(i => ({ label: (i || "").replace('_', ' '), field: i }));
@@ -103,7 +106,7 @@
   }
 </style>
 
-<table class={wrapperClasses} bind:this={table}>
+<table class="{wrapperClasses} {className}" bind:this={table}>
   <thead class="items-center">
     {#each columns as column, i}
       <slot name="header">

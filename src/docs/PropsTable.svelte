@@ -11,8 +11,10 @@
 </script>
 
 <DataTable
+  class="my-10"
   editable={false}
   pagination={false}
   sortable={false}
   {data}
-  {columns} />
+  {columns}
+/>
