@@ -8,10 +8,7 @@ function isDarkTheme() {
   }
 }
 
-export default function dark(
-  value = false,
-  bodyClasses = "mode-dark bg-dark-500 transition-fast pointer-events-auto"
-) {
+export default function dark(value = false, bodyClasses = "mode-dark") {
   if (typeof window === "undefined") return writable(value);
   const store = writable(value || isDarkTheme());
 
