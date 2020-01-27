@@ -35,7 +35,7 @@
           radio_button_checked
         </Icon>
       {:else}
-        <Icon class={disabled ? 'text-gray-500 dark:text-gray-100' : 'text-gray-600'}>
+        <Icon class={disabled ? 'text-gray-500 dark:text-gray-600' : 'text-gray-600'}>
           radio_button_unchecked
         </Icon>
       {/if}
@@ -43,7 +43,7 @@
   </div>
   <label
     aria-hidden="true"
-    class="pl-2 cursor-pointer {disabled ? 'text-gray-500 dark:text-gray-100' : 'text-gray-700 dark:text-gray-300'}"
+    class="pl-2 cursor-pointer {disabled ? 'text-gray-500 dark:text-gray-600' : 'text-gray-700 dark:text-gray-300'}"
    >
     {label}
   </label>

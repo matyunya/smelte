@@ -41,7 +41,6 @@ pre[class*="language-"] {
     margin-top: 2rem;
     margin-bottom: 3rem;
     overflow: auto;
-    border: 1px solid #dddddd;
     background-color: white;
 }
 
@@ -50,7 +49,6 @@ pre[class*="language-"] {
     padding: .2em;
     padding-top: 1px; padding-bottom: 1px;
     background: #f8f8f8;
-    border: 1px solid #dddddd;
 }
 
 .token.comment,
@@ -128,8 +126,8 @@ pre[class*="language-"] {
 	font-size: 1em;
 	line-height: 1.5em;
     
-    margin-top: 2rem;
-    margin-bottom: 3rem;
+	margin-top: 2rem;
+	margin-bottom: 3rem;
 
 	-moz-tab-size: 4;
 	-o-tab-size: 4;

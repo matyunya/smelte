@@ -43,8 +43,8 @@
     .flush()
     .add('relative overflow-hidden flex items-center rounded-full px-2 py-1')
     .add('bg-transparent border', outlined)
-    .add('border-gray-400 border-solid hover:bg-gray-50 bg-gray-300', !selected)
-    .add(`${border()} ${txt()} ${bg(100)} hover:${bg(50)}`, selected)
+    .add('border-gray-400 border-solid hover:bg-gray-50 dark-hover:bg-dark-400 bg-gray-300 dark:bg-dark-600', !selected)
+    .add(`${border()} dark:${border('800')} ${txt()} ${bg(100)} hover:${bg(50)}`, selected)
     .remove(remove)
     .replace(replace)
     .add(add)
@@ -59,7 +59,7 @@
     'color',
   ], $$props);
 
-  $: iconClass = selected ? `hover:${bg(300)} ${bg(400)}` : "hover:bg-gray-400 bg-gray-500";
+  $: iconClass = selected ? `hover:${bg(300)} ${bg(400)}` : "hover:bg-gray-400 bg-gray-500 dark:bg-gray-800";
 </script>
 
 <style>
@@ -88,7 +88,7 @@
         <span
           class="rounded-full p-1/2 inline-flex items-center cursor-pointer {iconClass}"
           on:click|stopPropagation={close}>
-          <Icon class="text-white" xs>clear</Icon>
+          <Icon class="text-white dark:text-gray-600" xs>clear</Icon>
         </span>
       {/if}
     </button>
