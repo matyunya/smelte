@@ -34,6 +34,7 @@
   $: lClasses = l
       .flush()
       .add(txt(), focused && !error)
+      .add('text-error-500', focused && error)
       .add('label-top text-xs', labelOnTop)
       .remove('pt-4 pb-2 px-4 px-1 pt-0', labelOnTop && outlined)
       .add(`ml-3 p-1 pt-0 mt-0 bg-${bgColor} dark:bg-dark-500`, labelOnTop && outlined)

@@ -1,5 +1,6 @@
 <script>
   import {
+    Smelte,
     AppBar,
     Tabs,
     Button,
@@ -7,7 +8,8 @@
     List,
     ListItem,
     NavigationDrawer,
-    ProgressLinear
+    ProgressLinear,
+    Tooltip
   } from "smelte";
   import { stores } from "@sapper/app";
   import { onMount } from "svelte";
@@ -26,6 +28,10 @@
 </script>
 
 <style>
+  :global(.code-inline) {
+    @apply text-sm bg-secondary-50 text-secondary-900 rounded-sm p-1;
+    letter-spacing: 0.25px;
+  }
   .github {
     transition: 0.3s ease-out;
   }
@@ -42,6 +48,8 @@
   <title>Smelte: Material design using Tailwind CSS for Svelte</title>
 </svelte:head>
 
+<Smelte />
+
 {#if $preloading}
   <ProgressLinear app />
 {/if}
@@ -54,15 +62,20 @@
   <Spacer />
   <Tabs navigation items={topMenu} bind:selected={path} />
 
-  <Button
-    bind:value={$darkMode}
-    icon="brightness_1"
-    small
-    flat
-    remove="p-1 h-4 w-4"
-    iconClass="text-white"
-    iconClasses={i => i.replace('p-4', 'p-3').replace('m-4', 'm-3')}
-    text />
+  <Tooltip>
+    <span slot="activator">
+      <Button
+        bind:value={$darkMode}
+        icon="wb_sunny"
+        small
+        flat
+        remove="p-1 h-4 w-4"
+        iconClass="text-white"
+        iconClasses={i => i.replace('p-4', 'p-3').replace('m-4', 'm-3')}
+        text />
+      </span>
+      {$darkMode ? "Disable" : "Enable"} dark more
+  </Tooltip>
   <div class="md:hidden">
     <Button
       icon="menu"
@@ -80,7 +93,7 @@
 </AppBar>
 
 <main
-  class="container relative p-8 lg:max-w-3xl lg:ml-64 mx-auto mb-10 mt-24
+  class="relative p-8 lg:max-w-3xl lg:ml-64 mx-auto mb-10 mt-24
   md:ml-56 md:max-w-md md:px-3"
   transition:fade={{ duration: 300 }}>
   <NavigationDrawer

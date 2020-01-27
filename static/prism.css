@@ -41,7 +41,7 @@ pre[class*="language-"] {
     margin-top: 2rem;
     margin-bottom: 3rem;
     overflow: auto;
-    background-color: white;
+    background-color: #f8f8f8;
 }
 
 /* Inline code */
@@ -162,7 +162,7 @@ pre[class*="language-"] {
 .mode-dark pre[class*="language-"] {
 	overflow: auto;
 	position: relative;
-	margin: 0.5em 0;
+	margin: 3em 0;
 	padding: 1.25em 1em;
 }
 

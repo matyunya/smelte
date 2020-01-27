@@ -1,5 +1,7 @@
 import { writable } from "svelte/store";
 
+export let darkMode;
+
 function isDarkTheme() {
   if (!window.matchMedia) {
     return false;
@@ -10,10 +12,13 @@ function isDarkTheme() {
 
 export default function dark(value = false, bodyClasses = "mode-dark") {
   if (typeof window === "undefined") return writable(value);
-  const store = writable(value || isDarkTheme());
+
+  if (!darkMode) {
+    darkMode = writable(value || isDarkTheme());
+  }
 
   return {
-    subscribe: store.subscribe,
+    subscribe: darkMode.subscribe,
     set: v => {
       bodyClasses.split(" ").forEach(c => {
         if (v) {
@@ -23,7 +28,7 @@ export default function dark(value = false, bodyClasses = "mode-dark") {
         }
       });
 
-      store.set(v);
+      darkMode.set(v);
     }
   };
 }

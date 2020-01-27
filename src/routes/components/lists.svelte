@@ -1,6 +1,7 @@
 <script>
   import Code from "docs/Code.svelte";
   import { List, Icon, Tabs, Tab } from "smelte";
+  import { darkMode } from "../../dark";
 
   import lists from "examples/lists.txt";
   import customLists from "examples/custom-lists.txt";
@@ -59,7 +60,7 @@
 <Tabs
   selected="1"
   class="elevation-3 mt-6 rounded-t-lg"
-  notSelectedColor="black"
+  notSelectedColor="{!$darkMode ? 'black' : 'white'}"
   color="primary"
   let:selected
   items={[

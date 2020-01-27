@@ -18,7 +18,6 @@
 
   const defaultClasses = "transition-fast relative overflow-hidden text-center w-full h-full p-4 cursor-pointer flex mx-auto items-center text-sm h-full";
 
-
   const { txt, bg } = utils(color);
   const notSelected = utils(notSelectedColor);
 
@@ -29,7 +28,7 @@
   <a
     use:ripple
     href={to}
-    class="{className} {defaultClasses} {textColor} hover:bg-{color}-transLight hover:{txt(900)}"
+    class="{className} {defaultClasses} {textColor} dark:text-gray-600 hover:bg-{color}-transLight hover:{txt(900)}"
     on:click
     class:uppercase={icon}>
     <div class="flex flex-col items-center content-center mx-auto">
@@ -45,7 +44,7 @@
 {:else}
   <li
     use:ripple
-    class="{className} {defaultClasses} {textColor} hover:bg-{color}-transLight hover:{txt()}"
+    class="{className} {defaultClasses} {textColor} focused && error hover:bg-{color}-transLight hover:{txt()}"
     on:click={() => selected = id }
     on:click
     class:uppercase={icon}>

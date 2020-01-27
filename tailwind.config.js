@@ -2,7 +2,7 @@ const { addUtility } = require("./src/utils/style.js");
 
 const buildPalette = require("./src/utils/color.js");
 
-const colors = {
+const defaultColors = {
   primary: "#b027b0",
   secondary: "#009688",
   error: "#f44336",
@@ -31,13 +31,15 @@ const colors = {
   brown: "#795548"
 };
 
-module.exports = {
-  variants: {
-    backgroundColor: ["dark", "dark-hover", "hover"],
-    borderColor: ["dark", "dark-focus"],
-    textColor: ["dark", "dark-hover", "dark-active"],
-    border: ["dark"]
-  },
+module.exports = ({ colors = defaultColors, darkMode = true, ...config }) => ({
+  variants: darkMode
+    ? {
+        backgroundColor: ["dark", "dark-hover", "hover"],
+        borderColor: ["dark", "dark-focus"],
+        textColor: ["dark", "dark-hover", "dark-active"],
+        border: ["dark"]
+      }
+    : {},
   theme: {
     extend: {
       width: {
@@ -163,32 +165,34 @@ module.exports = {
       prop: "stroke",
       className: ".stroke"
     }),
-    function({ addVariant, e }) {
-      const d = ".mode-dark";
+    darkMode &&
+      function({ addVariant, e }) {
+        const d = ".mode-dark";
 
-      addVariant("dark", ({ modifySelectors, separator }) => {
-        modifySelectors(({ className }) => {
-          return `${d} .${e(`dark${separator}${className}`)}`;
+        addVariant("dark", ({ modifySelectors, separator }) => {
+          modifySelectors(({ className }) => {
+            return `${d} .${e(`dark${separator}${className}`)}`;
+          });
         });
-      });
 
-      addVariant("dark-hover", ({ modifySelectors, separator }) => {
-        modifySelectors(({ className }) => {
-          return `${d} .${e(`dark-hover${separator}${className}`)}:hover`;
+        addVariant("dark-hover", ({ modifySelectors, separator }) => {
+          modifySelectors(({ className }) => {
+            return `${d} .${e(`dark-hover${separator}${className}`)}:hover`;
+          });
         });
-      });
 
-      addVariant("dark-focus", ({ modifySelectors, separator }) => {
-        modifySelectors(({ className }) => {
-          return `${d} .${e(`dark-focus${separator}${className}`)}:focus`;
+        addVariant("dark-focus", ({ modifySelectors, separator }) => {
+          modifySelectors(({ className }) => {
+            return `${d} .${e(`dark-focus${separator}${className}`)}:focus`;
+          });
         });
-      });
 
-      addVariant("dark-active", ({ modifySelectors, separator }) => {
-        modifySelectors(({ className }) => {
-          return `${d} .${e(`dark-active${separator}${className}`)}:active`;
+        addVariant("dark-active", ({ modifySelectors, separator }) => {
+          modifySelectors(({ className }) => {
+            return `${d} .${e(`dark-active${separator}${className}`)}:active`;
+          });
         });
-      });
-    }
-  ]
-};
+      }
+  ],
+  ...config
+});

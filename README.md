@@ -151,5 +151,5 @@ That's it! The process is quite tedious at the moment. Please send feedback if y
 - [x] Image processing (done [here](https://github.com/matyunya/svelte-image))
 - [x] Svelte template (without Sapper)
 - [x] JS ripple animation
-- [ ] Dark mode
+- [x] Dark mode
 - [ ] IE 11 support

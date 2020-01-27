@@ -86,10 +86,6 @@ button:focus, input:focus, li:focus, div:focus, textarea:focus {
   @apply underline text-blue-600;
 }
 
-.code-inline {
-  @apply body-2 bg-secondary-50 text-secondary-900 rounded-sm p-1;
-}
-
 html {
   font-family: "Roboto", sans-serif;
 }

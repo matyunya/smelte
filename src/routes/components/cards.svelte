@@ -9,9 +9,10 @@
   import card from "examples/card.txt";
 </script>
 
-<Card.Card>
+<Card.Card class="dark:bg-gray-200">
   <div slot="title">
     <Card.Title
+      class="dark:text-black"
       title="The three little kittens"
       subheader="A kitten poem"
       avatar="https://placekitten.com/64/64" />

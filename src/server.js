@@ -3,8 +3,6 @@ import express from "express";
 import compression from "compression";
 import * as sapper from "@sapper/server";
 
-import "./tailwind.css";
-
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === "development";
 

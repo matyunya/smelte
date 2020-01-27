@@ -23,6 +23,7 @@ import Switch from "./components/Switch";
 import Tooltip from "./components/Tooltip";
 import Treeview from "./components/Treeview";
 import Ripple from "./components/Ripple";
+import Smelte from "./components/Smelte";
 import DatePicker from "./components/DatePicker";
 import breakpoints from "./breakpoints";
 import notificationQueue from "./notification-queue";
@@ -62,5 +63,6 @@ export {
   breakpoints,
   notifier,
   notificationQueue,
-  Notifications
+  Notifications,
+  Smelte
 };
