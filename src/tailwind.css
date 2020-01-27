@@ -131,3 +131,7 @@ input::-webkit-inner-spin-button {
 		opacity: 0;
 	}
 }
+
+.mode-dark {
+  @apply text-gray-100;
+}
