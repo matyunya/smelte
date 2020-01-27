@@ -19,7 +19,7 @@
   let className = "";
   export {className as class};
 
-  export const to = "";
+  export let to = "";
   export const item = null;
   export const items = [];
   export const level = null;
@@ -30,7 +30,7 @@
   function change() {
     if (disabled) return;
     value = id;
-    dispatch('change', id);
+    dispatch('change', id, to);
   }
 </script>
 

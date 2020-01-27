@@ -7,6 +7,8 @@
   let loading = true;
 
   async function getData() {
+    if (typeof window === "undefined") return;
+
     loading = true;
     const res = await fetch("data.json");
     const body = await res.json();

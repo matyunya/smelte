@@ -3,7 +3,7 @@
 
   export let value = 0;
   export let label = "";
-  export const color = "primary";
+  export let color = "primary";
   export let disabled = false;
   export let min = 0;
   export let max = 100;
@@ -11,11 +11,24 @@
 
   $: style = disabled
     ? ""
-    : `background: linear-gradient(to right, #bc47bc 0%, #bc47bc ${value}%, #f6e5f6 ${value}%, #f6e5f6 100%)`;
+    : `background: linear-gradient(to right, --color-${color}-500 0%, --color-${color}-500 ${value}%, --color-${color}-100 ${value}%, --color-${color}-100 100%)`;
+
+  function applyColor(node) {
+    if (typeof window === "undefined") return false;
+
+    let c = getComputedStyle(document.documentElement).getPropertyValue(`--color-${color}-500`);
+    node.style.setProperty('--bg', c);
+    node.style.setProperty('--bg-focus', c);
+  }
 
 </script>
 
 <style>
+input {
+  --bg: var(--color-gray-200);
+  --bg-focus: var(--color-gray-200);
+}
+
 input {
   -webkit-appearance: none;
   height: 4px;
@@ -27,7 +40,8 @@ input:disabled {
 
 input::range-thumb {
   -webkit-appearance: none;
-  @apply rounded-full p-1 w-5 h-5 elevation-3 bg-primary-500;
+  @apply rounded-full p-1 w-5 h-5 elevation-3;
+  background-color: var(--bg);
 }
 
 input:disabled::range-thumb {
@@ -43,8 +57,9 @@ input:focus {
 
 input:focus::range-thumb {
   -webkit-appearance: none;
-  @apply rounded-full p-1 w-5 h-5 elevation-3 bg-primary-500;
+  @apply rounded-full p-1 w-5 h-5 elevation-3;
   margin-top: -0.5rem;
+  background-color: var(--bg-focus);
 }
 
 input:focus::range-track {
@@ -55,8 +70,9 @@ input:focus::range-track {
 
 <label>{label}</label>
 <input
+  use:applyColor
   type="range"
-  class="bg-primary-50 w-full rounded cursor-pointer"
+  class="bg-{color}-50 w-full rounded cursor-pointer"
   {min}
   {max}
   {step}
