@@ -13,8 +13,8 @@
   export let navigation = false;
   export let selected = false;
   export let tabindex = null;
-  export let wrapperClasses = "hover:bg-gray-transDark relative overflow-hidden transition p-4 cursor-pointer text-gray-700 flex items-center z-10";
-  export let selectedClasses = "bg-gray-200";
+  export let wrapperClasses = "hover:bg-gray-transDark relative overflow-hidden transition p-4 cursor-pointer text-gray-700 dark:text-gray-100 flex items-center z-10";
+  export let selectedClasses = "bg-gray-200 dark:bg-dark-400";
 
   let className = "";
   export {className as class};

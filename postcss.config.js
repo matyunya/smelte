@@ -20,7 +20,7 @@ module.exports = (purge = false) => {
             extensions: ["svelte"]
           }
         ],
-        whitelist: ["html", "body", "stroke-primary"],
+        whitelist: ["html", "body", "stroke-primary", "mode-dark"],
         whitelistPatterns: [
           // for Prismjs code highlighting
           /language/,

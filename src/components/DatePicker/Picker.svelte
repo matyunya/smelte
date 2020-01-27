@@ -93,7 +93,7 @@
 </script>
 
 <div in:slide={{duration: 100}} out:fade={{duration: 50}}>
-  <Card class="p-4 w-full bg-white">
+  <Card class="p-4 w-full dark:bg-dark-400 bg-white">
     <div class="flex justify-between mb-4">
       <span class="text-gray-600 uppercase">{year} {month}</span>
       <div class="flex">

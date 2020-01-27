@@ -29,7 +29,8 @@
     "src/notification-queue.js",
     "src/components",
     "tailwind.config.js",
-    "postcss.config.js"
+    "postcss.config.js",
+    "src/dark.js"
   ],
   "module": "dist/module.js",
   "main": "dist/index.js",

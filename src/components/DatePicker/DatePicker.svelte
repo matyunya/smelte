@@ -52,7 +52,7 @@
       on:change={changeTextInput}
     />
   </div>
-  <div slot="menu" class="absolute z-20 bg-white mt-16">
+  <div slot="menu" class="absolute z-20 bg-white dark:bg-dark-400 mt-16">
     {#if open}
       <Picker
         bind:value

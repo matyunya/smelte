@@ -26,7 +26,7 @@
     <div class="w-full h-full absolute" />
     <Ripple color={value && !disabled ? color : 'gray'} noHover>
       <div
-        class={thumbClasses}
+        class="{thumbClasses}"
         class:bg-white={!value}
         class:bg-primary-400={value}
         class:left-0={!value}

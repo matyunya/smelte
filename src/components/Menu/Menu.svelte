@@ -29,7 +29,7 @@
           select
           dense
           {items}
-          class="list"
+          class="list dark:bg-dark-500"
           on:change
           on:change={() => open = false}
         />

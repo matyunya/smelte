@@ -13,8 +13,9 @@
    <meta name="description" content="Smelte documentation. {name}">
 </svelte:head>
 
-{#if segment}
-  <h4 class="capitalize pb-8">{name}</h4>
-{/if}
-
-<slot />
+<div class="dark:bg-dark-500 p-8">
+  {#if segment}
+    <h4 class="capitalize pb-8">{name}</h4>
+  {/if}
+  <slot />
+</div>

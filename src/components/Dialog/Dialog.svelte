@@ -7,7 +7,7 @@
   let className = "";
   export {className as class};
   export let value;
-  export let wrapperClasses = "items-center z-50 rounded bg-white p-4 elevation-4";
+  export let wrapperClasses = "items-center z-50 rounded bg-white dark:bg-dark-400 p-4 elevation-4";
   export let titleClasses = "text-lg font-bold pb-4";
   export let actionsClasses = "flex w-full justify-end pt-4";
   export let opacity = 0.5;

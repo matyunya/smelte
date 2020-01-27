@@ -9,6 +9,7 @@ const colors = {
   success: "#4caf50",
   alert: "#ffeb3b",
   blue: "#2196f3",
+  dark: "#212121",
 
   // You should keep only colors that you're using
   red: "#f44336",
@@ -32,7 +33,9 @@ const colors = {
 
 module.exports = {
   variants: {
-    backgroundColor: ["hover"]
+    backgroundColor: ["dark", "dark-hover", "hover"],
+    borderColor: ["dark", "dark-focus"],
+    textColor: ["dark", "dark-hover", "dark-active"]
   },
   theme: {
     extend: {
@@ -76,6 +79,7 @@ module.exports = {
       "white-transLight": "rgba(255,255,255,0.2)",
       "white-transDark": "rgba(255,255,255,0.2)",
       "black-trans": "rgba(0,0,0,0.2)",
+      "black-transLight": "rgba(0,0,0,0.2)",
       "black-transLight": "rgba(0,0,0,0.2)",
       "black-transDark": "rgba(0,0,0,0.35)",
       "white-500": "#fff",
@@ -157,6 +161,33 @@ module.exports = {
     addUtility({
       prop: "stroke",
       className: ".stroke"
-    })
+    }),
+    function({ addVariant, e }) {
+      const d = ".mode-dark";
+
+      addVariant("dark", ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `${d} .${e(`dark${separator}${className}`)}`;
+        });
+      });
+
+      addVariant("dark-hover", ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `${d} .${e(`dark-hover${separator}${className}`)}:hover`;
+        });
+      });
+
+      addVariant("dark-focus", ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `${d} .${e(`dark-focus${separator}${className}`)}:focus`;
+        });
+      });
+
+      addVariant("dark-active", ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `${d} .${e(`dark-active${separator}${className}`)}:active`;
+        });
+      });
+    }
   ]
 };

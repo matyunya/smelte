@@ -31,9 +31,9 @@
     <div class="relative w-auto h-auto z-0">
       <Ripple color={rippleColor}>
         {#if checked}
-          <Icon class={disabled ? 'text-gray-500' : `text-${color}-500`}>check_box</Icon>
+          <Icon class={disabled ? 'text-gray-500 dark:text-gray-100' : `text-${color}-500`}>check_box</Icon>
         {:else}
-          <Icon class={disabled ? 'text-gray-500' : 'text-gray-600'}>
+          <Icon class={disabled ? 'text-gray-500 dark:text-gray-100' : 'text-gray-600'}>
             check_box_outline_blank
           </Icon>
         {/if}
@@ -41,9 +41,8 @@
     </div>
     <label
       aria-hidden="true"
-      class="pl-2 cursor-pointer"
-      class:text-gray-500={disabled}
-      class:text-gray-700={!disabled}>
+      class="pl-2 cursor-pointer {disabled ? 'text-gray-500 dark:text-gray-100' : 'text-gray-700 dark:text-gray-300'}"
+    >
       {label}
     </label>
   </div>

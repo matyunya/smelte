@@ -1,6 +1,5 @@
 <script>
   import { createEventDispatcher, onMount } from "svelte";
-  import { fly } from "svelte/transition";
   import { quadOut, quadIn } from "svelte/easing";
   import List from "../List/List.svelte";
   import TextField from "../TextField";
@@ -66,8 +65,6 @@
     selectedLabel = getLabel(value);
   })
 
-  const inProps = { y: 10, duration: 50, easing: quadIn };
-  const outProps = { y: -10, duration: 100, easing: quadOut, delay: 50 };
   const dispatch = createEventDispatcher();
 
   function getLabel(value) {
@@ -109,7 +106,7 @@
   {#if showList}
     <slot name="options">
       <div
-        class="list"
+        class="list dark:bg-dark-500"
         on:click={() => (showList = false)}
         class:rounded-t-none={!outlined}>
         <List

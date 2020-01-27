@@ -101,6 +101,10 @@
     @apply bg-gray-50;
   }
 
+  .mode-dark tbody tr:hover {
+    @apply bg-dark-400;
+  }
+
   tr.selected {
     @apply bg-primary-50;
   }
@@ -151,12 +155,12 @@
         > 
           {#each columns as column, i}
             <td
-              class="relative {column.class}"
+              class="relative {column.class || ''}"
               class:cursor-pointer={editable && column.editable !== false}
             >
               {#if editable && column.editable !== false && editing[j] === i}
                 <slot name="edit-dialog">
-                  <div class="absolute left-0 top-0 z-10 bg-white p-2 elevation-3 rounded" style="width: 300px">
+                  <div class="absolute left-0 top-0 z-10 bg-white dark:bg-dark-400 p-2 elevation-3 rounded" style="width: 300px">
                     <TextField
                       value={item[column.field]}
                       textarea={column.textarea}
