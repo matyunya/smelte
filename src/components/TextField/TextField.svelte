@@ -179,7 +179,7 @@
   {:else if select && !autocomplete}
     <input
       readonly
-      class="{iClasses}"
+      class="cursor-pointer {iClasses}"
       on:change
       on:input
       {disabled}
@@ -226,7 +226,7 @@
     {outlined}
     {focused}
     {error} />
-  
+
   {#if showHint}
     <Hint
       {hint}
