@@ -7,7 +7,7 @@
     List,
     ListItem,
     NavigationDrawer,
-    ProgressLinear,
+    ProgressLinear
   } from "smelte";
   import { stores } from "@sapper/app";
   import { onMount } from "svelte";
@@ -62,8 +62,7 @@
     remove="p-1 h-4 w-4"
     iconClass="text-white"
     iconClasses={i => i.replace('p-4', 'p-3').replace('m-4', 'm-3')}
-    text
-  />
+    text />
   <div class="md:hidden">
     <Button
       icon="menu"
@@ -89,12 +88,17 @@
     right={$right}
     persistent={$persistent}
     elevation={$elevation}>
-    <h6 class="px-3 ml-1 pb-2 pt-4 text-xs text-gray-900 dark:text-gray-100">Components</h6>
+    <h6 class="px-3 ml-1 pb-2 pt-4 text-xs text-gray-900 dark:text-gray-100">
+      Components
+    </h6>
     <List items={navMenu}>
       <span slot="item" let:item class="cursor-pointer">
         {#if item.to === '/typography'}
           <hr class="mt-4" />
-          <h6 class="px-3 ml-1 pb-2 pt-4 text-xs text-gray-900 dark:text-gray-100">Utilities</h6>
+          <h6
+            class="px-3 ml-1 pb-2 pt-4 text-xs text-gray-900 dark:text-gray-100">
+            Utilities
+          </h6>
         {/if}
 
         <a href={item.to}>

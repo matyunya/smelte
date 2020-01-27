@@ -79,7 +79,7 @@
       .add(elevationClasses, elevation, elevationDefault)
       .add(outlinedClasses, outlined, outlinedDefault)
       .add(
-        `${border(lighter)} ${txt(normal)} hover:${bg("trans")}`,
+        `${border(lighter)} ${txt(normal)} hover:${bg("trans")} dark-hover:${bg("transDark")}`,
         outlined)
       .add(`${txt(lighter)}`, text)
       .add(textClasses, text, textDefault)

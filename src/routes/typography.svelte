@@ -6,7 +6,9 @@
     <a
       class="a"
       href="https://material.io/design/typography/the-type-system.html#type-scale">
-      type scale</a>.
+      type scale
+    </a>
+    .
   </p>
   <div class="bg-gray-200 dark:bg-dark-700 p-4 my-4">
     <h1>.h1 header 1</h1>

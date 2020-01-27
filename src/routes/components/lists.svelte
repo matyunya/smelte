@@ -58,7 +58,7 @@
 
 <Tabs
   selected="1"
-  class="elevation-1 mt-6 rounded-t-lg"
+  class="elevation-3 mt-6 rounded-t-lg"
   notSelectedColor="black"
   color="primary"
   let:selected

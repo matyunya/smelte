@@ -22,7 +22,7 @@
   export let asc = false;
   export let loading = false;
   export let hideProgress = false;
-  export let wrapperClasses = "rounded elevation-3 relative text-sm overflow-x-auto";
+  export let wrapperClasses = "elevation-3 relative text-sm overflow-x-auto dark:bg-dark-500";
   export let editable = true;
   export let sortable = true;
   export let pagination = true;
@@ -65,16 +65,8 @@
     @apply text-left border-r;
   }
 
-  th {
-    @apply text-gray-600 text-xs;
-  }
-
   th .asc {
     transform: rotate(180deg);
-  }
-
-  th .sort-wrapper {
-    @apply flex items-center justify-end;
   }
 
   th:first-child .sort-wrapper {
@@ -82,27 +74,11 @@
   }
 
   th .sort {
-    @apply w-4 h-4 opacity-0 transition-fast;
-  }
-
-  th:hover {
-    @apply text-black transition-fast;
+    @apply w-4 h-4 opacity-0;
   }
 
   th:hover .sort {
     @apply opacity-100;
-  }
-
-  tr {
-    @apply border-gray-200 border-t border-b px-3;
-  }
-
-  tbody tr:hover {
-    @apply bg-gray-50;
-  }
-
-  .mode-dark tbody tr:hover {
-    @apply bg-dark-400;
   }
 
   tr.selected {
@@ -115,7 +91,7 @@
     {#each columns as column, i}
       <slot name="header">
         <th
-          class="capitalize"
+          class="capitalize transition-fast text-gray-600 text-xs hover:text-black dark-hover:text-white"
           class:cursor-pointer={sortable || column.sortable}
           on:click={() => {
             if (column.sortable === false || !sortable) return;
@@ -126,10 +102,10 @@
             sortBy = column;
           }}
         >
-          <div class="sort-wrapper">
+          <div class="sort-wrapper flex items-center justify-end">
             {#if sortable && column.sortable !== false}
               <span class="sort" class:asc={!asc && sortBy === column}>
-                <Icon small color="text-gray-400">arrow_downward</Icon>
+                <Icon small color="text-gray-400 dark:text-gray-100">arrow_downward</Icon>
               </span>
             {/if}
             <span>{column.label || column.field}</span>
@@ -147,6 +123,7 @@
     {#each sorted as item, j}
       <slot name="item">
         <tr
+          class="hover:bg-gray-50 dark-hover:bg-dark-400 border-gray-200 dark:border-gray-400 border-t border-b px-3"
           on:click={(e) => {
           if (!editable) return;
             editing = { [j]: (e.path.find(a => a.localName === 'td') || {}).cellIndex }
@@ -193,7 +170,7 @@
     <slot name="pagination">
       <tfoot>
         <tr>
-          <td colspan="100%">
+          <td colspan="100%" class="border-none">
             <div class="flex justify-between items-center text-gray-700 text-sm w-full h-8">
               <Spacer />
               <div class="mr-1 py-1">
@@ -201,7 +178,7 @@
               </div>
               <Select
                 class="w-16 h-8 mb-5"
-                remove="bg-gray-300 bg-gray-100 select"
+                remove="select"
                 replace={{ 'pt-6': 'pt-4' }}
                 inputWrapperClasses={(c) => c.replace('mt-2', "").replace('pb-6', "")}
                 appendClasses={(c) => c.replace('pt-4', 'pt-3').replace('pr-4', 'pr-2')}

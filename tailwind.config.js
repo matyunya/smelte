@@ -35,7 +35,8 @@ module.exports = {
   variants: {
     backgroundColor: ["dark", "dark-hover", "hover"],
     borderColor: ["dark", "dark-focus"],
-    textColor: ["dark", "dark-hover", "dark-active"]
+    textColor: ["dark", "dark-hover", "dark-active"],
+    border: ["dark"]
   },
   theme: {
     extend: {

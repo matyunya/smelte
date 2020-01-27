@@ -10,7 +10,7 @@
 
 <Dialog bind:value={showDialog}>
   <h5 slot="title">What do you think?</h5>
-  <div class="text-gray-700">I'm not sure about today's weather.</div>
+  <div class="text-gray-700 dark:text-gray-100">I'm not sure about today's weather.</div>
   <div slot="actions">
     <Button text on:click={() => (showDialog = false)}>Disagree</Button>
     <Button text on:click={() => (showDialog = false)}>Agree</Button>

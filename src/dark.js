@@ -1,11 +1,19 @@
 import { writable } from "svelte/store";
 
+function isDarkTheme() {
+  if (!window.matchMedia) {
+    return false;
+  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    return true;
+  }
+}
+
 export default function dark(
   value = false,
   bodyClasses = "mode-dark bg-dark-500 transition-fast pointer-events-auto"
 ) {
   if (typeof window === "undefined") return writable(value);
-  const store = writable(value);
+  const store = writable(value || isDarkTheme());
 
   return {
     subscribe: store.subscribe,
