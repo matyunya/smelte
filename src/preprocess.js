@@ -47,11 +47,11 @@ const postcssProcessor = ({
 
 const preprocess = config =>
   getPreprocessor({
-    transformers: {
-      postcss: {
-        plugins: postcssProcessor(config)
-      }
+    postcss: {
+      plugins: postcssProcessor(config || {})
     }
   });
+
+export const plugins = config => postcssProcessor(config || {});
 
 export default preprocess;
