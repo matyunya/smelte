@@ -1,6 +1,5 @@
 <script>
   import {
-    Smelte,
     AppBar,
     Tabs,
     Button,
@@ -47,8 +46,6 @@
 <svelte:head>
   <title>Smelte: Material design using Tailwind CSS for Svelte</title>
 </svelte:head>
-
-<Smelte />
 
 {#if $preloading}
   <ProgressLinear app />
