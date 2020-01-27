@@ -73,8 +73,8 @@
         iconClass="text-white"
         iconClasses={i => i.replace('p-4', 'p-3').replace('m-4', 'm-3')}
         text />
-      </span>
-      {$darkMode ? "Disable" : "Enable"} dark more
+    </span>
+    {$darkMode ? 'Disable' : 'Enable'} dark mode
   </Tooltip>
   <div class="md:hidden">
     <Button
@@ -93,8 +93,8 @@
 </AppBar>
 
 <main
-  class="relative p-8 lg:max-w-3xl lg:ml-64 mx-auto mb-10 mt-24
-  md:ml-56 md:max-w-md md:px-3"
+  class="relative p-8 lg:max-w-3xl lg:ml-64 mx-auto mb-10 mt-24 md:ml-56
+  md:max-w-md md:px-3"
   transition:fade={{ duration: 300 }}>
   <NavigationDrawer
     bind:show={$showNav}
