@@ -34,19 +34,9 @@
   }
 </script>
 
-<style>
-  li:focus {
-    @apply bg-gray-50;
-  }
-
-  :global(.mode-dark) li:focus {
-    @apply bg-gray-700;
-  }
-</style>
-
 <li
   use:ripple
-  class="{wrapperClasses} {selected ? selectedClasses : ""}"
+  class="focus:bg-gray-50 dark-focus:bg-gray-700 {wrapperClasses} {selected ? selectedClasses : ""}"
   class:text-sm={navigation}
   class:py-2={dense}
   class:text-gray-600={disabled}

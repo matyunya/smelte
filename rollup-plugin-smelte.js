@@ -1,5 +1,5 @@
-import getPreprocessor from "svelte-preprocess";
-
+const postcss = require("rollup-plugin-postcss");
+const path = require("path");
 const extractor = require("./src/utils/css-extractor.js");
 
 const defaultWhitelist = ["html", "body", "stroke-primary", "mode-dark"];
@@ -14,8 +14,8 @@ const defaultWhitelistPatterns = [
 const postcssProcessor = ({
   tailwind = {},
   postcss = [],
-  whitelist = defaultWhitelist,
-  whitelistPatterns = defaultWhitelistPatterns,
+  whitelist = [],
+  whitelistPatterns = [],
   purge = false
 }) => {
   const tailwindConfig = require("./tailwind.config.js")(tailwind);
@@ -39,19 +39,16 @@ const postcssProcessor = ({
             extensions: ["svelte"]
           }
         ],
-        whitelist,
-        whitelistPatterns
+        whitelist: [whitelist, ...defaultWhitelist],
+        whitelistPatterns: [defaultWhitelistPatterns, ...whitelistPatterns]
       })
   ].filter(Boolean);
 };
 
-const preprocess = config =>
-  getPreprocessor({
-    postcss: {
-      plugins: postcssProcessor(config || {})
-    }
+const plugins = config => postcssProcessor(config || {});
+
+export default config =>
+  postcss({
+    plugins: plugins(config),
+    extract: path.resolve(__dirname, config.output || "./static/global.css")
   });
-
-export const plugins = config => postcssProcessor(config || {});
-
-export default preprocess;

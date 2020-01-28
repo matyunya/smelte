@@ -130,16 +130,6 @@
   const dispatch = createEventDispatcher();
 </script>
 
-<style>
-.select {
-  @apply pb-0 mb-0 cursor-pointer;
-  height: 3.5rem;
-}
-.select.dense {
-  height: 2.4rem;
-}
-</style>
-
 <div class={wClasses}>
   <slot name="label">
     <Label

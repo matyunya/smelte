@@ -60,9 +60,9 @@
 <Select
   {selectedLabel}
   outlined
-  color="red"
+  color="error"
   inputClasses={i => i.replace('rounded-t', 'rounded-full')}
-  appendClasses={i => i.replace('text-gray-700', 'text-red-700')}
+  appendClasses={i => i.replace('text-gray-700', 'text-error-700')}
   label="Categories"
   {items}
 >
@@ -71,7 +71,7 @@
         <Checkbox
           value={selectedItems.includes(item)}
           class="block my-2"
-          color="red"
+          color="error"
           label={item.text}
           on:change={toggle(item)}
         />

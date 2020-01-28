@@ -131,3 +131,80 @@ input::-webkit-inner-spin-button {
 .mode-dark {
   @apply text-gray-100 bg-dark-500 transition-fast pointer-events-auto;
 }
+
+
+input[type="range"] {
+  --bg: var(--color-gray-200);
+  --bg-focus: var(--color-gray-200);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 4px;
+}
+
+input[type="range"]:disabled {
+  @apply bg-gray-300;
+}
+
+input[type="range"]::range-thumb {
+  -webkit-appearance: none;
+  @apply rounded-full p-1 w-5 h-5 elevation-3;
+  background-color: var(--bg);
+}
+
+input[type="range"]:disabled::range-thumb {
+  @apply bg-gray-400;
+}
+
+input[type="range"]::-ms-thumb {
+  margin: 0;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]:focus::range-thumb {
+  -webkit-appearance: none;
+  @apply rounded-full p-1 w-5 h-5 elevation-3;
+  margin-top: -0.5rem;
+  background-color: var(--bg-focus);
+}
+
+input[type="range"]:focus::range-track {
+  @apply rounded;
+  height: 4px;
+}
+
+th:first-child, td:first-child {
+  @apply text-left border-r;
+}
+
+th:first-child .sort-wrapper {
+  @apply justify-start;
+}
+
+th .sort {
+  @apply w-4 h-4 opacity-0;
+}
+
+th:hover .sort {
+  @apply opacity-100;
+}
+
+tr.selected {
+  @apply bg-primary-50;
+}
+
+.select {
+  @apply pb-0 mb-0 cursor-pointer;
+  height: 3.5rem;
+}
+.select.dense {
+  height: 2.4rem;
+}
+
+.code-inline {
+  @apply text-sm bg-secondary-50 text-secondary-900 rounded-sm p-1;
+  letter-spacing: 0.25px;
+}

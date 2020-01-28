@@ -57,32 +57,8 @@
 </script>
 
 <style>
-  th, td {
-    @apply p-3 font-normal text-right;
-  }
-
-  th:first-child, td:first-child {
-    @apply text-left border-r;
-  }
-
   th .asc {
     transform: rotate(180deg);
-  }
-
-  th:first-child .sort-wrapper {
-    @apply justify-start;
-  }
-
-  th .sort {
-    @apply w-4 h-4 opacity-0;
-  }
-
-  th:hover .sort {
-    @apply opacity-100;
-  }
-
-  tr.selected {
-    @apply bg-primary-50;
   }
 </style>
 
@@ -91,7 +67,7 @@
     {#each columns as column, i}
       <slot name="header">
         <th
-          class="capitalize transition-fast text-gray-600 text-xs hover:text-black dark-hover:text-white"
+          class="capitalize transition-fast text-gray-600 text-xs hover:text-black dark-hover:text-white p-3 font-normal text-right"
           class:cursor-pointer={sortable || column.sortable}
           on:click={() => {
             if (column.sortable === false || !sortable) return;
@@ -132,7 +108,7 @@
         > 
           {#each columns as column, i}
             <td
-              class="relative {column.class || ''}"
+              class="relative p-3 font-normal text-right {column.class || ''}"
               class:cursor-pointer={editable && column.editable !== false}
             >
               {#if editable && column.editable !== false && editing[j] === i}

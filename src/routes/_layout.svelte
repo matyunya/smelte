@@ -27,10 +27,6 @@
 </script>
 
 <style>
-  :global(.code-inline) {
-    @apply text-sm bg-secondary-50 text-secondary-900 rounded-sm p-1;
-    letter-spacing: 0.25px;
-  }
   .github {
     transition: 0.3s ease-out;
   }

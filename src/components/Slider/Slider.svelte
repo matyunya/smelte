@@ -23,51 +23,6 @@
 
 </script>
 
-<style>
-input {
-  --bg: var(--color-gray-200);
-  --bg-focus: var(--color-gray-200);
-}
-
-input {
-  -webkit-appearance: none;
-  height: 4px;
-}
-
-input:disabled {
-  @apply bg-gray-300;
-}
-
-input::range-thumb {
-  -webkit-appearance: none;
-  @apply rounded-full p-1 w-5 h-5 elevation-3;
-  background-color: var(--bg);
-}
-
-input:disabled::range-thumb {
-  @apply bg-gray-400;
-}
-
-input::-ms-thumb {
-  margin: 0;
-}
-input:focus {
-  outline: none;
-}
-
-input:focus::range-thumb {
-  -webkit-appearance: none;
-  @apply rounded-full p-1 w-5 h-5 elevation-3;
-  margin-top: -0.5rem;
-  background-color: var(--bg-focus);
-}
-
-input:focus::range-track {
-  @apply rounded;
-  height: 4px;
-}
-</style>
-
 <label>{label}</label>
 <input
   use:applyColor

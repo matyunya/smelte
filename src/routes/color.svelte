@@ -46,6 +46,6 @@ and type
 <span class="code-inline">border-{'{solid|dashed|dotted|none}'}</span>
 helpers.
 <Code
-  code={'<div class="border-2 border-amber-600 p-4">This div has amber border</div>'} />
+  code={'<div class="border-2 border-secondary-600 p-4">This div has secondary border</div>'} />
 
-<div class="border-2 border-amber-600 p-4">This div has amber border</div>
+<div class="border-2 border-secondary-600 p-4">This div has secondary color border</div>
