@@ -118,8 +118,7 @@
             selected={path.includes(item.to)}
             dense
             selectedClasses="bg-primary-transDark dark:bg-primary-transLight
-            hover:bg-primary-transDark dark-hover:bg-primary-transLight"
-          />
+            hover:bg-primary-transDark dark-hover:bg-primary-transLight" />
         </a>
       </span>
     </List>
