@@ -5,7 +5,9 @@
 <h4 class="pb-8">Dark mode</h4>
 <p>
   Smelte uses css pseudo-class variant
-  <a class="a" href="https://tailwindcss.com/docs/configuring-variants/">feature</a>
+  <a class="a" href="https://tailwindcss.com/docs/configuring-variants/">
+    feature
+  </a>
   of Tailwind to enable dark mode.
 </p>
 
