@@ -28,7 +28,10 @@
 
 <div class="py-2">
   <Button on:click={() => (showDialog = true)}>Show dialog</Button>
-  <Button on:click={() => (showDialog2 = true)}>Show persistent dialog</Button>
+</div>
+
+<div class="py-2">
+  <Button color="secondary" on:click={() => (showDialog2 = true)}>Show persistent dialog</Button>
 </div>
 
 <Code code={dialog} />

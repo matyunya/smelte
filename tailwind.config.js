@@ -36,8 +36,7 @@ module.exports = ({ colors = defaultColors, darkMode = true, ...config }) => ({
     ? {
         backgroundColor: ["dark", "dark-hover", "hover"],
         borderColor: ["dark", "dark-focus"],
-        textColor: ["dark", "dark-hover", "dark-active"],
-        border: ["dark"]
+        textColor: ["dark", "dark-hover", "dark-active"]
       }
     : {},
   theme: {
@@ -90,21 +89,21 @@ module.exports = ({ colors = defaultColors, darkMode = true, ...config }) => ({
 
       ...buildPalette(colors),
 
-      brown: {
-        "50": "#efebe9",
-        "100": "#d7ccc8",
-        "200": "#bcaaa4",
-        "300": "#a1887f",
-        "400": "#8d6e63",
-        "500": "#795548",
-        "600": "#6d4c41",
-        "700": "#5d4037",
-        "800": "#4e342e",
-        "900": "#3e2723",
-        trans: "rgba(62,39,35,0.5)",
-        transLight: "rgba(62,39,35,0.1)",
-        transDark: "rgba(62,39,35,0.35)"
-      },
+      // brown: {
+      //   "50": "#efebe9",
+      //   "100": "#d7ccc8",
+      //   "200": "#bcaaa4",
+      //   "300": "#a1887f",
+      //   "400": "#8d6e63",
+      //   "500": "#795548",
+      //   "600": "#6d4c41",
+      //   "700": "#5d4037",
+      //   "800": "#4e342e",
+      //   "900": "#3e2723",
+      //   trans: "rgba(62,39,35,0.5)",
+      //   transLight: "rgba(62,39,35,0.1)",
+      //   transDark: "rgba(62,39,35,0.35)"
+      // },
 
       gray: {
         "50": "#fafafa",
@@ -120,23 +119,23 @@ module.exports = ({ colors = defaultColors, darkMode = true, ...config }) => ({
         trans: "rgba(250, 250, 250, 0.5)",
         transLight: "rgba(250, 250, 250, 0.1)",
         transDark: "rgba(100, 100, 100, 0.2)"
-      },
-
-      "blue-gray": {
-        "50": "#eceff1",
-        "100": "#cfd8dc",
-        "200": "#b0bec5",
-        "300": "#90a4ae",
-        "400": "#78909c",
-        "500": "#607d8b",
-        "600": "#546e7a",
-        "700": "#455a64",
-        "800": "#37474f",
-        "900": "#263238",
-        trans: "rgb(236,239,241,0.5)",
-        transLight: "rgb(236,239,241,0.6)",
-        transDark: "rgb(236,239,241,0.2)"
       }
+
+      // "blue-gray": {
+      //   "50": "#eceff1",
+      //   "100": "#cfd8dc",
+      //   "200": "#b0bec5",
+      //   "300": "#90a4ae",
+      //   "400": "#78909c",
+      //   "500": "#607d8b",
+      //   "600": "#546e7a",
+      //   "700": "#455a64",
+      //   "800": "#37474f",
+      //   "900": "#263238",
+      //   trans: "rgb(236,239,241,0.5)",
+      //   transLight: "rgb(236,239,241,0.6)",
+      //   transDark: "rgb(236,239,241,0.2)"
+      // }
     }
   },
   plugins: [

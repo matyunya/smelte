@@ -20,12 +20,12 @@ const postcssProcessor = ({
 }) => {
   const tailwindConfig = require("./tailwind.config.js")(tailwind);
   return [
-    ...postcss,
     require("postcss-import")(),
     require("postcss-url")(),
     require("postcss-input-range")(),
     require("autoprefixer")(),
     require("tailwindcss")(tailwindConfig),
+    ...postcss,
     purge &&
       require("cssnano")({
         preset: "default"

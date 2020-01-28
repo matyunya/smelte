@@ -21,7 +21,7 @@
   <input bind:value class="hidden" type="checkbox" on:change />
   <div
     class={trackClasses}
-    class:bg-gray-300={!value}
+    class:bg-gray-700={!value}
     class:bg-primary-200={value}>
     <div class="w-full h-full absolute" />
     <Ripple color={value && !disabled ? color : 'gray'} noHover>

@@ -10,7 +10,6 @@
   export let subheading = "";
   export let disabled = false;
   export let dense = false;
-  export let navigation = false;
   export let selected = false;
   export let tabindex = null;
   export let wrapperClasses = "hover:bg-gray-transDark relative overflow-hidden transition p-4 cursor-pointer text-gray-700 dark:text-gray-100 flex items-center z-10";
@@ -37,7 +36,6 @@
 <li
   use:ripple
   class="focus:bg-gray-50 dark-focus:bg-gray-700 {wrapperClasses} {selected ? selectedClasses : ""}"
-  class:text-sm={navigation}
   class:py-2={dense}
   class:text-gray-600={disabled}
   {tabindex}

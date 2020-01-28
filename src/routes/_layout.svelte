@@ -35,10 +35,6 @@
   }
 </style>
 
-{#each navMenu as link}
-  <a href={link.to} class="hidden">{link.text}</a>
-{/each}
-
 <svelte:head>
   <title>Smelte: Material design using Tailwind CSS for Svelte</title>
 </svelte:head>
@@ -47,7 +43,7 @@
   <ProgressLinear app />
 {/if}
 
-<AppBar>
+<AppBar color="bg-dark-600">
   <a href="." class="px-2 md:px-8 flex items-center">
     <img src="/logo.png" alt="Smelte logo" width="44" />
     <h6 class="pl-3 text-white tracking-widest font-thin text-lg">SMELTE</h6>
@@ -86,7 +82,7 @@
 </AppBar>
 
 <main
-  class="relative p-8 lg:max-w-3xl lg:ml-64 mx-auto mb-10 mt-24 md:ml-56
+  class="relative p-8 lg:max-w-3xl mx-auto mb-10 mt-24 md:ml-64 md:pl-16
   md:max-w-md md:px-3"
   transition:fade={{ duration: 300 }}>
   <NavigationDrawer
@@ -94,7 +90,7 @@
     right={$right}
     persistent={$persistent}
     elevation={$elevation}>
-    <h6 class="px-3 ml-1 pb-2 pt-4 text-xs text-gray-900 dark:text-gray-100">
+    <h6 class="px-3 ml-1 pb-2 pt-8 text-sm text-gray-900 font-light dark:text-gray-100">
       Components
     </h6>
     <List items={navMenu}>
@@ -102,7 +98,7 @@
         {#if item.to === '/typography'}
           <hr class="mt-4" />
           <h6
-            class="px-3 ml-1 pb-2 pt-4 text-xs text-gray-900 dark:text-gray-100">
+            class="px-3 ml-1 pb-2 pt-8 text-sm text-gray-900 font-light dark:text-gray-100">
             Utilities
           </h6>
         {/if}
@@ -113,8 +109,8 @@
             text={item.text}
             to={item.to}
             selected={path.includes(item.to)}
-            selectedClasses="bg-primary-transDark hover:bg-primary-transDark"
             dense
+            selectedClasses="bg-primary-transDark dark:bg-primary-transLight hover:bg-primary-transDark dark-hover:bg-primary-transLight"
             navigation />
         </a>
       </span>

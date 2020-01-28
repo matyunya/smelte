@@ -6,6 +6,12 @@
   import buttons from "examples/buttons.txt";
 </script>
 
+<blockquote
+  class="pl-8 mt-2 mb-10 border-l-8 border-primary-300 text-lg"
+  cite="https://material.io/components/buttons/">
+  <p>Buttons allow users to take actions, and make choices, with a single tap.</p>
+</blockquote>
+
 <h6 class="mb-3 mt-6">Basic</h6>
 <div class="py-2">
   <Button>Button</Button>

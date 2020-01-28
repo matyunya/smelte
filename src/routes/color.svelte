@@ -36,8 +36,8 @@ gives element appropriate background color:
 
 <span class="code-inline">.text-{'{color}-{variant}'}</span>
 changes text color accordingly:
-<Code code={'<h4 class="text-lime-500">This header is lime</h4>'} />
-<h4 class="text-lime-500">This header is lime</h4>
+<Code code={'<h4 class="text-error-500">This header is error</h4>'} />
+<h4 class="text-error-500">This header is error color</h4>
 
 <h5 class="mt-6 mb-2">Border</h5>
 Same principle applies to border, but there are also border width
@@ -48,4 +48,6 @@ helpers.
 <Code
   code={'<div class="border-2 border-secondary-600 p-4">This div has secondary border</div>'} />
 
-<div class="border-2 border-secondary-600 p-4">This div has secondary color border</div>
+<div class="border-2 border-secondary-600 p-4">
+  This div has secondary color border
+</div>

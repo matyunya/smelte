@@ -11,6 +11,12 @@
   import PropsTable from "docs/PropsTable.svelte";
 </script>
 
+<blockquote
+  class="pl-8 mt-2 mb-10 border-l-8 border-primary-300 text-lg"
+  cite="https://material.io/components/selection-controls/">
+  <p>Selection controls allow the user to select options.</p>
+</blockquote>
+
 <h5 class="pb-8 pt-10" id="checkboxes">Checkboxes</h5>
 
 <Checkbox label="A checkbox" />

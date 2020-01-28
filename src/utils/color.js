@@ -24,13 +24,13 @@ function buildPalette(hex) {
   return {
     transLight: tinycolor(lightest[50])
       .toRgbString()
-      .replace(")", ", 0.1)"),
+      .replace(")", ", 0.15)"),
     trans: tinycolor(lightest[50])
       .toRgbString()
       .replace(")", ", 0.7)"),
     transDark: tinycolor(hex)
       .toRgbString()
-      .replace(")", ", 0.1)"),
+      .replace(")", ", 0.15)"),
 
     ...o(tinycolor.mix(white, hex, 12), "50"),
     ...lightest,

@@ -49,7 +49,7 @@
   outlined
   removable
   selectable
-  color="yellow"
+  color="alert"
   on:close={() => (closed = true)}
   on:click={() => (clicked = true)}>
   Plants
@@ -59,7 +59,7 @@
   outlined
   removable
   selectable
-  color="teal"
+  color="secondary"
   on:close={() => (closed = true)}
   on:click={() => (clicked = true)}>
   Parents

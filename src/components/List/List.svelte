@@ -4,7 +4,6 @@
   export let items = [];
   export let value = "";
   export let dense = false;
-  export let navigation = false;
   export let select = false;
 
   export const level = null;
@@ -16,11 +15,6 @@
 
   let className = "";
   export {className as class};
-
-  const props = {
-    dense,
-    navigation
-  };
 
   function id(i) {
     if (i.id !== undefined) return i.id;
@@ -41,22 +35,22 @@
   <ul class={listClasses} class:rounded-t-none={select}>
     {#each items as item, i}
       {#if item.to !== undefined}
-        <slot name="item" {item} {dense} {navigation} {value}>
+        <slot name="item" {item} {dense} {value}>
           <a tabindex={i + 1} href={item.to}>
-            <ListItem bind:value {...item} id={id(item)} {...props} on:change>
+            <ListItem bind:value {...item} id={id(item)} {dense} on:change>
               {item.text}
             </ListItem>
           </a>
         </slot>
       {:else}
-        <slot name="item" {item} {dense} {navigation} {value}>
+        <slot name="item" {item} {dense} {value}>
           <ListItem
             bind:value
             {...item}
             tabindex={i + 1}
             id={id(item)}
             selected={value === id(item)}
-            {...props}
+            {dense}
             on:change
             on:click>
             {getText(item)}

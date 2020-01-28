@@ -20,12 +20,14 @@ export const navMenu = [
   { to: "/components/date-pickers", text: "Date pickers" },
   { to: "/typography", text: "Typography" },
   { to: "/color", text: "Color" },
-  { to: "/breakpoints", text: "Breakpoints" }
+  { to: "/breakpoints", text: "Breakpoints" },
+  { to: "/dark-mode", text: "Dark mode" }
 ];
 
 export const topMenu = [
   { to: "/components", text: "Components" },
   { to: "/typography", text: "Typography" },
   { to: "/color", text: "Color" },
-  { to: "/breakpoints", text: "Breakpoints" }
+  { to: "/breakpoints", text: "Breakpoints" },
+  { to: "/dark-mode", text: "Dark mode" }
 ];

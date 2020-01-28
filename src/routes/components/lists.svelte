@@ -60,7 +60,7 @@
 <Tabs
   selected="1"
   class="elevation-3 mt-6 rounded-t-lg"
-  notSelectedColor="{!$darkMode ? 'black' : 'white'}"
+  notSelectedColor="gray"
   color="primary"
   let:selected
   items={[

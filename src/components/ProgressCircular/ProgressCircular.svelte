@@ -2,14 +2,18 @@
   export let progress = null;
   export let color = "primary";
   export let width = 3;
+  export let size = 70;
+
+  $: style = progress > 0 ? `
+      animation: none;
+      stroke-dasharray: ${150000 - progress * 1000};
+      stroke-dashoffset: -${124 - (progress * 124) / 100};
+    ` : "";
 </script>
 
 <style>
-  /* kudos https://codepen.io/shalimano/pen/wBmNGJ */
   .circular {
     animation: rotate 2s linear infinite;
-    width: 70px;
-    height: 70px;
     position: relative;
   }
 
@@ -42,18 +46,14 @@
   }
 </style>
 
-<svg class="circular">
+<svg class="circular" style="width: {size}px; height: {size}px;">
   <circle
     class="path stroke-{color}"
-    cx="35"
-    cy="35"
-    r="20"
+    cx={size / 2}
+    cy={size / 2}
     fill="none"
+    r={(size / 2) - (size / 5)}
     stroke-width={width}
     stroke-miterlimit="10"
-    style="{progress > 0 ? `
-        animation: none;
-        stroke-dasharray: ${150000 - progress * 1000};
-        stroke-dashoffset: -${124 - (progress * 124) / 100};
-      ` : ""};" />
+    {style} />
 </svg>

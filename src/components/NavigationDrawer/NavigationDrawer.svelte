@@ -13,7 +13,7 @@
   export let asideClasses = "fixed top-0 md:mt-16 w-auto drawer overflow-hidden";
   export let navClasses = `h-full w-full bg-white dark:bg-gray-900 dark:text-gray-200 absolute flex w-auto z-20 drawer
     pointer-events-auto overflow-y-auto`;
-  export let borderClasses = "border-gray-400 border-r border-l";
+  export let borderClasses = `border-gray-600 ${right ? "border-l" : "border-r"}`;
 
   export let transitionProps = {
     duration: 200,
@@ -29,7 +29,7 @@
 
 <style>
   .drawer {
-    min-width: 216px;
+    min-width: 250px;
   }
 
   .aside {
