@@ -90,7 +90,9 @@
     right={$right}
     persistent={$persistent}
     elevation={$elevation}>
-    <h6 class="px-3 ml-1 pb-2 pt-8 text-sm text-gray-900 font-light dark:text-gray-100">
+    <h6
+      class="px-3 ml-1 pb-2 pt-8 text-sm text-gray-900 font-light
+      dark:text-gray-100">
       Components
     </h6>
     <List items={navMenu}>
@@ -98,7 +100,8 @@
         {#if item.to === '/typography'}
           <hr class="mt-4" />
           <h6
-            class="px-3 ml-1 pb-2 pt-8 text-sm text-gray-900 font-light dark:text-gray-100">
+            class="px-3 ml-1 pb-2 pt-8 text-sm text-gray-900 font-light
+            dark:text-gray-100">
             Utilities
           </h6>
         {/if}
@@ -110,7 +113,8 @@
             to={item.to}
             selected={path.includes(item.to)}
             dense
-            selectedClasses="bg-primary-transDark dark:bg-primary-transLight hover:bg-primary-transDark dark-hover:bg-primary-transLight"
+            selectedClasses="bg-primary-transDark dark:bg-primary-transLight
+            hover:bg-primary-transDark dark-hover:bg-primary-transLight"
             navigation />
         </a>
       </span>
