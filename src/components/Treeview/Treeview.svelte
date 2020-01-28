@@ -16,10 +16,9 @@
   export let expandIcon = "arrow_right";
   export let selectable = true;
   export let selected = null;
-  export let listClasses = "rounded";
   export let selectedClasses = "bg-primary-trans";
 
-  const className = "";
+  const className = "rounded";
   export {className as class};
 
   let expanded = [];
@@ -43,7 +42,7 @@
 <List
   {items}
   {...$$props}
-  {listClasses}
+  {className}
 >
   <span slot="item" let:item>
     <ListItem

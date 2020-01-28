@@ -8,8 +8,8 @@ import { ListItem } from "./components/List/";
 import Icon from "./components/Icon";
 import Menu from "./components/Menu";
 import NavigationDrawer from "./components/NavigationDrawer";
-import Checkbox from "./components/Checkbox";
-import RadioButton from "./components/RadioButton";
+import Checkbox, { Label as SelectionLabel } from "./components/Checkbox";
+import RadioButtonGroup, { RadioButton } from "./components/RadioButton";
 import AppBar from "./components/AppBar";
 import Select from "./components/Select";
 import ProgressLinear from "./components/ProgressLinear";
@@ -36,7 +36,9 @@ export {
   Dialog,
   Image,
   Checkbox,
+  SelectionLabel,
   RadioButton,
+  RadioButtonGroup,
   List,
   ListItem,
   Menu,

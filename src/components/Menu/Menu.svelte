@@ -4,12 +4,34 @@
   import { quadOut, quadIn } from "svelte/easing";
   import List from "../List";
   import TextField from "../TextField";
+  import { ClassBuilder } from "../../utils/classes.js";
+
+  const classesDefault = "cursor-pointer relative inline-flex";
+  const listClassesDefault = "absolute w-full bottom-0";
 
   export let items = [];
   export let open = false;
   export let value = null;
-  export let wrapperClasses = "cursor-pointer relative inline-flex";
-  export let listWrapperClasses = "absolute w-full bottom-0";
+  export let classes = classesDefault;
+  export let listClasses = listClassesDefault;
+
+  let className = "";
+  export {className as class};
+  
+  const cb = new ClassBuilder(className);
+
+  $: c = cb
+    .flush()
+    .add(classes, true, classesDefault)
+    .add(className)
+    .get();
+
+  const lcb = new ClassBuilder(listClasses, listClassesDefault);
+
+  $: l = lcb
+      .flush()
+      .add(listClasses, true, listClassesDefault)
+      .get();
 
   const dispatch = createEventDispatcher();
 
@@ -19,11 +41,11 @@
 
 <svelte:window on:click={() => (open = false)} />
 
-<div class={wrapperClasses} on:click|stopPropagation>
+<div class={c} on:click|stopPropagation>
   <slot name="activator" />
   <slot name="menu">
     {#if open}
-      <div class={listWrapperClasses} in:fly={inProps} out:fly={outProps}>
+      <div class={l} in:fly={inProps} out:fly={outProps}>
         <List
           bind:value
           select

@@ -1,6 +1,12 @@
 <script>
   import Icon from "../Icon";
   import Ripple from "../Ripple";
+  import Label from "../Checkbox/Label.svelte";
+  import { ClassBuilder } from "../../utils/classes.js";
+
+  const classesDefault = "inline-flex block items-center mb-2 cursor-pointer z-0";
+  let className = "";
+  export {className as class};
 
   export let selected = "";
   export let label = "";
@@ -8,7 +14,8 @@
   export let disabled = false;
   export let name = "";
   export let value = "";
-  export let wrapperClasses = "inline-flex block items-center mb-2 cursor-pointer z-0";
+  export let classes = classesDefault;
+  export let labelClasses = "";
 
   function select() {
     if (disabled) return;
@@ -16,11 +23,18 @@
     selected = value;
   }
 
+  const cb = new ClassBuilder(classes, classesDefault);
+  $: c = cb
+    .flush()
+    .add(classes, true, classesDefault)
+    .add(className)
+    .get();
+
   $: rippleColor = value && !disabled ? color : 'gray';
 </script>
 
 <div
-  class={wrapperClasses}
+  class={c}
   on:click={select}>
   <input
     aria-label={label}
@@ -42,10 +56,7 @@
       {/if}
     </Ripple>
   </div>
-  <label
-    aria-hidden="true"
-    class="pl-2 cursor-pointer {disabled ? 'text-gray-500 dark:text-gray-600' : 'text-gray-700 dark:text-gray-300'}"
-   >
-    {label}
-  </label>
+  <slot name="label">
+    <Label {disabled} {label} class={labelClasses} />
+  </slot>
 </div>

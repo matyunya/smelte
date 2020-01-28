@@ -33,7 +33,7 @@
 
   $: t = tcb
     .flush()
-    .add(titleClassesDefault, true, actionsClassesDefault)
+    .add(titleClasses, true, actionsClassesDefault)
     .get();
 
   $: a = acb

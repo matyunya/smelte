@@ -1,4 +1,5 @@
 <script>
+  import Label from "./Label.svelte";
   import { createEventDispatcher } from "svelte";
   import { ClassBuilder } from "../../utils/classes.js";
 
@@ -13,6 +14,7 @@
   export let checked = false;
   export let disabled = false;
   export let classes = classesDefault;
+  export let labelClasses = "";
 
   const dispatch = createEventDispatcher();
 
@@ -50,11 +52,8 @@
         {/if}
       </Ripple>
     </div>
-    <label
-      aria-hidden="true"
-      class="pl-2 cursor-pointer {disabled ? 'text-gray-500 dark:text-gray-600' : 'text-gray-700 dark:text-gray-300'}"
-    >
-      {label}
-    </label>
+    <slot name="label">
+      <Label {disabled} {label} class={labelClasses} />
+    </slot>
   </div>
 </div>

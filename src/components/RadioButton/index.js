@@ -1,3 +1,6 @@
-import Group from "./RadioButtonGroup.svelte";
+import RadioButtonGroup from "./RadioButtonGroup.svelte";
+import RadioButton from "./RadioButton.svelte";
 
-export default Group;
+export default RadioButtonGroup;
+
+export { RadioButton };

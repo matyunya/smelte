@@ -1,7 +1,7 @@
 <script>
   import { 
     Checkbox,
-    RadioButton,
+    RadioButtonGroup,
     Switch,
     Icon,
    } from "smelte";
@@ -35,16 +35,16 @@
 
 <h5 class="pb-8 pt-10" id="radio-buttons">Radio buttons</h5>
 
-<RadioButton
+<RadioButtonGroup
   name="test"
   items={[{ value: 1, label: 'One' }, { value: 2, label: 'Two' }]} />
 
-<RadioButton
+<RadioButtonGroup
   name="Colored test"
   color="blue"
   items={[{ value: 1, label: 'One' }, { value: 2, label: 'Two' }]} />
 
-<RadioButton
+<RadioButtonGroup
   name="test-disabled"
   disabled
   items={[{ value: 1, label: 'One' }, { value: 2, label: 'Two' }]} />
