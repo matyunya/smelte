@@ -119,7 +119,7 @@
             dense
             selectedClasses="bg-primary-transDark dark:bg-primary-transLight
             hover:bg-primary-transDark dark-hover:bg-primary-transLight"
-            navigation />
+          />
         </a>
       </span>
     </List>

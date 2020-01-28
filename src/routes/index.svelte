@@ -19,5 +19,5 @@
   design defaults in
   <a class="a" href="/typography">typography</a>
   and
-  <a class="a" href="/colors">color.</a>
+  <a class="a" href="/color">color.</a>
 </p>
