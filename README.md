@@ -2,6 +2,7 @@
 [![license](https://img.shields.io/npm/l/smelte.svg)](https://img.shields.io/npm/l/smelte.svg)
 [![downloads](https://img.shields.io/npm/dm/smelte.svg)](https://img.shields.io/npm/dm/smelte.svg)
 [![version](https://img.shields.io/npm/v/smelte.svg)](https://img.shields.io/npm/v/smelte.svg)
+[![Discord Chat](https://img.shields.io/discord/671589733356535818.svg)](https://discord.gg/)  
 
 [Demo](http://smeltejs.com/)
 
