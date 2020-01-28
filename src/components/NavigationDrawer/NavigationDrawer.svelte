@@ -10,7 +10,7 @@
   export let persistent = false;
   export let elevation = true;
   export let show = $bp !== 'sm';
-  export let asideClasses = "fixed top-0 md:mt-16 w-auto drawer overflow-hidden";
+  export let asideClasses = "fixed top-0 md:mt-16 w-auto drawer overflow-hidden h-full";
   export let navClasses = `h-full w-full bg-white dark:bg-gray-900 dark:text-gray-200 absolute flex w-auto z-20 drawer
     pointer-events-auto overflow-y-auto`;
   export let borderClasses = `border-gray-600 ${right ? "border-l" : "border-r"}`;
@@ -41,8 +41,6 @@
   <aside
     class="{asideClasses} {!elevation && persistent ? borderClasses : ""}"
     class:right-0={right}
-    class:aside={$bp !== "sm"}
-    class:h-full={$bp === "sm"}
     class:left-0={!right}
     class:pointer-events-none={persistent}
     class:z-50={!persistent}

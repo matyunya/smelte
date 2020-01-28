@@ -39,8 +39,7 @@ export default {
       }),
       svelte({
         dev,
-        hydratable: true,
-        emitCss: true
+        hydratable: true
       }),
       !dev && smelte(),
       resolve(),
