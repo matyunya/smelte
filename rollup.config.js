@@ -42,6 +42,7 @@ export default {
         hydratable: true,
         emitCss: true
       }),
+      !dev && smelte(),
       resolve(),
       commonjs(),
       includePaths({ paths: ["./src", "./"] }),

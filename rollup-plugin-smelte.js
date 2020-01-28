@@ -14,8 +14,8 @@ const defaultWhitelistPatterns = [
 const postcssProcessor = ({
   tailwind = {},
   postcss = [],
-  whitelist = [],
-  whitelistPatterns = [],
+  whitelist = defaultWhitelist,
+  whitelistPatterns = defaultWhitelistPatterns,
   purge = false
 }) => {
   const tailwindConfig = require("./tailwind.config.js")(tailwind);
@@ -39,15 +39,15 @@ const postcssProcessor = ({
             extensions: ["svelte"]
           }
         ],
-        whitelist: [whitelist, ...defaultWhitelist],
-        whitelistPatterns: [defaultWhitelistPatterns, ...whitelistPatterns]
+        whitelist: whitelist.filter(Boolean),
+        whitelistPatterns: whitelistPatterns.filter(Boolean)
       })
   ].filter(Boolean);
 };
 
 const plugins = config => postcssProcessor(config || {});
 
-export default config =>
+export default (config = {}) =>
   postcss({
     plugins: plugins(config),
     extract: path.resolve(__dirname, config.output || "./static/global.css")

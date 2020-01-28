@@ -43,6 +43,10 @@
   <ProgressLinear app />
 {/if}
 
+{#each navMenu as link}
+  <a href={link.to} class="hidden">{link.text}</a>
+{/each}
+
 <AppBar color="bg-dark-600">
   <a href="." class="px-2 md:px-8 flex items-center">
     <img src="/logo.png" alt="Smelte logo" width="44" />

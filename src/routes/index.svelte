@@ -10,7 +10,8 @@
   both JS (670 vs 50 Kb) and CSS (110 vs ~10 Kb) payloads of even the most
   <a class="a" href="https://vuetifyjs.com/en/examples/layouts/baseline">
     basic Vuetify example layout
-  </a>&nbsp;), and of course has dark mode.
+  </a>
+  &nbsp;), and of course has dark mode.
 </p>
 
 <p>
