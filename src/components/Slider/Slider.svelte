@@ -1,4 +1,6 @@
 <script>
+  import { ClassBuilder } from "../../utils/classes.js";
+
   import Ripple from "../Ripple";
 
   export let value = 0;
@@ -8,6 +10,19 @@
   export let min = 0;
   export let max = 100;
   export let step = null;
+
+  const classesDefault = `bg-${color}-50 w-full rounded cursor-pointer`;
+  let className = "";
+  export let classes = classesDefault;
+
+  export {className as class};
+  const cb = new ClassBuilder(classes, classesDefault);
+
+  $: c = cb
+    .flush()
+    .add(classes, true, classesDefault)
+    .add(className)
+    .get();
 
   $: style = disabled
     ? ""
@@ -27,7 +42,7 @@
 <input
   use:applyColor
   type="range"
-  class="bg-{color}-50 w-full rounded cursor-pointer"
+  class={c}
   {min}
   {max}
   {step}

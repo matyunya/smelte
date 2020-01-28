@@ -80,7 +80,7 @@
   <Button block disabled>Button</Button>
 </div>
 
-<h6 class="mb-3 mt-6">FAB <a href="https://material.io/components/buttons-floating-action-button/">(Floating action button)</a></h6>
+<h6 class="mb-3 mt-6">FAB <a class="a" href="https://material.io/components/buttons-floating-action-button/">(Floating action button)</a></h6>
 <div class="py-2">
   <Button color="alert" icon="change_history" />
 </div>
