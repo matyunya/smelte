@@ -1,15 +1,26 @@
 <script>
-  let className = "";
-  export {className as class};
+  import { ClassBuilder } from "../../utils/classes.js";
+
   export const hover = true;
   export let title = "";
   export let subheader = "";
   export let avatar = "";
 
-  export let wrapperClasses = "flex px-4 py-2 items-center";
+  const classesDefault = "flex px-4 py-2 items-center";
+  export let classes = classesDefault;
+  let className = "";
+  export {className as class};
+
+  const cb = new ClassBuilder(classes, classesDefault);
+
+  $: c = cb
+    .flush()
+    .add(classes, true, classesDefault)
+    .add(className)
+    .get();
 </script>
 
-<div class="{className} {wrapperClasses}">
+<div class={c}>
   <div>
     <img
       class="rounded-full"

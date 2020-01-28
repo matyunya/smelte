@@ -14,10 +14,12 @@
   ), and of course has dark mode.
 </p>
 
-<p>
+<p class="pb-4">
   Tailwind resets much of CSS whereas Smelte tries to bring sensible Material
   design defaults in
   <a class="a" href="/typography">typography</a>
   and
   <a class="a" href="/color">color.</a>
 </p>
+
+<p>Hit up the components <a class="a" href="/components">introduction</a> or please join our <a class="a" href="https://discord.gg/xHGvqj">Discord chat</a> for a lovely chat!</p>

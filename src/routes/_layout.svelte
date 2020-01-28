@@ -47,7 +47,7 @@
   <a href={link.to} class="hidden">{link.text}</a>
 {/each}
 
-<AppBar color="bg-dark-600">
+<AppBar class={i => i.replace("primary-300", "dark-600")}>
   <a href="." class="px-2 md:px-8 flex items-center">
     <img src="/logo.png" alt="Smelte logo" width="44" />
     <h6 class="pl-3 text-white tracking-widest font-thin text-lg">SMELTE</h6>

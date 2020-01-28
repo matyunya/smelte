@@ -60,6 +60,11 @@
   ], $$props);
 
   $: iconClass = selected ? `hover:${bg(300)} ${bg(400)}` : "hover:bg-gray-400 bg-gray-500 dark:bg-gray-800";
+
+   $: c = cb
+      .flush()
+      .add(className)
+      .get();
 </script>
 
 <style>
@@ -69,7 +74,7 @@
 </style>
 
 {#if value}
-  <span class="{className} mx-1 inline-block" out:scale={{ duration: 100 }}>
+  <span class="{c} mx-1 inline-block" out:scale={{ duration: 100 }}>
     <button
       class={classes}
       on:click
@@ -88,7 +93,7 @@
         <span
           class="rounded-full p-1/2 inline-flex items-center cursor-pointer {iconClass}"
           on:click|stopPropagation={close}>
-          <Icon class="text-white dark:text-gray-600" xs>clear</Icon>
+          <Icon class="text-white dark:text-white" xs>clear</Icon>
         </span>
       {/if}
     </button>

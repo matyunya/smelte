@@ -6,7 +6,7 @@
   export let label = "";
   export let color = "primary";
   export let disabled = false;
-  export const name = "";
+  export let name = "";
   export let value = "";
   export let wrapperClasses = "inline-flex block items-center mb-2 cursor-pointer z-0";
 
@@ -27,6 +27,7 @@
     class="hidden"
     type="radio"
     role="radio"
+    {name}
     selected={selected === value} />
   <div class="relative">
     <Ripple color={rippleColor}>

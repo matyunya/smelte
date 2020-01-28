@@ -3,19 +3,43 @@
   import { onMount } from "svelte";
   import { quadIn } from "svelte/easing";
   import { Scrim } from "../Util";
+  import { ClassBuilder } from "../../utils/classes.js";
+
+  const classesDefault = "items-center z-50 rounded bg-white dark:bg-dark-400 p-4 elevation-4";
+  const titleClassesDefault = "text-lg font-bold pb-4";
+  const actionsClassesDefault = "flex w-full justify-end pt-4";
+  
+  export let value;
+  export let classes = classesDefault;
+  export let titleClasses = titleClassesDefault;
+  export let actionsClasses = actionsClassesDefault;
+  export let opacity = 0.5;
+  export let persistent = false;
+
+  export let transitionProps = { duration: 150, easing: quadIn, delay: 150 };
 
   let className = "";
   export {className as class};
-  export let value;
-  export let wrapperClasses = "items-center z-50 rounded bg-white dark:bg-dark-400 p-4 elevation-4";
-  export let titleClasses = "text-lg font-bold pb-4";
-  export let actionsClasses = "flex w-full justify-end pt-4";
-  export let opacity = 0.5;
-  export let duration = 150;
-  export let delay = 150;
-  export let persistent = false;
 
-  const transitionProps = { duration, easing: quadIn, delay };
+  const cb = new ClassBuilder(classes, classesDefault);
+  const tcb = new ClassBuilder(titleClasses, titleClassesDefault);
+  const acb = new ClassBuilder(actionsClasses, actionsClassesDefault);
+
+  $: c = cb
+    .flush()
+    .add(classes, true, classesDefault)
+    .add(className)
+    .get();
+
+  $: t = tcb
+    .flush()
+    .add(titleClassesDefault, true, actionsClassesDefault)
+    .get();
+
+  $: a = acb
+    .flush()
+    .add(actionsClasses, true, actionsClassesDefault)
+    .get();
 </script>
 
 {#if value}
@@ -24,12 +48,12 @@
     <div class="h-full w-full absolute flex items-center justify-center">
       <div
         in:scale={transitionProps}
-        class="{className} {wrapperClasses}">
-        <div class={titleClasses}>
+        class={c}>
+        <div class={t}>
           <slot name="title" />
         </div>
         <slot />
-        <div class={actionsClasses}>
+        <div class={a}>
           <slot name="actions" />
         </div>
       </div>
