@@ -1,12 +1,22 @@
 <script>
   import { scale, fade } from "svelte/transition";
+  import { ClassBuilder } from "../../utils/classes.js";
+
+  const classesDefault = "tooltip whitespace-no-wrap text-xs absolute mt-2 bg-gray-600 text-gray-50 rounded md:px-2 md:py-2 py-4 px-3 z-30";
+  let className = "";
+  export let classes = classesDefault;
+
+  export {className as class};
   export let show = false;
 
-  const defaultClasses = "tooltip whitespace-no-wrap text-xs absolute mt-2 bg-gray-600 text-gray-50 rounded md:px-2 md:py-2 py-4 px-3 z-30";
-
-  export let classes = i => i;
-
   export let timeout = null;
+
+  const cb = new ClassBuilder(classes, classesDefault);
+  $: c = cb
+    .flush()
+    .add(classes, true, classesDefault)
+    .add(className)
+    .get();
 
   function showTooltip() {
     if (show) return;
@@ -67,7 +77,7 @@
     <div
       in:scale={{ duration: 150 }}
       out:scale={{ duration: 150, delay: 100 }}
-      class={classes(defaultClasses)}
+      class={c}
     >
       <slot />
     </div>
