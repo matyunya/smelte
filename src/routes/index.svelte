@@ -35,14 +35,12 @@
 </p>
 
 <h4 id="installation" class="mt-8 pb-4">Installation</h4>
-
-To get you started you need to add Smelte to your dependencies with your favorite package manager.
-
+To get you started you need to add Smelte to your dependencies with your
+favorite package manager.
 <Code code="$ npm install smelte or yarn install smelte" />
-
 Then you need to add Smelte Rollup plugin (Webpack is on its way).
-
-<Code code={`const smelte = require("smelte/rollup-plugin-smelte");
+<Code
+  code={`const smelte = require("smelte/rollup-plugin-smelte");
 plugins = [
   ...your plugins,
   smelte({
@@ -51,20 +49,21 @@ plugins = [
   }),
 ]`} />
 
+Then you should add Tailwind utilites CSS in your app component.
+<Code code={`import "smelte/src/tailwind.css";`} />
+
 You might also need to include material icons in your template's if you use any:
-
-<Code code={`<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`} />
-
+<Code
+  code={`<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`} />
 Or ship them along with Roboto if you would like to use default material font:
-
-<Code code={`<link
+<Code
+  code={`<link
   href="https://fonts.googleapis.com/css?family=Roboto:300,400,500|Material+Icons&display=swap"
   rel="stylesheet"
 />`} />
-
-And you're good to go and have all the Tailwind CSS power all to yourself!
-
-For treeshaking to work it is recommended to import each component on its own like this:
-
-<Code code={`import Button from "smelte/src/components/Button";
+And you're good to go and have all the Tailwind CSS power all to yourself! For
+treeshaking to work it is recommended to import each component on its own like
+this:
+<Code
+  code={`import Button from "smelte/src/components/Button";
 import Treeview from "smelte/src/components/Treeview";`} />

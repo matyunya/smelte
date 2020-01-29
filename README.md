@@ -31,6 +31,9 @@ plugins = [
 ]
 ```
 
+Then you should add Tailwind utilites CSS in your app component.
+```import "smelte/src/tailwind.css";```
+
 You might also need to include material icons in your template's <head> if you use any:
 ```html
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
