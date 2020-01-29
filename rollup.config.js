@@ -9,11 +9,12 @@ import json from "rollup-plugin-json";
 import config from "sapper/config/rollup.js";
 import includePaths from "rollup-plugin-includepaths";
 import alias from "rollup-plugin-alias";
-import smelte from "./rollup-plugin-smelte";
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
+
+const smelte = require("./rollup-plugin-smelte");
 
 const onwarn = (warning, onwarn) =>
   (warning.code === "CIRCULAR_DEPENDENCY" &&
