@@ -38,11 +38,10 @@
   }
 
   export let classes = classesDefault;
-  const cb = new ClassBuilder(className, classesDefault);
+  const cb = new ClassBuilder(classes, classesDefault);
 
   $: c = cb
     .flush()
-    .add(classes, true, classesDefault)
     .add(selectedClasses, selected, selectedClassesDefault)
     .add("py-2", dense)
     .add("text-gray-600", disabled)

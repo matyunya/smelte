@@ -6,8 +6,8 @@
   import TextField from "../TextField";
   import { ClassBuilder } from "../../utils/classes.js";
 
-  const classesDefault = "cursor-pointer relative inline-flex";
-  const listClassesDefault = "absolute w-full bottom-0";
+  const classesDefault = "cursor-pointer relative";
+  const listClassesDefault = "absolute w-auto top-16 bg-white left-0 bg-white rounded elevation-3 z-20 dark:bg-dark-500";
 
   export let items = [];
   export let open = false;
@@ -31,7 +31,6 @@
 
   $: l = lcb
       .flush()
-      .add(listClasses, true, listClassesDefault)
       .get();
 
   const dispatch = createEventDispatcher();
