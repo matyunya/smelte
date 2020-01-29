@@ -89,7 +89,7 @@
   }
 
   function handleInputClick() {
-    if(autocomplete) {
+    if (autocomplete) {
       showList = true;
     } else {
       showList = !showList;
@@ -104,7 +104,7 @@
     .add(classes, true, classesDefault)
     .add(className)
     .get();
-  
+
   const ocb = new ClassBuilder(optionsClasses, optionsClassesDefault);
   $: o = ocb
     .flush()
