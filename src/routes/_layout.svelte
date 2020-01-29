@@ -64,7 +64,6 @@
         flat
         remove="p-1 h-4 w-4"
         iconClass="text-white"
-        iconClasses={i => i.replace('p-4', 'p-3').replace('m-4', 'm-3')}
         text />
     </span>
     {$darkMode ? 'Disable' : 'Enable'} dark mode
@@ -76,7 +75,6 @@
       flat
       remove="p-1 h-4 w-4"
       iconClass="text-white"
-      iconClasses={i => i.replace('p-4', 'p-3').replace('m-4', 'm-3')}
       text
       on:click={() => showNav.set(!$showNav)} />
   </div>

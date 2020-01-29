@@ -27,9 +27,9 @@
   const classesDefault = 'py-2 px-4 uppercase text-sm font-medium relative overflow-hidden';
   const basicDefault = 'text-white transition';
   const outlinedDefault = 'bg-transparent border border-solid';
-  const textDefault = 'bg-transparent border-none px-3 hover:bg-transparent';
-  const iconDefault = 'p-4 m-4 flex items-center';
-  const fabDefault = 'px-4 hover:bg-transparent';
+  const textDefault = 'bg-transparent border-none px-4 hover:bg-transparent';
+  const iconDefault = 'p-4 flex items-center';
+  const fabDefault = 'hover:bg-transparent';
   const smallDefault = 'p-1 h-4 w-4';
   const disabledDefault = 'bg-gray-300 text-gray-500 dark:bg-dark-400 elevation-none pointer-events-none hover:bg-gray-300 cursor-default';
   const elevationDefault = 'hover:elevation-5 elevation-3';
@@ -84,17 +84,18 @@
       .add(`${txt(lighter)}`, text)
       .add(textClasses, text, textDefault)
       .add(iconClasses, icon, iconDefault)
-      .remove('py-2', icon)
-      .add(fabClasses, fab, fabDefault)
+      .remove("py-2", icon)
       .remove(txt(lighter), fab)
       .add(disabledClasses, disabled, disabledDefault)
       .add(smallClasses, small, smallDefault)
-      .add('flex items-center justify-center', small && icon)
+      .add("flex items-center justify-center", small && icon)
       .add("border-solid", outlined)
       .add("rounded-full", icon)
       .add("w-full", block)
       .add("rounded", basic || outlined || text)
       .add("button", !icon)
+      .add(fabClasses, fab, fabDefault)
+      .add(`hover:${bg("transLight")}`, fab)
       .add(className)
       .remove(remove)
       .replace(replace)
