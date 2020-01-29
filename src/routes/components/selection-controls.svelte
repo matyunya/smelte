@@ -27,7 +27,7 @@
     { prop: "label", description: "Input label", type: "String", default: "Empty&nbsp;string" },
     { prop: "checked", description: "Checked state", default: false, type: "Boolean", },
     { prop: "disabled", description: "Disabled state", default: false, type: "Boolean", },
-    { prop: "wrapperClasses", description: "Classes to pass down to checkbox wrapper", default: "inline-flex items-center mb-2 cursor-pointer z-10", type: "String", },
+    { prop: "classes", description: "Classes to pass down to checkbox wrapper", default: "inline-flex items-center mb-2 cursor-pointer z-10", type: "String", },
   ]}
 />
 
@@ -53,7 +53,7 @@
     { prop: "label", description: "Input label", type: "String", default: "Empty&nbsp;string" },
     { prop: "selected", description: "Selected state", default: false, type: "Boolean", },
     { prop: "disabled", description: "Disabled state", default: false, type: "Boolean", },
-    { prop: "wrapperClasses", description: "Classes to pass down to radio button wrapper", default: "inline-flex block items-center mb-2 cursor-pointer z-0", type: "String", },
+    { prop: "classes", description: "Classes to pass down to radio button wrapper", default: "inline-flex block items-center mb-2 cursor-pointer z-0", type: "String", },
   ]}
 />
 
@@ -68,7 +68,7 @@
     { prop: "color", description: "Color variant, accepts any of the main colors described in Tailwind config", type: "String", default: "primary" },
     { prop: "label", description: "Input label", type: "String", default: "Empty&nbsp;string" },
     { prop: "disabled", description: "Disabled state", default: false, type: "Boolean", },
-    { prop: "wrapperClasses", description: "Classes to pass down to checkbox wrapper", default: "inline-flex block items-center mb-2 cursor-pointer z-0", type: "String", },
+    { prop: "classes", description: "Classes to pass down to checkbox wrapper", default: "inline-flex block items-center mb-2 cursor-pointer z-0", type: "String", },
     { prop: "trackClasses", description: "Track classes", default: "relative w-10 h-auto z-0 rounded-full overflow-visible flex items-center justify-center", type: "String" },
     { prop: "thumbClasses", description: "Thumb classes", default: "rounded-full p-2 w-5 h-5 absolute elevation-3 transition-fast", type: "String" },
     { prop: "labelClasses", description: "Tabel classes", default: "pl-2 cursor-pointer", type: "String" },

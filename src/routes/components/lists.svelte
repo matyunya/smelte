@@ -99,7 +99,7 @@
           { prop: "navigation", description: "Is navigation item", type: "Boolean", default: false },
           { prop: "selected", description: "Is selected", type: "Boolean", default: false },
           { prop: "tabindex", description: "Tab index", type: "Number", default: null },
-          { prop: "wrapperClasses", description: "Item wrapper classes", type: "String", default: "hover:bg-gray-transDark relative overflow-hidden transition p-4 cursor-pointer text-gray-700 flex items-center z-10" },
+          { prop: "classes", description: "Item wrapper classes", type: "String", default: "hover:bg-gray-transDark relative overflow-hidden transition p-4 cursor-pointer text-gray-700 flex items-center z-10" },
           { prop: "itemClasses", description: "Additional item classes", type: "String", default: "empty string" },
           { prop: "selectedClasses", description: "Selected item classes", type: "String", default: "bg-gray-200 hover:bg-primary-transDark" },
         ]}
