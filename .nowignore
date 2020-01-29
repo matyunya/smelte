@@ -1,6 +1,0 @@
-__sapper__/dev
-__sapper__/export
-cypress
-node_modules
-src
-.DS_Store
