@@ -11,11 +11,12 @@
   bundle size and performance at check all thanks to Svelte. The project was
   initially inspired by
   <a class="a" href="https://vuetifyjs.com">Vuetify,</a>
-   but comes at much lower price. The website you're viewing is only a fraction of
-  both JS (670 vs 40 Kb) and CSS (110 vs 10 Kb) payloads of even the most
+  but comes at much lower price. The website you're viewing is only a fraction
+  of both JS (670 vs 40 Kb) and CSS (110 vs 10 Kb) payloads of even the most
   <a class="a" href="https://vuetifyjs.com/en/examples/layouts/baseline">
     basic Vuetify example layout)
-  </a>, and of course has
+  </a>
+  , and of course has
   <a class="a" href="dark-mode">dark mode.</a>
 </p>
 
