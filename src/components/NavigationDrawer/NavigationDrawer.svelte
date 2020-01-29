@@ -53,7 +53,6 @@
 
   $: n = ncb
     .flush()
-    .add(navClasses, true, navClassesDefault)
     .get();
 
 </script>
@@ -63,7 +62,7 @@
     min-width: 250px;
   }
 
-  .aside {
+  aside {
     height: calc(100vh - 4rem);
   }
 </style>
