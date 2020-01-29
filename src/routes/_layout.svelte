@@ -34,7 +34,9 @@
 
 <svelte:head>
   <title>Smelte: Material design using Tailwind CSS for Svelte</title>
-  <meta name="description" content="Smelte: UI framework with very small footprint">
+  <meta
+    name="description"
+    content="Smelte: UI framework with very small footprint" />
 </svelte:head>
 
 {#if $preloading}

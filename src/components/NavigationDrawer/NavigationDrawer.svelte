@@ -14,7 +14,7 @@
   export let right = false;
   export let persistent = false;
   export let elevation = true;
-  export let show = $bp !== 'sm';
+  export let show = true;
   export let classes = classesDefault;
   export let navClasses = navClassesDefault;
   export let borderClasses = `border-gray-600 ${right ? "border-l" : "border-r"}`;
@@ -33,6 +33,8 @@
   $: persistent = show = $bp !== "sm";
 
   const cb = new ClassBuilder(classes, classesDefault);
+
+  if ($bp === 'sm') show = false;
 
   $: c = cb
     .flush()
