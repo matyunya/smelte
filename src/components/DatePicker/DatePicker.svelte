@@ -45,6 +45,7 @@
 <Menu bind:open>
   <div slot="activator">
     <TextField
+      classes={i => i.replace('mb-6', '')}
       value={displayValue}
       {label}
       append={defaultIcon}
@@ -52,7 +53,7 @@
       on:change={changeTextInput}
     />
   </div>
-  <div slot="menu" class="absolute z-20 bg-white dark:bg-dark-400 mt-16">
+  <div slot="menu">
     {#if open}
       <Picker
         bind:value

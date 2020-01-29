@@ -74,7 +74,6 @@
 
   $: iClasses = cb
       .flush()
-      .add(className)
       .remove('pt-6 pb-2', outlined)
       .add('border rounded bg-transparent py-4 transition', outlined)
       .add('border-error-500 caret-error-500', error)
@@ -90,6 +89,7 @@
       .remove('bg-gray-100', disabled)
       .add('bg-gray-50', disabled)
       .add('cursor-pointer', select && !autocomplete)
+      .add(className)
       .remove(remove)
       .replace(replace)
       .extend(extend)
