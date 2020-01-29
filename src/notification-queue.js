@@ -1,4 +1,4 @@
-import { writable, get } from "svelte/store";
+import { writable } from "svelte/store";
 
 function withColor(color, store) {
   return message =>
@@ -6,6 +6,7 @@ function withColor(color, store) {
       ...u,
       {
         message,
+        ts: new Date(),
         color,
         toString() {
           return message;
@@ -26,7 +27,7 @@ export default function notificationQueue() {
 
     remove: i =>
       store.update(u => {
-        u.splice(get(store).indexOf(i), 1);
+        u.splice(i, 1);
         return u;
       })
   };

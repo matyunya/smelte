@@ -42,6 +42,7 @@
 
   let wClasses = i => i;
   let tm;
+  let node;
 
   let bg = () => {};
 
@@ -55,9 +56,9 @@
     value = value;
   }
 
-  const toggler = () => toggle(value, hash);
+  $: toggler = () => toggle(value, hash);
 
-  $: if (value && (running !== hash)) {
+  $: if (value) {
     queue.update(u => [...u, toggler]);
   }
 
@@ -85,8 +86,6 @@
     }, timeout);
   }
 
-  // Classes string update properly but aren't applied to the div
-  // hence the temporary with hardcoded values.
   $: c = cb
       .flush()
       .add(bg(800), color)
@@ -96,6 +95,9 @@
       .add("bottom-0", bottom)
       .add("snackbar", !noAction)
       .get();
+
+  // for some reason it doesn't get updated otherwise
+  $: if (node) node.classList = c;
 
   wClasses = wrapperCb
     .flush()
@@ -115,12 +117,9 @@
   >
     <div class={wClasses}>
       <div
+        bind:this={node}
         in:scale={inProps}
         out:fade={outProps}
-        class={c}
-        class:bg-error-800={color === 'error'}
-        class:bg-gray-800={color === 'gray'}
-        class:bg-alert-800={color === 'alert'}
         on:click={() => value = false}>
         <slot /> 
         {#if !noAction}

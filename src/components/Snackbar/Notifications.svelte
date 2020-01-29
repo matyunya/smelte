@@ -11,6 +11,7 @@
   let message;
   let color = "gray";
   let item;
+  let ts;
 
   $: {
     if (!item) {
@@ -22,18 +23,15 @@
     } else if (item) {
       message = item.toString();
       color = item.color;
+      ts = item.ts;
     }
-  }
-
-  function hash(message) {
-    return message ? `${message}${new Date().valueOf()}` : null;
   }
 
 </script>
 
 <Snackbar
-  value={Boolean(message)}
-  hash={hash(message)}
+  value={ts}
+  hash={ts}
   {color}
   {...item}
   on:finish={() => {
