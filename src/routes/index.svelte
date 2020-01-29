@@ -4,17 +4,21 @@
 
 <h2>Hi</h2>
 <p class="pb-4">
-  Smelte is a UI framework built on top of Svelte and <a class="a" href="https://tailwindcss.com">Tailwind CSS</a> using Material Design spec.
-  It comes with many components and utility functions making it easy to build beautiful responsive layouts while keeping
-  bundle size and performance at check all thanks to Svelte.
-  The project was initially inspired by
+  Smelte is a UI framework built on top of Svelte and
+  <a class="a" href="https://tailwindcss.com">Tailwind CSS</a>
+  using Material Design spec. It comes with many components and utility
+  functions making it easy to build beautiful responsive layouts while keeping
+  bundle size and performance at check all thanks to Svelte. The project was
+  initially inspired by
   <a class="a" href="https://vuetifyjs.com">Vuetify</a>
   , but comes at much lower price. All of this website is only a fraction of
   both JS (670 vs 30 Kb) and CSS (110 vs 10 Kb) payloads of even the most
   <a class="a" href="https://vuetifyjs.com/en/examples/layouts/baseline">
     basic Vuetify example layout
   </a>
-  ), and of course has <a class="a" href="dark-mode">dark mode</a>.
+  ), and of course has
+  <a class="a" href="dark-mode">dark mode</a>
+  .
 </p>
 
 <p class="pb-4">
