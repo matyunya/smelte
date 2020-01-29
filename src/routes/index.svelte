@@ -10,15 +10,13 @@
   functions making it easy to build beautiful responsive layouts while keeping
   bundle size and performance at check all thanks to Svelte. The project was
   initially inspired by
-  <a class="a" href="https://vuetifyjs.com">Vuetify</a>
-  , but comes at much lower price. All of this website is only a fraction of
-  both JS (670 vs 30 Kb) and CSS (110 vs 10 Kb) payloads of even the most
+  <a class="a" href="https://vuetifyjs.com">Vuetify,</a>
+   but comes at much lower price. The website you're viewing is only a fraction of
+  both JS (670 vs 40 Kb) and CSS (110 vs 10 Kb) payloads of even the most
   <a class="a" href="https://vuetifyjs.com/en/examples/layouts/baseline">
-    basic Vuetify example layout
-  </a>
-  ), and of course has
-  <a class="a" href="dark-mode">dark mode</a>
-  .
+    basic Vuetify example layout)
+  </a>, and of course has
+  <a class="a" href="dark-mode">dark mode.</a>
 </p>
 
 <p class="pb-4">
@@ -48,7 +46,22 @@ plugins = [
   ...your plugins,
   smelte({
     purge: production,
-    output: "public/global.css" // it defaults to static/global.css which is probably what you expect in Sapper
+    output: "public/global.css", // it defaults to static/global.css which is probably what you expect in Sapper
+    postcss: [], // Your PostCSS plugins
+    whitelist: [], // Array of classnames whitelisted from purging
+    whitelistPatterns: [], // Same as above, but list of regexes
+    tailwind: {
+      colors: {
+        primary: "#b027b0",
+        secondary: "#009688",
+        error: "#f44336",
+        success: "#4caf50",
+        alert: "#ff9800",
+        blue: "#2196f3",
+        dark: "#212121"
+      }, // Object of colors to generate a palette from, and then all the utility classes
+      darkMode: true,
+    }, // Any other props will be applied on top of default Smelte tailwind.config.js
   }),
 ]`} />
 Then you should add Tailwind utilites CSS in your app component.
