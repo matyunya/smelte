@@ -1,5 +1,5 @@
 <script>
-  import { Checkbox } from "smelte";
+  import Checkbox from "components/Checkbox";
   import Code from "docs/Code.svelte";
 
   import { right, elevation, persistent, showNav } from "stores.js";

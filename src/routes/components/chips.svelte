@@ -1,7 +1,7 @@
 <script>
-  import { Chip } from "smelte";
-  import { Snackbar } from "smelte";
-  import { Button } from "smelte";
+  import Chip from "components/Chip";
+  import Button from "components/Button";
+  import Snackbar from "components/Snackbar";
   import Code from "docs/Code.svelte";
 
   import chip from "examples/chip.txt";

@@ -5,17 +5,8 @@
   "scripts": {
     "dev": "sapper dev -p 7777",
     "build": "rollup -c --config rollup-publish.config.js",
-    "build:site": "sapper build --legacy",
-    "export": "sapper export --legacy",
-    "start": "node __sapper__/build",
-    "serve": "serve __sapper__/export",
-    "local": "yarn export && yarn serve",
-    "cy:run": "cypress run",
-    "lint": "prettier --write --plugin-search-dir=. ./src/**/*",
-    "cy:open": "cypress open",
-    "test": "run-p --race dev cy:run",
-    "now": "yarn build:site && now",
-    "now-build": "sapper build --export"
+    "export": "sapper export --legacy --timeout 30000",
+    "lint": "prettier --write --plugin-search-dir=. ./src/**/*"
   },
   "pre-commit": [
     "lint"

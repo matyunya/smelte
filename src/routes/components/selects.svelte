@@ -1,5 +1,7 @@
 <script>
-  import { Select, Card, Checkbox } from "smelte";
+  import Select from "components/Select";
+  import Card from "components/Card";
+  import Checkbox from "components/Checkbox";
   import Code from "docs/Code.svelte";
   import selects from "examples/selects.txt";
 

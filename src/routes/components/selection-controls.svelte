@@ -1,10 +1,8 @@
 <script>
-  import { 
-    Checkbox,
-    RadioButtonGroup,
-    Switch,
-    Icon,
-   } from "smelte";
+  import Checkbox from "components/Checkbox";
+  import { RadioButtonGroup } from "components/RadioButton";
+  import Switch from "components/Switch";
+  import Icon from "components/Icon";
 
   import Code from "docs/Code.svelte";
   import code from "examples/checkboxes.txt";

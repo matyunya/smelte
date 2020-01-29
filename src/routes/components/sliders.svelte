@@ -1,5 +1,6 @@
 <script>
-  import { Slider, Checkbox } from "smelte";
+  import Slider from "components/Slider";
+  import Checkbox from "components/Checkbox";
   import Code from "docs/Code.svelte";
   import sliders from "examples/sliders.txt";
 

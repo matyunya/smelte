@@ -1,5 +1,6 @@
 <script>
-  import { TextField, DataTable, Label } from "smelte";
+  import TextField, { Label } from "components/TextField";
+  import DataTable from "components/DataTable";
   import Code from "docs/Code.svelte";
   import PropsTable from "docs/PropsTable.svelte";
   import textFields from "examples/text-fields.txt";

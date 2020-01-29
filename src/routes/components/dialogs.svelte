@@ -1,6 +1,6 @@
 <script>
-  import { Dialog } from "smelte";
-  import { Button } from "smelte";
+  import Button from "components/Button";
+  import Dialog from "components/Dialog";
   import Code from "docs/Code.svelte";
   import dialog from "examples/dialog.txt";
 

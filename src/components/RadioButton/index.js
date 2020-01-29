@@ -3,4 +3,4 @@ import RadioButton from "./RadioButton.svelte";
 
 export default RadioButtonGroup;
 
-export { RadioButton };
+export { RadioButton, RadioButtonGroup };

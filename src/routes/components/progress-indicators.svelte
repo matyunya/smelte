@@ -1,6 +1,6 @@
 <script>
-  import { ProgressLinear } from "smelte";
-  import { ProgressCircular } from "smelte";
+  import ProgressLinear from "components/ProgressLinear";
+  import ProgressCircular from "components/ProgressLinear";
 
   import Code from "docs/Code.svelte";
   import indicators from "examples/progress-indicators.txt";

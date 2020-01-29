@@ -1,5 +1,5 @@
 <script>
-  import { DatePicker } from "smelte";
+  import DatePicker from "components/DatePicker";
   import Code from "docs/Code.svelte";
   import datepickers from "examples/date-pickers.txt";
 

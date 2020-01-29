@@ -1,7 +1,7 @@
 <script>
-  import { Card} from "smelte";
-  import { Button } from "smelte";
-  import { Image } from "smelte";
+  import Card from "../../components/Card";
+  import Button from "../../components/Button";
+  import Image from "../../components/Image";
 
   import Code from "docs/Code.svelte";
   import PropsTable from "docs/PropsTable.svelte";

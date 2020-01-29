@@ -1,5 +1,6 @@
 <script>
-  import { Button, Icon } from "smelte";
+  import Button from "components/Button";
+  import Icon from "components/Icon";
   import Code from "docs/Code.svelte";
   import PropsTable from "docs/PropsTable.svelte";
 

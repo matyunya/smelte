@@ -1,6 +1,8 @@
 <script>
   import Code from "docs/Code.svelte";
-  import { List, Icon, Tabs, Tab } from "smelte";
+  import List from "components/List"; 
+  import Icon from "components/Icon"; 
+  import Tabs, { Tab } from "components/Tabs"; 
   import { darkMode } from "../../dark";
 
   import lists from "examples/lists.txt";

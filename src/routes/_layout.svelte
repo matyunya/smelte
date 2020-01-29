@@ -1,15 +1,12 @@
 <script>
-  import {
-    AppBar,
-    Tabs,
-    Button,
-    Spacer,
-    List,
-    ListItem,
-    NavigationDrawer,
-    ProgressLinear,
-    Tooltip
-  } from "smelte";
+  import AppBar from "components/AppBar";
+  import Tabs from "components/Tabs";
+  import Button from "components/Button";
+  import { Spacer } from "components/Util";
+  import List, { ListItem } from "components/List";
+  import NavigationDrawer from "components/NavigationDrawer";
+  import ProgressLinear from "components/ProgressLinear";
+  import Tooltip from "components/Tooltip";
   import { stores } from "@sapper/app";
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";

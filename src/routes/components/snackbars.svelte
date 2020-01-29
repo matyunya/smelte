@@ -1,5 +1,8 @@
 <script>
-  import { Snackbar, notifier, Button, Notifications, TextField } from "smelte";
+  import Snackbar, { notifier, Notifications } from "components/Snackbar";
+  import Button from "components/Button";
+  import TextField from "components/TextField";
+
   import Code from "docs/Code.svelte";
   import snackbars from "examples/snackbars.txt";
 

@@ -1,5 +1,5 @@
 <script>
-  import { Treeview } from "smelte";
+  import Treeview from "components/Treeview";
   import Code from "docs/Code.svelte";
   import treeview from "examples/treeview.txt";
 
