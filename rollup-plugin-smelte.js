@@ -47,7 +47,7 @@ const postcssProcessor = ({
 
 const plugins = config => postcssProcessor(config || {});
 
-export default (config = {}) =>
+module.exports = (config = {}) =>
   postcss({
     plugins: plugins(config),
     extract: path.resolve(__dirname, config.output || "./static/global.css")
