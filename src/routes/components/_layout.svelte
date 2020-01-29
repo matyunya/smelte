@@ -8,7 +8,7 @@
 
 <svelte:head>
   <title>
-    {name} | Smelte the UI framework. Svelte, Tailwind and Material Design rocking together.
+    {name} | Smelte the framework.
   </title>
    <meta name="description" content="Smelte documentation. {name}">
 </svelte:head>
