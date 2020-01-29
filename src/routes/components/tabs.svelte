@@ -27,7 +27,7 @@
 <div style="max-width: 400px">
   <Tabs
     selected="1"
-    class="bg-black elevation-10 mt-6 text-white rounded-t-lg"
+    class="bg-black elevation-10 mt-6 text-white"
     color="secondary"
     let:selected
     {loading}
@@ -38,8 +38,7 @@
     ]}>
     <div
       slot="content"
-      class="flex items-center content-center overflow-hidden w-full bg-gray-900
-      h-full"
+      class="flex items-center content-center overflow-hidden w-full bg-gray-900 elevation-3 h-full"
       style="height: 250px">
       <Tab id="1" {selected}>
         <Image

@@ -59,8 +59,8 @@
 
 <Tabs
   selected="1"
-  class="elevation-3 mt-6 rounded-t-lg"
-  notSelectedColor="gray"
+  class="elevation-3 mt-6 rounded-t-lg bg-dark-600"
+  notSelectedColor="white"
   color="primary"
   let:selected
   items={[

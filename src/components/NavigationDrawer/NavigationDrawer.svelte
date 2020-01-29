@@ -39,6 +39,12 @@
     .add(classes, true, classesDefault)
     .add(borderClasses, !elevation && persistent)
     .add(className)
+    .add("right-0", right)
+    .add("left-0", !right)
+    .add("pointer-events-none", persistent)
+    .add("z-50", !persistent)
+    .add("elevation-4", elevation)
+    .add("z-20", persistent)
     .get();
 
   const ncb = new ClassBuilder(navClasses, navClassesDefault);
@@ -63,12 +69,6 @@
 {#if show}
   <aside
     class={c}
-    class:right-0={right}
-    class:left-0={!right}
-    class:pointer-events-none={persistent}
-    class:z-50={!persistent}
-    class:elevation-4={elevation}
-    class:z-20={persistent}
     transition:fly={transitionProps}
   >
     {#if !persistent}

@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { fly } from "svelte/transition";
+  import { ClassBuilder } from "../../utils/classes.js";
 
   import Indicator from "./Indicator.svelte";
   import ProgressLinear from "../ProgressLinear";
@@ -15,6 +15,7 @@
   let className = "";
   export {className as class};
   export let loading = false;
+  export let tabButtonClasses = i => i;
 
   let node;
   let indicatorWidth = 0;
@@ -44,14 +45,27 @@
   onMount(() => calcIndicator(selected));
 
   $: calcIndicator(selected);
+
+  const classesDefault = "y-0 h-full items-center relative mx-auto z-20";
+
+  export let classes = classesDefault;
+
+  const cb = new ClassBuilder(classes, classesDefault);
+  $: c = cb
+    .flush()
+    .add(className)
+    .add('hidden md:flex w-full max-w-2xl', navigation)
+    .add('flex', !navigation)
+    .get();
 </script>
 
 <div
-  class="{className} py-0 h-full {navigation ? 'hidden md:flex w-full max-w-2xl' : 'flex'} items-center relative mx-auto z-20"
+  class={c}
   bind:this={node}>
   {#each items as item, i}
     <slot name="item" {color} {item}>
       <TabButton
+        class={tabButtonClasses}
         bind:selected
         {...item}
         {color}

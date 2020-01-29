@@ -3,7 +3,13 @@
   import { quadOut, quadIn } from "svelte/easing";
   import List from "../List/List.svelte";
   import TextField from "../TextField";
+  import { ClassBuilder } from "../../utils/classes.js";
   import { hideListAction } from '../../utils/hide-list-action';
+
+  const optionsClassesDefault = "absolute left-0 bg-white rounded elevation-3 w-full z-20 dark:bg-dark-500";
+  const classesDefault = "cursor-pointer relative pb-4";
+
+  const noop = i => i;
 
   export let items = [];
   export let value = "";
@@ -20,13 +26,18 @@
   export let persistentHint = false;
   export let autocomplete = false;
   export let noUnderline = false;
-  export let wrapperClasses = "cursor-pointer relative pb-4";
   export let showList = false;
-  export let inputWrapperClasses = i => i;
-  export let appendClasses = i => i;
-  export let labelClasses = i => i;
-  export let inputClasses = i => i;
-  export let prependClasses = i => i;
+  export let classes = classesDefault;
+  export let optionsClasses = optionsClassesDefault;
+
+  export let inputWrapperClasses = noop;
+  export let appendClasses = noop;
+  export let labelClasses = noop;
+  export let inputClasses = noop;
+  export let prependClasses = noop;
+  export let listClasses = noop;
+  export let selectedClasses = noop;
+  export let itemClasses = noop;
 
   export let add = "";
   export let remove = "";
@@ -54,7 +65,7 @@
   };
 
   function process(it) {
-    return it.map(i => typeof i !== 'object'
+    return it.map(i => typeof i !== "object"
      ? ({ value: i, text: i })
      : i);
   }
@@ -78,9 +89,23 @@
   }
 
   const onHideListPanel = () => showList = false;
+
+  const cb = new ClassBuilder(classes, classesDefault);
+  $: c = cb
+    .flush()
+    .add(classes, true, classesDefault)
+    .add(className)
+    .get();
+  
+  const ocb = new ClassBuilder(optionsClasses, optionsClassesDefault);
+  $: o = ocb
+    .flush()
+    .add(optionsClasses, true, optionsClassesDefault)
+    .add("rounded-t-none", !outlined)
+    .get();
 </script>
 
-<div class="{wrapperClasses} {className}" use:hideListAction={onHideListPanel}>
+<div class={c} use:hideListAction={onHideListPanel}>
   <slot name="select">
     <TextField
       select
@@ -89,7 +114,7 @@
       {autocomplete}
       value={selectedLabel}
       {...props}
-      wrapperClasses={inputWrapperClasses}
+      class={inputWrapperClasses}
       {appendClasses}
       {labelClasses}
       {inputClasses}
@@ -106,11 +131,14 @@
   {#if showList}
     <slot name="options">
       <div
-        class="list dark:bg-dark-500"
+        class={o}
         on:click={() => (showList = false)}
-        class:rounded-t-none={!outlined}>
+      >
         <List
           bind:value
+          class={listClasses}
+          {selectedClasses}
+          {itemClasses}
           select
           {dense}
           items={filteredItems}

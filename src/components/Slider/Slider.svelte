@@ -47,7 +47,6 @@
   {max}
   {step}
   {disabled}
-  class:disabled
   bind:value
   on:change
   style={style}

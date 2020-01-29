@@ -12,6 +12,8 @@
   export const text = "";
   export const item = {};
   export const to = null;
+  export const selectedClasses = i => i;
+  export const itemClasses = i => i;
 
   const classesDefault = "py-2 rounded";
 
@@ -57,6 +59,8 @@
       <slot name="item" {item} {dense} {value}>
         <ListItem
           bind:value
+          {selectedClasses}
+          {itemClasses}
           {...item}
           tabindex={i + 1}
           id={id(item)}

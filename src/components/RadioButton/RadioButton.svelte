@@ -15,7 +15,7 @@
   export let name = "";
   export let value = "";
   export let classes = classesDefault;
-  export let labelClasses = "";
+  export let labelClasses = i => i;
 
   function select() {
     if (disabled) return;

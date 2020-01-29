@@ -14,6 +14,7 @@
   export let value = null;
   export let classes = classesDefault;
   export let listClasses = listClassesDefault;
+  export let listProps = {};
 
   let className = "";
   export {className as class};
@@ -51,9 +52,9 @@
           select
           dense
           {items}
-          class="list dark:bg-dark-500"
           on:change
           on:change={() => open = false}
+          {...listProps}
         />
       </div>
     {/if}

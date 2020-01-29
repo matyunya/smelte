@@ -14,7 +14,7 @@
   export let checked = false;
   export let disabled = false;
   export let classes = classesDefault;
-  export let labelClasses = "";
+  export let labelClasses = i => i;
 
   const dispatch = createEventDispatcher();
 

@@ -29,7 +29,7 @@
 
   const l = new ClassBuilder(labelClasses, labelDefault);
 
-  let lClasses = "";
+  let lClasses = i => i;
 
   $: lClasses = l
       .flush()

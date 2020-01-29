@@ -33,9 +33,9 @@
   export let sortable = true;
   export let pagination = true;
   export let scrollToTop = false;
-  export let headerClasses = "";
-  export let paginationClasses = "";
-  export let editableClasses = "";
+  export let headerClasses = i => i;
+  export let paginationClasses = i => i;
+  export let editableClasses = i => i;
   export let paginatorProps = null;
   export let classes = classesDefault;
 

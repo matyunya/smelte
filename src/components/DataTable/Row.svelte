@@ -17,7 +17,7 @@
   export let editable = false;
   export let index = 0;
 
-  export let editableClasses = "";
+  export let editableClasses = i => i;
 
   const dispatch = createEventDispatcher();
 

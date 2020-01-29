@@ -35,13 +35,12 @@
 
   let className = classesDefault;
   export {className as class};
-  export let wrapperClasses = wrapperDefault;
+  export let classes = wrapperDefault;
 
   const cb = new ClassBuilder(className, classesDefault);
-  const wrapperCb = new ClassBuilder(wrapperClasses, wrapperDefault);
+  const wrapperCb = new ClassBuilder(classes, wrapperDefault);
 
-  let classes = "";
-  let wClasses = "";
+  let wClasses = i => i;
   let tm;
 
   let bg = () => {};
@@ -50,18 +49,6 @@
     const u = utils(color || "gray");
     bg = u.bg;
   }
-
-  // Classes string update properly but aren't applied to the div
-  // hence the temporary with hardcoded values.
-  $: classes = cb
-      .flush()
-      .add(bg(800), color)
-      .add("right-0 mr-2", right)
-      .add("top-0 mt-2", top)
-      .add("left-0 ml-2", left)
-      .add("bottom-0", bottom)
-      .add("snackbar", !noAction)
-      .get();
 
   $: {
     hash = hash || (value ? btoa(`${value}${new Date().valueOf()}`) : null);
@@ -98,7 +85,20 @@
     }, timeout);
   }
 
+  // Classes string update properly but aren't applied to the div
+  // hence the temporary with hardcoded values.
+  $: c = cb
+      .flush()
+      .add(bg(800), color)
+      .add("right-0 mr-2", right)
+      .add("top-0 mt-2", top)
+      .add("left-0 ml-2", left)
+      .add("bottom-0", bottom)
+      .add("snackbar", !noAction)
+      .get();
+
   wClasses = wrapperCb
+    .flush()
     .add(`text-${text}`)
     .get();
 </script>
@@ -117,7 +117,7 @@
       <div
         in:scale={inProps}
         out:fade={outProps}
-        class={classes}
+        class={c}
         class:bg-error-800={color === 'error'}
         class:bg-gray-800={color === 'gray'}
         class:bg-alert-800={color === 'alert'}

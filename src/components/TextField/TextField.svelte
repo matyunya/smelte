@@ -32,17 +32,17 @@
   export let iconClass = "";
   export let disabled = false;
 
-  let inputDefault = `transition pb-2 pt-6 px-4 rounded-t text-black dark:text-gray-100 w-full`;
-  let wrapperDefault = "mt-2 mb-6 relative text-gray-600 dark:text-gray-100";
-  let appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 text-gray-700 z-10";
-  let prependDefault = "absolute left-0 top-0 pb-2 pl-2 pt-4 text-xs text-gray-700 z-10";
+  const inputDefault = `transition pb-2 pt-6 px-4 rounded-t text-black dark:text-gray-100 w-full`;
+  const classesDefault = "mt-2 mb-6 relative text-gray-600 dark:text-gray-100";
+  const appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 text-gray-700 z-10";
+  const prependDefault = "absolute left-0 top-0 pb-2 pl-2 pt-4 text-xs text-gray-700 z-10";
 
   export let add = "";
   export let remove = "";
   export let replace = "";
 
   export let inputClasses = inputDefault;
-  export let wrapperClasses = wrapperDefault;
+  export let classes = classesDefault;
   export let appendClasses = appendDefault;
   export let prependClasses = prependDefault;
 
@@ -53,15 +53,18 @@
     caret,
   } = utils(color);
 
-  let classes = new ClassBuilder(inputClasses, inputDefault);
+  const cb = new ClassBuilder(inputClasses, inputDefault);
+  const ccb = new ClassBuilder(classes, classesDefault);
+  const acb = new ClassBuilder(appendClasses, appendDefault);
+  const pcb = new ClassBuilder(prependClasses, prependDefault);
 
   export let extend = () => {};
 
   export let focused = false;
-  let iClasses = "";
-  let wClasses = "";
-  let aClasses = "";
-  let pClasses = "";
+  let iClasses = i => i;
+  let wClasses = i => i;
+  let aClasses = i => i;
+  let pClasses = i => i;
 
   function toggleFocused() {
     focused = !focused;
@@ -70,7 +73,7 @@
   $: showHint = error || (persistentHint ? hint : focused && hint);
   $: labelOnTop = placeholder || focused || value;
 
-  $: iClasses = classes
+  $: iClasses = cb
       .flush()
       .add(className)
       .remove('pt-6 pb-2', outlined)
@@ -92,16 +95,15 @@
       .extend(extend)
       .get();
     
-  $: wrapperClasses, wClasses = (new ClassBuilder(wrapperClasses, wrapperDefault))
-      .flush()
+  $: wClasses = ccb.flush()
       .add('select', select || autocomplete)
       .add('dense', dense)
       .replace({ 'text-gray-600': 'text-error-500' }, error)
       .add('text-gray-200', disabled)
       .get();
 
-  $: aClasses = (new ClassBuilder(appendClasses, appendDefault)).get();
-  $: pClasses = (new ClassBuilder(prependClasses, prependDefault)).get();
+  $: aClasses = acb.flush().get();
+  $: pClasses = pcb.flush().get();
 
   const props = filterProps([
     'outlined',

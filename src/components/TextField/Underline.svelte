@@ -26,7 +26,7 @@
 
   const l = new ClassBuilder(lineClasses, defaultClasses);
 
-  let classes = "";
+  let Classes = i => i;
 
   $: classes = l
       .flush()

@@ -17,7 +17,7 @@
 
   const l = new ClassBuilder(className, className);
 
-  let classes = "";
+  let Classes = i => i;
 
   $: classes = l
       .flush()

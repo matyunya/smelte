@@ -1,7 +1,6 @@
 import Snackbar from "./Snackbar.svelte";
-import N, { notifier as n } from "./Notifications.svelte";
+import Notifications, { notifier } from "./Notifications.svelte";
 
-export const notifier = n;
-export const Notifications = N;
+export { notifier, Notifications };
 
 export default Snackbar;
