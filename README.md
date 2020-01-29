@@ -20,7 +20,7 @@ $ npm install smelte or yarn install smelte
 
 Then you need to add Smelte Rollup plugin (Webpack is on its way).
 ```js
-import smelte from "smelte/rollup-plugin-smelte";
+const smelte = require("smelte/rollup-plugin-smelte");
 
 plugins = [
   ...your plugins,

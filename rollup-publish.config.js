@@ -4,10 +4,9 @@ import bundleSize from "rollup-plugin-bundle-size";
 import commonjs from "rollup-plugin-commonjs";
 import resolve from "rollup-plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
-import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
-import getPreprocessor from "svelte-preprocess";
 import pkg from "./package.json";
+const smelte = require("./rollup-plugin-smelte");
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -33,17 +32,16 @@ export default {
     svelte({
       dev: !production,
       emitCss: true,
-      hydratable: true,
-      preprocess: getPreprocessor({
-        transformers: {
-          postcss: {
-            plugins: require("./postcss.config.js")(false)
-          }
-        }
-      })
+      hydratable: true
     }),
-    postcss({
-      plugins: require("./postcss.config.js")(false)
+    smelte({
+      purge: true,
+      whitelistPatterns: [
+        // for JS ripple
+        /ripple/,
+        // date picker
+        /w\-.\/7/
+      ]
     }),
     resolve(),
     commonjs(),
