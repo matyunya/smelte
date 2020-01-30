@@ -18,7 +18,7 @@
   export let locale = "default";
   export let todayClasses = "text-primary-600 rounded-full border border-primary-600";
   export let selectedClasses = "bg-primary-600 text-white rounded-full";
-  export let closeOnSelect = false;
+  export let closeOnSelect = true;
 
   let hasUserValue = Boolean(value);
 

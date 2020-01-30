@@ -3,7 +3,6 @@
   import { slide, fade, fly } from "svelte/transition";
   import Card from "../Card/Card.svelte";
   import TextField from "../TextField";
-  import Menu from "../Menu";
   import Button from "../Button";
   import Ripple from "../Ripple";
   import { getWeekDays, weekStart } from "./util";
@@ -15,7 +14,7 @@
   export let locale = "default";
   export let todayClasses = "text-primary-600 rounded-full border border-primary-600";
   export let selectedClasses = "bg-primary-600 text-white rounded-full";
-  export let closeOnSelect = false;
+  export let closeOnSelect = true;
   export let paginatorProps = {
     color: "gray",
     text: true,
@@ -93,7 +92,7 @@
 </script>
 
 <div in:slide={{duration: 100}} out:fade={{duration: 50}}>
-  <Card class="p-4 w-auto dark:bg-dark-400 bg-white">
+  <Card class="absolute z-20 p-4 w-auto dark:bg-dark-400 bg-white">
     <div class="flex justify-between mb-4">
       <span class="text-gray-600 uppercase">{year} {month}</span>
       <div class="flex">
