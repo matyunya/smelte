@@ -22,7 +22,7 @@
     "tailwind.config.js",
     "postcss.config.js",
     "src/dark.js",
-    "src/rollup-plugin-smelte.js"
+    "rollup-plugin-smelte.js"
   ],
   "module": "dist/module.js",
   "main": "dist/index.js",
