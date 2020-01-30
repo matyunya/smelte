@@ -68,8 +68,8 @@
         <Header
           class={headerClasses}
           {column}
-          {asc}
-          {sortBy}
+          bind:asc
+          bind:sortBy
           {sortable}
           {editing}
         />
