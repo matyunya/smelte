@@ -9,7 +9,7 @@
   import card from "examples/card.txt";
 </script>
 
-<Card.Card class="dark:bg-gray-200">
+<Card.Card hoverElevation="2" class="dark:bg-gray-200">
   <div slot="title">
     <Card.Title
       class="dark:text-black"
@@ -18,7 +18,7 @@
       avatar="https://placekitten.com/64/64" />
   </div>
   <div slot="media">
-    <Image class="w-full" src="https://placekitten.com/300/200" alt="kitty" />
+    <img class="w-full" src="https://placekitten.com/300/200" alt="kitty" />
   </div>
   <div slot="text" class="p-5 pb-0 pt-3 text-gray-700 body-2">
     The three little kittens, they lost their mittens,

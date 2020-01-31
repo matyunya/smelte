@@ -31,9 +31,17 @@
       class:hidden={!avatar} />
   </div>
   <div class="pl-4 py-2">
-    <div class:hidden={!title} class="font-medium text-lg">{title}</div>
-    <div class="text-sm text-gray-600 pt-0" class:hidden={!subheader}>
-      {subheader}
-    </div>
+    <slot name="title">
+      {#if title}
+        <div class="font-medium text-lg">{title}</div>
+      {/if}
+    </slot>
+    <slot name="subheader">
+      {#if subheader}
+        <div class="text-sm text-gray-600 pt-0">
+          {subheader}
+        </div>
+      {/if}
+    </slot>
   </div>
 </div>
