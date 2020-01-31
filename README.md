@@ -15,7 +15,7 @@ bundle size and performance at check all thanks to Svelte.
 ### Installation
 To get you started you need to add Smelte to your dependencies with your favorite package manager
 ```
-$ npm install smelte or yarn install smelte
+$ npm install smelte or yarn add smelte
 ```
 
 Then you need to add Smelte Rollup plugin (Webpack is on its way).
