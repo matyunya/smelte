@@ -47,7 +47,7 @@
   <a href={link.to} class="hidden">{link.text}</a>
 {/each}
 
-<AppBar class={i => i.replace('primary-300', 'dark-600')}>
+<AppBar class="bg-dark-600">
   <a href="." class="px-2 md:px-8 flex items-center">
     <img src="/logo.png" alt="Smelte logo" width="44" />
     <h6 class="pl-3 text-white tracking-widest font-thin text-lg">SMELTE</h6>
@@ -61,10 +61,11 @@
         bind:value={$darkMode}
         icon="wb_sunny"
         small
-        flat
+        fab
         remove="p-1 h-4 w-4"
-        iconClass="text-white"
-        text />
+        color="white"
+        elevation={false}
+       />
     </span>
     {$darkMode ? 'Disable' : 'Enable'} dark mode
   </Tooltip>
@@ -74,7 +75,7 @@
       small
       flat
       remove="p-1 h-4 w-4"
-      iconClass="text-white"
+      color="white"
       text
       on:click={() => showNav.set(!$showNav)} />
   </div>

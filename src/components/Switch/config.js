@@ -1,0 +1,32 @@
+const config = {
+  props: {
+    value: "",
+    label: "",
+    selected: false,
+    disabled: false
+  },
+  nodes: {
+    wrapper: {
+      isMain: true,
+      classes: {
+        root: "flex items-center mb-2 cursor-pointer z-10"
+      }
+    },
+    track: {
+      classes: {
+        root:
+          "relative w-10 h-auto z-0 rounded-full overflow-visible flex items-center justify-center bg-gray-700",
+        value: "bg-$color-200 remove:bg-gray-700"
+      }
+    },
+    thumb: {
+      classes: {
+        root:
+          "rounded-full p-2 w-5 h-5 absolute elevation-3 transition-fast bg-white left-0",
+        value: "remove:bg-white remove:left-0 bg-$color-400"
+      }
+    }
+  }
+};
+
+export default config;

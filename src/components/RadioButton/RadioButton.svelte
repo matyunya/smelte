@@ -2,20 +2,16 @@
   import Icon from "../Icon";
   import Ripple from "../Ripple";
   import Label from "../Checkbox/Label.svelte";
-  import { ClassBuilder } from "../../utils/classes.js";
+  import { writable } from "svelte/store";
+  import config from "./config";
+  import smelter from "../../utils/smelter";
 
-  const classesDefault = "inline-flex block items-center mb-2 cursor-pointer z-0";
-  let className = "";
-  export {className as class};
-
-  export let selected = "";
-  export let label = "";
-  export let color = "primary";
-  export let disabled = false;
-  export let name = "";
   export let value = "";
-  export let classes = classesDefault;
-  export let labelClasses = i => i;
+  export let label = "";
+  export let selected = false;
+  export let disabled = false;
+  export let color = "primary";
+  export let name = "";
 
   function select() {
     if (disabled) return;
@@ -23,19 +19,12 @@
     selected = value;
   }
 
-  const cb = new ClassBuilder(classes, classesDefault);
-  $: c = cb
-    .flush()
-    .add(classes, true, classesDefault)
-    .add(className)
-    .get();
+  const store = writable(config);
 
-  $: rippleColor = value && !disabled ? color : 'gray';
+  $: smelte = smelter($store, $$props);
 </script>
 
-<div
-  class={c}
-  on:click={select}>
+<div class={smelte.wrapper.class} on:click={select}>
   <input
     aria-label={label}
     class="hidden"
@@ -43,20 +32,14 @@
     role="radio"
     {name}
     selected={selected === value} />
-  <div class="relative">
-    <Ripple color={rippleColor}>
-      {#if selected === value}
-        <Icon class="text-{disabled ? 'gray' : color}-500">
-          radio_button_checked
-        </Icon>
-      {:else}
-        <Icon class={disabled ? 'text-gray-500 dark:text-gray-600' : 'text-gray-600'}>
-          radio_button_unchecked
-        </Icon>
-      {/if}
+  <div class={smelte.radioButton.class}>
+    <Ripple {color}>
+      <Icon class={smelte.icon.class}>
+        {selected === value ? "radio_button_checked" : "radio_button_unchecked"}
+      </Icon>
     </Ripple>
   </div>
   <slot name="label">
-    <Label {disabled} {label} class={labelClasses} />
+    <Label {disabled} {label} class={smelte.label.class} />
   </slot>
 </div>

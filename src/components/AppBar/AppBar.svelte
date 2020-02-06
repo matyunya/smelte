@@ -1,12 +1,13 @@
 <script>
-  import store from "./store";
-  import builder from "../../utils/builder";
+  import { writable } from "svelte/store";
+  import config from "./config";
+  import smelter from "../../utils/smelter";
 
-  const s = store($$props);
+  const store = writable(config);
 
-  $: c = builder($s, $$props);
+  $: smelte = smelter($store, $$props);
 </script>
 
-<header class={c.root}>
+<header class={smelte.root.class}>
   <slot />
 </header>

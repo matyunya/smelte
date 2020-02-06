@@ -88,7 +88,7 @@
 
 <h6 class="mb-3 mt-6">Fab flat</h6>
 <div class="py-2">
-  <Button color="error" icon="change_history" text light flat />
+  <Button color="error" icon="change_history" text flat />
 </div>
 
 <Code code={buttons} />

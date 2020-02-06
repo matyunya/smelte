@@ -1,20 +1,18 @@
 <script>
-  import Label from "./Label.svelte";
   import { createEventDispatcher } from "svelte";
-  import { ClassBuilder } from "../../utils/classes.js";
-
-  const classesDefault = "inline-flex items-center mb-2 cursor-pointer z-10";
+  import { writable } from "svelte/store";
+  import Label from "./Label.svelte";
+  import config from "./config";
+  import smelter from "../../utils/smelter";
 
   import Icon from "../Icon";
   import Ripple from "../Ripple";
 
   export let value = "";
   export let label = "";
-  export let color = "primary";
   export let checked = false;
   export let disabled = false;
-  export let classes = classesDefault;
-  export let labelClasses = i => i;
+  export let color = "primary";
 
   const dispatch = createEventDispatcher();
 
@@ -22,38 +20,24 @@
     if (disabled) return;
 
     checked = !checked;
-    dispatch('change', checked);
+    dispatch("change", checked);
   }
 
-  $: rippleColor = checked && !disabled ? color : 'gray';
+  const store = writable(config);
 
-  let className = "";
-  export {className as class};
-
-  const cb = new ClassBuilder(classes, classesDefault);
-  $: c = cb
-    .flush()
-    .add(classes, true, classesDefault)
-    .add(className)
-    .get();
+  $: smelte = smelter($store, $$props);
 </script>
 
-<div class={className}>
-  <div class={c} on:click={check}>
+<div class={smelte.wrapper.class}>
+  <div class={smelte.checkbox.class} on:click={check}>
     <input bind:checked class="hidden" type="checkbox" on:change {value} />
-    <div class="relative w-auto h-auto z-0">
-      <Ripple color={rippleColor}>
-        {#if checked}
-          <Icon class={disabled ? 'text-gray-500 dark:text-gray-600' : `text-${color}-500 dark:text-${color}-100`}>check_box</Icon>
-        {:else}
-          <Icon class={disabled ? 'text-gray-500 dark:text-gray-600' : 'text-gray-600 dark:text-gray-300'}>
-            check_box_outline_blank
-          </Icon>
-        {/if}
+    <div class={smelte.checkboxWrapper.class}>
+      <Ripple {color}>
+        <Icon class={smelte.icon.class}>{checked ? "check_box" : "check_box_outline_blank"}</Icon>
       </Ripple>
     </div>
     <slot name="label">
-      <Label {disabled} {label} class={labelClasses} />
+      <Label {disabled} {label} class={smelte.label.class} />
     </slot>
   </div>
 </div>

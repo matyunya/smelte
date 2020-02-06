@@ -7,6 +7,14 @@
   import Code from "docs/Code.svelte";
   import code from "examples/checkboxes.txt";
   import PropsTable from "docs/PropsTable.svelte";
+
+  let checked = false;
+  let selected1 = false;
+  let selected2 = false;
+  let selected3 = false;
+
+  let switch1 = false;
+  let switch2 = false;
 </script>
 
 <blockquote
@@ -17,9 +25,11 @@
 
 <h5 class="pb-8 pt-10" id="checkboxes">Checkboxes</h5>
 
-<Checkbox label="A checkbox" />
-<Checkbox color="secondary" label="A colored checkbox" />
-<Checkbox disabled label="A disabled checkbox" />
+<small>Value: {checked}</small>
+
+<Checkbox bind:checked label="A checkbox" />
+<Checkbox bind:checked color="secondary" label="A colored checkbox" />
+<Checkbox bind:checked disabled label="A disabled checkbox" />
   
 <PropsTable data={[
     { prop: "value", description: "Input value", type: "Boolean", default: "null" },
@@ -33,16 +43,22 @@
 
 <h5 class="pb-8 pt-10" id="radio-buttons">Radio buttons</h5>
 
+<small>Selected: {selected1}</small>
 <RadioButtonGroup
+  bind:selected={selected1}
   name="test"
   items={[{ value: 1, label: 'One' }, { value: 2, label: 'Two' }]} />
 
+<small>Selected: {selected2}</small>
 <RadioButtonGroup
+  bind:selected={selected2}
   name="Colored test"
   color="blue"
   items={[{ value: 1, label: 'One' }, { value: 2, label: 'Two' }]} />
 
+<small>Selected: {selected3}</small>
 <RadioButtonGroup
+  bind:selected={selected3}
   name="test-disabled"
   disabled
   items={[{ value: 1, label: 'One' }, { value: 2, label: 'Two' }]} />
@@ -59,9 +75,14 @@
 
 <h5 class="pb-8 pt-10" id="switches">Switches</h5>
 
-<Switch />
+<small class="mb-2 mt-10">Value: {switch1}</small>
 
-<Switch color="error" />
+<Switch bind:value={switch1} />
+
+
+<small class="mb-2 mt-10">Value: {switch2}</small>
+
+<Switch bind:value={switch2} color="error" />
 
 <PropsTable data={[
     { prop: "value", description: "Input value", type: "Boolean", default: "null" },

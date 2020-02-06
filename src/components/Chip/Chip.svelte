@@ -1,22 +1,19 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  import { scale } from "svelte/transition";
+ ;
   import createRipple from "../Ripple/ripple.js";
-  import utils, { ClassBuilder, filterProps } from "../../utils/classes.js";
+  import { writable } from "svelte/store";
+  import config from "./config";
+  import smelter from "../../utils/smelter";
+  import filterProps from "../../utils/filter-props";
 
   import Icon from "../Icon";
 
-  let className = "";
-  export {className as class};
   export let removable = false;
   export let icon = "";
-  export let outlined = false;
   export let selected = false;
   export let selectable = true;
   export let color = "primary";
-  export let remove = "";
-  export let add = "";
-  export let replace = {};
 
   $: ripple = createRipple(color);
 
@@ -35,36 +32,11 @@
     selected = true;
   }
 
-  const { bg, txt, border } = utils(color);
+  const store = writable(config);
 
-  const cb = new ClassBuilder();
+  $: smelte = smelter($store, $$props);
 
-  $: classes = cb
-    .flush()
-    .add('relative overflow-hidden flex items-center rounded-full px-2 py-1')
-    .add('bg-transparent border', outlined)
-    .add('border-gray-400 border-solid hover:bg-gray-50 dark-hover:bg-dark-400 bg-gray-300 dark:bg-dark-600', !selected)
-    .add(`${border()} dark:${border('800')} ${txt()} ${bg(100)} hover:${bg(50)}`, selected)
-    .remove(remove)
-    .replace(replace)
-    .add(add)
-    .get();
-
-  const props = filterProps([
-    'removable',
-    'icon',
-    'outlined',
-    'selected',
-    'selectable',
-    'color',
-  ], $$props);
-
-  $: iconClass = selected ? `hover:${bg(300)} ${bg(400)}` : "hover:bg-gray-400 bg-gray-500 dark:bg-gray-800";
-
-   $: c = cb
-      .flush()
-      .add(className)
-      .get();
+  const props = filterProps([], $$props);
 </script>
 
 <style>
@@ -74,26 +46,26 @@
 </style>
 
 {#if value}
-  <span class="{c} mx-1 inline-block" out:scale={{ duration: 100 }}>
+  <span>
     <button
-      class={classes}
+      class={smelte.wrapper.class}
       on:click
       use:ripple
       {...props}
       on:click={select}>
       {#if icon}
-        <Icon small class={selected ? txt(400) : 'text-gray-600'}>
+        <Icon small class={smelte.icon.class}>
           {icon}
         </Icon>
       {/if}
-      <span class="px-2 text-sm">
+      <span class={smelte.content.class}>
         <slot />
       </span>
       {#if removable}
         <span
-          class="rounded-full p-1/2 inline-flex items-center cursor-pointer {iconClass}"
+          class={smelte.removable.class}
           on:click|stopPropagation={close}>
-          <Icon class="text-white dark:text-white" xs>clear</Icon>
+          <Icon class={smelte.removableIcon.class} xs>clear</Icon>
         </span>
       {/if}
     </button>
