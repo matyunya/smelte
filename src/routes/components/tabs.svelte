@@ -1,6 +1,5 @@
 <script>
   import { Tab, Tabs } from "components/Tabs";
-  import Image from "components/Image";
 
   import Code from "docs/Code.svelte";
   import tabs from "examples/tabs.txt";
@@ -9,13 +8,6 @@
   let loading = false;
 </script>
 
-<p>
-  Tabs can be used as navigation elements like the ones you see on the top
-  right. You need to bind current pathname as value prop for active indicator to
-  work correctly.
-</p>
-
-<Code code={tabs} />
 
 <blockquote
   class="pl-8 mt-16 mb-10 border-l-8 border-primary-300 text-lg"
@@ -23,6 +15,8 @@
   Tabs organize and allow navigation between groups of content that are related
   and at the same level of hierarchy.
 </blockquote>
+
+<Code code={tabs} />
 
 <div style="max-width: 400px">
   <Tabs
@@ -41,7 +35,7 @@
       class="flex items-center content-center overflow-hidden w-full bg-gray-900 elevation-3 h-full"
       style="height: 250px">
       <Tab id="1" {selected}>
-        <Image
+        <img
           alt="kitten 1"
           class="w-full"
           src="https://placekitten.com/400/250"
@@ -49,7 +43,7 @@
           height="250" />
       </Tab>
       <Tab id="2" {selected}>
-        <Image
+        <img
           alt="kitten 1"
           class="w-full"
           src="https://placekitten.com/400/251"
@@ -57,7 +51,7 @@
           height="250" />
       </Tab>
       <Tab id="3" {selected}>
-        <Image
+        <img
           alt="kitten 3"
           class="w-full"
           src="https://placekitten.com/400/253"

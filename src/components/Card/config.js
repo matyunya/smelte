@@ -1,5 +1,3 @@
-import { elevationOnHover } from "../../utils/smelter";
-
 export let config = {
   props: {
     hover: true,
@@ -10,7 +8,7 @@ export let config = {
     root: {
       isMain: true,
       root: "rounded inline-flex flex-col overflow-hidden transition",
-      hover: elevationOnHover
+      hover: "elevation-$elevation hover:elevation-$hoverElevation"
     }
   }
 };

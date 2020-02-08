@@ -16,9 +16,6 @@ class SmelteClassString {
 
     return this;
   }
-  setColor(value) {
-    this.color = value;
-  }
   setShade(value, cond) {
     if (!cond) return this;
 
@@ -34,12 +31,27 @@ class SmelteClassString {
     this.classes.add(b);
   }
   swap(classString) {
-    return !classString.includes("$")
-      ? classString
-      : classString
-          .replace(/\$color/g, this.props.color || "primary")
-          .replace(/\$normal/g, 500 - this.shade)
-          .replace(/\$lighter/g, 400 - this.shade);
+    if (!classString.includes("$")) return classString;
+
+    const replaces = classString
+      .split(/-| /)
+      .filter(
+        a => a.includes("$") && !["$color", "$normal", "$lighter"].includes(a)
+      );
+
+    const s = replaces.reduce(
+      (acc, cur) =>
+        acc.replace(
+          new RegExp("\\" + cur, "g"),
+          this.props[cur.replace("$", "")]
+        ),
+      classString
+    );
+
+    return s
+      .replace(/\$color/g, this.props.color || "primary")
+      .replace(/\$normal/g, 500 - this.shade)
+      .replace(/\$lighter/g, 400 - this.shade);
   }
   applyRemoves() {
     this.classes.forEach(a => {
@@ -123,9 +135,3 @@ export default function smelter(store, props = {}) {
 
 // common styling utils
 export const block = (i, p) => i.set("w-full", Boolean(p.block));
-
-export const elevationOnHover = (i, p) =>
-  i.set(
-    `elevation-${p.elevation} hover:elevation-${p.hoverElevation}`,
-    p.hover
-  );
