@@ -7,7 +7,7 @@
   const html = Prism.highlight(code, Prism.languages[lang], "javascript");
 </script>
 
-<pre class="language-{lang}">
+<pre class="language-{lang} z-0">
   <code>
     {@html html}
   </code>

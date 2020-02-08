@@ -3,57 +3,33 @@
   import { onMount } from "svelte";
   import { quadIn } from "svelte/easing";
   import { Scrim } from "../Util";
-  import { ClassBuilder } from "../../utils/classes.js";
-
-  const classesDefault = "items-center z-50 rounded bg-white dark:bg-dark-400 p-4 elevation-4";
-  const titleClassesDefault = "text-lg font-bold pb-4";
-  const actionsClassesDefault = "flex w-full justify-end pt-4";
+  import { writable } from "svelte/store";
+  import config from "./config";
+  import smelter from "../../utils/smelter";
   
   export let value;
-  export let classes = classesDefault;
-  export let titleClasses = titleClassesDefault;
-  export let actionsClasses = actionsClassesDefault;
   export let opacity = 0.5;
   export let persistent = false;
 
   export let transitionProps = { duration: 150, easing: quadIn, delay: 150 };
 
-  let className = "";
-  export {className as class};
+  const store = writable(config);
 
-  const cb = new ClassBuilder(classes, classesDefault);
-  const tcb = new ClassBuilder(titleClasses, titleClassesDefault);
-  const acb = new ClassBuilder(actionsClasses, actionsClassesDefault);
-
-  $: c = cb
-    .flush()
-    .add(classes, true, classesDefault)
-    .add(className)
-    .get();
-
-  $: t = tcb
-    .flush()
-    .add(titleClasses, true, actionsClassesDefault)
-    .get();
-
-  $: a = acb
-    .flush()
-    .add(actionsClasses, true, actionsClassesDefault)
-    .get();
+  $: smelte = smelter($store, $$props);
 </script>
 
 {#if value}
-  <div class="fixed w-full h-full top-0 left-0 z-30">
+  <div class={smelte.wrapper.class}>
     <Scrim {opacity} on:click={() => !persistent && (value = false)} />
-    <div class="h-full w-full absolute flex items-center justify-center">
+    <div class={smelte.container.class}>
       <div
         in:scale={transitionProps}
-        class={c}>
-        <div class={t}>
+        class={smelte.dialog.class}>
+        <div class={smelte.title.class}>
           <slot name="title" />
         </div>
         <slot />
-        <div class={a}>
+        <div class={smelte.actions.class}>
           <slot name="actions" />
         </div>
       </div>

@@ -19,6 +19,7 @@
   export let todayClasses = "text-primary-600 rounded-full border border-primary-600";
   export let selectedClasses = "bg-primary-600 text-white rounded-full";
   export let closeOnSelect = true;
+  export let transitionProps = { duration: 100 };
 
   let hasUserValue = Boolean(value);
 
@@ -55,19 +56,21 @@
   </div>
   <div slot="menu">
     {#if open}
-      <Picker
-        bind:value
-        bind:open
-        {locale}
-        {todayClasses}
-        {selected}
-        {selectedClasses}
-        {closeOnSelect}
-        on:change
-        on:change={e => {
-          displayValue = e.detail.toLocaleDateString();
-        }}
-      />
+      <div transition:fade={transitionProps} class="z-30">
+        <Picker
+          bind:value
+          bind:open
+          {locale}
+          {todayClasses}
+          {selected}
+          {selectedClasses}
+          {closeOnSelect}
+          on:change
+          on:change={e => {
+            displayValue = e.detail.toLocaleDateString();
+          }}
+        />
+      </div>
     {/if}
   </div>
 </Menu>

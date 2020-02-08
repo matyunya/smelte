@@ -16,9 +16,24 @@ const defaultReserved = [
   "light",
   "dark",
   "flat",
-  "fab"
+  "fab",
+  "label",
+  "placeholder",
+  "hint",
+  "error",
+  "append",
+  "prepend",
+  "persistentHint",
+  "textarea",
+  "rows",
+  "select",
+  "autocomplete",
+  "noUnderline",
+  "appendReverse",
+  "prependReverse",
+  "bgColor",
+  "bgcolor"
 ];
-
 export default function filterProps(reserved, props) {
   const r = [...reserved, ...defaultReserved];
 

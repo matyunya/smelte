@@ -44,7 +44,10 @@ class SmelteClassString {
   applyRemoves() {
     this.classes.forEach(a => {
       if (a.includes("remove:")) {
-        this.remove(a.replace("remove:", ""));
+        a.replace("remove:", "")
+          .split(".")
+          .forEach(c => this.remove(c));
+        this.remove(a);
       }
     });
   }
@@ -62,7 +65,7 @@ class SmelteClassString {
 
     const props = (prop || "").split(" ");
 
-    props.forEach(p => this.classes.add(p));
+    props.forEach(p => this.classes.add(p.trim()));
 
     return this;
   }
@@ -88,10 +91,12 @@ function build(node, store, props = {}) {
     store
   );
 
-  if (!node.classes || !Object.keys(node.classes).length) return classString;
+  if (!node || !Object.keys(node).length) return classString;
 
-  Object.keys(node.classes).forEach(r => {
-    const rule = node.classes[r];
+  Object.keys(node).forEach(r => {
+    const rule = node[r];
+
+    if (typeof rule === "boolean") return;
 
     if (typeof rule === "string") {
       classString.set(rule, props[r]);

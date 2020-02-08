@@ -9,38 +9,28 @@ export const config = {
   nodes: {
     wrapper: {
       isMain: true,
-      classes: {
-        root:
-          "relative overflow-hidden flex items-center rounded-full px-2 py-1 mx-1 inline-block",
-        outlined: "bg-transparent border",
-        notSelected:
-          "border-gray-400 border-solid hover:bg-gray-50 dark-hover:bg-dark-400 bg-gray-300 dark:bg-dark-600",
-        selected:
-          "border-$color-$normal dark:border-$color-800 text-$color-$normal bg-$color-100 hover:bg-$color-50"
-      }
+      root:
+        "relative overflow-hidden flex items-center rounded-full px-2 py-1 mx-1 inline-block",
+      outlined: "bg-transparent border",
+      notSelected:
+        "border-gray-400 border-solid hover:bg-gray-50 dark-hover:bg-dark-400 bg-gray-300 dark:bg-dark-600",
+      selected:
+        "border-$color-$normal dark:border-$color-800 text-$color-$normal bg-$color-100 hover:bg-$color-50"
     },
     content: {
-      classes: {
-        root: "px-2 text-sm"
-      }
+      root: "px-2 text-sm"
     },
     icon: {
-      classes: {
-        selected: "text-$color-400",
-        notSelected: "text-gray-600"
-      }
+      selected: "text-$color-400",
+      notSelected: "text-gray-600"
     },
     removable: {
-      classes: {
-        root: "rounded-full p-1/2 inline-flex items-center cursor-pointer",
-        selected: "hover:bg-$color-300 bg-$color-400",
-        notSelected: "hover:bg-gray-400 bg-gray-500 dark:bg-gray-800"
-      }
+      root: "rounded-full p-1/2 inline-flex items-center cursor-pointer",
+      selected: "hover:bg-$color-300 bg-$color-400",
+      notSelected: "hover:bg-gray-400 bg-gray-500 dark:bg-gray-800"
     },
     removableIcon: {
-      classes: {
-        root: "text-white dark:text-white"
-      }
+      root: "text-white dark:text-white"
     }
   }
 };

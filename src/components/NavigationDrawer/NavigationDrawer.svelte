@@ -3,24 +3,14 @@
   import { quadIn } from "svelte/easing";
   import { Scrim } from "../Util";
   import breakpoints from "../../breakpoints";
-  import { ClassBuilder } from "../../utils/classes.js";
+  import { writable } from "svelte/store";
+  import config from "./config";
+  import smelter from "../../utils/smelter";
 
   const bp = breakpoints();
 
-  const classesDefault = "fixed top-0 md:mt-16 w-auto drawer overflow-hidden h-full";
-  const navClassesDefault = `h-full w-full bg-white dark:bg-gray-900 dark:text-gray-200 absolute flex w-auto z-20 drawer
-    pointer-events-auto overflow-y-auto`;
-
-  export let right = false;
   export let persistent = false;
-  export let elevation = true;
   export let show = true;
-  export let classes = classesDefault;
-  export let navClasses = navClassesDefault;
-  export let borderClasses = `border-gray-600 ${right ? "border-l" : "border-r"}`;
-
-  let className = "";
-  export {className as class};
 
   export let transitionProps = {
     duration: 200,
@@ -29,32 +19,14 @@
     opacity: 1,
   };
 
-  $: transitionProps.x = right ? 300 : -300;
+  $: transitionProps.x = $$props.right ? 300 : -300;
   $: persistent = show = $bp !== "sm";
-
-  const cb = new ClassBuilder(classes, classesDefault);
 
   if ($bp === 'sm') show = false;
 
-  $: c = cb
-    .flush()
-    .add(classes, true, classesDefault)
-    .add(borderClasses, !elevation && persistent)
-    .add(className)
-    .add("right-0", right)
-    .add("left-0", !right)
-    .add("pointer-events-none", persistent)
-    .add("z-50", !persistent)
-    .add("elevation-4", elevation)
-    .add("z-20", persistent)
-    .get();
+  const store = writable(config);
 
-  const ncb = new ClassBuilder(navClasses, navClassesDefault);
-
-  $: n = ncb
-    .flush()
-    .get();
-
+  $: smelte = smelter($store, $$props);
 </script>
 
 <style>
@@ -69,7 +41,7 @@
   
 {#if show}
   <aside
-    class={c}
+    class={smelte.root.class}
     transition:fly={transitionProps}
   >
     {#if !persistent}
@@ -77,7 +49,7 @@
     {/if}
     <nav
       role="navigation"
-      class={n}
+      class={smelte.nav.class}
     >
       <div class="w-full">
         <slot />

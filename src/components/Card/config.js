@@ -8,10 +8,9 @@ export let config = {
   },
   nodes: {
     root: {
-      classes: {
-        root: "rounded inline-flex flex-col overflow-hidden transition",
-        hover: elevationOnHover
-      }
+      isMain: true,
+      root: "rounded inline-flex flex-col overflow-hidden transition",
+      hover: elevationOnHover
     }
   }
 };

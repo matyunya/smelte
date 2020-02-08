@@ -91,44 +91,42 @@
   }
 </script>
 
-<div in:slide={{duration: 100}} out:fade={{duration: 50}}>
-  <Card class="absolute z-20 p-4 w-auto dark:bg-dark-400 bg-white">
-    <div class="flex justify-between mb-4">
-      <span class="text-gray-600 uppercase">{year} {month}</span>
-      <div class="flex">
-        <Button
-          icon="keyboard_arrow_left"
-          {...paginatorProps}
-          on:click={prev} />
-        <Button
-          icon="keyboard_arrow_right"
-          {...paginatorProps}
-          on:click={next} />
-      </div>
+<Card class="absolute z-20 p-4 w-auto dark:bg-dark-400 bg-white">
+  <div class="flex justify-between mb-4">
+    <span class="text-gray-600 uppercase">{year} {month}</span>
+    <div class="flex">
+      <Button
+        icon="keyboard_arrow_left"
+        {...paginatorProps}
+        on:click={prev} />
+      <Button
+        icon="keyboard_arrow_right"
+        {...paginatorProps}
+        on:click={next} />
     </div>
+  </div>
 
-    <div class="md:w-64 sm:w-full">
-      <div class="flex uppercase text-gray-400 text-xs text-left">
-        {#each weekdays as weekday}
-          <div class="w-1/7 text-center p-1">
-            {weekday} 
-          </div>
-        {/each}
-      </div>
-      <div class="flex flex-wrap text-left text-sm">
-        {#if dayOffset}<div class="p-1 w-{dayOffset}/7" />{/if} 
-        {#each daysInMonth as i}
-          <div class="w-1/7 p-1">
-            <div class="w-8 h-8 transition-fast relative {i.isToday && !i.selected ? todayClasses : ""} {i.selected ? selectedClasses : ""}"
-              on:click={() => select(i.day)}
-            >
-              <Ripple color="gray" class="p-1 w-full h-full">
-                {i.day}
-              </Ripple>
-            </div>
-          </div>
-        {/each}
-      </div>
+  <div class="md:w-64 sm:w-full">
+    <div class="flex uppercase text-gray-400 text-xs text-left">
+      {#each weekdays as weekday}
+        <div class="w-1/7 text-center p-1">
+          {weekday} 
+        </div>
+      {/each}
     </div>
-  </Card>
-</div>
+    <div class="flex flex-wrap text-left text-sm">
+      {#if dayOffset}<div class="p-1 w-{dayOffset}/7" />{/if} 
+      {#each daysInMonth as i}
+        <div class="w-1/7 p-1">
+          <div class="w-8 h-8 transition-fast relative {i.isToday && !i.selected ? todayClasses : ""} {i.selected ? selectedClasses : ""}"
+            on:click={() => select(i.day)}
+          >
+            <Ripple color="gray" class="p-1 w-full h-full">
+              {i.day}
+            </Ripple>
+          </div>
+        </div>
+      {/each}
+    </div>
+  </div>
+</Card>

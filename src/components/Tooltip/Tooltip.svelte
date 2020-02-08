@@ -1,22 +1,14 @@
 <script>
   import { scale, fade } from "svelte/transition";
   import { ClassBuilder } from "../../utils/classes.js";
+  import debounce from "../../utils/debounce.js";
+  import { writable } from "svelte/store";
+  import config from "./config";
+  import smelter from "../../utils/smelter";
 
-  const classesDefault = "tooltip whitespace-no-wrap text-xs absolute mt-2 bg-gray-600 text-gray-50 rounded md:px-2 md:py-2 py-4 px-3 z-30";
-  let className = "";
-  export let classes = classesDefault;
-
-  export {className as class};
   export let show = false;
 
   export let timeout = null;
-
-  const cb = new ClassBuilder(classes, classesDefault);
-  $: c = cb
-    .flush()
-    .add(classes, true, classesDefault)
-    .add(className)
-    .get();
 
   function showTooltip() {
     if (show) return;
@@ -37,21 +29,9 @@
     clearTimeout(timeout);
   }
 
-  function debounce(func, wait, immediate) {
-    let timeout;
-    return function() {
-      let context = this,
-        args = arguments;
-      let later = function() {
-        timeout = null;
-        if (!immediate) func.apply(context, args);
-      };
-      let callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) func.apply(context, args);
-    };
-  }
+  const store = writable(config);
+
+  $: smelte = smelter($store, $$props);
 </script>
 
 <style>
@@ -61,7 +41,7 @@
 }
 </style>
 
-<div class="relative inline-block">
+<div class={smelte.wrapper.class}>
   <div
     on:mouseenter={debounce(showTooltip, 100)}
     on:mouseleave={debounce(hideTooltip, 500)}
@@ -77,7 +57,7 @@
     <div
       in:scale={{ duration: 150 }}
       out:scale={{ duration: 150, delay: 100 }}
-      class={c}
+      class={smelte.root.class}
     >
       <slot />
     </div>

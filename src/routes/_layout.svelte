@@ -64,8 +64,7 @@
         fab
         remove="p-1 h-4 w-4"
         color="white"
-        elevation={false}
-       />
+        elevation={false} />
     </span>
     {$darkMode ? 'Disable' : 'Enable'} dark mode
   </Tooltip>

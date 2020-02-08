@@ -9,6 +9,10 @@
 <div>
 <small>I selected {selected ? selected.toLocaleDateString() : "nothing"}</small>
 </div>
-<DatePicker on:change={i => selected = i.detail } />
+
+<DatePicker
+  class="mb-20"
+  on:change={i => selected = i.detail }
+/>
 
 <Code code={datepickers} />

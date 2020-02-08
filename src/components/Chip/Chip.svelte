@@ -33,7 +33,6 @@
   }
 
   const store = writable(config);
-
   $: smelte = smelter($store, $$props);
 
   const props = filterProps([], $$props);
