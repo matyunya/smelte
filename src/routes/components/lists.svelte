@@ -1,8 +1,8 @@
 <script>
   import Code from "docs/Code.svelte";
-  import List from "components/List"; 
-  import Icon from "components/Icon"; 
-  import Tabs, { Tab } from "components/Tabs"; 
+  import List from "components/List";
+  import Icon from "components/Icon";
+  import Tabs, { Tab } from "components/Tabs";
   import { darkMode } from "../../dark";
 
   import lists from "examples/lists.txt";
@@ -99,7 +99,7 @@
           { prop: "navigation", description: "Is navigation item", type: "Boolean", default: false },
           { prop: "selected", description: "Is selected", type: "Boolean", default: false },
           { prop: "tabindex", description: "Tab index", type: "Number", default: null },
-          { prop: "classes", description: "Item wrapper classes", type: "String", default: "hover:bg-gray-transDark relative overflow-hidden transition p-4 cursor-pointer text-gray-700 flex items-center z-10" },
+          { prop: "classes", description: "Item wrapper classes", type: "String", default: "hover:bg-gray-transDark relative overflow-hidden duration-200 ease-in p-4 cursor-pointer text-gray-700 flex items-center z-10" },
           { prop: "itemClasses", description: "Additional item classes", type: "String", default: "empty string" },
           { prop: "selectedClasses", description: "Selected item classes", type: "String", default: "bg-gray-200 hover:bg-primary-transDark" },
         ]}
@@ -126,7 +126,7 @@
 <List bind:value={selectedItem} items={menu} dense navigation>
   <li slot="item" let:item>
     <div
-      class="cursor-pointer p-4 border-secondary-50 border my-2 border-solid transition"
+      class="cursor-pointer p-4 border-secondary-50 border my-2 border-solid duration-200 ease-in"
       on:click={() => (selectedItem = item.text)}
       class:bg-secondary-50={selectedItem === item.text}>
       {selectedItem === item.text ? '👌' : '🙅‍'} {item.text}
