@@ -67,7 +67,7 @@
         isToday: isCurrentMonth && j + 1 === today,
         selected: dayIsSelected(j + 1),
       }));
-  
+
   function select(day) {
     selected = day;
     temp = new Date(temp.getFullYear(), temp.getMonth(), selected);
@@ -110,15 +110,15 @@
     <div class="flex uppercase text-gray-400 text-xs text-left">
       {#each weekdays as weekday}
         <div class="w-1/7 text-center p-1">
-          {weekday} 
+          {weekday}
         </div>
       {/each}
     </div>
     <div class="flex flex-wrap text-left text-sm">
-      {#if dayOffset}<div class="p-1 w-{dayOffset}/7" />{/if} 
+      {#if dayOffset}<div class="p-1 w-{dayOffset}/7" />{/if}
       {#each daysInMonth as i}
         <div class="w-1/7 p-1">
-          <div class="w-8 h-8 transition-fast relative {i.isToday && !i.selected ? todayClasses : ""} {i.selected ? selectedClasses : ""}"
+          <div class="w-8 h-8 duration-100 relative {i.isToday && !i.selected ? todayClasses : ""} {i.selected ? selectedClasses : ""}"
             on:click={() => select(i.day)}
           >
             <Ripple color="gray" class="p-1 w-full h-full">

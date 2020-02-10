@@ -9,7 +9,7 @@ export default {
       navigation: "hidden md:flex w-full max-w-2xl remove:flex"
     },
     indicator: {
-      root: "absolute bottom-0 left-0 transition bg-$color-700"
+      root: "absolute bottom-0 left-0 duration-200 ease-in bg-$color-700"
     }
   }
 };
@@ -26,7 +26,7 @@ export let tabButton = {
     root: {
       isMain: true,
       root: `
-        transition-fast relative overflow-hidden text-center w-full
+        duration-100 relative overflow-hidden text-center w-full
         h-full p-4 cursor-pointer flex mx-auto items-center text-sm
         hover:bg-$color-transLight hover:text-$color-900
       `,
