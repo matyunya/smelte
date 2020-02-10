@@ -25,7 +25,11 @@
 
   const store = writable(config);
 
-  $: smelte = smelter($store, $$props);
+  $: smelte = smelter($store, {
+    ...$$props,
+    checked,
+    value,
+  });
 </script>
 
 <div class={smelte.wrapper.class}>

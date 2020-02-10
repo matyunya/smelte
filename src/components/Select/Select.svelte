@@ -6,8 +6,9 @@
   import { ClassBuilder } from "../../utils/classes.js";
   import { hideListAction } from '../../utils/hide-list-action';
 
-  const optionsClassesDefault = "absolute left-0 bg-white rounded elevation-3 w-full z-20 dark:bg-dark-500";
-  const classesDefault = "cursor-pointer relative pb-4";
+  import { writable } from "svelte/store";
+  import config from "./config";
+  import smelter from "../../utils/smelter";
 
   const noop = i => i;
 
@@ -27,9 +28,7 @@
   export let autocomplete = false;
   export let noUnderline = false;
   export let showList = false;
-  export let classes = classesDefault;
-  export let optionsClasses = optionsClassesDefault;
-
+  
   export let inputWrapperClasses = noop;
   export let appendClasses = noop;
   export let labelClasses = noop;
@@ -38,13 +37,9 @@
   export let listClasses = noop;
   export let selectedClasses = noop;
   export let itemClasses = noop;
-
   export let add = "";
   export let remove = "";
   export let replace = "";
-
-  let className = "";
-  export {className as class};
 
   let filteredItems = items;
   let itemsProcessed = [];
@@ -98,22 +93,12 @@
 
   const onHideListPanel = () => showList = false;
 
-  const cb = new ClassBuilder(classes, classesDefault);
-  $: c = cb
-    .flush()
-    .add(classes, true, classesDefault)
-    .add(className)
-    .get();
+  const store = writable(config);
 
-  const ocb = new ClassBuilder(optionsClasses, optionsClassesDefault);
-  $: o = ocb
-    .flush()
-    .add(optionsClasses, true, optionsClassesDefault)
-    .add("rounded-t-none", !outlined)
-    .get();
+  $: smelte = smelter($store, $$props);
 </script>
 
-<div class={c} use:hideListAction={onHideListPanel}>
+<div class={smelte.root.class} use:hideListAction={onHideListPanel}>
   <slot name="select">
     <TextField
       select
@@ -139,7 +124,7 @@
   {#if showList}
     <slot name="options">
       <div
-        class={o}
+        class={smelte.options.class}
         on:click={() => (showList = false)}
       >
         <List

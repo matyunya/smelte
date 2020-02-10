@@ -14,7 +14,7 @@ const o = (value, name) => ({
   [name]: tinycolor(value).toHexString()
 });
 
-const white = tinycolor("#ffffff");
+const white = tinycolor("#fff");
 
 function buildPalette(hex) {
   const baseDark = multiply(tinycolor(hex).toRgb(), tinycolor(hex).toRgb());
@@ -31,7 +31,6 @@ function buildPalette(hex) {
     transDark: tinycolor(hex)
       .toRgbString()
       .replace(")", ", 0.15)"),
-
     ...o(tinycolor.mix(white, hex, 12), "50"),
     ...lightest,
     ...o(tinycolor.mix(white, hex, 50), "200"),

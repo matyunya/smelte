@@ -76,18 +76,53 @@ module.exports = ({ colors = defaultColors, darkMode = true, ...config }) => ({
     },
     colors: {
       transparent: "transparent",
+
+      black: "#000",
+      "black-50": "#000",
+      "black-100": "#000",
+      "black-200": "#000",
+      "black-300": "#000",
+      "black-400": "#000",
+      "black-500": "#000",
+      "black-600": "#000",
+      "black-700": "#000",
+      "black-800": "#000",
+      "black-900": "#000",
+      "black-trans": "rgba(0,0,0,0.2)",
+      "black-transLight": "rgba(0,0,0,0.2)",
+      "black-transDark": "rgba(0,0,0,0.35)",
       white: "#fff",
+      "white-50": "#fff",
+      "white-100": "#fff",
+      "white-200": "#fff",
+      "white-300": "#fff",
+      "white-400": "#fff",
+      "white-500": "#fff",
+      "white-600": "#fff",
+      "white-700": "#fff",
+      "white-800": "#fff",
+      "white-900": "#fff",
       "white-trans": "rgba(255,255,255,0.2)",
       "white-transLight": "rgba(255,255,255,0.2)",
       "white-transDark": "rgba(255,255,255,0.2)",
-      "black-trans": "rgba(0,0,0,0.2)",
-      "black-transLight": "rgba(0,0,0,0.2)",
-      "black-transLight": "rgba(0,0,0,0.2)",
-      "black-transDark": "rgba(0,0,0,0.35)",
-      "white-500": "#fff",
-      black: "#000",
 
-      ...buildPalette(colors),
+      gray: {
+        "50": "#fafafa",
+        "100": "#f5f5f5",
+        "200": "#eeeeee",
+        "300": "#e0e0e0",
+        "400": "#bdbdbd",
+        "500": "#9e9e9e",
+        "600": "#757575",
+        "700": "#616161",
+        "800": "#424242",
+        "900": "#212121",
+        trans: "rgba(250, 250, 250, 0.5)",
+        transLight: "rgba(250, 250, 250, 0.1)",
+        transDark: "rgba(100, 100, 100, 0.2)"
+      },
+
+      ...buildPalette(colors)
 
       // brown: {
       //   "50": "#efebe9",
@@ -104,22 +139,6 @@ module.exports = ({ colors = defaultColors, darkMode = true, ...config }) => ({
       //   transLight: "rgba(62,39,35,0.1)",
       //   transDark: "rgba(62,39,35,0.35)"
       // },
-
-      gray: {
-        "50": "#fafafa",
-        "100": "#f5f5f5",
-        "200": "#eeeeee",
-        "300": "#e0e0e0",
-        "400": "#bdbdbd",
-        "500": "#9e9e9e",
-        "600": "#757575",
-        "700": "#616161",
-        "800": "#424242",
-        "900": "#212121",
-        trans: "rgba(250, 250, 250, 0.5)",
-        transLight: "rgba(250, 250, 250, 0.1)",
-        transDark: "rgba(100, 100, 100, 0.2)"
-      }
 
       // "blue-gray": {
       //   "50": "#eceff1",
@@ -139,7 +158,9 @@ module.exports = ({ colors = defaultColors, darkMode = true, ...config }) => ({
     }
   },
   plugins: [
-    require("tailwind-css-variables")(),
+    require("tailwind-css-variables")({
+      colors: "color"
+    }),
     require("tailwindcss-elevation")(["hover"]),
     function({ addUtilities }) {
       return addUtilities({

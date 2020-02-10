@@ -53,7 +53,7 @@
     <h6 class="pl-3 text-white tracking-widest font-thin text-lg">SMELTE</h6>
   </a>
   <Spacer />
-  <Tabs navigation items={topMenu} bind:selected={path} />
+  <Tabs color="white" navigation items={topMenu} bind:selected={path} />
 
   <Tooltip>
     <span slot="activator">

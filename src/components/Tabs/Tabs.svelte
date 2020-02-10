@@ -6,14 +6,15 @@
   import ProgressLinear from "../ProgressLinear";
   import TabButton from "./TabButton.svelte";
 
+  import { writable } from "svelte/store";
+  import config from "./config";
+  import smelter from "../../utils/smelter";
+
   export let selected = null;
-  export let navigation = false;
   export let items = [];
   export let indicator = true;
   export let color = "white";
   export let notSelectedColor = "white";
-  let className = "";
-  export {className as class};
   export let loading = false;
   export let tabButtonClasses = i => i;
 
@@ -21,7 +22,6 @@
   let indicatorWidth = 0;
   let indicatorOffset = 0;
   let offset = null;
-
 
   function calcIndicator() {
     indicatorWidth = node ? node.offsetWidth / items.length : 0;
@@ -49,21 +49,13 @@
 
   $: calcIndicator(selected);
 
-  const classesDefault = "y-0 h-full items-center relative mx-auto z-20";
+  const store = writable(config);
 
-  export let classes = classesDefault;
-
-  const cb = new ClassBuilder(classes, classesDefault);
-  $: c = cb
-    .flush()
-    .add(className)
-    .add('hidden md:flex w-full max-w-2xl', navigation)
-    .add('flex', !navigation)
-    .get();
+  $: smelte = smelter($store, $$props);
 </script>
 
 <div
-  class={c}
+  class={smelte.root.class}
   bind:this={node}>
   {#each items as item, i}
     <slot name="item" {color} {item}>
@@ -77,7 +69,7 @@
     </slot>
   {/each}
   {#if indicator && offset !== null}
-    <Indicator {color} width={indicatorWidth} left={offset} />
+    <Indicator class={smelte.indicator.class} width={indicatorWidth} left={offset} />
   {/if}
 </div>
 {#if loading}
