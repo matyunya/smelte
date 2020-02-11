@@ -6,7 +6,7 @@ export let config = {
   },
   nodes: {
     root: {
-      root: "rounded inline-flex flex-col overflow-hidden transition",
+      root: "rounded inline-flex flex-col overflow-hidden duration-200 ease-in",
       hover: "elevation-$elevation hover:elevation-$hoverElevation"
     }
   }

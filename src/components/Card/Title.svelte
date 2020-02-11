@@ -12,7 +12,7 @@
   $: smelte = smelter($store, $$props);
 </script>
 
-<div class={smelte.title.class}>
+<div class={smelte.root.class}>
   <div>
     <img
       class="rounded-full"

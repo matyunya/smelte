@@ -8,7 +8,7 @@ let config = {
   },
   nodes: {
     root: {
-      root: "material-icons icon text-xl transition",
+      root: "material-icons icon text-xl duration-200 ease-in",
       small: "text-small",
       xs: "text-xs",
       reverse: "reverse",

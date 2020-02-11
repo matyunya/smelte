@@ -6,7 +6,6 @@
   import { listItem } from "./config";
   import smelter from "../../utils/smelter";
 
-
   export let icon = "";
   export let id = "";
   export let value = "";

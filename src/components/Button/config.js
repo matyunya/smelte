@@ -38,7 +38,8 @@ export const config = {
       fab:
         "hover:bg-$color-transLight text-$color-$normal remove:text-$color-$lighter",
       small: "p-1 h-4 w-4",
-      basic: "text-white transition bg-$color-$normal hover:bg-$color-$lighter",
+      basic:
+        "text-white duration-200 ease-in  bg-$color-$normal hover:bg-$color-$lighter",
       disabled: `
         bg-gray-300 text-gray-500 dark:bg-dark-400 elevation-none pointer-events-none
         hover:bg-gray-300 cursor-default remove:bg-$color-$normal.hover:bg-$color-$lighter

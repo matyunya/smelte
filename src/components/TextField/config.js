@@ -29,12 +29,12 @@ let config = {
     root: {
       isMain: true,
       root: `
-          transition pb-2 pt-6 px-4 rounded-t text-black dark:text-gray-100
-          w-full caret-$color-$normal dark:bg-dark-600 bg-gray-100 dark:bg-dark-200
+          duration-200 ease-in pb-2 pt-6 px-4 rounded-t text-black dark:text-gray-100
+          w-full caret-$color-$normal dark:bg-dark-600
         `,
       outlined: `
-          remove:pt-6.pb-2.dark:bg-dark-600.bg-gray-100.dark:bg-dark-200
-          border border-$color-$normal rounded bg-transparent py-4 transition border-gray-600
+          remove:pt-6.pb-2.dark:bg-dark-600 border border-$color-$normal
+          rounded bg-transparent py-4 duration-200 ease-in border-gray-600
         `,
       error:
         "caret-error-$normal remove:caret-$color-$normal border-error-$normal caret-error-$normal",
