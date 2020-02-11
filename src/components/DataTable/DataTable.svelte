@@ -1,22 +1,19 @@
 <script>
   import { createEventDispatcher } from "svelte";
   import { slide } from "svelte/transition";
-  import { ClassBuilder } from "../../utils/classes.js";
   import Icon from "../Icon";
   import Button from "../Button";
   import TextField from "../TextField";
   import ProgressLinear from "../ProgressLinear";
+  import { writable } from "svelte/store";
+  import config from "./config";
+  import smelter from "../../utils/smelter";
 
   import Header from "./Header.svelte";
   import Row from "./Row.svelte";
   import Pagination from "./Pagination.svelte";
 
   import defaultSort from "./sort.js";
-
-  const classesDefault = "elevation-3 relative text-sm overflow-x-auto dark:bg-dark-500";
-
-  let className = "";
-  export {className as class};
 
   export let data = [];
   export let columns = Object.keys(data[0] || {})
@@ -37,7 +34,6 @@
   export let paginationClasses = i => i;
   export let editableClasses = i => i;
   export let paginatorProps = null;
-  export let classes = classesDefault;
 
   let table = "";
   let sortBy = null;
@@ -53,15 +49,12 @@
 
   let editing = false;
 
-  const cb = new ClassBuilder(classes, classesDefault);
-    $: c = cb
-      .flush()
-      .add(classes, true, classesDefault)
-      .add(className)
-      .get();
+  const store = writable(config);
+
+  $: smelte = smelter($store, $$props);
 </script>
 
-<table class={c} bind:this={table}>
+<table class={smelte.root.class} bind:this={table}>
   <thead class="items-center">
     {#each columns as column, i}
       <slot name="header">

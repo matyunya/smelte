@@ -6,7 +6,6 @@ let config = {
   },
   nodes: {
     root: {
-      isMain: true,
       root: "top-0 left-0 w-full h-1 bg-$color-100 overflow-hidden relative",
       app: "fixed z-50",
       appNotInitialized: "hidden"

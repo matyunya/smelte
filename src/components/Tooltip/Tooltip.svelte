@@ -1,6 +1,5 @@
 <script>
   import { scale, fade } from "svelte/transition";
-  import { ClassBuilder } from "../../utils/classes.js";
   import debounce from "../../utils/debounce.js";
   import { writable } from "svelte/store";
   import config from "./config";

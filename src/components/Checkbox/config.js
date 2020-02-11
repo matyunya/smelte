@@ -3,8 +3,7 @@ export const config = {
     value: "",
     label: "",
     checked: false,
-    disabled: false,
-    notChecked: p => !p.checked && !p.value
+    disabled: false
   },
   nodes: {
     wrapper: {
@@ -17,13 +16,16 @@ export const config = {
       root: "relative w-auto h-auto z-0"
     },
     icon: {
-      root: "text-$color-500 dark:text-$color-100",
-      disabled: "text-gray-500 dark:text-gray-600",
-      notChecked: "text-gray-500 dark:text-gray-100"
+      root: "text-gray-500 dark:text-gray-100",
+      checked:
+        "text-$color-500 dark:text-$color-100 remove:dark:text-gray-100.text-gray-500",
+      value:
+        "text-$color-500 dark:text-$color-100 remove:dark:text-gray-100.text-gray-500",
+      disabled: "text-gray-500 dark:text-gray-600"
     },
     label: {
       root: "pl-2 cursor-pointer text-gray-700 dark:text-gray-300",
-      disabled: "text-gray-500 dark:text-gray-600"
+      disabled: "text-gray-400 dark:text-gray-600"
     }
   }
 };

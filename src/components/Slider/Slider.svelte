@@ -1,6 +1,7 @@
 <script>
-  import { ClassBuilder } from "../../utils/classes.js";
-
+  import { writable } from "svelte/store";
+  import config from "./config";
+  import smelter from "../../utils/smelter";
   import Ripple from "../Ripple";
 
   export let value = 0;
@@ -10,19 +11,6 @@
   export let min = 0;
   export let max = 100;
   export let step = null;
-
-  const classesDefault = `bg-${color}-50 w-full rounded cursor-pointer`;
-  let className = "";
-  export let classes = classesDefault;
-
-  export {className as class};
-  const cb = new ClassBuilder(classes, classesDefault);
-
-  $: c = cb
-    .flush()
-    .add(classes, true, classesDefault)
-    .add(className)
-    .get();
 
   $: style = disabled
     ? ""
@@ -36,13 +24,17 @@
     node.style.setProperty('--bg-focus', c);
   }
 
+  const store = writable(config);
+
+  $: smelte = smelter($store, $$props);
+
 </script>
 
 <label>{label}</label>
 <input
   use:applyColor
   type="range"
-  class={c}
+  class={smelte.root.class}
   {min}
   {max}
   {step}

@@ -8,7 +8,6 @@ let config = {
   },
   nodes: {
     root: {
-      isMain: true,
       root: "material-icons icon text-xl transition",
       small: "text-small",
       xs: "text-xs",

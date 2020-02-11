@@ -95,9 +95,9 @@ class SmelteClassString {
   }
 }
 
-function build(node, store, props = {}) {
+function build(node, store, props = {}, isMain) {
   const classString = new SmelteClassString(
-    node.isMain ? props.class : "",
+    isMain ? props.class : "",
     props,
     node,
     store
@@ -127,7 +127,13 @@ export default function smelter(store, props = {}) {
   return Object.keys(nodes).reduce(
     (tree, name) => ({
       ...tree,
-      [name]: build(nodes[name], store, { ...store.props, ...props }, name)
+      [name]: build(
+        nodes[name],
+        store,
+        { ...store.props, ...props },
+        name,
+        nodes[name].isMain || Object.keys(nodes).length === 1
+      )
     }),
     {}
   );

@@ -32,7 +32,9 @@ const defaultReserved = [
   "appendReverse",
   "prependReverse",
   "bgColor",
-  "bgcolor"
+  "bgcolor",
+  "selected",
+  "selectable"
 ];
 export default function filterProps(reserved, props) {
   const r = [...reserved, ...defaultReserved];

@@ -38,9 +38,11 @@ export const config = {
       fab:
         "hover:bg-$color-transLight text-$color-$normal remove:text-$color-$lighter",
       small: "p-1 h-4 w-4",
-      disabled:
-        "bg-gray-300 text-gray-500 dark:bg-dark-400 elevation-none pointer-events-none hover:bg-gray-300 cursor-default",
       basic: "text-white transition bg-$color-$normal hover:bg-$color-$lighter",
+      disabled: `
+        bg-gray-300 text-gray-500 dark:bg-dark-400 elevation-none pointer-events-none
+        hover:bg-gray-300 cursor-default remove:bg-$color-$normal.hover:bg-$color-$lighter
+      `,
       elevation: "hover:elevation-5 elevation-3",
       rounded: "rounded",
       smallAndIcon: "flex items-center justify-center",

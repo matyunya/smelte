@@ -1,7 +1,8 @@
-<script>
-  import { ClassBuilder } from "../../utils/classes.js";
- 
+<script> 
   import ListItem from "./ListItem.svelte";
+  import { writable } from "svelte/store";
+  import config from "./config";
+  import smelter from "../../utils/smelter";
 
   export let items = [];
   export let value = "";
@@ -14,13 +15,6 @@
   export const to = null;
   export const selectedClasses = i => i;
   export const itemClasses = i => i;
-
-  const classesDefault = "py-2 rounded";
-
-  export let classes = classesDefault;
-
-  let className = "";
-  export {className as class};
 
   function id(i) {
     if (i.id !== undefined) return i.id;
@@ -36,16 +30,12 @@
     return i;
   }
 
-  const cb = new ClassBuilder(className);
+  const store = writable(config);
 
-  $: c = cb
-    .flush()
-    .add(classes, true, classesDefault)
-    .add(className)
-    .get();
+  $: smelte = smelter($store, $$props);
 </script>
 
-<ul class={c} class:rounded-t-none={select}>
+<ul class={smelte.root.class} class:rounded-t-none={select}>
   {#each items as item, i}
     {#if item.to !== undefined}
       <slot name="item" {item} {dense} {value}>

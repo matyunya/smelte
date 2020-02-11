@@ -22,7 +22,6 @@ let config = {
     disabled: false,
     focused: false,
     error: false,
-    focusedNotOutlined: p => p.focused && !p.outlined,
     selectNotAutocomplete: p => p.select && !p.autocomplete,
     labelOnTopOutlined: p => p.labelOnTop && p.outlined
   },
@@ -31,11 +30,11 @@ let config = {
       isMain: true,
       root: `
           transition pb-2 pt-6 px-4 rounded-t text-black dark:text-gray-100
-          w-full caret-$color-$normal dark:bg-dark-600
+          w-full caret-$color-$normal dark:bg-dark-600 bg-gray-100 dark:bg-dark-200
         `,
       outlined: `
-          remove:pt-6.pb-2.dark:bg-dark-600 border border-$color-$normal
-          rounded bg-transparent py-4 transition border-gray-600
+          remove:pt-6.pb-2.dark:bg-dark-600.bg-gray-100.dark:bg-dark-200
+          border border-$color-$normal rounded bg-transparent py-4 transition border-gray-600
         `,
       error:
         "caret-error-$normal remove:caret-$color-$normal border-error-$normal caret-error-$normal",
@@ -43,7 +42,6 @@ let config = {
       disabled:
         "bg-gray-50 dark:bg-dark-400 remove:dark:bg-dark-600 text-gray-600",
       focused: "border-$color-$normal remove:border-gray-600",
-      focusedNotOutlined: "bg-gray-300 dark:bg-dark-200",
       error: "border-error-$normal remove:border-gray-600",
       selectNotAutocomplete: "cursor-pointer"
     },

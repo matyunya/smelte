@@ -19,7 +19,6 @@
 
 <h5 class="mt-6 mb-2">Basic</h5>
 <Chip
-  class="mb-6"
   bind:selected={chip1}
   icon="face"
   selectable
@@ -34,7 +33,6 @@
 
 <h5 class="mt-6 mb-2">Outlined</h5>
 <Chip
-  class="mb-6"
   bind:selected={chip2}
   icon="pan_tool"
   outlined
@@ -45,7 +43,6 @@
   Cats
 </Chip>
 <Chip
-  class="mb-6"
   bind:selected={chip3}
   icon="print"
   outlined
@@ -57,7 +54,6 @@
   Dogs
 </Chip>
 <Chip
-  class="mb-6"
   bind:selected={chip4}
   icon="pageview"
   outlined
@@ -69,7 +65,6 @@
   Plants
 </Chip>
 <Chip
-  class="mb-6"
   bind:selected={chip5}
   icon="pets"
   outlined

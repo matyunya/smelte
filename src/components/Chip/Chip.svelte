@@ -45,28 +45,26 @@
 </style>
 
 {#if value}
-  <span>
-    <button
-      class={smelte.wrapper.class}
-      on:click
-      use:ripple
-      {...props}
-      on:click={select}>
-      {#if icon}
-        <Icon small class={smelte.icon.class}>
-          {icon}
-        </Icon>
-      {/if}
-      <span class={smelte.content.class}>
-        <slot />
+  <button
+    class={smelte.wrapper.class}
+    on:click
+    use:ripple
+    {...props}
+    on:click={select}>
+    {#if icon}
+      <Icon small class={smelte.icon.class}>
+        {icon}
+      </Icon>
+    {/if}
+    <span class={smelte.content.class}>
+      <slot />
+    </span>
+    {#if removable}
+      <span
+        class={smelte.removable.class}
+        on:click|stopPropagation={close}>
+        <Icon class={smelte.removableIcon.class} xs>clear</Icon>
       </span>
-      {#if removable}
-        <span
-          class={smelte.removable.class}
-          on:click|stopPropagation={close}>
-          <Icon class={smelte.removableIcon.class} xs>clear</Icon>
-        </span>
-      {/if}
-    </button>
-  </span>
+    {/if}
+  </button>
 {/if}

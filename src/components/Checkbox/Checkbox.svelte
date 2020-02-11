@@ -29,6 +29,7 @@
     ...$$props,
     checked,
     value,
+    disabled
   });
 </script>
 

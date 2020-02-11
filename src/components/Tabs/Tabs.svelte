@@ -1,6 +1,5 @@
 <script>
   import { onMount } from "svelte";
-  import { ClassBuilder } from "../../utils/classes.js";
 
   import Indicator from "./Indicator.svelte";
   import ProgressLinear from "../ProgressLinear";

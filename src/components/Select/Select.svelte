@@ -3,7 +3,6 @@
   import { quadOut, quadIn } from "svelte/easing";
   import List from "../List/List.svelte";
   import TextField from "../TextField";
-  import { ClassBuilder } from "../../utils/classes.js";
   import { hideListAction } from '../../utils/hide-list-action';
 
   import { writable } from "svelte/store";
