@@ -229,7 +229,6 @@
 
   {#if showHint}
     <Hint
-      {hint}
       {error}
       {hint} />
   {/if}
