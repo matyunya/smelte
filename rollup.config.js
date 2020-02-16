@@ -97,6 +97,17 @@ export default {
       }),
       smelte({
         purge: !dev,
+        tailwind: {
+          theme: {
+            extend: {
+              spacing: {
+                72: "18rem",
+                84: "21rem",
+                96: "24rem"
+              }
+            }
+          }
+        },
         whitelistPatterns: [
           // for Prismjs code highlighting
           /language/,

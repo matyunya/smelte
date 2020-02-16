@@ -32,6 +32,7 @@
     "@fullhuman/postcss-purgecss": "^1.2.0",
     "autoprefixer": "^9.5.1",
     "cssnano": "^4.1.10",
+    "merge-deep": "^3.0.2",
     "postcss": "^7.0.16",
     "postcss-import": "^12.0.1",
     "postcss-input-range": "^4.0.0",
