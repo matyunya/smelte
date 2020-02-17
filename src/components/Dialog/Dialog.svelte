@@ -48,6 +48,7 @@
     <div class="h-full w-full absolute flex items-center justify-center">
       <div
         in:scale={transitionProps}
+        out:scale={transitionProps}
         class={c}>
         <div class={t}>
           <slot name="title" />
