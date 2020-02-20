@@ -56,13 +56,13 @@
 
 
 <List {items} {...$$props} {className}>
-  <span slot="item" let:item>
+  <span slot="item" {item}>
     <ListItem {item} {...$$props} {...item} selected={selectable && selected===item} on:click
       class={smelte.listItem.class} on:click={()=> toggle(item)}>
       {#if showExpandIcon && !item.hideArrow && item.items}
         <Icon class={smelte.icon.class} tip={expanded.includes(item)}>{expandIcon}</Icon>
       {/if}
-      <slot><span class={smelte.itemContent.class}>{item.text}</span></slot>
+      <slot {item}><span class={smelte.itemContent.class}>{item.text}</span></slot>
     </ListItem>
 
     {#if item.items && expanded.includes(item)}
