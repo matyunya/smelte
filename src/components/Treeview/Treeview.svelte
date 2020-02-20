@@ -62,7 +62,7 @@
       {#if showExpandIcon && !item.hideArrow && item.items}
         <Icon class={smelte.icon.class} tip={expanded.includes(item)}>{expandIcon}</Icon>
       {/if}
-      <slot><span>{item.text}</span></slot>
+      <slot><span class={smelte.itemContent.class}>{item.text}</span></slot>
     </ListItem>
 
     {#if item.items && expanded.includes(item)}

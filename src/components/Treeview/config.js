@@ -15,7 +15,10 @@ let config = {
       root: "flex items-center"
     },
     icon: {
-      root: "pr-1"
+      root: ""
+    },
+    itemContent: {
+      root: "ml-2"
     }
   }
 };
