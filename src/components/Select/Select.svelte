@@ -49,20 +49,6 @@
   let filteredItems = items;
   let itemsProcessed = [];
 
-  const props = {
-    outlined,
-    label,
-    placeholder,
-    hint,
-    error,
-    append,
-    persistentHint,
-    color,
-    add,
-    remove,
-    replace,
-    noUnderline,
-  };
 
   function process(it) {
     return it.map(i => typeof i !== "object"
@@ -121,7 +107,18 @@
       focused={showList}
       {autocomplete}
       value={selectedLabel}
-      {...props}
+      {outlined}
+      {label}
+      {placeholder}
+      {hint}
+      {error}
+      {append}
+      {persistentHint}
+      {color}
+      {add}
+      {remove}
+      {replace}
+      {noUnderline}
       class={inputWrapperClasses}
       {appendClasses}
       {labelClasses}

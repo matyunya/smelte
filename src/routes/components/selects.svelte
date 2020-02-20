@@ -1,5 +1,6 @@
 <script>
   import Select from "components/Select";
+  import TextField from "components/TextField";
   import Card from "components/Card";
   import Checkbox from "components/Checkbox";
   import Code from "docs/Code.svelte";
@@ -11,6 +12,8 @@
   let value4 = "";
 
   let showList = false;
+
+  let error = "";
 
   const items = [
     { value: 1, text: "One" },
@@ -80,3 +83,9 @@
       {/each}
   </div>
 </Select>
+
+<p>With error message</p>
+
+<TextField label="Error" bind:value={error} />
+
+<Select bind:value={value4} outlined autocomplete {label} {items} {error} />
