@@ -1,6 +1,8 @@
-<script> 
+<script>
   import ListItem from "./ListItem.svelte";
-  import { writable } from "svelte/store";
+  import {
+    writable
+  } from "svelte/store";
   import config from "./config";
   import smelter from "../../utils/smelter";
 

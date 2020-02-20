@@ -182,7 +182,7 @@ module.exports = ({ colors = defaultColors, darkMode = true, ...config }) => ({
     }),
     darkMode &&
       function({ addVariant, e }) {
-        const d = ".mode-dark";
+        const d = ".mode-dark"; 
 
         addVariant("dark", ({ modifySelectors, separator }) => {
           modifySelectors(({ className }) => {

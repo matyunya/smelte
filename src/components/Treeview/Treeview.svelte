@@ -1,9 +1,32 @@
 <script>
-  import List, { ListItem } from "../List";
+  import List, {
+    ListItem
+  } from "../List";
   import Icon from "../Icon";
 
-  import { createEventDispatcher } from "svelte";
-  import { slide } from "svelte/transition";
+  import {
+    writable
+  } from "svelte/store";
+  import config from "./config";
+  import smelter from "../../utils/smelter";
+
+  import {
+    createEventDispatcher
+  } from "svelte";
+  import {
+    slide
+  } from "svelte/transition";
+
+  function defaultToggle(i) {
+    dispatch("select", i);
+
+    if (selectable && !i.items) {
+      selected = i;
+    }
+
+    expanded = i && !expanded.includes(i) ? [...expanded, i] :
+      expanded.filter(si => si !== i);
+  }
 
   export let items = [];
   export const value = "";
@@ -16,52 +39,34 @@
   export let expandIcon = "arrow_right";
   export let selectable = true;
   export let selected = null;
-  export let selectedClasses = "bg-primary-trans";
+  export let expanded = [];
+  export let toggle = defaultToggle;
 
   const className = "rounded";
-  export {className as class};
-
-  let expanded = [];
+  export {
+    className as class
+  };
 
   const dispatch = createEventDispatcher();
 
-  function toggle(i) {
-    dispatch("select", i);
+  const store = writable(config);
 
-    if (selectable && !i.items) {
-      selected = i;
-    }
-
-    expanded = i && !expanded.includes(i)
-      ? [...expanded, i]
-      : expanded.filter(si => si !== i);
-  }
+  $: smelte = smelter($store, $$props);
 </script>
 
 
-<List
-  {items}
-  {...$$props}
-  {className}
->
+<List {items} {...$$props} {className}>
   <span slot="item" let:item>
-    <ListItem
-      {item}
-      {...$$props}
-      {...item}
-      selected={selectable && selected === item}
-      {selectedClasses}
-      on:click={() => toggle(item) }
-      on:click
-      itemClasses="flex items-center">
+    <ListItem {item} {...$$props} {...item} selected={selectable && selected===item} on:click
+      class={smelte.listItem.class} on:click={()=> toggle(item)}>
       {#if showExpandIcon && !item.hideArrow && item.items}
-        <Icon tip={expanded.includes(item)}>{expandIcon}</Icon>
+        <Icon class={smelte.icon.class} tip={expanded.includes(item)}>{expandIcon}</Icon>
       {/if}
       <slot><span>{item.text}</span></slot>
     </ListItem>
 
     {#if item.items && expanded.includes(item)}
-      <div in:slide class="ml-6">
+      <div in:slide class={smelte.container.class}>
         <svelte:self
           {...$$props}
           items={item.items}

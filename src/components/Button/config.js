@@ -23,7 +23,9 @@ export const config = {
     basic,
     elevation,
     rounded,
-    smallAndIcon: p => p.small && p.icon
+    smallAndIcon: p => p.small && p.icon,
+    elevationHover: 5,
+    elevation: 3,
   },
   computed: {},
   nodes: {
@@ -44,7 +46,7 @@ export const config = {
         bg-gray-300 text-gray-500 dark:bg-dark-400 elevation-none pointer-events-none
         hover:bg-gray-300 cursor-default remove:bg-$color-$normal.hover:bg-$color-$lighter
       `,
-      elevation: "hover:elevation-5 elevation-3",
+      elevation: "hover:elevation-$elevationHover elevation-$elevation",
       rounded: "rounded",
       smallAndIcon: "flex items-center justify-center",
       notIcon: (i, p) => i.set("button", !p.icon),
