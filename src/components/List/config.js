@@ -3,6 +3,9 @@ let config = {
   nodes: {
     root: {
       root: "py-2 rounded"
+    },
+    listItem: {
+      root: ""
     }
   }
 };
