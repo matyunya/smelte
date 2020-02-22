@@ -50,7 +50,7 @@
       <slot name="item" {item} {dense} {value}>
         <ListItem
           bind:value
-          {smelte.listItem.class}
+          class={smelte.listItem.class}
           {...item}
           tabindex={i + 1}
           id={id(item)}
