@@ -2,6 +2,8 @@
 function ripple(color, centered) {
   return function(event) {
     const target = event.currentTarget;
+    if (target.classList.contains("no-ripple")) return;
+
     const circle = document.createElement("span");
     const d = Math.max(target.clientWidth, target.clientHeight);
 
