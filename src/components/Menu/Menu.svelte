@@ -23,12 +23,12 @@
 
   const dispatch = createEventDispatcher();
 
-  export const inProps = {
+  export let inProps = {
     y: 10,
     duration: 200,
     easing: quadIn
   };
-  export const outProps = {
+  export let outProps = {
     y: -10,
     duration: 100,
     easing: quadOut,
@@ -40,7 +40,10 @@
   $: smelte = smelter($store, $$props);
 </script>
 
-<svelte:window on:click={()=> (open = false)} />
+<svelte:window on:click={()=> {
+  open = false;
+  dispatch("close");
+  }} />
 
   <div class={smelte.root.class} on:click|stopPropagation>
     <slot name="activator" />

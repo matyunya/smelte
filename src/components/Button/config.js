@@ -3,7 +3,11 @@ import { block } from "../../utils/smelter";
 const basic = p => !p.outlined && !p.text && !p.fab;
 
 const elevation = p =>
-  (basic(p) || p.icon) && !p.disabled && !p.flat && !p.text;
+  (basic(p) || p.icon) &&
+  !p.disabled &&
+  !p.flat &&
+  !p.text &&
+  (p.elevation || 3);
 
 const rounded = p => p.rounded || basic(p) || p.outlined || p.text;
 
@@ -21,11 +25,10 @@ export const config = {
     flat: false,
     fab: false,
     basic,
-    elevation,
     rounded,
     smallAndIcon: p => p.small && p.icon,
     elevationHover: 5,
-    elevation: 3,
+    elevation
   },
   computed: {},
   nodes: {

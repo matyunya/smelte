@@ -1,9 +1,17 @@
 <script>
-  import { fly } from "svelte/transition";
-  import { quadIn } from "svelte/easing";
-  import { Scrim } from "../Util";
+  import {
+    fly
+  } from "svelte/transition";
+  import {
+    quadIn
+  } from "svelte/easing";
+  import {
+    Scrim
+  } from "../Util";
   import breakpoints from "../../breakpoints";
-  import { writable } from "svelte/store";
+  import {
+    writable
+  } from "svelte/store";
   import config from "./config";
   import smelter from "../../utils/smelter";
 
@@ -11,6 +19,7 @@
 
   export let persistent = false;
   export let show = true;
+  export let width = 250;
 
   export let transitionProps = {
     duration: 200,
@@ -29,20 +38,11 @@
   $: smelte = smelter($store, $$props);
 </script>
 
-<style>
-  .drawer {
-    min-width: 250px;
-  }
-
-  aside {
-    height: calc(100vh - 4rem);
-  }
-</style>
-  
 {#if show}
   <aside
     class={smelte.root.class}
     transition:fly={transitionProps}
+    style="width: {width}px"
   >
     {#if !persistent}
       <Scrim on:click={() => show = false} />
