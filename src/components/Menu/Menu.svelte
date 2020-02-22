@@ -1,9 +1,18 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-  import { fly } from "svelte/transition";
-  import { quadOut, quadIn } from "svelte/easing";
+  import {
+    createEventDispatcher
+  } from "svelte";
+  import {
+    fly
+  } from "svelte/transition";
+  import {
+    quadOut,
+    quadIn
+  } from "svelte/easing";
   import List from "../List";
-  import { writable } from "svelte/store";
+  import {
+    writable
+  } from "svelte/store";
   import config from "./config";
   import smelter from "../../utils/smelter";
 
@@ -14,20 +23,29 @@
 
   const dispatch = createEventDispatcher();
 
-  const inProps = { y: 10, duration: 200, easing: quadIn };
-  const outProps = { y: -10, duration: 100, easing: quadOut, delay: 100 };
+  const inProps = {
+    y: 10,
+    duration: 200,
+    easing: quadIn
+  };
+  const outProps = {
+    y: -10,
+    duration: 100,
+    easing: quadOut,
+    delay: 100
+  };
 
   const store = writable(config);
 
   $: smelte = smelter($store, $$props);
 </script>
 
-<svelte:window on:click={() => (open = false)} />
+<svelte:window on:click={()=> (open = false)} />
 
-<div class={smelte.root.class} on:click|stopPropagation>
-  <slot name="activator" />
-  <slot name="menu">
-    {#if open}
+  <div class={smelte.root.class} on:click|stopPropagation>
+    <slot name="activator" />
+    <slot name="menu">
+      {#if open}
       <div class={smelte.listWrapper.class} in:fly={inProps} out:fly={outProps}>
         <List
           class={smelte.list.class}

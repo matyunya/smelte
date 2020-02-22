@@ -70,7 +70,7 @@
 </script>
 
 <small>I selected {selected}</small>
-<Treeview {items} let:item dense>
+<Treeview class.listItem="remove:h-4 h-1" {items} let:item>
   <div class="bg-error-500">{item.text}</div>
 </Treeview>
 

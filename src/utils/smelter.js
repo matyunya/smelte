@@ -1,9 +1,10 @@
 class SmelteClassString {
-  constructor(s, props, node, store) {
+  constructor(s, props, node, name, store) {
     this.classes = new Set();
     this.props = props;
     this.shade = this.props.shade || 0;
     this.node = node;
+    this.name = name;
     this.store = store;
 
     this.set(s);
@@ -95,11 +96,12 @@ class SmelteClassString {
   }
 }
 
-function build(node, store, props = {}, isMain) {
+function build(node, store, props = {}, name, isMain) {
   const classString = new SmelteClassString(
     isMain ? props.class : "",
     props,
     node,
+    name,
     store
   );
 
@@ -112,6 +114,10 @@ function build(node, store, props = {}, isMain) {
 
     if (typeof rule === "string") {
       classString.set(rule, props[r]);
+
+      if (props[`class.${name}`]) {
+        classString.set(props[`class.${name}`], props[r]);
+      }
       return;
     }
 
