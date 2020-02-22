@@ -1,5 +1,8 @@
 <script>
   import {
+    createEventDispatcher
+  } from "svelte";
+  import {
     ListItem
   } from "../List";
   import Icon from "../Icon";
@@ -20,12 +23,14 @@
       class: ""
     },
   }
+
+  const dispatch = createEventDispatcher();
 </script>
 
 <ListItem {item} selected={selectable && selected===item} on:click class={$$props.class} on:click={()=>
   toggle(item)}>
   {#if showExpandIcon && !item.hideArrow && item.items}
-    <Icon class={smelte.icon.class}>{expandIcon}</Icon>
+    <Icon on:click={(e) => dispatch("click-expand", e)}class={smelte.icon.class}>{expandIcon}</Icon>
   {/if}
   <slot {item}><span class={smelte.itemContent.class}>{item.text}</span></slot>
 </ListItem>

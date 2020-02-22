@@ -51,7 +51,7 @@
 <List {items} {...$$props} class={smelte.root.class}>
   <span slot="item" let:item>
     <TreeviewItem class={smelte.listItem.class} {item} {text} {select} {showExpandIcon} {expandIcon} {selectable}
-      {selected} {toggle} {smelte}>
+      {selected} {toggle} {smelte} on:click-expand>
       <slot {item}>{item.text}</slot>
     </TreeviewItem>
     {#if item.items && expanded.includes(item)}
