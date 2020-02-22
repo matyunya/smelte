@@ -54,9 +54,10 @@
           dense
           {items}
           on:change
-          on:change={() => open = false}
-          {...listProps}
-        />
+          on:change={() => (open = false)}
+          {...listProps}>
+          <slot />
+        </List>
       </div>
     {/if}
   </slot>

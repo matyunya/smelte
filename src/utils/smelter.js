@@ -60,7 +60,8 @@ class SmelteClassString {
         a.replace("remove:", "")
           .split(".")
           .forEach(c => this.remove(c));
-        this.remove(a);
+        // TODO: remove at final node
+        // this.remove(a);
       }
     });
   }
@@ -138,7 +139,7 @@ export default function smelter(store, props = {}) {
         store,
         { ...store.props, ...props },
         name,
-        nodes[name].isMain || Object.keys(nodes).length === 1
+        nodes[name].isMain || Object.keys(nodes).length === 1 || name === "root"
       )
     }),
     {}

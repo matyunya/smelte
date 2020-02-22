@@ -1,11 +1,21 @@
 <script>
-  import { createEventDispatcher, onMount } from "svelte";
-  import { quadOut, quadIn } from "svelte/easing";
+  import {
+    createEventDispatcher,
+    onMount
+  } from "svelte";
+  import {
+    quadOut,
+    quadIn
+  } from "svelte/easing";
   import List from "../List/List.svelte";
   import TextField from "../TextField";
-  import { hideListAction } from '../../utils/hide-list-action';
+  import {
+    hideListAction
+  } from '../../utils/hide-list-action';
 
-  import { writable } from "svelte/store";
+  import {
+    writable
+  } from "svelte/store";
   import config from "./config";
   import smelter from "../../utils/smelter";
 
@@ -27,7 +37,7 @@
   export let autocomplete = false;
   export let noUnderline = false;
   export let showList = false;
-  
+
   export let inputWrapperClasses = noop;
   export let appendClasses = noop;
   export let labelClasses = noop;
@@ -35,7 +45,6 @@
   export let prependClasses = noop;
   export let listClasses = noop;
   export let selectedClasses = noop;
-  export let itemClasses = noop;
   export let add = "";
   export let remove = "";
   export let replace = "";
@@ -59,9 +68,12 @@
   };
 
   function process(it) {
-    return it.map(i => typeof i !== "object"
-     ? ({ value: i, text: i })
-     : i);
+    return it.map(i => typeof i !== "object" ?
+      ({
+        value: i,
+        text: i
+      }) :
+      i);
   }
 
   $: itemsProcessed = process(items);
@@ -73,10 +85,14 @@
   const dispatch = createEventDispatcher();
 
   function getLabel(value) {
-    return value !== undefined ? (itemsProcessed.find(i => i.value === value) || { text: "" }).text : "";
+    return value !== undefined ? (itemsProcessed.find(i => i.value === value) || {
+      text: ""
+    }).text : "";
   }
 
-  function filterItems({ target }) {
+  function filterItems({
+    target
+  }) {
     filteredItems = itemsProcessed.filter(i =>
       i.text.toLowerCase().includes(target.value.toLowerCase())
     );
@@ -99,25 +115,14 @@
 
 <div class={smelte.root.class} use:hideListAction={onHideListPanel}>
   <slot name="select">
-    <TextField
-      select
-      {dense}
-      focused={showList}
-      {autocomplete}
-      value={selectedLabel}
-      {...props}
-      class={inputWrapperClasses}
-      {appendClasses}
-      {labelClasses}
-      {inputClasses}
-      {prependClasses}
-      on:click={handleInputClick}
-      on:click-append={(e => showList = !showList)}
+    <TextField select {dense} focused={showList} {autocomplete} value={selectedLabel} {...props}
+      class={inputWrapperClasses} {appendClasses} {labelClasses} {inputClasses} {prependClasses}
+      on:click={handleInputClick} on:click-append={(e=> showList = !showList)}
       on:click
       on:input={filterItems}
       append="arrow_drop_down"
       appendReverse={showList}
-    />
+      />
   </slot>
 
   {#if showList}
@@ -130,7 +135,6 @@
           bind:value
           class={listClasses}
           {selectedClasses}
-          {itemClasses}
           select
           {dense}
           items={filteredItems}

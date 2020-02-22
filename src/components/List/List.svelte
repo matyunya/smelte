@@ -16,7 +16,6 @@
   export const item = {};
   export const to = null;
   export const selectedClasses = i => i;
-  export const itemClasses = i => i;
 
   function id(i) {
     if (i.id !== undefined) return i.id;
@@ -42,7 +41,7 @@
     {#if item.to !== undefined}
       <slot name="item" {item} {dense} {value}>
         <a tabindex={i + 1} href={item.to}>
-          <ListItem bind:value {...item} id={id(item)} {dense} on:change>
+          <ListItem {smelte.listItem.class} bind:value {...item} id={id(item)} {dense} on:change>
             {item.text}
           </ListItem>
         </a>
@@ -51,8 +50,7 @@
       <slot name="item" {item} {dense} {value}>
         <ListItem
           bind:value
-          {selectedClasses}
-          {itemClasses}
+          {smelte.listItem.class}
           {...item}
           tabindex={i + 1}
           id={id(item)}
