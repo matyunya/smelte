@@ -1,8 +1,6 @@
 <script>
-  import List, {
-    ListItem
-  } from "../List";
-  import Icon from "../Icon";
+  import List from "../List";
+  import TreeviewItem from "./TreeviewItem.svelte";
 
   import {
     writable
@@ -24,7 +22,8 @@
       selected = i;
     }
 
-    expanded = i && !expanded.includes(i) ? [...expanded, i] :
+    expanded =
+      i && !expanded.includes(i) ? [...expanded, i] :
       expanded.filter(si => si !== i);
   }
 
@@ -42,11 +41,6 @@
   export let expanded = [];
   export let toggle = defaultToggle;
 
-  const className = "rounded";
-  export {
-    className as class
-  };
-
   const dispatch = createEventDispatcher();
 
   const store = writable(config);
@@ -54,17 +48,12 @@
   $: smelte = smelter($store, $$props);
 </script>
 
-
-<List {items} {...$$props} {className}>
+<List {items} {...$$props} class={smelte.root.class}>
   <span slot="item" let:item>
-    <ListItem {item} {...$$props} {...item} selected={selectable && selected===item} on:click
-      class={smelte.listItem.class} on:click={()=> toggle(item)}>
-      {#if showExpandIcon && !item.hideArrow && item.items}
-        <Icon class={smelte.icon.class} tip={expanded.includes(item)}>{expandIcon}</Icon>
-      {/if}
-      <slot {item}><span class={smelte.itemContent.class}>{item.text}</span></slot>
-    </ListItem>
-
+    <TreeviewItem class={smelte.listItem.class} {item} {text} {select} {showExpandIcon} {expandIcon} {selectable}
+      {selected} {toggle} {smelte}>
+      <slot {item}>{item.text}</slot>
+    </TreeviewItem>
     {#if item.items && expanded.includes(item)}
       <div in:slide class={smelte.container.class}>
         <svelte:self
@@ -73,10 +62,10 @@
           level={level + 1}
           on:click
           on:select
-        >
-          <slot {item}><span class={smelte.itemContent.class}>{item.text}</span></slot>
+          let:item={item}>
+          <slot {item} />
         </svelte:self>
       </div>
     {/if}
-  </span> 
+  </span>
 </List>
