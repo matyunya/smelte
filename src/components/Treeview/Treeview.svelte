@@ -56,7 +56,7 @@
 
 
 <List {items} {...$$props} {className}>
-  <span slot="item" {item}>
+  <span slot="item" let:item>
     <ListItem {item} {...$$props} {...item} selected={selectable && selected===item} on:click
       class={smelte.listItem.class} on:click={()=> toggle(item)}>
       {#if showExpandIcon && !item.hideArrow && item.items}
@@ -73,7 +73,9 @@
           level={level + 1}
           on:click
           on:select
-        />
+        >
+          <slot {item}><span class={smelte.itemContent.class}>{item.text}</span></slot>
+        </svelte:self>
       </div>
     {/if}
   </span> 
