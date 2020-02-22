@@ -23,12 +23,12 @@
 
   const dispatch = createEventDispatcher();
 
-  const inProps = {
+  export const inProps = {
     y: 10,
     duration: 200,
     easing: quadIn
   };
-  const outProps = {
+  export const outProps = {
     y: -10,
     duration: 100,
     easing: quadOut,
