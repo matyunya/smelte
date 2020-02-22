@@ -41,7 +41,7 @@
     {#if item.to !== undefined}
       <slot name="item" {item} {dense} {value}>
         <a tabindex={i + 1} href={item.to}>
-          <ListItem {smelte.listItem.class} bind:value {...item} id={id(item)} {dense} on:change>
+          <ListItem class={smelte.listItem.class} bind:value {...item} id={id(item)} {dense} on:change>
             {item.text}
           </ListItem>
         </a>
