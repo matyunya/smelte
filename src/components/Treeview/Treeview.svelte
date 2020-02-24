@@ -22,9 +22,13 @@
       selected = i;
     }
 
+    if (i && !i.id) {
+      i.id = Date().valueOf();
+    }
+
     expanded =
-      i && !expanded.includes(i) ? [...expanded, i] :
-      expanded.filter(si => si !== i);
+      i && !expanded.includes(i.id) ? [...expanded, i.id] :
+      expanded.filter(si => si !== i.id);
   }
 
   export let items = [];
@@ -54,7 +58,7 @@
       {selected} {toggle} {smelte} on:click-expand>
       <slot {item}>{item.text}</slot>
     </TreeviewItem>
-    {#if item.items && expanded.includes(item)}
+    {#if item.items && expanded.includes(item.id)}
       <div in:slide class={smelte.container.class}>
         <svelte:self
           {...$$props}
