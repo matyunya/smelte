@@ -62,6 +62,7 @@
       <div in:slide class={smelte.container.class}>
         <svelte:self
           {...$$props}
+          {expanded}
           items={item.items}
           level={level + 1}
           on:click
