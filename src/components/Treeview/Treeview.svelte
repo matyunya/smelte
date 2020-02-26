@@ -41,6 +41,7 @@
   export let controlled = false;
   export let expanded = [];
   export let toggle = defaultToggle;
+  export let isExpanded = () => {};
 
   const dispatch = createEventDispatcher();
 
@@ -66,7 +67,7 @@
       on:click-expand>
       <slot {item}>{item.text}</slot>
     </TreeviewItem>
-    {#if item.items && expanded.includes(item)}
+    {#if (!controlled && item.items && expanded.includes(item)) || (controlled && isExpanded(item))}
       <div class={smelte.container.class}>
         <svelte:self
           {...$$props}
