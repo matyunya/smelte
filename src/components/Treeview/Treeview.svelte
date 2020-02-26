@@ -2,18 +2,12 @@
   import List from "../List";
   import TreeviewItem from "./TreeviewItem.svelte";
 
-  import {
-    writable
-  } from "svelte/store";
+  import { writable } from "svelte/store";
   import config from "./config";
   import smelter from "../../utils/smelter";
 
-  import {
-    createEventDispatcher
-  } from "svelte";
-  import {
-    slide
-  } from "svelte/transition";
+  import { createEventDispatcher } from "svelte";
+  import { slide } from "svelte/transition";
 
   function defaultToggle(i) {
     dispatch("select", i);
@@ -22,13 +16,10 @@
       selected = i;
     }
 
-    if (i && !i.id) {
-      i.id = Date().valueOf();
-    }
-
     expanded =
-      i && !expanded.includes(i.id) ? [...expanded, i.id] :
-      expanded.filter(si => si !== i.id);
+      i && !expanded.includes(i)
+        ? [...expanded, i]
+        : expanded.filter(si => si !== i);
   }
 
   export let items = [];
@@ -54,11 +45,21 @@
 
 <List {items} {...$$props} class={smelte.root.class}>
   <span slot="item" let:item>
-    <TreeviewItem class={smelte.listItem.class} {item} {text} {select} {showExpandIcon} {expandIcon} {selectable}
-      {selected} {toggle} {smelte} on:click-expand>
+    <TreeviewItem
+      class={smelte.listItem.class}
+      {item}
+      {text}
+      {select}
+      {showExpandIcon}
+      {expandIcon}
+      {selectable}
+      {selected}
+      {toggle}
+      {smelte}
+      on:click-expand>
       <slot {item}>{item.text}</slot>
     </TreeviewItem>
-    {#if item.items && expanded.includes(item.id)}
+    {#if item.items && expanded.includes(item)}
       <div in:slide class={smelte.container.class}>
         <svelte:self
           {...$$props}
@@ -67,7 +68,7 @@
           level={level + 1}
           on:click
           on:select
-          let:item={item}>
+          let:item>
           <slot {item} />
         </svelte:self>
       </div>
