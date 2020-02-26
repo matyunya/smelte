@@ -16,8 +16,14 @@
       selected = i;
     }
 
+    if (i.items) {
+      dispatch("expand", i);
+    }
+
+    if (controlled) return;
+
     expanded =
-      i && !expanded.includes(i)
+      i && i.items && !expanded.includes(i)
         ? [...expanded, i]
         : expanded.filter(si => si !== i);
   }
@@ -33,6 +39,7 @@
   export let expandIcon = "arrow_right";
   export let selectable = true;
   export let selected = null;
+  export let controlled = false;
   export let expanded = [];
   export let toggle = defaultToggle;
 
@@ -68,8 +75,9 @@
           level={level + 1}
           on:click
           on:select
+          on:expand
           let:item>
-          <slot {item} />
+          <slot {item}>{item.text}</slot>
         </svelte:self>
       </div>
     {/if}

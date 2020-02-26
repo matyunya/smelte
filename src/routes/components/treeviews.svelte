@@ -1,11 +1,12 @@
 <script>
   import Treeview from "components/Treeview";
+  import Button from "components/Button";
   import Code from "docs/Code.svelte";
   import treeview from "examples/treeview.txt";
 
   let selected = "nothing";
 
-  const items = [{
+  let items = [{
       text: "test",
       items: [{
           text: "subtest"
@@ -67,6 +68,20 @@
       ]
     }
   ];
+
+  let expanded = [];
+
+  function onExpand({ detail }) {
+    if (expanded.includes(detail)) {
+      expanded = expanded.filter(p => p !== detail);
+    } else {
+      expanded = [...expanded, detail];
+    }
+  }
+
+  function addItem() {
+    items = [ {text: "New item", items: [{ text: "New item" }] }, ...items];
+  }
 </script>
 
 <small>I selected {selected}</small>
@@ -76,4 +91,8 @@
 
 <Treeview on:select={i=> (selected = i.detail.text)} {items} />
 
-  <Code code={treeview} />
+<small>I expanded {expanded.map(e => e.text).join(', ') || "nothing"}</small>
+<Button on:click={addItem}>Add new item</Button>
+<Treeview {expanded} controlled on:expand={onExpand} {items} />
+
+<Code code={treeview} />
