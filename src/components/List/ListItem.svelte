@@ -5,6 +5,7 @@
   import { writable } from "svelte/store";
   import { listItem } from "./config";
   import smelter from "../../utils/smelter";
+  import filterProps from "../../utils/filter-props";
 
   export let icon = "";
   export let id = "";
@@ -39,6 +40,9 @@
     dense,
     disabled
   });
+
+  const props = filterProps([], $$props);
+
 </script>
 
 <li
@@ -47,7 +51,9 @@
   {tabindex}
   on:keypress={change}
   on:click={change}
-  on:click>
+  on:click
+  on:contextmenu
+  {...props}>
   {#if icon}
     <Icon
       class="pr-6"

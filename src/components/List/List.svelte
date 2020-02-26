@@ -57,6 +57,7 @@
           selected={value === id(item)}
           {dense}
           on:change
+          on:contextmenu
           on:click>
           {getText(item)}
         </ListItem>

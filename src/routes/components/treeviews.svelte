@@ -80,8 +80,10 @@
   }
 
   function addItem() {
-    items = [ {text: "New item", items: [{ text: "New item" }] }, ...items];
+    items2 = [ {text: "New item", items: [{ text: "New item" }] }, ...items2];
   }
+
+  let items2 = items;
 </script>
 
 <small>I selected {selected}</small>
@@ -92,7 +94,9 @@
 <Treeview on:select={i=> (selected = i.detail.text)} {items} />
 
 <small>I expanded {expanded.map(e => e.text).join(', ') || "nothing"}</small>
-<Button on:click={addItem}>Add new item</Button>
-<Treeview {expanded} controlled on:expand={onExpand} {items} />
+<div>
+  <Button on:click={addItem}>Add new item</Button>
+</div>
+<Treeview {expanded} controlled on:expand={onExpand} items={items2} on:contextmenu={e => console.log(e)} />
 
 <Code code={treeview} />

@@ -7,7 +7,6 @@
   import smelter from "../../utils/smelter";
 
   import { createEventDispatcher } from "svelte";
-  import { slide } from "svelte/transition";
 
   function defaultToggle(i) {
     dispatch("select", i);
@@ -63,11 +62,12 @@
       {selected}
       {toggle}
       {smelte}
+      on:contextmenu
       on:click-expand>
       <slot {item}>{item.text}</slot>
     </TreeviewItem>
     {#if item.items && expanded.includes(item)}
-      <div in:slide class={smelte.container.class}>
+      <div class={smelte.container.class}>
         <svelte:self
           {...$$props}
           {expanded}
@@ -76,6 +76,7 @@
           on:click
           on:select
           on:expand
+          on:contextmenu
           let:item>
           <slot {item}>{item.text}</slot>
         </svelte:self>
