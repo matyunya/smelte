@@ -42,7 +42,7 @@
   export let expanded = [];
   export let toggle = defaultToggle;
   export let isExpanded = () => {};
-  export let itemProps = {};
+  export let itemProps = () => {};
 
   const dispatch = createEventDispatcher();
 
@@ -65,7 +65,7 @@
       {toggle}
       {smelte}
       on:contextmenu
-      {...itemProps}
+      {itemProps}
       on:click-expand>
       <slot {item}>{item.text}</slot>
     </TreeviewItem>

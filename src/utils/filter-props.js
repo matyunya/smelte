@@ -34,6 +34,8 @@ const defaultReserved = [
   "bgColor",
   "bgcolor",
   "selected",
+  "smelte",
+  "toggle",
   "selectable"
 ];
 export default function filterProps(reserved, props) {

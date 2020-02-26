@@ -97,6 +97,14 @@
 <div>
   <Button on:click={addItem}>Add new item</Button>
 </div>
-<Treeview {expanded} controlled on:expand={onExpand} items={items2} on:contextmenu={e => console.log(e)} />
+<Treeview
+  {expanded}
+  controlled
+  on:expand={onExpand}
+  items={items2}
+  itemProps={i => ({
+    "data-id": i.text,
+  })}
+  on:contextmenu={e => console.log(e)} />
 
 <Code code={treeview} />

@@ -2,7 +2,6 @@
   import { createEventDispatcher } from "svelte";
   import { ListItem } from "../List";
   import Icon from "../Icon";
-  import filterProps from "../../utils/filter-props";
 
   export const text = "";
   export const select = false;
@@ -12,6 +11,7 @@
   export let selected = null;
   export let item = false;
   export let toggle = () => {};
+  export let itemProps = () => {};
   export let smelte = {
     icon: {
       class: ""
@@ -21,7 +21,7 @@
     }
   };
 
-  const props = filterProps(["selected"], $$props);
+  $: props = itemProps(item);
 
   const dispatch = createEventDispatcher();
 </script>

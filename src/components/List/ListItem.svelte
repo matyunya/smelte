@@ -41,8 +41,7 @@
     disabled
   });
 
-  const props = filterProps([], $$props);
-
+  const props = filterProps(["item"], $$props);
 </script>
 
 <li
