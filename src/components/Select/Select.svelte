@@ -21,7 +21,7 @@
   export let placeholder = "";
   export let hint = "";
   export let error = false;
-  export let append = "";
+  export let append = "arrow_drop_down";
   export let dense = false;
   export let persistentHint = false;
   export let autocomplete = false;
@@ -128,7 +128,6 @@
       on:click-append={(e => showList = !showList)}
       on:click
       on:input={filterItems}
-      append="arrow_drop_down"
       appendReverse={showList}
     />
   </slot>
