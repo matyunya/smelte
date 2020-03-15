@@ -30,7 +30,7 @@
   const textDefault = 'bg-transparent border-none px-4 hover:bg-transparent';
   const iconDefault = 'p-4 flex items-center';
   const fabDefault = 'hover:bg-transparent';
-  const smallDefault = 'p-1 h-4 w-4';
+  const smallDefault = 'pt-1 pb-1 pl-2 pr-2 text-xs';
   const disabledDefault = 'bg-gray-300 text-gray-500 dark:bg-dark-400 elevation-none pointer-events-none hover:bg-gray-300 cursor-default';
   const elevationDefault = 'hover:elevation-5 elevation-3';
 
@@ -47,7 +47,7 @@
   fab = fab || (text && icon);
   const basic = !outlined && !text && !fab;
   const elevation = (basic || icon) && !disabled && !flat && !text;
-  
+
   let Classes = i => i;
   let iClasses = i => i;
   let shade = 0;
@@ -88,7 +88,7 @@
       .remove(txt(lighter), fab)
       .add(disabledClasses, disabled, disabledDefault)
       .add(smallClasses, small, smallDefault)
-      .add("flex items-center justify-center", small && icon)
+      .add("flex items-center justify-center h-8 w-8", small && icon)
       .add("border-solid", outlined)
       .add("rounded-full", icon)
       .add("w-full", block)
