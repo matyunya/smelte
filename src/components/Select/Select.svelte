@@ -46,7 +46,6 @@
   let className = "";
   export {className as class};
 
-  let filteredItems = items;
   let itemsProcessed = [];
 
 
@@ -68,10 +67,13 @@
     return value !== undefined ? (itemsProcessed.find(i => i.value === value) || { text: "" }).text : "";
   }
 
+  let filterText = null;
+  $: filteredItems = itemsProcessed.filter(
+    i => !filterText || i.text.toLowerCase().includes(filterText)
+  );
+
   function filterItems({ target }) {
-    filteredItems = itemsProcessed.filter(i =>
-      i.text.toLowerCase().includes(target.value.toLowerCase())
-    );
+    filterText = target.value.toLowerCase();
   }
 
   function handleInputClick() {
