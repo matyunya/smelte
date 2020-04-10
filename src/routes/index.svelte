@@ -39,7 +39,7 @@
 <h4 id="installation" class="mt-8 pb-4">Installation</h4>
 To get you started you need to add Smelte to your dependencies with your
 favorite package manager.
-<Code code="$ npm install smelte or yarn install smelte" />
+<Code code="$ npm install smelte or yarn add smelte" />
 Then you need to add Smelte Rollup plugin (Webpack is on its way).
 <Code
   code={`const smelte=require("smelte/rollup-plugin-smelte");
