@@ -51,7 +51,7 @@
   on:keypress={change}
   on:click={change}
   on:click
-  on:contextmenu={() => dispatch('contextmenu', item)}
+  on:contextmenu={() => dispatch('contextmenu', $$props)}
   {...props}>
   {#if icon}
     <Icon
