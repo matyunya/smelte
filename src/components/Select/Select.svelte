@@ -15,7 +15,8 @@
   export let value = "";
   export const text = "";
   export let label = "";
-  export let selectedLabel = "";
+  let selectedLabelProp = undefined;
+  export { selectedLabelProp as selectedLabel };
   export let color = "primary";
   export let outlined = false;
   export let placeholder = "";
@@ -57,14 +58,18 @@
 
   $: itemsProcessed = process(items);
 
-  onMount(() => {
-    selectedLabel = getLabel(value);
-  })
-
   const dispatch = createEventDispatcher();
 
-  function getLabel(value) {
-    return value !== undefined ? (itemsProcessed.find(i => i.value === value) || { text: "" }).text : "";
+  let selectedLabel = '';
+  $: {
+    if (selectedLabelProp !== undefined) {
+      selectedLabel = selectedLabelProp;
+    } else if (value !== undefined) {
+      let selectedItem = itemsProcessed.find(i => i.value === value);
+      selectedLabel = selectedItem ? selectedItem.text : '';
+    } else {
+      selectedLabel = '';
+    }
   }
 
   let filterText = null;
@@ -149,7 +154,6 @@
           {dense}
           items={filteredItems}
           on:change={({ detail }) => {
-            selectedLabel = getLabel(detail);
             dispatch('change', detail);
           }} />
       </div>
