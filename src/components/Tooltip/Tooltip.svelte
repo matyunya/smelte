@@ -1,3 +1,9 @@
+<script context="module">
+  let show;
+
+  const uid = () => [...Array(64)].map(() => (Math.random() * 16 | 0).toString(16)).join('');
+</script>
+
 <script>
   import { scale, fade } from "svelte/transition";
   import debounce from "../../utils/debounce.js";
@@ -9,10 +15,12 @@
 
   export let timeout = null;
 
+  let id = uid();
+
   function showTooltip() {
     if (show) return;
 
-    show = true;
+    show = id;
 
     if (!timeout) return;
 
@@ -23,7 +31,7 @@
 
   function hideTooltip() {
     if (!show) return;
-    
+
     show = false;
     clearTimeout(timeout);
   }
@@ -52,10 +60,10 @@
     <slot name="activator" />
   </div>
 
-  {#if show}
+  {#if show === id}
     <div
-      in:scale={{ duration: 150 }}
-      out:scale={{ duration: 150, delay: 100 }}
+      in:scale={{ duration: 75 }}
+      out:scale={{ duration: 75, delay: 100 }}
       class={smelte.root.class}
     >
       <slot />
