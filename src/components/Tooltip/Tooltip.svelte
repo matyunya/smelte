@@ -14,6 +14,8 @@
   export let show = false;
 
   export let timeout = null;
+  export let inDelay = 0;
+  export let outDelay = 1000;
 
   let id = uid();
   let tm;
@@ -66,8 +68,8 @@
 
   {#if $showId === id}
     <div
-      in:scale={{ duration: 30 }}
-      out:scale={{ duration: 75, delay: 100 }}
+      in:scale={{ duration: 30, delay: inDelay }}
+      out:fade={{ duration: 75, delay: outDelay }}
       class={smelte.root.class}
     >
       <slot />
