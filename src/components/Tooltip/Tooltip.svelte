@@ -1,13 +1,13 @@
 <script context="module">
-  let show;
+  import { writable } from 'svelte/store';
 
+  const showId = writable(false);
   const uid = () => [...Array(64)].map(() => (Math.random() * 16 | 0).toString(16)).join('');
 </script>
 
 <script>
   import { scale, fade } from "svelte/transition";
   import debounce from "../../utils/debounce.js";
-  import { writable } from "svelte/store";
   import config from "./config";
   import smelter from "../../utils/smelter";
 
@@ -16,24 +16,28 @@
   export let timeout = null;
 
   let id = uid();
+  let tm;
+
+  $: if (show) $showId = id;
 
   function showTooltip() {
-    if (show) return;
-
-    show = id;
-
+    $showId = id;
+    show = true;
     if (!timeout) return;
 
-    timeout = setTimeout(() => {
+    tm = setTimeout(() => {
       show = false;
+      $showId = false;
     }, timeout);
   }
 
   function hideTooltip() {
-    if (!show) return;
+    if ($showId === id) {
+      $showId = false;
+      show = false;
+    }
 
-    show = false;
-    clearTimeout(timeout);
+    if (timeout) clearTimeout(tm);
   }
 
   const store = writable(config);
@@ -50,8 +54,8 @@
 
 <div class={smelte.wrapper.class}>
   <div
-    on:mouseenter={debounce(showTooltip, 100)}
-    on:mouseleave={debounce(hideTooltip, 500)}
+    on:mouseenter={debounce(showTooltip, 30)}
+    on:mouseleave={debounce(hideTooltip, 200)}
     on:mouseenter
     on:mouseleave
     on:mouseover
@@ -60,9 +64,9 @@
     <slot name="activator" />
   </div>
 
-  {#if show === id}
+  {#if $showId === id}
     <div
-      in:scale={{ duration: 75 }}
+      in:scale={{ duration: 30 }}
       out:scale={{ duration: 75, delay: 100 }}
       class={smelte.root.class}
     >
