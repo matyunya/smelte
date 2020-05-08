@@ -46,7 +46,7 @@ let config = {
       selectNotAutocomplete: "cursor-pointer"
     },
     wrapper: {
-      root: "mt-2 mb-6 relative text-gray-600 dark:text-gray-100",
+      root: "mb-6 relative text-gray-600 dark:text-gray-100",
       select: "select",
       autocomplete: "select",
       dense: "dense",

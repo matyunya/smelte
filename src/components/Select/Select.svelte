@@ -115,9 +115,20 @@
 
 <div class={smelte.root.class} use:hideListAction={onHideListPanel}>
   <slot name="select">
-    <TextField select {dense} focused={showList} {autocomplete} value={selectedLabel} {...props}
-      class={inputWrapperClasses} {appendClasses} {labelClasses} {inputClasses} {prependClasses}
-      on:click={handleInputClick} on:click-append={(e=> showList = !showList)}
+    <TextField
+      select
+      {dense}
+      focused={showList}
+      {autocomplete}
+      value={selectedLabel}
+      {...props}
+      class={inputWrapperClasses}
+      {appendClasses}
+      {labelClasses}
+      {inputClasses}
+      {prependClasses}
+      on:click={handleInputClick}
+      on:click-append={(e=> showList = !showList)}
       on:click
       on:input={filterItems}
       append="arrow_drop_down"
