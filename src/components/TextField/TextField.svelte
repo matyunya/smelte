@@ -95,6 +95,8 @@
       on:input
       {disabled}
       on:click
+      on:keydown
+      on:keypress
       on:focus
       {...props}
       placeholder={!value ? placeholder : ""} />
@@ -107,6 +109,8 @@
       on:input
       {disabled}
       on:click
+      on:keydown
+      on:keypress
       on:focus
       on:blur
       bind:value
@@ -122,6 +126,8 @@
       on:input
       {disabled}
       on:click
+      on:keydown
+      on:keypress
       on:blur
       on:focus
       {value} />

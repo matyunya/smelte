@@ -19,6 +19,7 @@
 
   export let persistent = false;
   export let show = true;
+  export let defaultValue = true;
   export let width = 250;
 
   export let transitionProps = {
@@ -29,7 +30,10 @@
   };
 
   $: transitionProps.x = $$props.right ? 300 : -300;
-  $: persistent = show = $bp !== "sm";
+
+  $: if (defaultValue) {
+    persistent = show = $bp !== "sm";
+  }
 
   if ($bp === 'sm') show = false;
 
