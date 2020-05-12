@@ -1,6 +1,6 @@
 <script>
-	import List from 'components/List';
-	import Icon from 'components/Icon';
+	import List from 'smelte/src/components/List';
+	import Icon from 'smelte/src/components/Icon';
 
   const listOneLine = [{
 		text: 'Item 1',

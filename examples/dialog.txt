@@ -1,6 +1,6 @@
 <script>
-	import Dialog from 'components/Dialog';
-	import Button from 'components/Button';
+	import Dialog from 'smelte/src/components/Dialog';
+	import Button from 'smelte/src/components/Button';
   
   let showDialog = false;
 </script>
