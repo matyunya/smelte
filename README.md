@@ -114,12 +114,6 @@ import Treeview from "smelte/src/components/Treeview";
 - [x] Revise events (on:change, on:focus, on:input...)
 - [x] Treeview
 - [x] Date picker
-- [ ] Form
-- [ ] Stepper
-- [ ] Upload
-- [ ] Rating
-- [ ] Pagination
-- [ ] Breadcrumbs
 
 ### Features
 
@@ -135,4 +129,3 @@ import Treeview from "smelte/src/components/Treeview";
 - [x] Svelte template (without Sapper)
 - [x] JS ripple animation
 - [x] Dark mode
-- [ ] IE 11 support
