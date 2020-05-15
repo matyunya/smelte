@@ -29,7 +29,7 @@
     opacity: 1,
   };
 
-  $: transitionProps.x = $$props.right ? 300 : -300;
+  $: transitionProps.x = $$props.right ? transitionProps.x : -transitionProps.x;
 
   $: if (defaultValue) {
     persistent = show = $bp !== "sm";

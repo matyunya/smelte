@@ -152,7 +152,8 @@
           on:change={({ detail }) => {
             selectedLabel = getLabel(detail);
             dispatch('change', detail);
-          }} />
+          }}
+        />
       </div>
     </slot>
   {/if}
