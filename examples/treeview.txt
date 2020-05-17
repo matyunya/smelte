@@ -1,5 +1,5 @@
 <script>
-  import { Treeview } from "smelte";
+  import Treeview from "smelte/src/components/Treeview";
 </script>
 
 <Treeview items={[

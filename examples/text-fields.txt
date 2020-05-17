@@ -1,5 +1,5 @@
 <script>
-  import { TextField } from "smelte";
+  import TextField from "smelte/src/components/TextField";
   import Code from "docs/Code.svelte";
 
   import textFields from "examples/text-fields.txt";

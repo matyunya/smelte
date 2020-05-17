@@ -1,10 +1,10 @@
 <script>
   // This is top src/routes/_layout.svelte.
 
-  import NavigationDrawer from 'components/NavigationDrawer';
+  import NavigationDrawer from 'smelte/src/components/NavigationDrawer';
   import { right, elevation, persistent, showNav, showNavMobile, breakpoint } from 'stores.js';
-  import List from 'components/List';
-	import ListItem from 'components/List/ListItem.svelte';
+  import List from 'smelte/src/components/List';
+	import ListItem from 'smelte/src/components/List/ListItem.svelte';
   const menu = [
       { to: "/components/text-fields", text: 'Text fields' },
       { to: "/components/buttons", text: 'Buttons' },
