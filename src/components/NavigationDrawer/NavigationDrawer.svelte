@@ -63,7 +63,7 @@
   }
 
   aside {
-    height: calc(100vh - 4rem);
+    height: 100vh;
   }
 </style>
   
