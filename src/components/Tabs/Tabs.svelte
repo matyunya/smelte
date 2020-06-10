@@ -22,7 +22,6 @@
   let indicatorOffset = 0;
   let offset = null;
 
-
   function calcIndicator() {
     indicatorWidth = node ? node.offsetWidth / items.length : 0;
 
