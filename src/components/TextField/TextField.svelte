@@ -133,6 +133,7 @@
 </script>
 
 <div class={wClasses}>
+  {#if label}
   <slot name="label">
     <Label
       {labelOnTop}
@@ -144,6 +145,7 @@
       {bgColor}
     >{label}</Label>
   </slot>
+  {/if}
 
   {#if (!textarea && !select) || autocomplete}
     <input

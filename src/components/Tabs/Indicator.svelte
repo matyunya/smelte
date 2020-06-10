@@ -7,7 +7,6 @@
   export let color = "primary";
 
   const { bg } = utils(color);
-
 </script>
 
 <div
