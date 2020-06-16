@@ -38,7 +38,6 @@
   export let editableClasses = i => i;
   export let paginatorProps = null;
   export let classes = classesDefault;
-  export let sortIconAfter = false;
 
   let table = "";
   let sortBy = null;
@@ -73,7 +72,6 @@
           bind:sortBy
           {sortable}
           {editing}
-          {sortIconAfter}
         />
       </slot>
     {/each}

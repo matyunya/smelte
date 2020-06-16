@@ -14,7 +14,6 @@
   export let sortBy = false;
   export let sortable = true;
   export let editing = false;
-  export let sortIconAfter = false;
 
   const dispatch = createEventDispatcher();
 
@@ -59,13 +58,13 @@
   }}
 >
   <div class={headerColumnClass(column)}>
-    {#if sortable && column.sortable !== false && !sortIconAfter}
+    {#if sortable && column.sortable !== false && !column.iconAfter}
       <span class="sort" class:asc={!asc && sortBy === column}>
         <Icon small color="text-gray-400 dark:text-gray-100">arrow_downward</Icon>
       </span>
     {/if}
     <span>{column.label || column.field}</span>
-    {#if sortable && column.sortable !== false && sortIconAfter}
+    {#if sortable && column.sortable !== false && !!column.iconAfter}
       <span class="sort" class:asc={!asc && sortBy === column}>
         <Icon small color="text-gray-400 dark:text-gray-100">arrow_downward</Icon>
       </span>
