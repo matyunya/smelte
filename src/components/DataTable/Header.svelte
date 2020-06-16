@@ -14,6 +14,7 @@
   export let sortBy = false;
   export let sortable = true;
   export let editing = false;
+  export let sortIconAfter = false;
 
   const dispatch = createEventDispatcher();
 
@@ -23,6 +24,20 @@
     .add(classes, true, classesDefault)
     .add(className)
     .get();
+
+  function headerColumnClass(column) {
+    const cb = new ClassBuilder('sort-wrapper flex items-center justify-end');
+    if (column.headerReplace) {
+      cb.replace(column.headerReplace)
+    }
+    if (column.headerAdd) {
+      cb.add(column.headerAdd);
+    }
+    if (column.headerRemove) {
+      cb.remove(column.headerRemove);
+    }
+    return cb.get();
+  }
 </script>
 
 <style>
@@ -43,12 +58,17 @@
     sortBy = column;
   }}
 >
-  <div class="sort-wrapper flex items-center justify-end">
-    {#if sortable && column.sortable !== false}
+  <div class={headerColumnClass(column)}>
+    {#if sortable && column.sortable !== false && !sortIconAfter}
       <span class="sort" class:asc={!asc && sortBy === column}>
         <Icon small color="text-gray-400 dark:text-gray-100">arrow_downward</Icon>
       </span>
     {/if}
     <span>{column.label || column.field}</span>
+    {#if sortable && column.sortable !== false && sortIconAfter}
+      <span class="sort" class:asc={!asc && sortBy === column}>
+        <Icon small color="text-gray-400 dark:text-gray-100">arrow_downward</Icon>
+      </span>
+    {/if}
   </div>
 </th>
