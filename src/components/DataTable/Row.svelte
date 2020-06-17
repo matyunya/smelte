@@ -27,6 +27,20 @@
     .add(classes, true, classesDefault)
     .add(className)
     .get();
+
+  function columnClass(column) {
+    const cb = new ClassBuilder('relative p-3 font-normal text-right');
+    if (column.replace) {
+      cb.replace(column.replace)
+    }
+    if (column.add || column.class) {
+      cb.add(column.add || column.class);
+    }
+    if (column.remove) {
+      cb.remove(column.remove);
+    }
+    return cb.get();
+  }
 </script>
 
 <tr
@@ -39,7 +53,7 @@
 > 
   {#each columns as column, i}
     <td
-      class="relative p-3 font-normal text-right {column.class || ''}"
+      class={columnClass(column)}
       class:cursor-pointer={editable && column.editable !== false}
     >
       {#if editable && column.editable !== false && editing[index] === i}

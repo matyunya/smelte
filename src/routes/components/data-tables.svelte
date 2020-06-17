@@ -45,7 +45,10 @@
         field: "summary",
         textarea: true,
         value: v => v && v.summary ? v.summary : "",
-        class: "text-sm text-gray-700 caption md:w-full sm:w-64"
+        add: "text-sm text-gray-700 caption md:w-full sm:w-64",
+        remove: "text-right",
+        headerRemove: "justify-end",
+        iconAfter: true,
       },
       {
         field: "thumbnail",
@@ -55,6 +58,7 @@
         class: "w-48",
         sortable: false,
         editable: false,
+        headerRemove: "justify-end",
       }
     ]}
   />
