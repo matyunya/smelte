@@ -48,7 +48,7 @@
         add: "text-sm text-gray-700 caption md:w-full sm:w-64",
         remove: "text-right",
         headerRemove: "justify-end",
-        iconAfter: true
+        iconAfter: true,
       },
       {
         field: "thumbnail",
@@ -58,7 +58,7 @@
         class: "w-48",
         sortable: false,
         editable: false,
-        headerRemove: "justify-end"
+        headerRemove: "justify-end",
       }
     ]}
   />
