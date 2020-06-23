@@ -10,6 +10,8 @@
   export let show = false;
 
   export let timeout = null;
+  export let delayHide = 100;
+  export let delayShow = 100;
 
   const cb = new ClassBuilder(classes, classesDefault);
   $: c = cb
@@ -63,8 +65,8 @@
 
 <div class="relative inline-block">
   <div
-    on:mouseenter={debounce(showTooltip, 100)}
-    on:mouseleave={debounce(hideTooltip, 500)}
+    on:mouseenter={debounce(showTooltip, delayShow)}
+    on:mouseleave={debounce(hideTooltip, delayHide)}
     on:mouseenter
     on:mouseleave
     on:mouseover
