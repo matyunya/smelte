@@ -19,7 +19,8 @@ export default function utils(color, defaultDepth = 500) {
 export class ClassBuilder {
   constructor(classes, defaultClasses) {
     this.defaults =
-      typeof classes === "function" ? classes(defaultClasses) : classes;
+      (typeof classes === "function" ? classes(defaultClasses) : classes)
+      || defaultClasses;
 
     this.classes = this.defaults;
   }

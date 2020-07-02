@@ -52,11 +52,13 @@
       {selectedClasses}
       on:click={() => toggle(item) }
       on:click
-      itemClasses="flex items-center">
-      {#if showExpandIcon && !item.hideArrow && item.items}
-        <Icon tip={expanded.includes(item)}>{expandIcon}</Icon>
-      {/if}
-      <slot><span>{item.text}</span></slot>
+    >
+      <div class="flex items-center">
+        {#if showExpandIcon && !item.hideArrow && item.items}
+          <Icon tip={expanded.includes(item)}>{expandIcon}</Icon>
+        {/if}
+        <slot><span>{item.text}</span></slot>
+      </div>
     </ListItem>
 
     {#if item.items && expanded.includes(item)}
