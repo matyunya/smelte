@@ -41,6 +41,7 @@
     "svelte": "^3.23.2",
     "svelte-preprocess": "^3.9.11",
     "svelte-waypoint": "^0.1.4",
+    "tailwind-css-variables": "^2.0.3",
     "tailwindcss": "^1.4.6",
     "tailwindcss-elevation": "^0.3.0",
     "tinycolor2": "^1.4.1"

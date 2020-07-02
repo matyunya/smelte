@@ -19,8 +19,8 @@
   export let navClasses = navClassesDefault;
   export let borderClasses = `border-gray-600 ${right ? "border-l" : "border-r"}`;
 
-  let className = "";
-  export {className as class};
+
+
 
   export let transitionProps = {
     duration: 200,
@@ -40,7 +40,7 @@
     .flush()
     .add(classes, true, classesDefault)
     .add(borderClasses, !elevation && persistent)
-    .add(className)
+    .add($$props.class)
     .add("right-0", right)
     .add("left-0", !right)
     .add("pointer-events-none", persistent)
@@ -66,7 +66,7 @@
     height: 100vh;
   }
 </style>
-  
+
 {#if show}
   <aside
     class={c}

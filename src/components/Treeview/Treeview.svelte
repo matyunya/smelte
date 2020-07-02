@@ -18,8 +18,8 @@
   export let selected = null;
   export let selectedClasses = "bg-primary-trans";
 
-  const className = "rounded";
-  export {className as class};
+  const classesDefault = "rounded";
+
 
   let expanded = [];
 
@@ -42,7 +42,6 @@
 <List
   {items}
   {...$$props}
-  {className}
 >
   <span slot="item" let:item>
     <ListItem
@@ -71,5 +70,5 @@
         />
       </div>
     {/if}
-  </span> 
+  </span>
 </List>

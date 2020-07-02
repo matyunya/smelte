@@ -5,9 +5,9 @@
 
   const classesDefault = "capitalize duration-100 text-gray-600 text-xs hover:text-black dark-hover:text-white p-3 font-normal text-right";
 
-  let className = "";
+
   export let classes = classesDefault;
-  export {className as class};
+
 
   export let column = {};
   export let asc = false;
@@ -21,7 +21,7 @@
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
-    .add(className)
+    .add($$props.class)
     .get();
 
   function headerColumnClass(column) {

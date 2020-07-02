@@ -3,8 +3,8 @@
   import utils, { ClassBuilder, filterProps } from "../../utils/classes.js";
   import createRipple from "../Ripple/ripple.js";
 
-  let className = "";
-  export {className as class};
+
+
   export let value = false;
   export let outlined = false;
   export let text = false;
@@ -96,7 +96,7 @@
       .add("button", !icon)
       .add(fabClasses, fab, fabDefault)
       .add(`hover:${bg("transLight")}`, fab)
-      .add(className)
+      .add($$props.class)
       .remove(remove)
       .replace(replace)
       .add(add)

@@ -8,8 +8,8 @@
   export let hoverElevation = 8;
   export let classes = classesDefault;
 
-  export {className as class};
-  let className = "";
+
+
 
   const cb = new ClassBuilder(classes, classesDefault);
 
@@ -17,7 +17,7 @@
     .flush()
     .add(`elevation-${elevation} hover:elevation-${hoverElevation}`, hover)
     .add(classes, true, classesDefault)
-    .add(className)
+    .add($$props.class)
     .get();
 </script>
 

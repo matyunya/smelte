@@ -1,6 +1,6 @@
 <script>
   import { ClassBuilder } from "../../utils/classes.js";
- 
+
   import ListItem from "./ListItem.svelte";
 
   export let items = [];
@@ -19,9 +19,6 @@
 
   export let classes = classesDefault;
 
-  let className = "";
-  export {className as class};
-
   function id(i) {
     if (i.id !== undefined) return i.id;
     if (i.value !== undefined) return i.value;
@@ -36,12 +33,12 @@
     return i;
   }
 
-  const cb = new ClassBuilder(className);
+  const cb = new ClassBuilder($$props.class);
 
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
-    .add(className)
+    .add($$props.class)
     .get();
 </script>
 

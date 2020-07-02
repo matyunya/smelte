@@ -1,6 +1,6 @@
 <script context="module">
   import { writable } from "svelte/store";
-  
+
   const queue = writable([]);
   let running = false;
 </script>
@@ -33,11 +33,9 @@
       rounded items-center elevation-2 h-12`;
   const wrapperDefault = "fixed w-full h-full flex items-center justify-center pointer-events-none";
 
-  let className = classesDefault;
-  export {className as class};
   export let classes = wrapperDefault;
 
-  const cb = new ClassBuilder(className, classesDefault);
+  const cb = new ClassBuilder($$props.class, classesDefault);
   const wrapperCb = new ClassBuilder(classes, wrapperDefault);
 
   let wClasses = i => i;
@@ -121,7 +119,7 @@
         in:scale={inProps}
         out:fade={outProps}
         on:click={() => value = false}>
-        <slot /> 
+        <slot />
         {#if !noAction}
           <Spacer />
           <slot name="action">

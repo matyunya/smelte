@@ -21,9 +21,9 @@
       .replace("text-gray-700", ""),
   };
 
-  let className = "";
+
   export let classes = classesDefault;
-  export {className as class};
+
 
   export let perPage = 0;
   export let page = 0;
@@ -42,7 +42,7 @@
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
-    .add(className)
+    .add($$props.class)
     .get();
 </script>
 

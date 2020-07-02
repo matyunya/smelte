@@ -16,8 +16,8 @@
   export let notSelectedColor = "white";
   export let tabClasses = "flex flex-col items-center content-center mx-auto";
 
-  let className = "";
-  export {className as class};
+
+
 
   const ripple = createRipple(color);
 
@@ -30,7 +30,7 @@
 
   $: c = cb
     .flush()
-    .add(className)
+    .add($$props.class)
     .add("uppercase", icon)
     .add(textColor)
     .add(`hover:bg-${color}-transLight hover:${txt(900)}`)

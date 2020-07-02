@@ -7,8 +7,8 @@
   import Hint from "./Hint.svelte";
   import Underline from "./Underline.svelte";
 
-  let className = "";
-  export {className as class};
+
+
   export let outlined = false;
   export let value = null;
   export let label = "";
@@ -89,7 +89,7 @@
       .remove('bg-gray-100', disabled)
       .add('bg-gray-50', disabled)
       .add('cursor-pointer', select && !autocomplete)
-      .add(className)
+      .add($$props.class)
       .remove(remove)
       .replace(replace)
       .extend(extend)

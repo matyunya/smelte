@@ -8,7 +8,7 @@
   const classesDefault = "items-center z-50 rounded bg-white dark:bg-dark-400 p-4 elevation-4";
   const titleClassesDefault = "text-lg font-bold pb-4";
   const actionsClassesDefault = "flex w-full justify-end pt-4";
-  
+
   export let value;
   export let classes = classesDefault;
   export let titleClasses = titleClassesDefault;
@@ -18,8 +18,8 @@
 
   export let transitionProps = { duration: 150, easing: quadIn, delay: 150 };
 
-  let className = "";
-  export {className as class};
+
+
 
   const cb = new ClassBuilder(classes, classesDefault);
   const tcb = new ClassBuilder(titleClasses, titleClassesDefault);
@@ -28,7 +28,7 @@
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
-    .add(className)
+    .add($$props.class)
     .get();
 
   $: t = tcb

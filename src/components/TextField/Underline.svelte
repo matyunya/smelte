@@ -1,8 +1,8 @@
 <script>
   import utils, { ClassBuilder, filterProps } from "../../utils/classes.js";
 
-  let className = "";
-  export {className as class};
+
+
   export let noUnderline = false;
   export let outlined = false;
   export let focused = false;
@@ -57,7 +57,7 @@
 </style>
 
 <div
-  class="line absolute bottom-0 left-0 w-full bg-gray-600 {className}"
+  class="line absolute bottom-0 left-0 w-full bg-gray-600 {$$props.class}"
   class:hidden={noUnderline || outlined}>
   <div
     class="{classes}"

@@ -16,15 +16,15 @@
   export let listClasses = listClassesDefault;
   export let listProps = {};
 
-  let className = "";
-  export {className as class};
-  
-  const cb = new ClassBuilder(className);
+
+
+
+  const cb = new ClassBuilder($$props.class);
 
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
-    .add(className)
+    .add($$props.class)
     .get();
 
   const lcb = new ClassBuilder(listClasses, listClassesDefault);

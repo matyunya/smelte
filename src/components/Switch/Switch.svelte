@@ -16,10 +16,10 @@
   export let thumbClasses = thumbClassesDefault;
   export let labelClasses = labelClassesDefault;
 
-  let className = "";
+
   export let classes = classesDefault;
 
-  export {className as class};
+
   const cb = new ClassBuilder(classes, classesDefault);
   const trcb = new ClassBuilder(trackClasses, trackClassesDefault);
   const thcb = new ClassBuilder(thumbClasses, thumbClassesDefault);
@@ -28,7 +28,7 @@
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
-    .add(className)
+    .add($$props.class)
     .get();
   $: tr = trcb
     .flush()

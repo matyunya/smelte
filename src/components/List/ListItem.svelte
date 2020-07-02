@@ -20,8 +20,8 @@
   export let selectedClasses = selectedClassesDefault;
   export let subheadingClasses = subheadingClassesDefault;
 
-  let className = "";
-  export {className as class};
+
+
 
   export let to = "";
   export const item = null;
@@ -45,7 +45,7 @@
     .add(selectedClasses, selected, selectedClassesDefault)
     .add("py-2", dense)
     .add("text-gray-600", disabled)
-    .add(className)
+    .add($$props.class)
     .get();
 </script>
 
@@ -66,7 +66,7 @@
   {/if}
 
   <div class="flex flex-col p-0">
-    <div class={className}>
+    <div class={$$props.class}>
       <slot>{text}</slot>
     </div>
     {#if subheading}
