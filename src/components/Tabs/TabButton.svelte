@@ -3,7 +3,7 @@
   import createRipple from "../Ripple/ripple.js";
   import utils, { ClassBuilder } from "../../utils/classes.js";
 
-  const classesDefault = "transition-fast relative overflow-hidden text-center w-full h-full p-4 cursor-pointer flex mx-auto items-center text-sm h-full";
+  const classesDefault = "duration-100 relative overflow-hidden text-center w-full h-full p-4 cursor-pointer flex mx-auto items-center text-sm h-full";
 
   export let classes = classesDefault;
 

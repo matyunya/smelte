@@ -2,10 +2,10 @@
   import Ripple from "../Ripple";
 
   import { ClassBuilder } from "../../utils/classes.js";
-  
+
   const classesDefault = `inline-flex items-center mb-2 cursor-pointer z-10`;
   const trackClassesDefault = "relative w-10 h-auto z-0 rounded-full overflow-visible flex items-center justify-center";
-  const thumbClassesDefault = "rounded-full p-2 w-5 h-5 absolute elevation-3 transition-fast";
+  const thumbClassesDefault = "rounded-full p-2 w-5 h-5 absolute elevation-3 duration-100";
   const labelClassesDefault = "pl-2 cursor-pointer";
 
   export let value = false;

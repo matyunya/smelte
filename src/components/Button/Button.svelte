@@ -25,10 +25,10 @@
   export let replace = {};
 
   const classesDefault = 'py-2 px-4 uppercase text-sm font-medium relative overflow-hidden';
-  const basicDefault = 'text-white transition';
+  const basicDefault = 'text-white duration-200 ease-in';
   const outlinedDefault = 'bg-transparent border border-solid';
   const textDefault = 'bg-transparent border-none px-4 hover:bg-transparent';
-  const iconDefault = 'p-4 flex items-center';
+  const iconDefault = 'p-4 flex items-center select-none';
   const fabDefault = 'hover:bg-transparent';
   const smallDefault = 'pt-1 pb-1 pl-2 pr-2 text-xs';
   const disabledDefault = 'bg-gray-300 text-gray-500 dark:bg-dark-400 elevation-none pointer-events-none hover:bg-gray-300 cursor-default';

@@ -3,7 +3,7 @@
   import { createEventDispatcher } from "svelte";
   import Icon from "../Icon";
 
-  const classesDefault = "capitalize transition-fast text-gray-600 text-xs hover:text-black dark-hover:text-white p-3 font-normal text-right";
+  const classesDefault = "capitalize duration-100 text-gray-600 text-xs hover:text-black dark-hover:text-white p-3 font-normal text-right";
 
   let className = "";
   export let classes = classesDefault;

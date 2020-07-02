@@ -143,7 +143,6 @@ module.exports = ({ colors = defaultColors, darkMode = true, ...config }) =>
         }
       },
       plugins: [
-        require("tailwind-css-variables")(),
         require("tailwindcss-elevation")(["hover"]),
         function({ addUtilities }) {
           return addUtilities({
@@ -153,12 +152,6 @@ module.exports = ({ colors = defaultColors, darkMode = true, ...config }) =>
             [".content-box"]: {
               boxSizing: "content-box"
             },
-            [".transition"]: {
-              transition: ".2s ease-in"
-            },
-            [".transition-fast"]: {
-              transition: ".1s"
-            }
           });
         },
         addUtility({
