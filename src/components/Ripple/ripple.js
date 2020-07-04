@@ -37,10 +37,11 @@ function ripple(color, centered) {
 
 export default function r(color = "primary", centered = false) {
   return function(node) {
-    node.addEventListener("click", ripple(color, centered));
+    const onMouseDown = ripple(color, centered);
+    node.addEventListener("mousedown", onMouseDown);
 
     return {
-      onDestroy: () => node.removeEventListener("click")
+      onDestroy: () => node.removeEventListener("mousedown", onMouseDown),
     };
   };
 }
