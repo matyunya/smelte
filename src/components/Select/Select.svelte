@@ -104,6 +104,10 @@
     .add(optionsClasses, true, optionsClassesDefault)
     .add("rounded-t-none", !outlined)
     .get();
+    
+  $: if (dense) {
+    appendClasses = (i) => i.replace('pt-4', 'pt-3');
+  }  
 </script>
 
 <div class={c} use:hideListAction={onHideListPanel}>
