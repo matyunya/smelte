@@ -21,7 +21,7 @@
   export let selectedClasses = "bg-primary-600 text-white rounded-full";
   export let closeOnSelect = true;
   export let appendClasses = noop;
-  export let dense = true;
+  export let dense = false;
 
   let hasUserValue = Boolean(value);
 
@@ -55,6 +55,7 @@
       classes={i => i.replace('mb-6', '')}
       value={displayValue}
       {label}
+      {dense}
       append={defaultIcon}
       {appendClasses}
       on:click-append={() => open = !open}
