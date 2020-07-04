@@ -153,12 +153,6 @@ module.exports = ({ colors = defaultColors, darkMode = true, ...config }) =>
             [".content-box"]: {
               boxSizing: "content-box"
             },
-            [".transition"]: {
-              transition: ".2s ease-in"
-            },
-            [".transition-fast"]: {
-              transition: ".1s"
-            }
           });
         },
         addUtility({

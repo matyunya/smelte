@@ -44,8 +44,8 @@
   export let remove = "";
   export let replace = "";
 
-  let className = "";
-  export {className as class};
+
+
 
   let itemsProcessed = [];
 
@@ -95,7 +95,7 @@
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
-    .add(className)
+    .add($$props.class)
     .get();
 
   const ocb = new ClassBuilder(optionsClasses, optionsClassesDefault);

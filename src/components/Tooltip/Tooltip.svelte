@@ -3,19 +3,21 @@
   import { ClassBuilder } from "../../utils/classes.js";
 
   const classesDefault = "tooltip whitespace-no-wrap text-xs absolute mt-2 bg-gray-600 text-gray-50 rounded md:px-2 md:py-2 py-4 px-3 z-30";
-  let className = "";
+
   export let classes = classesDefault;
 
-  export {className as class};
+
   export let show = false;
 
   export let timeout = null;
+  export let delayHide = 100;
+  export let delayShow = 100;
 
   const cb = new ClassBuilder(classes, classesDefault);
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
-    .add(className)
+    .add($$props.class)
     .get();
 
   function showTooltip() {
@@ -32,7 +34,7 @@
 
   function hideTooltip() {
     if (!show) return;
-    
+
     show = false;
     clearTimeout(timeout);
   }
@@ -63,8 +65,8 @@
 
 <div class="relative inline-block">
   <div
-    on:mouseenter={debounce(showTooltip, 100)}
-    on:mouseleave={debounce(hideTooltip, 500)}
+    on:mouseenter={debounce(showTooltip, delayShow)}
+    on:mouseleave={debounce(hideTooltip, delayHide)}
     on:mouseenter
     on:mouseleave
     on:mouseover

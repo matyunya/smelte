@@ -27,18 +27,18 @@
 
   $: rippleColor = checked && !disabled ? color : 'gray';
 
-  let className = "";
-  export {className as class};
+
+
 
   const cb = new ClassBuilder(classes, classesDefault);
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
-    .add(className)
+    .add($$props.class)
     .get();
 </script>
 
-<div class={className}>
+<div class={$$props.class}>
   <div class={c} on:click={check}>
     <input bind:checked class="hidden" type="checkbox" on:change {value} />
     <div class="relative w-auto h-auto z-0">

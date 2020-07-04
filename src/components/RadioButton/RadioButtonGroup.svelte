@@ -4,8 +4,8 @@
 
   const classesDefault = "flex flex-col mb-4 cursor-pointer";
 
-  let className = "";
-  export {className as class};
+
+
   export let classes = classesDefault;
 
   export let items = [];
@@ -17,7 +17,7 @@
 
   const cb = new ClassBuilder(classes, classesDefault);
 
-  $: c = cb.flush().add(className).get();
+  $: c = cb.flush().add($$props.class).get();
 </script>
 
 <div class={c}>

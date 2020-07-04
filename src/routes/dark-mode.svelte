@@ -35,13 +35,14 @@ textColor: ["dark", "dark-hover", "dark-active"]
 </p>
 
 <div
-  class="transition p-10 my-10 bg-black dark:bg-white text-white dark:text-black">
+  class="duration-200 ease-in p-10 my-10 bg-black dark:bg-white text-white
+  dark:text-black">
   I am a {$darkMode ? 'dark' : 'light'} div.
 </div>
 
 <Code
   code={`
-<div class="transition p-10 my-10 bg-black dark:bg-white text-white dark:text-black">
+<div class="duration-200 ease-in p-10 my-10 bg-black dark:bg-white text-white dark:text-black">
   I am a {$darkMode ? "dark" : "light"} div.
 </div>
 `} />

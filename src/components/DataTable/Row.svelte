@@ -7,9 +7,9 @@
 
   const classesDefault = "hover:bg-gray-50 dark-hover:bg-dark-400 border-gray-200 dark:border-gray-400 border-t border-b px-3";
 
-  let className = "";
+
   export let classes = classesDefault;
-  export {className as class};
+
 
   export let item = {};
   export let columns = [];
@@ -25,7 +25,7 @@
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
-    .add(className)
+    .add($$props.class)
     .get();
 
   function columnClass(column) {
@@ -50,7 +50,7 @@
     editing = { [index]: (e.path.find(a => a.localName === "td") || {}).cellIndex }
   }}
   class:selected={editing[index]}
-> 
+>
   {#each columns as column, i}
     <td
       class={columnClass(column)}

@@ -7,8 +7,8 @@
   import Hint from "./Hint.svelte";
   import Underline from "./Underline.svelte";
 
-  let className = "";
-  export {className as class};
+
+
   export let outlined = false;
   export let value = null;
   export let label = "";
@@ -32,7 +32,7 @@
   export let iconClass = "";
   export let disabled = false;
 
-  const inputDefault = `transition pb-2 pt-6 px-4 rounded-t text-black dark:text-gray-100 w-full`;
+  const inputDefault = `duration-200 ease-in pb-2 pt-6 px-4 rounded-t text-black dark:text-gray-100 w-full`;
   const classesDefault = "mt-2 mb-6 relative text-gray-600 dark:text-gray-100";
   const appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 text-gray-700 z-10";
   const prependDefault = "absolute left-0 top-0 pb-2 pl-2 pt-4 text-xs text-gray-700 z-10";
@@ -75,7 +75,7 @@
   $: iClasses = cb
       .flush()
       .remove('pt-6 pb-2', outlined)
-      .add('border rounded bg-transparent py-4 transition', outlined)
+      .add('border rounded bg-transparent py-4 duration-200 ease-in', outlined)
       .add('border-error-500 caret-error-500', error)
       .remove(caret(), error)
       .add(caret(), !error)
@@ -91,7 +91,7 @@
       .remove('bg-gray-100', disabled)
       .add('bg-gray-50', disabled)
       .add('cursor-pointer', select && !autocomplete)
-      .add(className)
+      .add($$props.class)
       .remove(remove)
       .replace(replace)
       .extend(extend)

@@ -1,8 +1,8 @@
 <script>
   import utils, { ClassBuilder, filterProps } from "../../utils/classes.js";
 
-  let className = "";
-  export {className as class};
+
+
   export let focused = false;
   export let error = false;
   export let outlined = false;
@@ -72,6 +72,6 @@
 }
 </style>
 
-<label class="{lClasses} {className}" {...props}>
+<label class="{lClasses} {$$props.class}" {...props}>
   <slot />
 </label>

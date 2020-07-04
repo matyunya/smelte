@@ -3,7 +3,7 @@
   import createRipple from "../Ripple/ripple.js";
   import utils, { ClassBuilder } from "../../utils/classes.js";
 
-  const classesDefault = "transition-fast relative overflow-hidden text-center w-full h-full p-4 cursor-pointer flex mx-auto items-center text-sm h-full";
+  const classesDefault = "duration-100 relative overflow-hidden text-center w-full h-full p-4 cursor-pointer flex mx-auto items-center text-sm h-full";
 
   export let classes = classesDefault;
 
@@ -16,8 +16,8 @@
   export let notSelectedColor = "white";
   export let tabClasses = "flex flex-col items-center content-center mx-auto";
 
-  let className = "";
-  export {className as class};
+
+
 
   const ripple = createRipple(color);
 
@@ -30,7 +30,7 @@
 
   $: c = cb
     .flush()
-    .add(className)
+    .add($$props.class)
     .add("uppercase", icon)
     .add(textColor)
     .add(`hover:bg-${color}-transLight hover:${txt(900)}`)

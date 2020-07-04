@@ -15,8 +15,8 @@
 
   const classesDefault = "elevation-3 relative text-sm overflow-x-auto dark:bg-dark-500";
 
-  let className = "";
-  export {className as class};
+
+
 
   export let data = [];
   export let columns = Object.keys(data[0] || {})
@@ -57,7 +57,7 @@
     $: c = cb
       .flush()
       .add(classes, true, classesDefault)
-      .add(className)
+      .add($$props.class)
       .get();
 </script>
 

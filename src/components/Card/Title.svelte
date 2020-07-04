@@ -8,15 +8,15 @@
 
   const classesDefault = "flex px-4 py-2 items-center";
   export let classes = classesDefault;
-  let className = "";
-  export {className as class};
+
+
 
   const cb = new ClassBuilder(classes, classesDefault);
 
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
-    .add(className)
+    .add($$props.class)
     .get();
 </script>
 
