@@ -37,6 +37,6 @@
 <div
   class="{classes}"
   transition:fly={transitionProps}>
-  {hint}
-  {error}
+  {hint || ''}
+  {error || ''}
 </div>
