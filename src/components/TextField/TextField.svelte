@@ -70,7 +70,7 @@
   }
 
   $: showHint = error || (persistentHint ? hint : focused && hint);
-  $: labelOnTop = placeholder || focused || value;
+  $: labelOnTop = placeholder || focused || (value || value === 0);
 
   $: iClasses = cb
       .flush()
@@ -86,6 +86,8 @@
       .remove('px-4', prepend)
       .add('pr-4 pl-10', prepend)
       .add(add)
+      .remove('pt-6 pb-2', dense && !outlined)
+      .add('pt-4 pb-1', dense && !outlined)
       .remove('bg-gray-100', disabled)
       .add('bg-gray-50', disabled)
       .add('cursor-pointer', select && !autocomplete)
@@ -97,7 +99,9 @@
 
   $: wClasses = ccb.flush()
       .add('select', select || autocomplete)
-      .add('dense', dense)
+      .add('dense', dense && !outlined)
+      .remove('mb-6 mt-2', dense && !outlined)
+      .add('mb-4 mt-1', dense)
       .replace({ 'text-gray-600': 'text-error-500' }, error)
       .add('text-gray-200', disabled)
       .get();
@@ -143,6 +147,7 @@
       {prepend}
       {color}
       {bgColor}
+      dense={dense && !outlined}
     >{label}</Label>
   </slot>
   {/if}

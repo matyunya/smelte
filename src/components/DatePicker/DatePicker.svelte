@@ -10,6 +10,7 @@
   import { getWeekDays, weekStart } from "./util";
 
   const dispatch = createEventDispatcher();
+  const noop = i => i;
 
   export let label = "Date";
   export let open = false;
@@ -19,6 +20,8 @@
   export let todayClasses = "text-primary-600 rounded-full border border-primary-600";
   export let selectedClasses = "bg-primary-600 text-white rounded-full";
   export let closeOnSelect = true;
+  export let appendClasses = noop;
+  export let dense = false;
 
   let hasUserValue = Boolean(value);
 
@@ -40,6 +43,10 @@
       value = date;
     }
   }
+
+  $: if (dense) {
+    appendClasses = (i) => i.replace('pt-4', 'pt-3');
+  }
 </script>
 
 <Menu bind:open>
@@ -48,7 +55,9 @@
       classes={i => i.replace('mb-6', '')}
       value={displayValue}
       {label}
+      {dense}
       append={defaultIcon}
+      {appendClasses}
       on:click-append={() => open = !open}
       on:change={changeTextInput}
     />
@@ -58,6 +67,7 @@
       <Picker
         bind:value
         bind:open
+        {dense}
         {locale}
         {todayClasses}
         {selected}

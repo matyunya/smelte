@@ -14,6 +14,7 @@
   export let todayClasses = "text-primary-600 rounded-full border border-primary-600";
   export let selectedClasses = "bg-primary-600 text-white rounded-full";
   export let closeOnSelect = true;
+  export let dense;
   export let paginatorProps = {
     color: "gray",
     text: true,
@@ -91,7 +92,7 @@
 </script>
 
 <div>
-  <Card class="absolute z-20 p-4 w-auto dark:bg-dark-400 bg-white">
+  <Card class="absolute z-20 p-4 w-auto dark:bg-dark-400 bg-white {dense ? '-my-4' : ''}">
     <div class="flex justify-between mb-4">
       <span class="text-gray-600 uppercase">{year} {month}</span>
       <div class="flex">
