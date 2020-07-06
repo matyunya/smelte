@@ -13,7 +13,7 @@ const config = {
     track: {
       root:
         "relative w-10 h-auto z-0 rounded-full overflow-visible flex items-center justify-center bg-gray-700",
-      value: "bg-$color-200 remove:bg-gray-700"
+      value: "bg-$color-200"
     },
     thumb: {
       root:

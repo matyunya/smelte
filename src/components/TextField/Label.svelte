@@ -11,6 +11,10 @@
 .label-transition {
   transition: font-size 0.05s, line-height 0.1s;
 }
+
+:global(.mode-dense) .label-top {
+  display:none;
+}
 </style>
 
 <label class={$$props.class} {...props}>

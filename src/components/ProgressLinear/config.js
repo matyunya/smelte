@@ -12,7 +12,7 @@ let config = {
     },
     trackInc: {
       root: "bg-$color-500 h-1 absolute inc",
-      progress: "duration-200 ease-in remove:inc"
+      progress: "duration-200 ease-in"
     },
     trackDec: {
       root: "bg-$color-500 h-1 absolute dec",

@@ -13,12 +13,14 @@
   import { navMenu, topMenu } from "../utils/menu.js";
   import { right, elevation, persistent, showNav } from "stores.js";
   import dark from "../dark.js";
+  import dense from "../dense.js";
 
   const { preloading, page } = stores();
 
   let selected = "";
 
   const darkMode = dark();
+  const denseMode = dense();
 
   $: path = $page.path;
 </script>
@@ -68,6 +70,19 @@
     </span>
     {$darkMode ? 'Disable' : 'Enable'} dark mode
   </Tooltip>
+  <Tooltip>
+    <span slot="activator">
+      <Button
+        bind:value={$denseMode}
+        icon="wb_sunny"
+        small
+        fab
+        remove="p-1 h-4 w-4"
+        color="white"
+        elevation={false} />
+    </span>
+    {$darkMode ? 'Disable' : 'Enable'} dense mode
+  </Tooltip>
   <div class="md:hidden">
     <Button
       icon="menu"
@@ -88,15 +103,11 @@
   md:max-w-md md:px-3"
   transition:fade={{ duration: 300 }}>
   <NavigationDrawer
+    class="py-16"
     bind:show={$showNav}
     right={$right}
     persistent={$persistent}
     elevation={$elevation}>
-    <h6
-      class="px-3 ml-1 pb-2 pt-8 text-sm text-gray-900 font-light
-      dark:text-gray-100">
-      Components
-    </h6>
     <List items={navMenu}>
       <span slot="item" let:item class="cursor-pointer">
         {#if item.to === '/typography'}

@@ -36,7 +36,10 @@ module.exports = ({ colors = defaultColors, darkMode = true, ...config }) => ({
     ? {
         backgroundColor: ["dark", "dark-hover", "hover"],
         borderColor: ["dark", "dark-focus"],
-        textColor: ["dark", "dark-hover", "dark-active"]
+        textColor: ["dark", "dark-hover", "dark-active"],
+        margin: ["dense"],
+        height: ["dense"],
+        padding: ["dense"],
       }
     : {},
   theme: {
@@ -182,7 +185,14 @@ module.exports = ({ colors = defaultColors, darkMode = true, ...config }) => ({
     }),
     darkMode &&
       function({ addVariant, e }) {
-        const d = ".mode-dark"; 
+        const d = ".mode-dark";
+        const dense = ".mode-dense";
+
+        addVariant("dense", ({ modifySelectors, separator }) => {
+          modifySelectors(({ className }) => {
+            return `${dense} .${e(`dense${separator}${className}`)}`;
+          });
+        });
 
         addVariant("dark", ({ modifySelectors, separator }) => {
           modifySelectors(({ className }) => {

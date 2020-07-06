@@ -13,7 +13,7 @@ class SmelteClassString {
     return this.node.defaults[name];
   }
   apply(fn) {
-    this.classes = new Set(fn(this.toString()).split(" "));
+    this.classes = new Set(fn(this.class).split(" ").filter(Boolean));
 
     return this;
   }
@@ -79,7 +79,16 @@ class SmelteClassString {
 
     const props = (prop || "").split(" ");
 
-    props.forEach(p => this.classes.add(p.trim()));
+    props.forEach(p => {
+      let match;
+
+      if (p.includes('-')) {
+        match = this.class.match(new RegExp((p.trim().split('-') || [])[0] + '-?[a-z]+?\-?[0-9]+'));
+        match && this.remove(match[0]);
+      }
+
+      this.classes.add(p.trim());
+    });
 
     return this;
   }

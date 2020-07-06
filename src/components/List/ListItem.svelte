@@ -58,7 +58,7 @@
   {...props}>
   {#if icon}
     <Icon
-      class="pr-6"
+      class={smelte.icon.class}
       small={dense}
     >
       {icon}

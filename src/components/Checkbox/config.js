@@ -10,7 +10,7 @@ export const config = {
       isMain: true
     },
     checkbox: {
-      root: "inline-flex items-center mb-2 cursor-pointer z-10"
+      root: "inline-flex items-center mb-2 dense:mb-0 cursor-pointer z-10"
     },
     checkboxWrapper: {
       root: "relative w-auto h-auto z-0"
@@ -18,9 +18,9 @@ export const config = {
     icon: {
       root: "text-gray-500 dark:text-gray-100",
       checked:
-        "text-$color-500 dark:text-$color-100 remove:dark:text-gray-100.text-gray-500",
+        "text-$color-500 dark:text-$color-100",
       value:
-        "text-$color-500 dark:text-$color-100 remove:dark:text-gray-100.text-gray-500",
+        "text-$color-500 dark:text-$color-100",
       disabled: "text-gray-500 dark:text-gray-600"
     },
     label: {
