@@ -44,10 +44,11 @@
 <Menu bind:open>
   <div slot="activator">
     <TextField
-      classes={i => i.replace('mb-6', '')}
       value={displayValue}
       {label}
       append={defaultIcon}
+      autocomplete
+      dense
       on:click-append={() => open = !open}
       on:change={changeTextInput}
     />

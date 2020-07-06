@@ -15,7 +15,6 @@
   export let color = "white";
   export let notSelectedColor = "white";
   export let loading = false;
-  export let tabButtonClasses = i => i;
 
   let node;
   let indicatorWidth = 0;
@@ -59,7 +58,6 @@
   {#each items as item, i}
     <slot name="item" {color} {item}>
       <TabButton
-        class={tabButtonClasses}
         bind:selected
         {...item}
         {color}

@@ -11,13 +11,13 @@ const defaultWhitelistPatterns = [
   /w\-.\/7/
 ];
 
-const postcssProcessor = ({
+export const postcssProcessor = ({
   tailwind = {},
   postcss = [],
   whitelist = defaultWhitelist,
   whitelistPatterns = defaultWhitelistPatterns,
   purge = false
-}) => {
+} = {}) => {
   const tailwindConfig = require("./tailwind.config.js")(tailwind);
   return [
     require("postcss-import")(),
@@ -45,9 +45,9 @@ const postcssProcessor = ({
   ].filter(Boolean);
 };
 
-const plugins = config => postcssProcessor(config || {});
+export const plugins = config => postcssProcessor(config);
 
-module.exports = (config = {}) =>
+export default (config) =>
   postcss({
     plugins: plugins(config),
     extract: path.resolve(config.output || "./static/global.css")

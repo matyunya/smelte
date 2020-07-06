@@ -14,11 +14,11 @@
     flat: true,
     dark: true,
     remove: "px-4 px-3",
-    iconClasses: (c) => c.replace("p-4", ""),
-    disabledClasses: (c) => c
-      .replace("text-white", "text-gray-200")
-      .replace("bg-gray-300", "bg-transparent")
-      .replace("text-gray-700", ""),
+    // iconClasses: (c) => c.replace("p-4", ""),
+    // disabledClasses: (c) => c
+    //   .replace("text-white", "text-gray-200")
+    //   .replace("bg-gray-300", "bg-transparent")
+    //   .replace("text-gray-700", ""),
   };
 
   let className = "";
@@ -56,10 +56,6 @@
         </div>
         <Select
           class="w-16 h-8 mb-5"
-          remove="select"
-          replace={{ "pt-6": "pt-4" }}
-          inputWrapperClasses={(c) => c.replace("mt-2", "").replace("pb-6", "")}
-          appendClasses={(c) => c.replace("pt-4", "pt-3").replace("pr-4", "pr-2")}
           noUnderline
           dense
           bind:value={perPage}

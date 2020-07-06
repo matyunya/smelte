@@ -1,4 +1,5 @@
 let config = {
+  name: 'textField',
   props: {
     outlined: false,
     value: null,
@@ -27,15 +28,14 @@ let config = {
   },
   nodes: {
     root: {
-      isMain: true,
       root: `
           duration-200 ease-in pb-2 pt-6 px-4 rounded-t text-black dark:text-gray-100
           w-full caret-$color-$normal dark:bg-dark-600
           dense:pt-2 dense:pb-1 dense:px-2
         `,
       outlined: `
-        pt-0 pb-0 dark:bg-transparent border border-$color-$normal
-        rounded bg-transparent py-4 duration-200 ease-in border-gray-600
+        pb-4 pt-4 dark:bg-transparent border border-$color-$normal
+        rounded bg-transparent duration-200 ease-in border-gray-600
       `,
       error: "border-error-$normal caret-error-$normal",
       prepend: "remove:px-4 pr-4 pl-10",
@@ -47,10 +47,10 @@ let config = {
     },
     wrapper: {
       root: "mb-6 dense:mb-3 relative text-gray-600 dark:text-gray-100",
-      select: "dense:mb-0",
       autocomplete: "dense:b-0",
-      dense: "dense",
-      error: "remove:text-gray-600 text-error-$normal",
+      select: "dense:mb-0 mb-0",
+      dense: "dense:mb-0 mb-0",
+      error: "text-error-$normal",
       disabled: "text-gray-200"
     },
     append: {

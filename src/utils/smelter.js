@@ -13,7 +13,11 @@ class SmelteClassString {
     return this.node.defaults[name];
   }
   apply(fn) {
-    this.classes = new Set(fn(this.class).split(" ").filter(Boolean));
+    this.classes = new Set(
+      fn(this.class)
+        .split(" ")
+        .filter(Boolean)
+    );
 
     return this;
   }
@@ -82,9 +86,12 @@ class SmelteClassString {
     props.forEach(p => {
       let match;
 
-      if (p.includes('-')) {
-        match = this.class.match(new RegExp((p.trim().split('-') || [])[0] + '-?[a-z]+?\-?[0-9]+'));
-        match && this.remove(match[0]);
+      if (p.includes("-")) {
+        match = this.class.match(
+          new RegExp((p.trim().split("-") || [])[0] + "-?([a-z]+)?-([0-9]+)?", "g")
+        );
+
+        match && this.replace(match[0], p);
       }
 
       this.classes.add(p.trim());
@@ -102,13 +109,13 @@ class SmelteClassString {
   get class() {
     this.preprocess();
 
-    return this.swap([...this.classes].join(" "));
+    return this.swap([...this.classes].join(" ")).trim();
   }
 }
 
 function build(node, store, props = {}, name, isMain) {
   const classString = new SmelteClassString(
-    isMain ? props.class : "",
+    isMain ? props.class : '',
     props,
     node,
     name,
@@ -119,6 +126,8 @@ function build(node, store, props = {}, name, isMain) {
 
   Object.keys(node).forEach(r => {
     const rule = node[r];
+
+    if (!rule) return;
 
     if (typeof rule === "boolean") return;
 

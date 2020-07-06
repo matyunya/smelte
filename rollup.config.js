@@ -9,12 +9,13 @@ import json from "rollup-plugin-json";
 import config from "sapper/config/rollup.js";
 import includePaths from "rollup-plugin-includepaths";
 import alias from "rollup-plugin-alias";
+import sveltePreprocess from 'svelte-preprocess';
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
-const smelte = require("./rollup-plugin-smelte");
+import { postcssProcessor as smelte } from "./rollup-plugin-smelte";
 
 const onwarn = (warning, onwarn) =>
   (warning.code === "CIRCULAR_DEPENDENCY" &&
@@ -40,9 +41,13 @@ export default {
       }),
       svelte({
         dev,
-        hydratable: true
+        hydratable: true,
+        preprocess: !dev && sveltePreprocess({
+          postcss: {
+            plugins: smelte()
+          },
+        }),
       }),
-      !dev && smelte(),
       resolve(),
       commonjs(),
       includePaths({ paths: ["./src", "./"] }),
@@ -93,20 +98,12 @@ export default {
       }),
       svelte({
         generate: "ssr",
-        dev
-      }),
-      smelte({
-        purge: !dev,
-        whitelistPatterns: [
-          // for Prismjs code highlighting
-          /language/,
-          /namespace/,
-          /token/,
-          // for JS ripple
-          /ripple/,
-          // date picker
-          /w\-.\/7/
-        ]
+        dev,
+        preprocess: sveltePreprocess({
+          postcss: {
+            plugins: smelte(),
+          },
+        }),
       }),
       string({
         include: "**/*.txt"

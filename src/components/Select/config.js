@@ -5,7 +5,6 @@ let config = {
   },
   nodes: {
     root: {
-      isMain: true,
       root: "cursor-pointer relative pb-4"
     },
     options: {

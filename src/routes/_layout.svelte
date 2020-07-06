@@ -2,7 +2,7 @@
   import AppBar from "components/AppBar";
   import Tabs from "components/Tabs";
   import Button from "components/Button";
-  import { Spacer } from "components/Util";
+  import { Spacer, Smelte } from "components/Util";
   import List, { ListItem } from "components/List";
   import NavigationDrawer from "components/NavigationDrawer";
   import ProgressLinear from "components/ProgressLinear";
@@ -98,12 +98,13 @@
   </a>
 </AppBar>
 
+<Smelte />
+
 <main
   class="relative p-8 lg:max-w-3xl mx-auto mb-10 mt-24 md:ml-64 md:pl-16
   md:max-w-md md:px-3"
   transition:fade={{ duration: 300 }}>
   <NavigationDrawer
-    class="py-16"
     bind:show={$showNav}
     right={$right}
     persistent={$persistent}

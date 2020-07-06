@@ -39,10 +39,6 @@
   export let showList = false;
 
   export let inputWrapperClasses = noop;
-  export let appendClasses = noop;
-  export let labelClasses = noop;
-  export let inputClasses = noop;
-  export let prependClasses = noop;
   export let listClasses = noop;
   export let selectedClasses = noop;
   export let add = "";
@@ -123,10 +119,6 @@
       value={selectedLabel}
       {...props}
       class={inputWrapperClasses}
-      {appendClasses}
-      {labelClasses}
-      {inputClasses}
-      {prependClasses}
       on:click={handleInputClick}
       on:click-append={(e=> showList = !showList)}
       on:click

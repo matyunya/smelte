@@ -9,8 +9,7 @@ export let config = {
   },
   nodes: {
     root: {
-      isMain: true,
-      root: "fixed top-0 left-0 w-auto overflow-hidden h-full z-50 mt-16",
+      root: "fixed top-0 left-0 w-auto overflow-hidden h-full z-10 py-12",
       borderLeft: "border-gray-600 border-l",
       borderRight: "border-gray-600 border-r",
       elevation: "elevation-4",
@@ -19,7 +18,7 @@ export let config = {
     },
     nav: {
       root:
-        "h-full w-full bg-white dark:bg-gray-900 dark:text-gray-200 absolute flex w-auto z-20 pointer-events-auto overflow-y-auto"
+        "h-full w-full py-10 bg-white dark:bg-gray-900 dark:text-gray-200 absolute flex w-auto z-20 pointer-events-auto overflow-y-auto"
     }
   }
 };

@@ -16,8 +16,7 @@ const config = {
     },
     icon: {
       root: "text-gray-500 dark:text-gray-100",
-      selected: "text-$color-500 dark:text-$color-100",
-      value: "text-$color-500 dark:text-$color-100",
+      selected: "text-$color-500 dark:text-$color-500",
       disabled: "text-gray-500 dark:text-gray-600"
     },
     label: {

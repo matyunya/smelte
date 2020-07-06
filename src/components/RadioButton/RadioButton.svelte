@@ -21,7 +21,11 @@
 
   const store = writable(config);
 
-  $: smelte = smelter($store, $$props);
+  $: smelte = smelter($store, {
+    $$props,
+    selected: selected === value,
+    disabled
+  });
 </script>
 
 <div class={smelte.wrapper.class} on:click={select}>

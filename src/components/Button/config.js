@@ -30,7 +30,6 @@ export const config = {
     elevationHover: 5,
     elevation
   },
-  computed: {},
   nodes: {
     button: {
       isMain: true,

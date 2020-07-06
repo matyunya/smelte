@@ -18,9 +18,9 @@ export const config = {
     icon: {
       root: "text-gray-500 dark:text-gray-100",
       checked:
-        "text-$color-500 dark:text-$color-100",
+        "text-$color-500 dark:text-$color-500",
       value:
-        "text-$color-500 dark:text-$color-100",
+        "text-$color-500 dark:text-$color-500",
       disabled: "text-gray-500 dark:text-gray-600"
     },
     label: {

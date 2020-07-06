@@ -18,7 +18,7 @@ const config = {
     thumb: {
       root:
         "rounded-full p-2 w-5 h-5 absolute elevation-3 duration-100 bg-white left-0",
-      value: "remove:bg-white.left-0 bg-$color-400"
+      value: "remove:left-0 bg-$color-400"
     }
   }
 };

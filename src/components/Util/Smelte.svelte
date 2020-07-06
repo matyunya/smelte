@@ -1,0 +1,207 @@
+<style lang="postcss" global>
+  @tailwind base;
+  @tailwind components;
+
+  h1,
+  .h1 {
+    @apply text-5xl font-light;
+    letter-spacing: -1.5px;
+  }
+
+  h2,
+  .h2 {
+    @apply text-4xl font-light;
+    letter-spacing: -0.5px;
+  }
+
+  h3,
+  .h3 {
+    @apply text-3xl font-normal;
+    letter-spacing: 0px;
+  }
+
+  h4,
+  .h4 {
+    @apply text-2xl font-normal;
+    letter-spacing: 0.25px;
+  }
+
+  h5,
+  .h5 {
+    @apply text-xl font-normal;
+    letter-spacing: 0px;
+  }
+
+  h6,
+  .h6 {
+    @apply text-base font-medium;
+    letter-spacing: 0.15px;
+  }
+
+  hr {
+    @apply border-t border-gray-400 border-solid;
+  }
+
+  .subtitle-1 {
+    @apply text-base;
+    letter-spacing: 0.15px;
+  }
+
+  .subtitle-2 {
+    @apply text-base text-sm font-medium;
+    letter-spacing: 0.15px;
+  }
+
+  .body-1 {
+    @apply text-base;
+    letter-spacing: 0.5px;
+  }
+
+  .body-2 {
+    @apply text-sm;
+    letter-spacing: 0.25px;
+  }
+
+  .button {
+    letter-spacing: 0.0892857143em;
+  }
+
+  caption,
+  .caption {
+    font-size: 0.625rem;
+    letter-spacing: 0.4px;
+    display: inline-block;
+  }
+
+  button:focus, input:focus, li:focus, div:focus, textarea:focus, a:focus {
+    @apply outline-none;
+  }
+
+  .list {
+    margin-top: 2px;
+  }
+
+  .a {
+    @apply underline text-blue-600;
+  }
+
+  html {
+    font-family: "Roboto", sans-serif;
+  }
+
+
+  input[type='number'] {
+      -moz-appearance:textfield;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+  }
+
+  .ripple {
+    border-radius: 50%;
+    position: absolute;
+    transform: scale(0);
+  }
+
+  .ripple-normal {
+    animation: ripple-normal 0.6s;
+  }
+
+  .ripple-centered {
+    animation: ripple-centered 0.4s;
+  }
+
+  @keyframes ripple-normal {
+    to {
+      transform: scale(2.5);
+      opacity: 0;
+    }
+  }
+
+  @keyframes ripple-centered {
+    to {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+
+  .mode-dark {
+    @apply text-gray-100 bg-dark-500 duration-100 pointer-events-auto;
+  }
+
+  th:first-child, td:first-child {
+    @apply text-left border-r border-gray-200;
+  }
+
+  th:first-child .sort-wrapper {
+    @apply justify-start;
+  }
+
+  th .sort {
+    @apply w-4 h-4 opacity-0;
+  }
+
+  th:hover .sort {
+    @apply opacity-100;
+  }
+
+  tr.selected {
+    @apply bg-primary-50;
+  }
+
+  .select {
+    @apply pb-0 mb-0 cursor-pointer;
+  }
+
+  .code-inline {
+    @apply text-sm bg-secondary-50 text-secondary-900 rounded-sm p-1;
+    letter-spacing: 0.25px;
+  }
+
+  input[type="range"] {
+    --bg: var(--color-gray-200);
+    --bg-focus: var(--color-gray-200);
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    height: 4px;
+  }
+
+  input[type="range"]:disabled {
+    @apply bg-gray-300;
+  }
+
+  input[type="range"]::range-thumb {
+    -webkit-appearance: none;
+    @apply rounded-full p-1 w-5 h-5 elevation-3;
+    background-color: var(--bg);
+  }
+
+  input[type="range"]:disabled::range-thumb {
+    @apply bg-gray-400;
+  }
+
+  input[type="range"]::-ms-thumb {
+    margin: 0;
+  }
+  input[type="range"]:focus {
+    outline: none;
+  }
+
+  input[type="range"]:focus::range-thumb {
+    -webkit-appearance: none;
+    @apply rounded-full p-1 w-5 h-5 elevation-3;
+    margin-top: -0.5rem;
+    background-color: var(--bg-focus);
+  }
+
+  input[type="range"]:focus::range-track {
+    @apply rounded;
+    height: 4px;
+  }
+
+  @tailwind utilities;
+</style>

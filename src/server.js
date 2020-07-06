@@ -6,8 +6,6 @@ import * as sapper from "@sapper/server";
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === "development";
 
-import "./tailwind.css";
-
 const app = express() // You can also use Express
   .use(
     compression({ threshold: 0 }),

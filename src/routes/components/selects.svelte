@@ -63,8 +63,6 @@
   {selectedLabel}
   outlined
   color="error"
-  inputClasses={i => i.replace('rounded-t', 'rounded-full')}
-  appendClasses={i => i.replace('text-gray-700', 'text-error-700')}
   label="Categories"
   {items}
 >

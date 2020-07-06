@@ -2,7 +2,6 @@ let config = {
   props: {},
   nodes: {
     root: {
-      isMain: true,
       root: "elevation-3 relative text-sm overflow-x-auto dark:bg-dark-500"
     },
     header: {
