@@ -85,4 +85,18 @@ test('It accepts function as class argument', t => {
     smelter(config(), { class: i => i }).root.class,
     'bg-gray-500'
   );
-})
+});
+
+test('It removes duplicates introduced by function', t => {
+  t.is(
+    smelter(config(), { class: i => i + ' bg-gray-500' }).root.class,
+    'bg-gray-500'
+  );
+});
+
+test('It removes duplicates introduced by interpolation', t => {
+  t.is(
+    smelter(config(), { class: i => i + ' bg-$color-500', color: 'gray' }).root.class,
+    'bg-gray-500'
+  );
+});

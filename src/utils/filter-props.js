@@ -5,7 +5,6 @@ const defaultReserved = [
   "replace",
   "value",
   "classes",
-  "shade",
   "outlined",
   "text",
   "color",

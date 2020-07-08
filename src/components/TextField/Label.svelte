@@ -6,10 +6,15 @@
 
 <style>
 .label-top {
-  line-height: 0.05;
+  line-height: 0.01;
+  font-size: 0.7rem;
 }
 .label-transition {
   transition: font-size 0.05s, line-height 0.1s;
+}
+
+:global(label.text-xs) {
+  font-size: 0.7rem;
 }
 
 :global(.mode-dense) .label-top {

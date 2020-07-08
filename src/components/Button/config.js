@@ -52,8 +52,6 @@ export const config = {
       rounded: "rounded",
       smallAndIcon: "flex items-center justify-center",
       notIcon: (i, p) => i.set("button", !p.icon),
-      dark: (i, p) => i.setShade(-400, p.dark),
-      light: (i, p) => i.setShade(300, p.light),
       block
     },
     icon: {

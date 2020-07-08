@@ -34,15 +34,13 @@ let config = {
           dense:pt-2 dense:pb-1 dense:px-2
         `,
       outlined: `
-        pb-4 pt-4 dark:bg-transparent border border-$color-$normal
-        rounded bg-transparent duration-200 ease-in border-gray-600
+        pb-4 pt-4 dark:bg-transparent border rounded bg-transparent duration-200 ease-in border-gray-600
       `,
-      error: "border-error-$normal caret-error-$normal",
       prepend: "remove:px-4 pr-4 pl-10",
       disabled:
-        "bg-gray-50 dark:bg-dark-400 text-gray-600",
+      "bg-gray-50 dark:bg-dark-400 text-gray-600",
       focused: "border-$color-$normal",
-      error: "border-error-$normal",
+      error: "border-error-$normal caret-error-$normal",
       selectNotAutocomplete: "cursor-pointer"
     },
     wrapper: {

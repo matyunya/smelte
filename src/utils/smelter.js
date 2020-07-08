@@ -1,8 +1,11 @@
+export let defaults = {
+  color: 'primary', normal: 500, lighter: 600
+};
+
 class SmelteClassString {
   constructor(s, props, node, name, store) {
     this.classes = new Set();
-    this.props = props;
-    this.shade = this.props.shade || 0;
+    this.props = { ...defaults, ...props };
     this.node = node;
     this.name = name;
     this.store = store;
@@ -21,11 +24,7 @@ class SmelteClassString {
 
     return this;
   }
-  setShade(value, cond) {
-    if (!cond) return this;
 
-    this.shade = value;
-  }
   remove(prop, cond = true) {
     if (!cond) return this;
 
@@ -33,30 +32,22 @@ class SmelteClassString {
   }
   replace(a, b) {
     this.classes.delete(a);
-    this.classes.add(b);
+    this.add(b);
   }
-  swap(classString) {
-    if (!classString.includes("$")) return classString;
+  add(a) {
+    if (a.includes('$')) {
+      const [, first, second] = a.match(/^[a-z:]+\-(\$?[a-z0-9]+)\-?(\$[a-z0-9]+)?/) || [];;
+      if (first && this.props[first.slice(1)]) {
+        a = a.replace(first, this.props[first.slice(1)])
+      }
+      if (second && this.props[second.slice(1)]) {
+        a = a.replace(second, this.props[second.slice(1)])
+      }
 
-    const replaces = classString
-      .split(/-| /)
-      .filter(
-        a => a.includes("$") && !["$color", "$normal", "$lighter"].includes(a)
-      );
-
-    const s = replaces.reduce(
-      (acc, cur) =>
-        acc.replace(
-          new RegExp("\\" + cur, "g"),
-          this.props[cur.replace("$", "")]
-        ),
-      classString
-    );
-
-    return s
-      .replace(/\$color/g, this.props.color || "primary")
-      .replace(/\$normal/g, 500 - this.shade)
-      .replace(/\$lighter/g, 400 - this.shade);
+      this.classes.add(a);
+    } else {
+      this.classes.add(a.trim());
+    }
   }
   applyRemoves() {
     this.classes.forEach(a => {
@@ -82,19 +73,24 @@ class SmelteClassString {
     }
 
     const props = (prop || "").split(" ");
+    const classes = [...this.classes].join(" ");
 
     props.forEach(p => {
       let match;
 
       if (p.includes("-")) {
-        match = this.class.match(
-          new RegExp((p.trim().split("-") || [])[0] + "-?([a-z]+)?-([0-9]+)?", "g")
+        match = classes.match(
+          new RegExp(
+            (p.trim().split("-") || [])[0] + "-?([a-z\$]+)?-([\$a-z0-9]+)?",
+            "g"
+          )
         );
 
-        match && this.replace(match[0], p);
+        match && p.split('-').length === match[0].split('-').length
+          && this.replace(match[0], p);
       }
 
-      this.classes.add(p.trim());
+      this.add(p);
     });
 
     return this;
@@ -109,13 +105,13 @@ class SmelteClassString {
   get class() {
     this.preprocess();
 
-    return this.swap([...this.classes].join(" ")).trim();
+    return [...this.classes].join(" ");
   }
 }
 
 function build(node, store, props = {}, name, isMain) {
   const classString = new SmelteClassString(
-    isMain ? props.class : '',
+    isMain ? props.class : "",
     props,
     node,
     name,
