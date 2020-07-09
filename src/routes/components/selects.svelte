@@ -25,9 +25,9 @@
   let selectedItems = [];
 
   function toggle(i) {
-    return v => v.detail
-      ? selectedItems.push(i)
-      : selectedItems = selectedItems.filter(si => si !== i);
+    return v => selectedItems = v.detail
+      ? selectedItems.concat(i)
+      : selectedItems.filter(si => si !== i);
   }
 
   $: selectedLabel = selectedItems.map(i => i.text).join(", ");
