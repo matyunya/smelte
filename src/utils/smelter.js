@@ -1,5 +1,7 @@
 export let defaults = {
-  color: 'primary', normal: 500, lighter: 600
+  color: "primary",
+  normal: 500,
+  lighter: 600
 };
 
 class SmelteClassString {
@@ -35,13 +37,14 @@ class SmelteClassString {
     this.add(b);
   }
   add(a) {
-    if (a.includes('$')) {
-      const [, first, second] = a.match(/^[a-z:]+\-(\$?[a-z0-9]+)\-?(\$[a-z0-9]+)?/) || [];;
+    if (a.includes("$")) {
+      const [, first, second] =
+        a.match(/^[a-z:]+\-(\$?[a-z0-9]+)\-?(\$[a-z0-9]+)?/) || [];
       if (first && this.props[first.slice(1)]) {
-        a = a.replace(first, this.props[first.slice(1)])
+        a = a.replace(first, this.props[first.slice(1)]);
       }
       if (second && this.props[second.slice(1)]) {
-        a = a.replace(second, this.props[second.slice(1)])
+        a = a.replace(second, this.props[second.slice(1)]);
       }
 
       this.classes.add(a);
@@ -81,13 +84,14 @@ class SmelteClassString {
       if (p.includes("-")) {
         match = classes.match(
           new RegExp(
-            (p.trim().split("-") || [])[0] + "-?([a-z\$]+)?-([\$a-z0-9]+)?",
+            (p.trim().split("-") || [])[0] + "-?([a-z$]+)?-([$a-z0-9]+)?",
             "g"
           )
         );
 
-        match && p.split('-').length === match[0].split('-').length
-          && this.replace(match[0], p);
+        match &&
+          p.split("-").length === match[0].split("-").length &&
+          this.replace(match[0], p);
       }
 
       this.add(p);
