@@ -35,8 +35,7 @@ let config = {
         `,
       outlined: "pb-4 pt-4 dark:bg-transparent border rounded bg-transparent duration-200 ease-in border-gray-600",
       prepend: "px-0 pr-4 pl-10",
-      disabled:
-      "bg-gray-50 dark:bg-dark-400 text-gray-600",
+      disabled: "bg-gray-50 dark:bg-dark-400",
       focused: "border-$color-$normal",
       error: "border-error-$normal caret-error-$normal",
       selectNotAutocomplete: "cursor-pointer"
@@ -47,7 +46,7 @@ let config = {
       select: "dense:mb-0 mb-0",
       dense: "dense:mb-0 mb-0",
       error: "text-error-$normal",
-      disabled: "text-gray-200"
+      disabled: "text-gray-600"
     },
     append: {
       root: "absolute right-0 top-0 pb-2 pr-4 pt-4 dense:pt-2 text-gray-700 z-10"
