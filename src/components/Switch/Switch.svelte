@@ -8,7 +8,7 @@
   export let color = "primary";
   export let disabled = false;
 
-  const store = writable(config);
+  const store = writable($$props.config || config);
 
   $: smelte = smelter($store, $$props);
 

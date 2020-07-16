@@ -20,12 +20,6 @@
     text: true,
     flat: true,
     dark: true,
-    remove: "px-4 px-3 m-4 p-4",
-    iconClasses: (c) => c.replace("p-4", ""),
-    disabledClasses: (c) => c
-      .replace("text-white", "text-gray-200")
-      .replace("bg-gray-300", "bg-transparent")
-      .replace("text-gray-700", ""),
   };
 
   let temp = value || new Date();
@@ -97,10 +91,12 @@
     <div class="flex">
       <Button
         icon="keyboard_arrow_left"
+        class.icon="px-0 py-0 dense:px-0 dense:py-0"
         {...paginatorProps}
         on:click={prev} />
       <Button
         icon="keyboard_arrow_right"
+        class.icon="px-0 py-0 dense:px-0 dense:py-0"
         {...paginatorProps}
         on:click={next} />
     </div>

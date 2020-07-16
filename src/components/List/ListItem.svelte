@@ -52,9 +52,6 @@
   on:click={change}
   on:click
   on:contextmenu
-  on:contextmenu|preventDefault|stopPropagation={(e) => {
-    dispatch('contextmenu', $$props);
-  }}
   {...props}>
   {#if icon}
     <Icon

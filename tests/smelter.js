@@ -100,3 +100,10 @@ test('It removes duplicates introduced by interpolation', t => {
     'bg-gray-500'
   );
 });
+
+test('It overrides config via class.name prop', t => {
+  t.is(
+    smelter(config(), { 'class.error': 'bg-error-100', error: true }).root.class,
+    'bg-error-100'
+  );
+});

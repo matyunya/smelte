@@ -87,10 +87,6 @@
 </script>
 
 <small>I selected {selected}</small>
-<Treeview class.listItem="remove:h-4 h-1" {items} let:item>
-  <div class="bg-error-500">{item.text}</div>
-</Treeview>
-
 <Treeview on:select={i=> (selected = i.detail.text)} {items} />
 
 <small>I expanded {expanded.map(e => e.text).join(', ') || "nothing"}</small>
@@ -106,5 +102,10 @@
     "data-id": i.text,
   })}
   on:contextmenu={e => console.log(e)} />
+
+
+<Treeview class.listItem="h-2" {items} let:item>
+  <div class="bg-error-500">{item.text}</div>
+</Treeview>
 
 <Code code={treeview} />

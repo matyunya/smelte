@@ -12,10 +12,10 @@ let config = {
       root: "ml-6"
     },
     listItem: {
-      root: "flex items-center"
+      root: "flex items-center",
     },
     icon: {
-      root: ""
+      root: "",
     },
     itemContent: {
       root: "ml-2"

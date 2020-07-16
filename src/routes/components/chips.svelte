@@ -32,49 +32,51 @@
 </div>
 
 <h5 class="mt-6 mb-2">Outlined</h5>
-<Chip
-  bind:selected={chip2}
-  icon="pan_tool"
-  outlined
-  removable
-  selectable
-  on:close={() => (closed = true)}
-  on:click={() => (clicked = true)}>
-  Cats
-</Chip>
-<Chip
-  bind:selected={chip3}
-  icon="print"
-  outlined
-  removable
-  selectable
-  color="blue"
-  on:close={() => (closed = true)}
-  on:click={() => (clicked = true)}>
-  Dogs
-</Chip>
-<Chip
-  bind:selected={chip4}
-  icon="pageview"
-  outlined
-  removable
-  selectable
-  color="alert"
-  on:close={() => (closed = true)}
-  on:click={() => (clicked = true)}>
-  Plants
-</Chip>
-<Chip
-  bind:selected={chip5}
-  icon="pets"
-  outlined
-  removable
-  selectable
-  color="secondary"
-  on:close={() => (closed = true)}
-  on:click={() => (clicked = true)}>
-  Parents
-</Chip>
+<div class="flex">
+  <Chip
+    bind:selected={chip2}
+    icon="pan_tool"
+    outlined
+    removable
+    selectable
+    on:close={() => (closed = true)}
+    on:click={() => (clicked = true)}>
+    Cats
+  </Chip>
+  <Chip
+    bind:selected={chip3}
+    icon="print"
+    outlined
+    removable
+    selectable
+    color="blue"
+    on:close={() => (closed = true)}
+    on:click={() => (clicked = true)}>
+    Dogs
+  </Chip>
+  <Chip
+    bind:selected={chip4}
+    icon="pageview"
+    outlined
+    removable
+    selectable
+    color="alert"
+    on:close={() => (closed = true)}
+    on:click={() => (clicked = true)}>
+    Plants
+  </Chip>
+  <Chip
+    bind:selected={chip5}
+    icon="pets"
+    outlined
+    removable
+    selectable
+    color="secondary"
+    on:close={() => (closed = true)}
+    on:click={() => (clicked = true)}>
+    Parents
+  </Chip>
+</div>
 
 <div class="my-4">
   <Code lang="javascript" code={chipOutlined} />

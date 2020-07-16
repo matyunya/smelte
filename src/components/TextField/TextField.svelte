@@ -31,9 +31,9 @@
   export let disabled = false;
   export let focused = false;
 
-  export let labelProps;
-  export let hintProps;
-  export let underlineProps;
+  export let labelProps = {};
+  export let hintProps = {};
+  export let underlineProps = {};
 
   function toggleFocused() {
     focused = !focused;
@@ -46,7 +46,7 @@
 
   const dispatch = createEventDispatcher();
 
-  const store = writable(config);
+  const store = writable($$props.config || config);
 
   $: smelte = smelter($store, {
     outlined,

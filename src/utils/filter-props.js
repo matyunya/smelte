@@ -42,7 +42,7 @@ export default function filterProps(reserved, props) {
 
   return Object.keys(props).reduce(
     (acc, cur) =>
-      cur.includes("$$") || cur.includes("Class") || r.includes(cur)
+      cur.startsWith("$$") || cur.startsWith("class.") || cur.includes("Class") || r.includes(cur)
         ? acc
         : { ...acc, [cur]: props[cur] },
     {}

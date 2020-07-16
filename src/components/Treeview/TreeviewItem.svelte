@@ -35,7 +35,7 @@
   {...props}
   on:click={() => toggle(item)}>
   {#if showExpandIcon && !item.hideArrow && item.items}
-    <Icon on:click={e => dispatch('click-expand', e)} class={smelte.icon.class}>
+    <Icon on:click={e => dispatch('click-expand', e)} class="{smelte.icon.class} {selected === item ? "tip" : ""}">
       {expandIcon}
     </Icon>
   {/if}

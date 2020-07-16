@@ -137,6 +137,10 @@ function build(node, store, props = {}, name, isMain) {
       if (props[`class.${name}`]) {
         classString.set(props[`class.${name}`], props[r]);
       }
+
+      if (props[`class.${r}`]) {
+        classString.set(props[`class.${r}`], props[r]);
+      }
       return;
     }
 

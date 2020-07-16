@@ -2,12 +2,9 @@
   import { ClassBuilder } from "../../utils/classes.js";
   import { createEventDispatcher } from "svelte";
   import Icon from "../Icon";
-
-  const classesDefault = "capitalize duration-100 text-gray-600 text-xs hover:text-black dark-hover:text-white p-3 font-normal text-right";
-
-  let className = "";
-  export let classes = classesDefault;
-  export {className as class};
+  import { header as config } from "./config";
+  import smelter from "../../utils/smelter";
+  import { writable } from "svelte/store";
 
   export let column = {};
   export let asc = false;
@@ -16,13 +13,9 @@
   export let editing = false;
 
   const dispatch = createEventDispatcher();
+  const store = writable($$props.config || config);
 
-  const cb = new ClassBuilder(classes, classesDefault);
-  $: c = cb
-    .flush()
-    .add(classes, true, classesDefault)
-    .add(className)
-    .get();
+  $: smelte = smelter($store, $$props);
 </script>
 
 <style>
@@ -32,7 +25,7 @@
 </style>
 
 <th
-  class={c}
+  class={smelte.root.class}
   class:cursor-pointer={sortable || column.sortable}
   on:click={() => {
     if (column.sortable === false || !sortable) return;
@@ -43,10 +36,10 @@
     sortBy = column;
   }}
 >
-  <div class="sort-wrapper flex items-center justify-end">
+  <div class={smelte.wrapper.class}>
     {#if sortable && column.sortable !== false}
       <span class="sort" class:asc={!asc && sortBy === column}>
-        <Icon small color="text-gray-400 dark:text-gray-100">arrow_downward</Icon>
+        <Icon small class={smelte.icon.class}>arrow_downward</Icon>
       </span>
     {/if}
     <span>{column.label || column.field}</span>

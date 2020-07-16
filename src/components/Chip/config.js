@@ -10,7 +10,7 @@ export const config = {
     wrapper: {
       isMain: true,
       root:
-        "relative overflow-hidden flex items-center rounded-full px-2 py-1 mx-1 inline-block",
+        "relative overflow-hidden flex items-center rounded-full px-2 py-1 mx-1",
       outlined: "bg-transparent border",
       notSelected:
         "border-gray-400 border-solid hover:bg-gray-50 dark-hover:bg-dark-400 bg-gray-300 dark:bg-dark-600",
@@ -30,7 +30,7 @@ export const config = {
       notSelected: "hover:bg-gray-400 bg-gray-500 dark:bg-gray-800"
     },
     removableIcon: {
-      root: "text-white dark:text-white"
+      root: "text-white"
     }
   }
 };

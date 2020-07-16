@@ -33,10 +33,8 @@ let config = {
           w-full caret-$color-$normal dark:bg-dark-600
           dense:pt-2 dense:pb-1 dense:px-2
         `,
-      outlined: `
-        pb-4 pt-4 dark:bg-transparent border rounded bg-transparent duration-200 ease-in border-gray-600
-      `,
-      prepend: "remove:px-4 pr-4 pl-10",
+      outlined: "pb-4 pt-4 dark:bg-transparent border rounded bg-transparent duration-200 ease-in border-gray-600",
+      prepend: "px-0 pr-4 pl-10",
       disabled:
       "bg-gray-50 dark:bg-dark-400 text-gray-600",
       focused: "border-$color-$normal",
@@ -69,9 +67,8 @@ let config = {
     label: {
       root: `pt-4 dense:pt-2 absolute top-0 label-transition block pb-2 px-4 pointer-events-none cursor-text`,
       labelOnTop: "label-top text-xs",
-      labelOnTopOutlined:
-        "remove:pt-4.pb-2.px-4.px-1.pt-0 ml-3 p-1 pt-0 mt-0 bg-$bgColor dark:bg-dark-500",
-      prepend: "remove:px-4 pr-4 pl-10",
+      labelOnTopOutlined:"ml-3 p-1 px-1 pt-0 mt-0 bg-$bgColor dark:bg-dark-500",
+      prepend: "px-0 pr-4 pl-10",
       focused: "text-$color-$normal",
       error: "text-error-$normal"
     },

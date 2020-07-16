@@ -30,7 +30,7 @@
     node.style.setProperty('--bg-focus', c);
   }
 
-  const store = writable(config);
+  const store = writable($$props.config || config);
 
   $: smelte = smelter($store, $$props);
 

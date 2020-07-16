@@ -3,7 +3,7 @@
   import config from "./config";
   import smelter from "../../utils/smelter";
 
-  const store = writable(config);
+  const store = writable($$props.config || config);
 
   $: smelte = smelter($store, $$props);
 </script>

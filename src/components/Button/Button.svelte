@@ -19,10 +19,8 @@
   export let fab = false;
 
   const ripple = createRipple((text || fab || outlined) ? color : "white");
-
   const props = filterProps([], $$props);
-
-  const store = writable(config);
+  const store = writable($$props.config || config);
 
   $: smelte = smelter($store, $$props);
 </script>
@@ -35,7 +33,7 @@
   >
     <button
       use:ripple
-      class={smelte.button.class}
+      class={smelte.root.class}
       {...props}
       {disabled}
       on:click={() => (value = !value)}
@@ -52,7 +50,7 @@
 {:else}
   <button
     use:ripple
-    class={smelte.button.class}
+    class={smelte.root.class}
     {...props}
     {disabled}
     on:click={() => (value = !value)}

@@ -32,10 +32,10 @@
     selected = true;
   }
 
-  const store = writable(config);
+  const store = writable($$props.config || config);
   $: smelte = smelter($store, $$props);
 
-  const props = filterProps([], $$props);
+  const props = filterProps(['removable'], $$props);
 </script>
 
 <style>

@@ -1,6 +1,6 @@
 <script context="module">
   import { writable } from "svelte/store";
-  
+
   const queue = writable([]);
   let running = false;
 </script>
@@ -68,7 +68,7 @@
     }, timeout);
   }
 
-  const store = writable(config);
+  const store = writable($$props.config || config);
 
   $: smelte = smelter($store, {
       $$props,
@@ -101,7 +101,7 @@
         in:scale={inProps}
         out:fade={outProps}
         on:click={() => value = false}>
-        <slot /> 
+        <slot />
         {#if !noAction}
           <Spacer />
           <slot name="action">

@@ -6,14 +6,14 @@
   import { writable } from "svelte/store";
   import config from "./config";
   import smelter from "../../utils/smelter";
-  
+
   export let value;
   export let opacity = 0.5;
   export let persistent = false;
 
   export let transitionProps = { duration: 150, easing: quadIn, delay: 150 };
 
-  const store = writable(config);
+  const store = writable($$props.config || config);
 
   $: smelte = smelter($store, $$props);
 </script>

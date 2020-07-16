@@ -11,7 +11,7 @@ const defaultWhitelistPatterns = [
   /w\-.\/7/
 ];
 
-export const postcssProcessor = ({
+const postcssProcessor = ({
   tailwind = {},
   postcss = [],
   whitelist = defaultWhitelist,
@@ -45,10 +45,15 @@ export const postcssProcessor = ({
   ].filter(Boolean);
 };
 
-export const plugins = config => postcssProcessor(config);
+const plugins = config => postcssProcessor(config);
 
-export default (config) =>
+const smelte = (config) =>
   postcss({
     plugins: plugins(config),
     extract: path.resolve(config.output || "./static/global.css")
   });
+
+module.exports = {
+  postcssProcessor,
+  smelte
+};

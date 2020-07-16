@@ -5,25 +5,16 @@
   import Button from "../Button";
   import { Spacer } from "../Util";
   import Icon from "../Icon";
-
-  const classesDefault = "flex justify-between items-center text-gray-700 text-sm w-full h-16";
+  import { pagination as config } from "./config";
+  import smelter from "../../utils/smelter";
+  import { writable } from "svelte/store";
 
   const paginatorPropsDefault = {
     color: "gray",
     text: true,
     flat: true,
     dark: true,
-    remove: "px-4 px-3",
-    // iconClasses: (c) => c.replace("p-4", ""),
-    // disabledClasses: (c) => c
-    //   .replace("text-white", "text-gray-200")
-    //   .replace("bg-gray-300", "bg-transparent")
-    //   .replace("text-gray-700", ""),
   };
-
-  let className = "";
-  export let classes = classesDefault;
-  export {className as class};
 
   export let perPage = 0;
   export let page = 0;
@@ -36,35 +27,36 @@
 
   export let paginatorProps = false;
 
-  const dispatch = createEventDispatcher();
+  const store = writable($$props.config || config);
 
-  const cb = new ClassBuilder(classes, classesDefault);
-  $: c = cb
-    .flush()
-    .add(classes, true, classesDefault)
-    .add(className)
-    .get();
+  $: smelte = smelter($store, $$props);
+
+  const dispatch = createEventDispatcher();
 </script>
 
 <tfoot>
   <tr>
     <td colspan="100%" class="border-none">
-      <div class={c}>
+      <div class={smelte.root.class}>
         <Spacer />
         <div class="mr-1 py-1">
         Rows per page:
         </div>
-        <Select
-          class="w-16 h-8 mb-5"
-          noUnderline
-          dense
-          bind:value={perPage}
-          items={perPageOptions}
-        />
+        <div class="mode-dense">
+          <Select
+            class={smelte.rowsSelect.class}
+            noUnderline
+            dense
+            bind:value={perPage}
+            items={perPageOptions}
+          />
+        </div>
         <Spacer />
         <div>{offset}-{offset + perPage > total ? total : offset + perPage} of {total}</div>
         <Button
           disabled={(page - 1) < 1}
+          class.icon={smelte.buttonIcon.class}
+          class.disabled={smelte.buttonDisabled.class}
           icon="keyboard_arrow_left"
           {...(paginatorProps || paginatorPropsDefault)}
           on:click={() => {
@@ -74,6 +66,8 @@
         <Button
           disabled={page === pagesCount}
           icon="keyboard_arrow_right"
+          class.icon={smelte.buttonIcon.class}
+          class.disabled={smelte.buttonDisabled.class}
           {...(paginatorProps || paginatorPropsDefault)}
           on:click={() => {
             page += 1;

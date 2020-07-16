@@ -24,7 +24,7 @@ export const config = {
       disabled: "text-gray-500 dark:text-gray-600"
     },
     label: {
-      root: "pl-2 cursor-pointer text-gray-700 dark:text-gray-300",
+      root: "pl-2 dense:pl-0 cursor-pointer text-gray-700 dark:text-gray-300",
       disabled: "text-gray-400 dark:text-gray-600"
     }
   }

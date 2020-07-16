@@ -24,7 +24,7 @@ export let tabButton = {
   nodes: {
     root: {
       root: `duration-100 relative overflow-hidden text-center w-full
-        h-full p-4 cursor-pointer flex mx-auto items-center text-sm
+        h-full p-4 dense:p-2 cursor-pointer flex mx-auto items-center text-sm
         hover:bg-$color-transLight hover:text-$color-900
       `,
       icon: "uppercase"

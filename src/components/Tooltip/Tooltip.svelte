@@ -15,7 +15,7 @@
 
   export let timeout = null;
   export let inDelay = 0;
-  export let outDelay = 1000;
+  export let outDelay = 100;
 
   let id = uid();
   let tm;
@@ -42,7 +42,7 @@
     if (timeout) clearTimeout(tm);
   }
 
-  const store = writable(config);
+  const store = writable($$props.config || config);
 
   $: smelte = smelter($store, $$props);
 </script>
