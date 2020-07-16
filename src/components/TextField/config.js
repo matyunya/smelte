@@ -31,7 +31,7 @@ let config = {
       root: `
           duration-200 ease-in pb-2 pt-6 px-4 rounded-t text-black dark:text-gray-100
           w-full caret-$color-$normal dark:bg-dark-600
-          dense:pt-2 dense:pb-1 dense:px-2
+          dense:pt-2 dense:pb-1
         `,
       outlined: "pb-4 pt-4 dark:bg-transparent border rounded bg-transparent duration-200 ease-in border-gray-600",
       prepend: "px-0 pr-4 pl-10",

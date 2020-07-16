@@ -74,7 +74,7 @@
     <span slot="activator">
       <Button
         bind:value={$denseMode}
-        icon="wb_sunny"
+        icon="text_format"
         small
         fab
         remove="p-1 h-4 w-4"

@@ -19,7 +19,7 @@ export let tabButton = {
     id: "",
     selected: "",
     notSelectedColor: "white",
-    notSelected: p => p.selected !== p.id
+    notSelected: p => p.selected && p.selected !== p.id
   },
   nodes: {
     root: {

@@ -27,7 +27,7 @@
 <h5 class="pt-6 pb-4">Definite linear progress indicator</h5>
 
 <small class="mb-3">{progress}%</small>
-<ProgressLinear color="gray" {progress} />
+<ProgressLinear color="alert" {progress} />
 
 <h5 class="pt-6 pb-4">Indefinite circular progress indicator</h5>
 <ProgressCircular color="secondary" />

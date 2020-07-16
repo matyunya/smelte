@@ -39,7 +39,7 @@ class SmelteClassString {
   add(a) {
     if (a.includes("$")) {
       const [, first, second] =
-        a.match(/^[a-z:]+\-(\$?[a-z0-9]+)\-?(\$[a-z0-9]+)?/) || [];
+        a.match(/^[A-Za-z:]+\-(\$?[A-Za-z0-9]+)\-?(\$[A-Za-z0-9]+)?/) || [];
       if (first && this.props[first.slice(1)]) {
         a = a.replace(first, this.props[first.slice(1)]);
       }
@@ -84,7 +84,7 @@ class SmelteClassString {
       if (p.includes("-")) {
         match = classes.match(
           new RegExp(
-            (p.trim().split("-") || [])[0] + "-?([a-z$]+)?-([$a-z0-9]+)?",
+            (p.trim().split("-") || [])[0] + "-?([A-Za-z$]+)?-([$A-Za-z0-9]+)?",
             "g"
           )
         );

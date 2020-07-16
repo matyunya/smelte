@@ -19,7 +19,12 @@
 
   const store = writable($$props.config || config);
 
-  $: smelte = smelter($store, $$props);
+  $: smelte = smelter($store, {
+    ...$$props,
+    app,
+    progress,
+    initialized
+  });
 </script>
 
 <style>
