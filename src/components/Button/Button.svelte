@@ -24,7 +24,7 @@
   export let add = "";
   export let replace = {};
 
-  const classesDefault = 'py-2 px-4 uppercase text-sm font-medium relative overflow-hidden';
+  const classesDefault = 'z-10 py-2 px-4 uppercase text-sm font-medium relative overflow-hidden';
   const basicDefault = 'text-white transition';
   const outlinedDefault = 'bg-transparent border border-solid';
   const textDefault = 'bg-transparent border-none px-4 hover:bg-transparent';
