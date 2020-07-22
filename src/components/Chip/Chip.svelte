@@ -6,8 +6,8 @@
 
   import Icon from "../Icon";
 
-  let className = "";
-  export {className as class};
+
+
   export let removable = false;
   export let icon = "";
   export let outlined = false;
@@ -63,7 +63,7 @@
 
    $: c = cb
       .flush()
-      .add(className)
+      .add($$props.class)
       .get();
 </script>
 

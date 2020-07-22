@@ -10,9 +10,9 @@
   export let column = {};
   export let editing = false;
 
-  let className = "";
+
   export let classes = classesDefault;
-  export {className as class};
+
 
   const dispatch = createEventDispatcher();
 
@@ -20,7 +20,7 @@
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
-    .add(className)
+    .add($$props.class)
     .get();
 </script>
 

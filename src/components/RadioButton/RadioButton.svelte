@@ -5,8 +5,8 @@
   import { ClassBuilder } from "../../utils/classes.js";
 
   const classesDefault = "inline-flex block items-center mb-2 cursor-pointer z-0";
-  let className = "";
-  export {className as class};
+
+
 
   export let selected = "";
   export let label = "";
@@ -27,7 +27,7 @@
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
-    .add(className)
+    .add($$props.class)
     .get();
 
   $: rippleColor = value && !disabled ? color : 'gray';

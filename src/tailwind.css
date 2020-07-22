@@ -128,7 +128,7 @@ input::-webkit-inner-spin-button {
 }
 
 .mode-dark {
-  @apply text-gray-100 bg-dark-500 transition-fast pointer-events-auto;
+  @apply text-gray-100 bg-dark-500 duration-100 pointer-events-auto;
 }
 
 
@@ -200,7 +200,7 @@ tr.selected {
   height: 3.5rem;
 }
 .select.dense {
-  height: 2.4rem;
+  height: 2.7rem;
 }
 
 .code-inline {

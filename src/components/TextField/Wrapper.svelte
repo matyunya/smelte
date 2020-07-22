@@ -1,8 +1,8 @@
 <script>
   import utils, { ClassBuilder, filterProps } from "../../utils/classes.js";
 
-  let className = "mt-2 mb-6 relative text-gray-600";
-  export {className as class};
+  let classesDefault = "mt-2 mb-6 relative text-gray-600";
+
 
   export let error = false;
   export let select = false;
@@ -12,7 +12,7 @@
   export let remove = "";
   export let replace = "";
 
-  const l = new ClassBuilder(className, className);
+  const l = new ClassBuilder($$props.class, classesDefault);
 
   let Classes = i => i;
 

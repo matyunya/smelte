@@ -12,8 +12,8 @@
   export let indicator = true;
   export let color = "white";
   export let notSelectedColor = "white";
-  let className = "";
-  export {className as class};
+
+
   export let loading = false;
   export let tabButtonClasses = i => i;
 
@@ -55,7 +55,7 @@
   const cb = new ClassBuilder(classes, classesDefault);
   $: c = cb
     .flush()
-    .add(className)
+    .add($$props.class)
     .add('hidden md:flex w-full max-w-2xl', navigation)
     .add('flex', !navigation)
     .get();

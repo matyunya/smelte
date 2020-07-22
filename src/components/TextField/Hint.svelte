@@ -3,8 +3,8 @@
   import { fly } from "svelte/transition";
   import { quadOut } from "svelte/easing";
 
-  let className = "text-xs py-1 pl-4 absolute bottom-1 left-0";
-  export {className as class};
+  let classesDefault = "text-xs py-1 pl-4 absolute bottom-1 left-0";
+
 
   export let error = false;
   export let hint = "";
@@ -15,7 +15,7 @@
 
   export let transitionProps = { y: -10, duration: 100, easing: quadOut };
 
-  const l = new ClassBuilder(className, className);
+  const l = new ClassBuilder($$props.class, classesDefault);
 
   let Classes = i => i;
 
@@ -37,6 +37,6 @@
 <div
   class="{classes}"
   transition:fly={transitionProps}>
-  {hint}
-  {error}
+  {hint || ''}
+  {error || ''}
 </div>

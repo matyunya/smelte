@@ -7,9 +7,9 @@
 
   const classesDefault = "hover:bg-gray-50 dark-hover:bg-dark-400 border-gray-200 dark:border-gray-400 border-t border-b px-3";
 
-  let className = "";
+
   export let classes = classesDefault;
-  export {className as class};
+
 
   export let item = {};
   export let columns = [];
@@ -25,8 +25,22 @@
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
-    .add(className)
+    .add($$props.class)
     .get();
+
+  function columnClass(column) {
+    const cb = new ClassBuilder('relative p-3 font-normal text-right');
+    if (column.replace) {
+      cb.replace(column.replace)
+    }
+    if (column.add || column.class) {
+      cb.add(column.add || column.class);
+    }
+    if (column.remove) {
+      cb.remove(column.remove);
+    }
+    return cb.get();
+  }
 </script>
 
 <tr
@@ -36,10 +50,10 @@
     editing = { [index]: (e.path.find(a => a.localName === "td") || {}).cellIndex }
   }}
   class:selected={editing[index]}
-> 
+>
   {#each columns as column, i}
     <td
-      class="relative p-3 font-normal text-right {column.class || ''}"
+      class={columnClass(column)}
       class:cursor-pointer={editable && column.editable !== false}
     >
       {#if editable && column.editable !== false && editing[index] === i}

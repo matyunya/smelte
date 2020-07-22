@@ -3,10 +3,10 @@
   import { ClassBuilder } from "../../utils/classes.js";
 
   const classesDefault = "tooltip whitespace-no-wrap text-xs absolute mt-2 bg-gray-600 text-gray-50 rounded md:px-2 md:py-2 py-4 px-3 z-30";
-  let className = "";
+
   export let classes = classesDefault;
 
-  export {className as class};
+
   export let show = false;
 
   export let timeout = null;
@@ -17,7 +17,7 @@
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
-    .add(className)
+    .add($$props.class)
     .get();
 
   function showTooltip() {
@@ -34,7 +34,7 @@
 
   function hideTooltip() {
     if (!show) return;
-    
+
     show = false;
     clearTimeout(timeout);
   }

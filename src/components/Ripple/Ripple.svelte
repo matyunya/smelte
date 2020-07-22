@@ -2,9 +2,6 @@
   export let color = "primary";
   export let noHover = false;
   import createRipple from "../Ripple/ripple.js";
-  let className = "p-2";
-  export {className as class};
-
 
   $: ripple = createRipple(color, true);
   $: hoverClass = `hover:bg-${color}-transLight`;
@@ -18,6 +15,6 @@
 
 <span
   use:ripple
-  class="z-40 {className} rounded-full flex items-center justify-center top-0 left-0 {noHover ? "" : hoverClass}">
+  class="z-40 {$$props.class} p-2 rounded-full flex items-center justify-center top-0 left-0 {noHover ? "" : hoverClass}">
   <slot />
 </span>

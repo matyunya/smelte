@@ -44,6 +44,8 @@ like <span class="code-inline">max-length</span> or <span class="code-inline">ty
 
 <h6 class="mb-3 mt-6">With hint</h6>
 <TextField label="Test label" hint="Test hint" persistentHint color="blue" />
+<h6 class="mb-3 mt-6">With hint (dense)</h6>
+<TextField label="Test label" hint="Test hint" persistentHint color="blue" dense />
 <h6 class="mb-3 mt-6">With error</h6>
 <TextField label="Test label" error="Test error" />
 <h6 class="mb-3 mt-6">Outlined</h6>
