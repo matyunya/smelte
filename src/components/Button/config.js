@@ -32,7 +32,7 @@ export const config = {
   },
   nodes: {
     root: {
-      root: "py-2 dense:py-2 dense:px-2 px-4 uppercase text-sm font-medium relative overflow-hidden",
+      root: "z-10 py-2 dense:py-2 dense:px-2 px-4 uppercase text-sm font-medium relative overflow-hidden",
       outlined:
         "bg-transparent border border-solid border-$color-$normal text-$color-$normal hover:bg-$color-trans dark-hover:bg-$color-transDark",
       text:
