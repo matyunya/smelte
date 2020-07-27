@@ -85,7 +85,7 @@ export function filterProps(reserved, props) {
 
   return Object.keys(props).reduce(
     (acc, cur) =>
-      cur.includes("$$") || cur.includes("Class") || reserved.includes(cur)
+      cur.includes("$$") || cur.includes("Class") || r.includes(cur)
         ? acc
         : { ...acc, [cur]: props[cur] },
     {}
