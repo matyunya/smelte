@@ -38,7 +38,7 @@
     "postcss-input-range": "^4.0.0",
     "postcss-url": "^8.0.0",
     "rollup-plugin-postcss": "^2.0.3",
-    "svelte": "^3.23.2",
+    "svelte": "^3.24.0",
     "svelte-preprocess": "^3.9.11",
     "svelte-waypoint": "^0.1.4",
     "tailwind-css-variables": "^2.0.3",
