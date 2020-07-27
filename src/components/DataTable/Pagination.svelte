@@ -52,7 +52,11 @@
           />
         </div>
         <Spacer />
-        <div>{offset}-{offset + perPage > total ? total : offset + perPage} of {total}</div>
+        <slot
+          name="counter"
+        >
+          <div>{offset}-{offset + perPage > total ? total : offset + perPage} of {total}</div>
+        </slot>
         <Button
           disabled={(page - 1) < 1}
           class.icon={smelte.buttonIcon.class}

@@ -26,10 +26,10 @@ export let editable = {
 export let pagination = {
   nodes: {
     root: {
-      root: 'flex justify-between items-center text-gray-700 text-sm w-full h-16'
+      root: 'flex justify-between items-center text-gray-700 text-sm w-full h-16 px-2'
     },
     rowsSelect: {
-      root: 'w-16 h-8 mb-0'
+      root: 'w-16 h-8 mb-0',
     },
     buttonDisabled: {
       root: 'text-gray-100 dark:text-gray-600 dark:bg-dark-700'
