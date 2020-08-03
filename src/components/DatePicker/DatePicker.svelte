@@ -42,6 +42,10 @@
     if (valid(date)) {
       value = date;
     }
+
+    if (e.target.value === '') {
+      value = null;
+    }
   }
 
   $: if (dense) {
