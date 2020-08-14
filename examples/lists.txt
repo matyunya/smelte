@@ -5,6 +5,7 @@
   const listOneLine = [{
 		text: 'Item 1',
 		icon: 'favorite',
+		rippleColor: 'error',
 	}, {
 		text: 'Item 2',
 		icon: 'favorite',
@@ -27,6 +28,19 @@
 		subheading: 'Subheading 3',
 	}];
 
+	const listRippleColor = [{ 
+		text: 'Primary', 
+		icon: 'favorite',
+	}, {
+		text: 'Secondary',
+		icon: 'favorite',
+		rippleColor: 'secondary',
+	}, {
+		text: 'Error',
+		icon: 'favorite',
+		rippleColor: 'error',
+	}]
+
 	let selected = false;
 </script>
 
@@ -34,6 +48,8 @@
 <List items={listOneLine} />
 <h6 class="mb-3 mt-6">Two-line</h6>
 <List items={listTwoLines} />
-
 <h6 class="mb-3 mt-6">Dense</h6>
 <List dense items={listTwoLines} />
+<h6 class="mb-3 mt-6">Ripple Color</h6>
+<List items={listRippleColor} />
+
