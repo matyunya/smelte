@@ -5,7 +5,6 @@
   const listOneLine = [{
 		text: 'Item 1',
 		icon: 'favorite',
-		rippleColor: 'error',
 	}, {
 		text: 'Item 2',
 		icon: 'favorite',

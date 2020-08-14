@@ -14,8 +14,7 @@
   const listOneLine = [
     {
       text: "Item 1",
-      icon: "favorite",
-      rippleColor: "error"
+      icon: "favorite"
     },
     {
       text: "Item 2",
