@@ -19,6 +19,8 @@
   export let tabindex = null;
   export let selectedClasses = selectedClassesDefault;
   export let subheadingClasses = subheadingClassesDefault;
+  export let rippleColor = "primary";
+  export let rippleCentered = false;
 
 
 
@@ -28,7 +30,7 @@
   export const items = [];
   export const level = null;
 
-  const ripple = createRipple();
+  const ripple = createRipple(rippleColor, rippleCentered);
   const dispatch = createEventDispatcher();
 
   function change() {
