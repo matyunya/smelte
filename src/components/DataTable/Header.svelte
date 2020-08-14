@@ -3,11 +3,10 @@
   import { createEventDispatcher } from "svelte";
   import Icon from "../Icon";
 
-  const classesDefault = "capitalize duration-100 text-gray-600 text-xs hover:text-black dark-hover:text-white p-3 font-normal text-right";
-
+  const classesDefault =
+    "capitalize duration-100 text-gray-600 text-xs hover:text-black dark-hover:text-white p-3 font-normal text-right";
 
   export let classes = classesDefault;
-
 
   export let column = {};
   export let asc = false;
@@ -25,9 +24,9 @@
     .get();
 
   function headerColumnClass(column) {
-    const cb = new ClassBuilder('sort-wrapper flex items-center justify-end');
+    const cb = new ClassBuilder("sort-wrapper flex items-center justify-end");
     if (column.headerReplace) {
-      cb.replace(column.headerReplace)
+      cb.replace(column.headerReplace);
     }
     if (column.headerAdd) {
       cb.add(column.headerAdd);
@@ -50,23 +49,25 @@
   class:cursor-pointer={sortable || column.sortable}
   on:click={() => {
     if (column.sortable === false || !sortable) return;
-    dispatch("sort", column);
-
+    dispatch('sort', column);
     editing = false;
     asc = sortBy === column ? !asc : false;
     sortBy = column;
-  }}
->
+  }}>
   <div class={headerColumnClass(column)}>
     {#if sortable && column.sortable !== false && !column.iconAfter}
       <span class="sort" class:asc={!asc && sortBy === column}>
-        <Icon small color="text-gray-400 dark:text-gray-100">arrow_downward</Icon>
+        <Icon small color="text-gray-400 dark:text-gray-100">
+          arrow_downward
+        </Icon>
       </span>
     {/if}
     <span>{column.label || column.field}</span>
     {#if sortable && column.sortable !== false && !!column.iconAfter}
       <span class="sort" class:asc={!asc && sortBy === column}>
-        <Icon small color="text-gray-400 dark:text-gray-100">arrow_downward</Icon>
+        <Icon small color="text-gray-400 dark:text-gray-100">
+          arrow_downward
+        </Icon>
       </span>
     {/if}
   </div>

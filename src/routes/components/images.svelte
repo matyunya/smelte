@@ -8,8 +8,10 @@
 </script>
 
 <p>
-  Smelte includes convenience image component which is useful for lazyloading, but generally we recommend
-  using <a class="a" href="https://github.com/matyunya/svelte-image">Svelte Image</a>.
+  Smelte includes convenience image component which is useful for lazyloading,
+  but generally we recommend using
+  <a class="a" href="https://github.com/matyunya/svelte-image">Svelte Image</a>
+  .
 </p>
 
 <Code code={images} />

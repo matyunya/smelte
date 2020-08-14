@@ -4,11 +4,14 @@
   export let width = 3;
   export let size = 70;
 
-  $: style = progress > 0 ? `
+  $: style =
+    progress > 0
+      ? `
       animation: none;
       stroke-dasharray: ${150000 - progress * 1000};
       stroke-dashoffset: -${124 - (progress * 124) / 100};
-    ` : "";
+    `
+      : "";
 </script>
 
 <style>
@@ -52,7 +55,7 @@
     cx={size / 2}
     cy={size / 2}
     fill="none"
-    r={(size / 2) - (size / 5)}
+    r={size / 2 - size / 5}
     stroke-width={width}
     stroke-miterlimit="10"
     {style} />

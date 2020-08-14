@@ -5,11 +5,10 @@
   import { Spacer } from "../Util";
   import Icon from "../Icon";
 
-  const classesDefault = "hover:bg-gray-50 dark-hover:bg-dark-400 border-gray-200 dark:border-gray-400 border-t border-b px-3";
-
+  const classesDefault =
+    "hover:bg-gray-50 dark-hover:bg-dark-400 border-gray-200 dark:border-gray-400 border-t border-b px-3";
 
   export let classes = classesDefault;
-
 
   export let item = {};
   export let columns = [];
@@ -29,9 +28,9 @@
     .get();
 
   function columnClass(column) {
-    const cb = new ClassBuilder('relative p-3 font-normal text-right');
+    const cb = new ClassBuilder("relative p-3 font-normal text-right");
     if (column.replace) {
-      cb.replace(column.replace)
+      cb.replace(column.replace);
     }
     if (column.add || column.class) {
       cb.add(column.add || column.class);
@@ -45,17 +44,15 @@
 
 <tr
   class={c}
-  on:click={(e) => {
-  if (!editable) return;
-    editing = { [index]: (e.path.find(a => a.localName === "td") || {}).cellIndex }
+  on:click={e => {
+    if (!editable) return;
+    editing = { [index]: (e.path.find(a => a.localName === 'td') || {}).cellIndex };
   }}
-  class:selected={editing[index]}
->
+  class:selected={editing[index]}>
   {#each columns as column, i}
     <td
       class={columnClass(column)}
-      class:cursor-pointer={editable && column.editable !== false}
-    >
+      class:cursor-pointer={editable && column.editable !== false}>
       {#if editable && column.editable !== false && editing[index] === i}
         <slot name="edit-dialog">
           <Editable
@@ -63,8 +60,7 @@
             bind:editing
             bind:item
             on:update
-            {column}
-          />
+            {column} />
         </slot>
       {/if}
       {#if column.value}

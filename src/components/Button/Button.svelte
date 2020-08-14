@@ -3,8 +3,6 @@
   import utils, { ClassBuilder, filterProps } from "../../utils/classes.js";
   import createRipple from "../Ripple/ripple.js";
 
-
-
   export let value = false;
   export let outlined = false;
   export let text = false;
@@ -24,16 +22,18 @@
   export let add = "";
   export let replace = {};
 
-  const classesDefault = 'z-10 py-2 px-4 uppercase text-sm font-medium relative overflow-hidden';
-  const basicDefault = 'text-white duration-200 ease-in';
+  const classesDefault =
+    "z-10 py-2 px-4 uppercase text-sm font-medium relative overflow-hidden";
+  const basicDefault = "text-white duration-200 ease-in";
 
-  const outlinedDefault = 'bg-transparent border border-solid';
-  const textDefault = 'bg-transparent border-none px-4 hover:bg-transparent';
-  const iconDefault = 'p-4 flex items-center select-none';
-  const fabDefault = 'hover:bg-transparent';
-  const smallDefault = 'pt-1 pb-1 pl-2 pr-2 text-xs';
-  const disabledDefault = 'bg-gray-300 text-gray-500 dark:bg-dark-400 elevation-none pointer-events-none hover:bg-gray-300 cursor-default';
-  const elevationDefault = 'hover:elevation-5 elevation-3';
+  const outlinedDefault = "bg-transparent border border-solid";
+  const textDefault = "bg-transparent border-none px-4 hover:bg-transparent";
+  const iconDefault = "p-4 flex items-center select-none";
+  const fabDefault = "hover:bg-transparent";
+  const smallDefault = "pt-1 pb-1 pl-2 pr-2 text-xs";
+  const disabledDefault =
+    "bg-gray-300 text-gray-500 dark:bg-dark-400 elevation-none pointer-events-none hover:bg-gray-300 cursor-default";
+  const elevationDefault = "hover:elevation-5 elevation-3";
 
   export let classes = classesDefault;
   export let basicClasses = basicDefault;
@@ -60,11 +60,7 @@
   $: normal = 500 - shade;
   $: lighter = 400 - shade;
 
-  const {
-    bg,
-    border,
-    txt,
-  } = utils(color);
+  const { bg, border, txt } = utils(color);
 
   const cb = new ClassBuilder(classes, classesDefault);
   let iconCb;
@@ -74,64 +70,69 @@
   }
 
   $: classes = cb
-      .flush()
-      .add(basicClasses, basic, basicDefault)
-      .add(`${bg(normal)} hover:${bg(lighter)}`, basic)
-      .add(elevationClasses, elevation, elevationDefault)
-      .add(outlinedClasses, outlined, outlinedDefault)
-      .add(
-        `${border(lighter)} ${txt(normal)} hover:${bg("trans")} dark-hover:${bg("transDark")}`,
-        outlined)
-      .add(`${txt(lighter)}`, text)
-      .add(textClasses, text, textDefault)
-      .add(iconClasses, icon, iconDefault)
-      .remove("py-2", icon)
-      .remove(txt(lighter), fab)
-      .add(disabledClasses, disabled, disabledDefault)
-      .add(smallClasses, small, smallDefault)
-      .add("flex items-center justify-center h-8 w-8", small && icon)
-      .add("border-solid", outlined)
-      .add("rounded-full", icon)
-      .add("w-full", block)
-      .add("rounded", basic || outlined || text)
-      .add("button", !icon)
-      .add(fabClasses, fab, fabDefault)
-      .add(`hover:${bg("transLight")}`, fab)
-      .add($$props.class)
-      .remove(remove)
-      .replace(replace)
-      .add(add)
-      .get();
+    .flush()
+    .add(basicClasses, basic, basicDefault)
+    .add(`${bg(normal)} hover:${bg(lighter)}`, basic)
+    .add(elevationClasses, elevation, elevationDefault)
+    .add(outlinedClasses, outlined, outlinedDefault)
+    .add(
+      `${border(lighter)} ${txt(normal)} hover:${bg("trans")} dark-hover:${bg(
+        "transDark"
+      )}`,
+      outlined
+    )
+    .add(`${txt(lighter)}`, text)
+    .add(textClasses, text, textDefault)
+    .add(iconClasses, icon, iconDefault)
+    .remove("py-2", icon)
+    .remove(txt(lighter), fab)
+    .add(disabledClasses, disabled, disabledDefault)
+    .add(smallClasses, small, smallDefault)
+    .add("flex items-center justify-center h-8 w-8", small && icon)
+    .add("border-solid", outlined)
+    .add("rounded-full", icon)
+    .add("w-full", block)
+    .add("rounded", basic || outlined || text)
+    .add("button", !icon)
+    .add(fabClasses, fab, fabDefault)
+    .add(`hover:${bg("transLight")}`, fab)
+    .add($$props.class)
+    .remove(remove)
+    .replace(replace)
+    .add(add)
+    .get();
 
   $: if (iconCb) {
-    iClasses = iconCb.flush().add(txt(), fab && !iconClass).get();
+    iClasses = iconCb
+      .flush()
+      .add(txt(), fab && !iconClass)
+      .get();
   }
 
-  const ripple = createRipple((text || fab || outlined) ? color : "white");
+  const ripple = createRipple(text || fab || outlined ? color : "white");
 
-  const props = filterProps([
-    'outlined',
-    'text',
-    'color',
-    'block',
-    'disabled',
-    'icon',
-    'small',
-    'light',
-    'dark',
-    'flat',
-    'add',
-    'remove',
-    'replace',
-  ], $$props);
+  const props = filterProps(
+    [
+      "outlined",
+      "text",
+      "color",
+      "block",
+      "disabled",
+      "icon",
+      "small",
+      "light",
+      "dark",
+      "flat",
+      "add",
+      "remove",
+      "replace"
+    ],
+    $$props
+  );
 </script>
 
-
 {#if href}
-  <a
-    {href}
-    {...props}
-  >
+  <a {href} {...props}>
     <button
       use:ripple
       class={classes}
@@ -140,8 +141,7 @@
       on:click={() => (value = !value)}
       on:click
       on:mouseover
-      on:*
-    >
+      on:*>
       {#if icon}
         <Icon class={iClasses} {small}>{icon}</Icon>
       {/if}
@@ -157,8 +157,7 @@
     on:click={() => (value = !value)}
     on:click
     on:mouseover
-    on:*
-  >
+    on:*>
     {#if icon}
       <Icon class={iClasses} {small}>{icon}</Icon>
     {/if}

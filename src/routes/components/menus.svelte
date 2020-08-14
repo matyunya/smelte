@@ -23,7 +23,8 @@
   ];
 </script>
 
-<small>Selected: {selected || 'nothing'}</small><br>
+<small>Selected: {selected || 'nothing'}</small>
+<br />
 
 <Menu bind:open {items} bind:value={selected}>
   <div slot="activator">

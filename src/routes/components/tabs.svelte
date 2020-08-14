@@ -31,14 +31,11 @@
     color="secondary"
     let:selected
     {loading}
-    items={[
-      { id: '1', text: 'Cats', icon: 'alarm_on' },
-      { id: '2', text: 'Kittens', icon: 'bug_report' },
-      { id: '3', text: 'Kitties', icon: 'eject' }
-    ]}>
+    items={[{ id: '1', text: 'Cats', icon: 'alarm_on' }, { id: '2', text: 'Kittens', icon: 'bug_report' }, { id: '3', text: 'Kitties', icon: 'eject' }]}>
     <div
       slot="content"
-      class="flex items-center content-center overflow-hidden w-full bg-gray-900 elevation-3 h-full"
+      class="flex items-center content-center overflow-hidden w-full bg-gray-900
+      elevation-3 h-full"
       style="height: 250px">
       <Tab id="1" {selected}>
         <Image

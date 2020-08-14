@@ -26,7 +26,6 @@
       ts = item.ts;
     }
   }
-
 </script>
 
 <Snackbar
@@ -37,7 +36,6 @@
   on:finish={() => {
     queue.remove($queue.indexOf(item));
     item = false;
-  }}
->
+  }}>
   {message}
 </Snackbar>

@@ -7,7 +7,8 @@
 
   const bp = breakpoints();
 
-  const classesDefault = "fixed top-0 md:mt-16 w-auto drawer overflow-hidden h-full";
+  const classesDefault =
+    "fixed top-0 md:mt-16 w-auto drawer overflow-hidden h-full";
   const navClassesDefault = `h-full w-full bg-white dark:bg-gray-900 dark:text-gray-200 absolute flex w-auto z-20 drawer
     pointer-events-auto overflow-y-auto`;
 
@@ -17,16 +18,15 @@
   export let show = true;
   export let classes = classesDefault;
   export let navClasses = navClassesDefault;
-  export let borderClasses = `border-gray-600 ${right ? "border-l" : "border-r"}`;
-
-
-
+  export let borderClasses = `border-gray-600 ${
+    right ? "border-l" : "border-r"
+  }`;
 
   export let transitionProps = {
     duration: 200,
     x: -300,
     easing: quadIn,
-    opacity: 1,
+    opacity: 1
   };
 
   $: transitionProps.x = right ? 300 : -300;
@@ -34,7 +34,7 @@
 
   const cb = new ClassBuilder(classes, classesDefault);
 
-  if ($bp === 'sm') show = false;
+  if ($bp === "sm") show = false;
 
   $: c = cb
     .flush()
@@ -51,10 +51,7 @@
 
   const ncb = new ClassBuilder(navClasses, navClassesDefault);
 
-  $: n = ncb
-    .flush()
-    .get();
-
+  $: n = ncb.flush().get();
 </script>
 
 <style>
@@ -68,17 +65,11 @@
 </style>
 
 {#if show}
-  <aside
-    class={c}
-    transition:fly={transitionProps}
-  >
+  <aside class={c} transition:fly={transitionProps}>
     {#if !persistent}
-      <Scrim on:click={() => show = false} />
+      <Scrim on:click={() => (show = false)} />
     {/if}
-    <nav
-      role="navigation"
-      class={n}
-    >
+    <nav role="navigation" class={n}>
       <div class="w-full">
         <slot />
       </div>

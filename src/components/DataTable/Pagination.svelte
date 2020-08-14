@@ -6,7 +6,8 @@
   import { Spacer } from "../Util";
   import Icon from "../Icon";
 
-  const classesDefault = "flex justify-between items-center text-gray-700 text-sm w-full h-16";
+  const classesDefault =
+    "flex justify-between items-center text-gray-700 text-sm w-full h-16";
 
   const paginatorPropsDefault = {
     color: "gray",
@@ -14,16 +15,15 @@
     flat: true,
     dark: true,
     remove: "px-4 px-3",
-    iconClasses: (c) => c.replace("p-4", ""),
-    disabledClasses: (c) => c
-      .replace("text-white", "text-gray-200")
-      .replace("bg-gray-300", "bg-transparent")
-      .replace("text-gray-700", ""),
+    iconClasses: c => c.replace("p-4", ""),
+    disabledClasses: c =>
+      c
+        .replace("text-white", "text-gray-200")
+        .replace("bg-gray-300", "bg-transparent")
+        .replace("text-gray-700", "")
   };
 
-
   export let classes = classesDefault;
-
 
   export let perPage = 0;
   export let page = 0;
@@ -51,39 +51,38 @@
     <td colspan="100%" class="border-none">
       <div class={c}>
         <Spacer />
-        <div class="mr-1 py-1">
-        Rows per page:
-        </div>
+        <div class="mr-1 py-1">Rows per page:</div>
         <Select
           class="w-16 h-8 mb-5"
           remove="select"
-          replace={{ "pt-6": "pt-4" }}
-          inputWrapperClasses={(c) => c.replace("mt-2", "").replace("pb-6", "")}
-          appendClasses={(c) => c.replace("pt-4", "pt-3").replace("pr-4", "pr-2")}
+          replace={{ 'pt-6': 'pt-4' }}
+          inputWrapperClasses={c => c.replace('mt-2', '').replace('pb-6', '')}
+          appendClasses={c => c.replace('pt-4', 'pt-3').replace('pr-4', 'pr-2')}
           noUnderline
           dense
           bind:value={perPage}
-          items={perPageOptions}
-        />
+          items={perPageOptions} />
         <Spacer />
-        <div>{offset}-{offset + perPage > total ? total : offset + perPage} of {total}</div>
+        <div>
+          {offset}-{offset + perPage > total ? total : offset + perPage} of {total}
+        </div>
         <Button
-          disabled={(page - 1) < 1}
+          disabled={page - 1 < 1}
           icon="keyboard_arrow_left"
-          {...(paginatorProps || paginatorPropsDefault)}
+          {...paginatorProps || paginatorPropsDefault}
           on:click={() => {
             page -= 1;
-            if (scrollToTop) table.scrollIntoView({ behavior: "smooth" });
+            if (scrollToTop) table.scrollIntoView({ behavior: 'smooth' });
           }} />
         <Button
           disabled={page === pagesCount}
           icon="keyboard_arrow_right"
-          {...(paginatorProps || paginatorPropsDefault)}
+          {...paginatorProps || paginatorPropsDefault}
           on:click={() => {
             page += 1;
-            if (scrollToTop) table.scrollIntoView({ behavior: "smooth" });
+            if (scrollToTop) table.scrollIntoView({ behavior: 'smooth' });
           }} />
-        </div>
-      </td>
-    </tr>
-  </tfoot>
+      </div>
+    </td>
+  </tr>
+</tfoot>

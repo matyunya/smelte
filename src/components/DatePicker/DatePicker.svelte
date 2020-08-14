@@ -17,7 +17,8 @@
   export let defaultIcon = "date_range";
   export let value = null;
   export let locale = "default";
-  export let todayClasses = "text-primary-600 rounded-full border border-primary-600";
+  export let todayClasses =
+    "text-primary-600 rounded-full border border-primary-600";
   export let selectedClasses = "bg-primary-600 text-white rounded-full";
   export let closeOnSelect = true;
   export let appendClasses = noop;
@@ -25,15 +26,14 @@
 
   let hasUserValue = Boolean(value);
 
-  const today = (new Date()).getDate();
+  const today = new Date().getDate();
 
   let selected;
-  let displayValue = value && value.toLocaleDateString
-    ? value.toLocaleDateString()
-    : "";
+  let displayValue =
+    value && value.toLocaleDateString ? value.toLocaleDateString() : "";
 
   function valid(date) {
-    return (new Date(date) !== "Invalid Date") && !isNaN(new Date(date));
+    return new Date(date) !== "Invalid Date" && !isNaN(new Date(date));
   }
 
   function changeTextInput(e) {
@@ -43,13 +43,13 @@
       value = date;
     }
 
-    if (e.target.value === '') {
+    if (e.target.value === "") {
       value = null;
     }
   }
 
   $: if (dense) {
-    appendClasses = (i) => i.replace('pt-4', 'pt-3');
+    appendClasses = i => i.replace("pt-4", "pt-3");
   }
 </script>
 
@@ -62,9 +62,8 @@
       {dense}
       append={defaultIcon}
       {appendClasses}
-      on:click-append={() => open = !open}
-      on:change={changeTextInput}
-    />
+      on:click-append={() => (open = !open)}
+      on:change={changeTextInput} />
   </div>
   <div slot="menu">
     {#if open}
@@ -80,8 +79,7 @@
         on:change
         on:change={e => {
           displayValue = e.detail.toLocaleDateString();
-        }}
-      />
+        }} />
     {/if}
   </div>
 </Menu>

@@ -15,7 +15,7 @@
 
     data = body._embedded.episodes;
 
-    setTimeout(() => loading = false, 500);
+    setTimeout(() => (loading = false), 500);
   }
 
   getData();
@@ -27,41 +27,10 @@
     {loading}
     on:update={({ detail }) => {
       const { column, item, value } = detail;
-
       const index = data.findIndex(i => i.id === item.id);
-
       data[index][column.field] = value;
     }}
-    columns={[
-      { label: "ID", field: "id", class: "md:w-10", },
-      {
-        label: "Ep.",
-        value: (v) => `S${v.season}E${v.number}`,
-        class: "md:w-10",
-        editable: false,
-      },
-      { field: "name", class: "md:w-10" },
-      {
-        field: "summary",
-        textarea: true,
-        value: v => v && v.summary ? v.summary : "",
-        add: "text-sm text-gray-700 caption md:w-full sm:w-64",
-        remove: "text-right",
-        headerRemove: "justify-end",
-        iconAfter: true,
-      },
-      {
-        field: "thumbnail",
-        value: (v) => v && v.image
-          ? `<img src="${v.image.medium.replace("http", "https")}" height="70" alt="${v.name}">`
-          : "",
-        class: "w-48",
-        sortable: false,
-        editable: false,
-        headerRemove: "justify-end",
-      }
-    ]}
-  />
+    columns={[{ label: 'ID', field: 'id', class: 'md:w-10' }, { label: 'Ep.', value: v => `S${v.season}E${v.number}`, class: 'md:w-10', editable: false }, { field: 'name', class: 'md:w-10' }, { field: 'summary', textarea: true, value: v => (v && v.summary ? v.summary : ''), add: 'text-sm text-gray-700 caption md:w-full sm:w-64', remove: 'text-right', headerRemove: 'justify-end', iconAfter: true }, { field: 'thumbnail', value: v => (v && v.image ? `<img src="${v.image.medium.replace('http', 'https')}" height="70" alt="${v.name}">` : ''), class: 'w-48', sortable: false, editable: false, headerRemove: 'justify-end' }]} />
 
   <Code code={table} />
 </div>

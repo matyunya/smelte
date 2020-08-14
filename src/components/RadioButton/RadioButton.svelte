@@ -4,9 +4,8 @@
   import Label from "../Checkbox/Label.svelte";
   import { ClassBuilder } from "../../utils/classes.js";
 
-  const classesDefault = "inline-flex block items-center mb-2 cursor-pointer z-0";
-
-
+  const classesDefault =
+    "inline-flex block items-center mb-2 cursor-pointer z-0";
 
   export let selected = "";
   export let label = "";
@@ -30,12 +29,10 @@
     .add($$props.class)
     .get();
 
-  $: rippleColor = value && !disabled ? color : 'gray';
+  $: rippleColor = value && !disabled ? color : "gray";
 </script>
 
-<div
-  class={c}
-  on:click={select}>
+<div class={c} on:click={select}>
   <input
     aria-label={label}
     class="hidden"
@@ -50,7 +47,8 @@
           radio_button_checked
         </Icon>
       {:else}
-        <Icon class={disabled ? 'text-gray-500 dark:text-gray-600' : 'text-gray-600'}>
+        <Icon
+          class={disabled ? 'text-gray-500 dark:text-gray-600' : 'text-gray-600'}>
           radio_button_unchecked
         </Icon>
       {/if}

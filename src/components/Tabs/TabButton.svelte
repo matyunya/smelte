@@ -3,7 +3,8 @@
   import createRipple from "../Ripple/ripple.js";
   import utils, { ClassBuilder } from "../../utils/classes.js";
 
-  const classesDefault = "duration-100 relative overflow-hidden text-center w-full h-full p-4 cursor-pointer flex mx-auto items-center text-sm h-full";
+  const classesDefault =
+    "duration-100 relative overflow-hidden text-center w-full h-full p-4 cursor-pointer flex mx-auto items-center text-sm h-full";
 
   export let classes = classesDefault;
 
@@ -15,9 +16,6 @@
   export let color = "primary";
   export let notSelectedColor = "white";
   export let tabClasses = "flex flex-col items-center content-center mx-auto";
-
-
-
 
   const ripple = createRipple(color);
 
@@ -38,12 +36,7 @@
 </script>
 
 {#if to}
-  <a
-    use:ripple
-    href={to}
-    class={c}
-    on:click
-  >
+  <a use:ripple href={to} class={c} on:click>
     <div class={tabClasses}>
       {#if icon}
         <Icon class="mb-1" color={textColor}>{icon}</Icon>
@@ -55,12 +48,7 @@
     </div>
   </a>
 {:else}
-  <li
-    use:ripple
-    class={c}
-    on:click={() => selected = id }
-    on:click
-  >
+  <li use:ripple class={c} on:click={() => (selected = id)} on:click>
     <div class={tabClasses}>
       {#if icon}
         <Icon class="mb-1" color={textColor}>{icon}</Icon>

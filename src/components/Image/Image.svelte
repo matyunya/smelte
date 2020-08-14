@@ -8,8 +8,6 @@
   export let src = "";
   export let thumbnail = "";
 
-
-
   let loaded = false;
   let loading = false;
 
@@ -25,7 +23,12 @@
   }
 </script>
 
-<Waypoint class={$$props.class} once on:enter={load} style="height: {height}px" offset="0">
+<Waypoint
+  class={$$props.class}
+  once
+  on:enter={load}
+  style="height: {height}px"
+  offset="0">
   {#if loaded}
     <img class={$$props.class} {src} {alt} {width} {height} />
   {:else if thumbnail}

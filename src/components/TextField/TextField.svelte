@@ -7,8 +7,6 @@
   import Hint from "./Hint.svelte";
   import Underline from "./Underline.svelte";
 
-
-
   export let outlined = false;
   export let value = null;
   export let label = "";
@@ -34,8 +32,10 @@
 
   const inputDefault = `duration-200 ease-in pb-2 pt-6 px-4 rounded-t text-black dark:text-gray-100 w-full`;
   const classesDefault = "mt-2 mb-6 relative text-gray-600 dark:text-gray-100";
-  const appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 text-gray-700 z-10";
-  const prependDefault = "absolute left-0 top-0 pb-2 pl-2 pt-4 text-xs text-gray-700 z-10";
+  const appendDefault =
+    "absolute right-0 top-0 pb-2 pr-4 pt-4 text-gray-700 z-10";
+  const prependDefault =
+    "absolute left-0 top-0 pb-2 pl-2 pt-4 text-xs text-gray-700 z-10";
 
   export let add = "";
   export let remove = "";
@@ -46,12 +46,7 @@
   export let appendClasses = appendDefault;
   export let prependClasses = prependDefault;
 
-  const {
-    bg,
-    border,
-    txt,
-    caret,
-  } = utils(color);
+  const { bg, border, txt, caret } = utils(color);
 
   const cb = new ClassBuilder(inputClasses, inputDefault);
   const ccb = new ClassBuilder(classes, classesDefault);
@@ -70,86 +65,91 @@
   }
 
   $: showHint = error || (persistentHint ? hint : focused && hint);
-  $: labelOnTop = placeholder || focused || (value || value === 0);
+  $: labelOnTop = placeholder || focused || value || value === 0;
 
   $: iClasses = cb
-      .flush()
-      .remove('pt-6 pb-2', outlined)
-      .add('border rounded bg-transparent py-4 duration-200 ease-in', outlined)
-      .add('border-error-500 caret-error-500', error)
-      .remove(caret(), error)
-      .add(caret(), !error)
-      .add(border(), focused && !error)
-      .add('border-gray-600', !error && !focused)
-      .add('bg-gray-100 dark:bg-dark-600', !outlined)
-      .add('bg-gray-300 dark:bg-dark-200', focused && !outlined)
-      .remove('px-4', prepend)
-      .add('pr-4 pl-10', prepend)
-      .add(add)
-      .remove('pt-6 pb-2', dense && !outlined)
-      .add('pt-4 pb-1', dense && !outlined)
-      .remove('bg-gray-100', disabled)
-      .add('bg-gray-50', disabled)
-      .add('cursor-pointer', select && !autocomplete)
-      .add($$props.class)
-      .remove(remove)
-      .replace(replace)
-      .extend(extend)
-      .get();
+    .flush()
+    .remove("pt-6 pb-2", outlined)
+    .add("border rounded bg-transparent py-4 duration-200 ease-in", outlined)
+    .add("border-error-500 caret-error-500", error)
+    .remove(caret(), error)
+    .add(caret(), !error)
+    .add(border(), focused && !error)
+    .add("border-gray-600", !error && !focused)
+    .add("bg-gray-100 dark:bg-dark-600", !outlined)
+    .add("bg-gray-300 dark:bg-dark-200", focused && !outlined)
+    .remove("px-4", prepend)
+    .add("pr-4 pl-10", prepend)
+    .add(add)
+    .remove("pt-6 pb-2", dense && !outlined)
+    .add("pt-4 pb-1", dense && !outlined)
+    .remove("bg-gray-100", disabled)
+    .add("bg-gray-50", disabled)
+    .add("cursor-pointer", select && !autocomplete)
+    .add($$props.class)
+    .remove(remove)
+    .replace(replace)
+    .extend(extend)
+    .get();
 
-  $: wClasses = ccb.flush()
-      .add('select', select || autocomplete)
-      .add('dense', dense && !outlined)
-      .remove('mb-6 mt-2', dense && !outlined)
-      .add('mb-4 mt-1', dense)
-      .replace({ 'text-gray-600': 'text-error-500' }, error)
-      .add('text-gray-200', disabled)
-      .get();
+  $: wClasses = ccb
+    .flush()
+    .add("select", select || autocomplete)
+    .add("dense", dense && !outlined)
+    .remove("mb-6 mt-2", dense && !outlined)
+    .add("mb-4 mt-1", dense)
+    .replace({ "text-gray-600": "text-error-500" }, error)
+    .add("text-gray-200", disabled)
+    .get();
 
   $: aClasses = acb.flush().get();
   $: pClasses = pcb.flush().get();
 
-  const props = filterProps([
-    'outlined',
-    'label',
-    'placeholder',
-    'hint',
-    'error',
-    'append',
-    'prepend',
-    'persistentHint',
-    'textarea',
-    'rows',
-    'select',
-    'autocomplete',
-    'noUnderline',
-    'appendReverse',
-    'prependReverse',
-    'color',
-    'bgColor',
-    'disabled',
-    'replace',
-    'remove',
-    'small',
-  ], $$props);
+  const props = filterProps(
+    [
+      "outlined",
+      "label",
+      "placeholder",
+      "hint",
+      "error",
+      "append",
+      "prepend",
+      "persistentHint",
+      "textarea",
+      "rows",
+      "select",
+      "autocomplete",
+      "noUnderline",
+      "appendReverse",
+      "prependReverse",
+      "color",
+      "bgColor",
+      "disabled",
+      "replace",
+      "remove",
+      "small"
+    ],
+    $$props
+  );
 
   const dispatch = createEventDispatcher();
 </script>
 
 <div class={wClasses}>
   {#if label}
-  <slot name="label">
-    <Label
-      {labelOnTop}
-      {focused}
-      {error}
-      {outlined}
-      {prepend}
-      {color}
-      {bgColor}
-      dense={dense && !outlined}
-    >{label}</Label>
-  </slot>
+    <slot name="label">
+      <Label
+        {labelOnTop}
+        {focused}
+        {error}
+        {outlined}
+        {prepend}
+        {color}
+        {bgColor}
+        dense={dense && !outlined}>
+        {label}
+      </Label>
+    </slot>
   {/if}
 
   {#if (!textarea && !select) || autocomplete}
@@ -166,7 +166,7 @@
       on:click
       on:focus
       {...props}
-      placeholder={!value ? placeholder : ""} />
+      placeholder={!value ? placeholder : ''} />
   {:else if textarea && !select}
     <textarea
       {rows}
@@ -182,11 +182,11 @@
       {...props}
       on:focus={toggleFocused}
       on:blur={toggleFocused}
-      placeholder={!value ? placeholder : ""} />
+      placeholder={!value ? placeholder : ''} />
   {:else if select && !autocomplete}
     <input
       readonly
-      class="{iClasses}"
+      class={iClasses}
       on:change
       on:input
       {disabled}
@@ -197,15 +197,12 @@
   {/if}
 
   {#if append}
-    <div
-      class={aClasses}
-      on:click={() => dispatch("click-append")}
-    >
+    <div class={aClasses} on:click={() => dispatch('click-append')}>
       <slot name="append">
         <Icon
           reverse={appendReverse}
-          class="{focused ? txt() : ""} {iconClass}"
-        >
+          class="{focused ? txt() : ''}
+          {iconClass}">
           {append}
         </Icon>
       </slot>
@@ -213,30 +210,21 @@
   {/if}
 
   {#if prepend}
-    <div
-      class={pClasses}
-      on:click={() => dispatch("click-prepend")}
-    >
+    <div class={pClasses} on:click={() => dispatch('click-prepend')}>
       <slot name="prepend">
         <Icon
           reverse={prependReverse}
-          class="{focused ? txt() : ""} {iconClass}"
-        >
+          class="{focused ? txt() : ''}
+          {iconClass}">
           {prepend}
         </Icon>
       </slot>
     </div>
   {/if}
 
-  <Underline
-    {noUnderline}
-    {outlined}
-    {focused}
-    {error} />
+  <Underline {noUnderline} {outlined} {focused} {error} />
 
   {#if showHint}
-    <Hint
-      {error}
-      {hint} />
+    <Hint {error} {hint} />
   {/if}
 </div>

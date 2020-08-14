@@ -20,7 +20,6 @@
 
   const classesDefault = "rounded";
 
-
   let expanded = [];
 
   const dispatch = createEventDispatcher();
@@ -32,17 +31,14 @@
       selected = i;
     }
 
-    expanded = i && !expanded.includes(i)
-      ? [...expanded, i]
-      : expanded.filter(si => si !== i);
+    expanded =
+      i && !expanded.includes(i)
+        ? [...expanded, i]
+        : expanded.filter(si => si !== i);
   }
 </script>
 
-
-<List
-  {items}
-  {...$$props}
->
+<List {items} {...$$props}>
   <span slot="item" let:item>
     <ListItem
       {item}
@@ -50,14 +46,15 @@
       {...item}
       selected={selectable && selected === item}
       {selectedClasses}
-      on:click={() => toggle(item) }
-      on:click
-    >
+      on:click={() => toggle(item)}
+      on:click>
       <div class="flex items-center">
         {#if showExpandIcon && !item.hideArrow && item.items}
           <Icon tip={expanded.includes(item)}>{expandIcon}</Icon>
         {/if}
-        <slot><span>{item.text}</span></slot>
+        <slot>
+          <span>{item.text}</span>
+        </slot>
       </div>
     </ListItem>
 
@@ -68,8 +65,7 @@
           items={item.items}
           level={level + 1}
           on:click
-          on:select
-        />
+          on:select />
       </div>
     {/if}
   </span>

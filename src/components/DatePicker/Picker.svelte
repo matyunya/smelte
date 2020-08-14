@@ -11,7 +11,8 @@
   export let open = false;
   export let value = null;
   export let locale = "default";
-  export let todayClasses = "text-primary-600 rounded-full border border-primary-600";
+  export let todayClasses =
+    "text-primary-600 rounded-full border border-primary-600";
   export let selectedClasses = "bg-primary-600 text-white rounded-full";
   export let closeOnSelect = true;
   export let dense;
@@ -21,11 +22,12 @@
     flat: true,
     dark: true,
     remove: "px-4 px-3 m-4 p-4",
-    iconClasses: (c) => c.replace("p-4", ""),
-    disabledClasses: (c) => c
-      .replace("text-white", "text-gray-200")
-      .replace("bg-gray-300", "bg-transparent")
-      .replace("text-gray-700", ""),
+    iconClasses: c => c.replace("p-4", ""),
+    disabledClasses: c =>
+      c
+        .replace("text-white", "text-gray-200")
+        .replace("bg-gray-300", "bg-transparent")
+        .replace("text-gray-700", "")
   };
 
   let temp = value || new Date();
@@ -40,7 +42,7 @@
     temp = new Date(temp);
   }
 
-  const today = (new Date()).getDate();
+  const today = new Date().getDate();
 
   $: year = temp.toLocaleString(locale, { year: "numeric" });
   $: month = temp.toLocaleString(locale, { month: "short" });
@@ -51,22 +53,25 @@
 
   $: lastDayOfMonth = new Date(temp.getFullYear(), temp.getMonth() + 1, 0);
   $: firstDayOfMonth = new Date(temp.getFullYear(), temp.getMonth(), 1);
-  $: isCurrentMonth = (new Date()).getMonth() === temp.getMonth();
+  $: isCurrentMonth = new Date().getMonth() === temp.getMonth();
 
   function dayIsSelected(day) {
     if (!value) return false;
 
-    return value.getDate() === day
-     && temp.getYear() === value.getYear()
-     && temp.getMonth() === value.getMonth();
+    return (
+      value.getDate() === day &&
+      temp.getYear() === value.getYear() &&
+      temp.getMonth() === value.getMonth()
+    );
   }
 
-  $: daysInMonth = [...new Array(lastDayOfMonth.getDate() || 0)]
-      .map((i, j) => ({
-        day: j + 1,
-        isToday: isCurrentMonth && j + 1 === today,
-        selected: dayIsSelected(j + 1),
-      }));
+  $: daysInMonth = [...new Array(lastDayOfMonth.getDate() || 0)].map(
+    (i, j) => ({
+      day: j + 1,
+      isToday: isCurrentMonth && j + 1 === today,
+      selected: dayIsSelected(j + 1)
+    })
+  );
 
   function select(day) {
     selected = day;
@@ -92,7 +97,8 @@
 </script>
 
 <div>
-  <Card class="absolute z-20 p-4 w-auto dark:bg-dark-400 bg-white {dense ? '-my-4' : ''}">
+  <Card
+    class="absolute z-20 p-4 w-auto dark:bg-dark-400 bg-white {dense ? '-my-4' : ''}">
     <div class="flex justify-between mb-4">
       <span class="text-gray-600 uppercase">{year} {month}</span>
       <div class="flex">
@@ -110,21 +116,20 @@
     <div class="md:w-64 sm:w-full">
       <div class="flex uppercase text-gray-400 text-xs text-left">
         {#each weekdays as weekday}
-          <div class="w-1/7 text-center p-1">
-            {weekday}
-          </div>
+          <div class="w-1/7 text-center p-1">{weekday}</div>
         {/each}
       </div>
       <div class="flex flex-wrap text-left text-sm">
-        {#if dayOffset}<div class="p-1 w-{dayOffset}/7" />{/if}
+        {#if dayOffset}
+          <div class="p-1 w-{dayOffset}/7" />
+        {/if}
         {#each daysInMonth as i}
           <div class="w-1/7 p-1">
-            <div class="w-8 h-8 duration-100 relative {i.isToday && !i.selected ? todayClasses : ""} {i.selected ? selectedClasses : ""}"
-              on:click={() => select(i.day)}
-            >
-              <Ripple color="gray" class="p-1 w-full h-full">
-                {i.day}
-              </Ripple>
+            <div
+              class="w-8 h-8 duration-100 relative {i.isToday && !i.selected ? todayClasses : ''}
+              {i.selected ? selectedClasses : ''}"
+              on:click={() => select(i.day)}>
+              <Ripple color="gray" class="p-1 w-full h-full">{i.day}</Ripple>
             </div>
           </div>
         {/each}

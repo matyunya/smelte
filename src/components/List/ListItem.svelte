@@ -4,7 +4,8 @@
   import Icon from "../Icon";
   import createRipple from "../Ripple/ripple.js";
 
-  const classesDefault = "focus:bg-gray-50 dark-focus:bg-gray-700 hover:bg-gray-transDark relative overflow-hidden duration-100 p-4 cursor-pointer text-gray-700 dark:text-gray-100 flex items-center z-10";
+  const classesDefault =
+    "focus:bg-gray-50 dark-focus:bg-gray-700 hover:bg-gray-transDark relative overflow-hidden duration-100 p-4 cursor-pointer text-gray-700 dark:text-gray-100 flex items-center z-10";
   const selectedClassesDefault = "bg-gray-200 dark:bg-primary-transLight";
   const subheadingClassesDefault = "text-gray-600 p-0 text-sm";
 
@@ -20,9 +21,6 @@
   export let selectedClasses = selectedClassesDefault;
   export let subheadingClasses = subheadingClassesDefault;
 
-
-
-
   export let to = "";
   export const item = null;
   export const items = [];
@@ -34,7 +32,7 @@
   function change() {
     if (disabled) return;
     value = id;
-    dispatch('change', id, to);
+    dispatch("change", id, to);
   }
 
   export let classes = classesDefault;
@@ -57,12 +55,7 @@
   on:click={change}
   on:click>
   {#if icon}
-    <Icon
-      class="pr-6"
-      small={dense}
-    >
-      {icon}
-    </Icon>
+    <Icon class="pr-6" small={dense}>{icon}</Icon>
   {/if}
 
   <div class="flex flex-col p-0">

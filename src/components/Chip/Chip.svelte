@@ -6,8 +6,6 @@
 
   import Icon from "../Icon";
 
-
-
   export let removable = false;
   export let icon = "";
   export let outlined = false;
@@ -41,30 +39,34 @@
 
   $: classes = cb
     .flush()
-    .add('relative overflow-hidden flex items-center rounded-full px-2 py-1')
-    .add('bg-transparent border', outlined)
-    .add('border-gray-400 border-solid hover:bg-gray-50 dark-hover:bg-dark-400 bg-gray-300 dark:bg-dark-600', !selected)
-    .add(`${border()} dark:${border('800')} ${txt()} ${bg(100)} hover:${bg(50)}`, selected)
+    .add("relative overflow-hidden flex items-center rounded-full px-2 py-1")
+    .add("bg-transparent border", outlined)
+    .add(
+      "border-gray-400 border-solid hover:bg-gray-50 dark-hover:bg-dark-400 bg-gray-300 dark:bg-dark-600",
+      !selected
+    )
+    .add(
+      `${border()} dark:${border("800")} ${txt()} ${bg(100)} hover:${bg(50)}`,
+      selected
+    )
     .remove(remove)
     .replace(replace)
     .add(add)
     .get();
 
-  const props = filterProps([
-    'removable',
-    'icon',
-    'outlined',
-    'selected',
-    'selectable',
-    'color',
-  ], $$props);
+  const props = filterProps(
+    ["removable", "icon", "outlined", "selected", "selectable", "color"],
+    $$props
+  );
 
-  $: iconClass = selected ? `hover:${bg(300)} ${bg(400)}` : "hover:bg-gray-400 bg-gray-500 dark:bg-gray-800";
+  $: iconClass = selected
+    ? `hover:${bg(300)} ${bg(400)}`
+    : "hover:bg-gray-400 bg-gray-500 dark:bg-gray-800";
 
-   $: c = cb
-      .flush()
-      .add($$props.class)
-      .get();
+  $: c = cb
+    .flush()
+    .add($$props.class)
+    .get();
 </script>
 
 <style>
@@ -75,16 +77,9 @@
 
 {#if value}
   <span class="{c} mx-1 inline-block" out:scale={{ duration: 100 }}>
-    <button
-      class={classes}
-      on:click
-      use:ripple
-      {...props}
-      on:click={select}>
+    <button class={classes} on:click use:ripple {...props} on:click={select}>
       {#if icon}
-        <Icon small class={selected ? txt(400) : 'text-gray-600'}>
-          {icon}
-        </Icon>
+        <Icon small class={selected ? txt(400) : 'text-gray-600'}>{icon}</Icon>
       {/if}
       <span class="px-2 text-sm">
         <slot />

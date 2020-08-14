@@ -19,15 +19,16 @@
     { value: 1, text: "One" },
     { value: 2, text: "Two" },
     { value: 3, text: "Three" },
-    { value: 4, text: "Four" },
+    { value: 4, text: "Four" }
   ];
 
   let selectedItems = [];
 
   function toggle(i) {
-    return v => selectedItems = v.detail
-      ? selectedItems.concat(i)
-      : selectedItems.filter(si => si !== i);
+    return v =>
+      (selectedItems = v.detail
+        ? selectedItems.concat(i)
+        : selectedItems.filter(si => si !== i));
   }
 
   $: selectedLabel = selectedItems.map(i => i.text).join(", ");
@@ -69,18 +70,19 @@
   inputClasses={i => i.replace('rounded-t', 'rounded-full')}
   appendClasses={i => i.replace('text-gray-700', 'text-error-700')}
   label="Categories"
-  {items}
->
-  <div slot="options" class="elevation-3 rounded px-2 py-4 mt-0" on:click|stopPropagation>
-      {#each items as item}
-        <Checkbox
-          checked={selectedItems.includes(item)}
-          class="block my-2"
-          color="error"
-          label={item.text}
-          on:change={toggle(item)}
-        />
-      {/each}
+  {items}>
+  <div
+    slot="options"
+    class="elevation-3 rounded px-2 py-4 mt-0"
+    on:click|stopPropagation>
+    {#each items as item}
+      <Checkbox
+        checked={selectedItems.includes(item)}
+        class="block my-2"
+        color="error"
+        label={item.text}
+        on:change={toggle(item)} />
+    {/each}
   </div>
 </Select>
 

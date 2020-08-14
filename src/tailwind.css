@@ -73,7 +73,11 @@ caption,
   display: inline-block;
 }
 
-button:focus, input:focus, li:focus, div:focus, textarea:focus {
+button:focus,
+input:focus,
+li:focus,
+div:focus,
+textarea:focus {
   @apply outline-none;
 }
 
@@ -89,24 +93,23 @@ html {
   font-family: "Roboto", sans-serif;
 }
 
-
-input[type='number'] {
-    -moz-appearance:textfield;
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 .ripple {
-	border-radius: 50%;
-	position: absolute;
-	transform: scale(0);
+  border-radius: 50%;
+  position: absolute;
+  transform: scale(0);
 }
 
 .ripple-normal {
-	animation: ripple-normal 0.6s;
+  animation: ripple-normal 0.6s;
 }
 
 .ripple-centered {
@@ -114,23 +117,22 @@ input::-webkit-inner-spin-button {
 }
 
 @keyframes ripple-normal {
-	to {
-		transform: scale(2.5);
-		opacity: 0;
-	}
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
 }
 
 @keyframes ripple-centered {
-	to {
-		transform: scale(1);
-		opacity: 0;
-	}
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
 }
 
 .mode-dark {
   @apply text-gray-100 bg-dark-500 duration-100 pointer-events-auto;
 }
-
 
 input[type="range"] {
   --bg: var(--color-gray-200);
@@ -175,7 +177,8 @@ input[type="range"]:focus::range-track {
   height: 4px;
 }
 
-th:first-child, td:first-child {
+th:first-child,
+td:first-child {
   @apply text-left border-r border-gray-200;
 }
 

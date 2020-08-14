@@ -13,7 +13,6 @@
   export let color = "white";
   export let notSelectedColor = "white";
 
-
   export let loading = false;
   export let tabButtonClasses = i => i;
 
@@ -26,7 +25,10 @@
     indicatorWidth = node ? node.offsetWidth / items.length : 0;
 
     let left = 0;
-    if (selected && items.findIndex(i => selected.includes(i.to || i.id)) !== -1) {
+    if (
+      selected &&
+      items.findIndex(i => selected.includes(i.to || i.id)) !== -1
+    ) {
       const longestMatch = items
         .map((item, index) => [index, item])
         .filter(([index, item]) => selected.includes(item.to || item.id))
@@ -56,14 +58,12 @@
   $: c = cb
     .flush()
     .add($$props.class)
-    .add('hidden md:flex w-full max-w-2xl', navigation)
-    .add('flex', !navigation)
+    .add("hidden md:flex w-full max-w-2xl", navigation)
+    .add("flex", !navigation)
     .get();
 </script>
 
-<div
-  class={c}
-  bind:this={node}>
+<div class={c} bind:this={node}>
   {#each items as item, i}
     <slot name="item" {color} {item}>
       <TabButton
@@ -71,8 +71,9 @@
         bind:selected
         {...item}
         {color}
-        {notSelectedColor}
-      >{item.text}</TabButton>
+        {notSelectedColor}>
+        {item.text}
+      </TabButton>
     </slot>
   {/each}
   {#if indicator && offset !== null}

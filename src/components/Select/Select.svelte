@@ -4,9 +4,10 @@
   import List from "../List/List.svelte";
   import TextField from "../TextField";
   import { ClassBuilder } from "../../utils/classes.js";
-  import { hideListAction } from '../../utils/hide-list-action';
+  import { hideListAction } from "../../utils/hide-list-action";
 
-  const optionsClassesDefault = "absolute left-0 bg-white rounded elevation-3 w-full z-20 dark:bg-dark-500";
+  const optionsClassesDefault =
+    "absolute left-0 bg-white rounded elevation-3 w-full z-20 dark:bg-dark-500";
   const classesDefault = "cursor-pointer relative pb-4";
 
   const noop = i => i;
@@ -44,31 +45,25 @@
   export let remove = "";
   export let replace = "";
 
-
-
-
   let itemsProcessed = [];
 
-
   function process(it) {
-    return it.map(i => typeof i !== "object"
-     ? ({ value: i, text: i })
-     : i);
+    return it.map(i => (typeof i !== "object" ? { value: i, text: i } : i));
   }
 
   $: itemsProcessed = process(items);
 
   const dispatch = createEventDispatcher();
 
-  let selectedLabel = '';
+  let selectedLabel = "";
   $: {
     if (selectedLabelProp !== undefined) {
       selectedLabel = selectedLabelProp;
     } else if (value !== undefined) {
       let selectedItem = itemsProcessed.find(i => i.value === value);
-      selectedLabel = selectedItem ? selectedItem.text : '';
+      selectedLabel = selectedItem ? selectedItem.text : "";
     } else {
-      selectedLabel = '';
+      selectedLabel = "";
     }
   }
 
@@ -89,7 +84,7 @@
     }
   }
 
-  const onHideListPanel = () => showList = false;
+  const onHideListPanel = () => (showList = false);
 
   const cb = new ClassBuilder(classes, classesDefault);
   $: c = cb
@@ -104,10 +99,10 @@
     .add(optionsClasses, true, optionsClassesDefault)
     .add("rounded-t-none", !outlined)
     .get();
-    
+
   $: if (dense) {
-    appendClasses = (i) => i.replace('pt-4', 'pt-3');
-  }  
+    appendClasses = i => i.replace("pt-4", "pt-3");
+  }
 </script>
 
 <div class={c} use:hideListAction={onHideListPanel}>
@@ -136,19 +131,15 @@
       {inputClasses}
       {prependClasses}
       on:click={handleInputClick}
-      on:click-append={(e => showList = !showList)}
+      on:click-append={e => (showList = !showList)}
       on:click
       on:input={filterItems}
-      appendReverse={showList}
-    />
+      appendReverse={showList} />
   </slot>
 
   {#if showList}
     <slot name="options">
-      <div
-        class={o}
-        on:click={() => (showList = false)}
-      >
+      <div class={o} on:click={() => (showList = false)}>
         <List
           bind:value
           class={listClasses}

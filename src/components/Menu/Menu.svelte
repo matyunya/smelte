@@ -7,7 +7,8 @@
   import { ClassBuilder } from "../../utils/classes.js";
 
   const classesDefault = "cursor-pointer relative";
-  const listClassesDefault = "absolute w-auto top-16 bg-white left-0 bg-white rounded elevation-3 z-20 dark:bg-dark-500";
+  const listClassesDefault =
+    "absolute w-auto top-16 bg-white left-0 bg-white rounded elevation-3 z-20 dark:bg-dark-500";
 
   export let items = [];
   export let open = false;
@@ -15,9 +16,6 @@
   export let classes = classesDefault;
   export let listClasses = listClassesDefault;
   export let listProps = {};
-
-
-
 
   const cb = new ClassBuilder($$props.class);
 
@@ -29,9 +27,7 @@
 
   const lcb = new ClassBuilder(listClasses, listClassesDefault);
 
-  $: l = lcb
-      .flush()
-      .get();
+  $: l = lcb.flush().get();
 
   const dispatch = createEventDispatcher();
 
@@ -52,9 +48,8 @@
           dense
           {items}
           on:change
-          on:change={() => open = false}
-          {...listProps}
-        />
+          on:change={() => (open = false)}
+          {...listProps} />
       </div>
     {/if}
   </slot>

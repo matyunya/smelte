@@ -9,8 +9,6 @@
   const classesDefault = "flex px-4 py-2 items-center";
   export let classes = classesDefault;
 
-
-
   const cb = new ClassBuilder(classes, classesDefault);
 
   $: c = cb

@@ -5,7 +5,6 @@
 
   let classesDefault = "text-xs py-1 pl-4 absolute bottom-1 left-0";
 
-
   export let error = false;
   export let hint = "";
 
@@ -20,23 +19,17 @@
   let Classes = i => i;
 
   $: classes = l
-      .flush()
-      .add('text-error-500', error)
-      .add('text-gray-600', hint)
-      .add(add)
-      .remove(remove)
-      .replace(replace)
-      .get();
+    .flush()
+    .add("text-error-500", error)
+    .add("text-gray-600", hint)
+    .add(add)
+    .remove(remove)
+    .replace(replace)
+    .get();
 
-  const props = filterProps([
-    'error',
-    'hint',
-  ], $$props);
+  const props = filterProps(["error", "hint"], $$props);
 </script>
 
-<div
-  class="{classes}"
-  transition:fly={transitionProps}>
-  {hint || ''}
-  {error || ''}
+<div class={classes} transition:fly={transitionProps}>
+  {hint || ''} {error || ''}
 </div>

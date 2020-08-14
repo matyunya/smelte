@@ -13,14 +13,14 @@
 
   import defaultSort from "./sort.js";
 
-  const classesDefault = "elevation-3 relative text-sm overflow-x-auto dark:bg-dark-500";
-
-
-
+  const classesDefault =
+    "elevation-3 relative text-sm overflow-x-auto dark:bg-dark-500";
 
   export let data = [];
-  export let columns = Object.keys(data[0] || {})
-    .map(i => ({ label: (i || "").replace("_", " "), field: i }));
+  export let columns = Object.keys(data[0] || {}).map(i => ({
+    label: (i || "").replace("_", " "),
+    field: i
+  }));
 
   export let page = 1;
   export let sort = defaultSort;
@@ -45,7 +45,7 @@
   $: {
     perPage = pagination ? perPage : data.length;
   }
-  $: offset = (page * perPage) - perPage;
+  $: offset = page * perPage - perPage;
   $: sorted = sort(data, sortBy, asc).slice(offset, perPage + offset);
   $: pagesCount = Math.ceil(data.length / perPage);
 
@@ -54,11 +54,11 @@
   let editing = false;
 
   const cb = new ClassBuilder(classes, classesDefault);
-    $: c = cb
-      .flush()
-      .add(classes, true, classesDefault)
-      .add($$props.class)
-      .get();
+  $: c = cb
+    .flush()
+    .add(classes, true, classesDefault)
+    .add($$props.class)
+    .get();
 </script>
 
 <table class={c} bind:this={table}>
@@ -71,8 +71,7 @@
           bind:asc
           bind:sortBy
           {sortable}
-          {editing}
-        />
+          {editing} />
       </slot>
     {/each}
   </thead>
@@ -91,8 +90,7 @@
           {columns}
           {editable}
           {editableClasses}
-          on:update
-        />
+          on:update />
       </slot>
     {/each}
   </tbody>
@@ -108,8 +106,7 @@
         {offset}
         {pagesCount}
         {table}
-        total={data.length}
-      />
+        total={data.length} />
     </slot>
   {/if}
 

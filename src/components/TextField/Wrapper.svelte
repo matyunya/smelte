@@ -3,7 +3,6 @@
 
   let classesDefault = "mt-2 mb-6 relative text-gray-600";
 
-
   export let error = false;
   export let select = false;
   export let autocomplete = false;
@@ -17,22 +16,20 @@
   let Classes = i => i;
 
   $: classes = l
-      .flush()
-      .add('select', select || autocomplete)
-      .replace({ 'text-gray-600': 'text-error-500' }, error)
-      .add(add)
-      .replace(replace)
-      .remove(remove)
-      .get();
+    .flush()
+    .add("select", select || autocomplete)
+    .replace({ "text-gray-600": "text-error-500" }, error)
+    .add(add)
+    .replace(replace)
+    .remove(remove)
+    .get();
 
-  const props = filterProps([
-    'error',
-    'hint',
-    'select',
-    'autocomplete'
-  ], $$props);
+  const props = filterProps(
+    ["error", "hint", "select", "autocomplete"],
+    $$props
+  );
 </script>
 
-<div class="{classes}">
+<div class={classes}>
   <slot />
 </div>

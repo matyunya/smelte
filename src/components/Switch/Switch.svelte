@@ -4,8 +4,10 @@
   import { ClassBuilder } from "../../utils/classes.js";
 
   const classesDefault = `inline-flex items-center mb-2 cursor-pointer z-10`;
-  const trackClassesDefault = "relative w-10 h-auto z-0 rounded-full overflow-visible flex items-center justify-center";
-  const thumbClassesDefault = "rounded-full p-2 w-5 h-5 absolute elevation-3 duration-100";
+  const trackClassesDefault =
+    "relative w-10 h-auto z-0 rounded-full overflow-visible flex items-center justify-center";
+  const thumbClassesDefault =
+    "rounded-full p-2 w-5 h-5 absolute elevation-3 duration-100";
   const labelClassesDefault = "pl-2 cursor-pointer";
 
   export let value = false;
@@ -16,9 +18,7 @@
   export let thumbClasses = thumbClassesDefault;
   export let labelClasses = labelClassesDefault;
 
-
   export let classes = classesDefault;
-
 
   const cb = new ClassBuilder(classes, classesDefault);
   const trcb = new ClassBuilder(trackClasses, trackClassesDefault);
@@ -61,12 +61,8 @@
   <div class={tr}>
     <div class="w-full h-full absolute" />
     <Ripple color={value && !disabled ? color : 'gray'} noHover>
-      <div
-        class={th}
-        style={value ? 'left: 1.25rem' : ""} />
+      <div class={th} style={value ? 'left: 1.25rem' : ''} />
     </Ripple>
   </div>
-  <label aria-hidden="true" class={l}>
-    {label}
-  </label>
+  <label aria-hidden="true" class={l}>{label}</label>
 </div>

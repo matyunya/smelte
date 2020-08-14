@@ -1,10 +1,10 @@
 <script>
   import { ClassBuilder } from "../../utils/classes.js";
 
-  const classesDefault = "pl-2 cursor-pointer 'text-gray-700 dark:text-gray-300'";
+  const classesDefault =
+    "pl-2 cursor-pointer 'text-gray-700 dark:text-gray-300'";
 
   export let classes = classesDefault;
-
 
   export let label = "";
   export let disabled = false;
@@ -19,10 +19,6 @@
     .get();
 </script>
 
-<label
-  aria-hidden="true"
-  {...$$props}
-  class={c}
->
+<label aria-hidden="true" {...$$props} class={c}>
   <slot>{label}</slot>
 </label>

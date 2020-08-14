@@ -31,7 +31,8 @@
 
   const classesDefault = `pointer-events-auto flex absolute py-2 px-4 z-30 mb-4 content-between mx-auto
       rounded items-center elevation-2 h-12`;
-  const wrapperDefault = "fixed w-full h-full flex items-center justify-center pointer-events-none";
+  const wrapperDefault =
+    "fixed w-full h-full flex items-center justify-center pointer-events-none";
 
   export let classes = wrapperDefault;
 
@@ -85,14 +86,14 @@
   }
 
   $: c = cb
-      .flush()
-      .add(bg(800), color)
-      .add("right-0 mr-2", right)
-      .add("top-0 mt-2", top)
-      .add("left-0 ml-2", left)
-      .add("bottom-0", bottom)
-      .add("snackbar", !noAction)
-      .get();
+    .flush()
+    .add(bg(800), color)
+    .add("right-0 mr-2", right)
+    .add("top-0 mt-2", top)
+    .add("left-0 ml-2", left)
+    .add("bottom-0", bottom)
+    .add("snackbar", !noAction)
+    .get();
 
   // for some reason it doesn't get updated otherwise
   $: if (node) node.classList = c;
@@ -109,22 +110,20 @@
   }
 </style>
 
-{#if value && (running === hash)}
-  <div
-    class="fixed w-full h-full top-0 left-0 z-30 pointer-events-none"
-  >
+{#if value && running === hash}
+  <div class="fixed w-full h-full top-0 left-0 z-30 pointer-events-none">
     <div class={wClasses}>
       <div
         bind:this={node}
         in:scale={inProps}
         out:fade={outProps}
-        on:click={() => value = false}>
+        on:click={() => (value = false)}>
         <slot />
         {#if !noAction}
           <Spacer />
           <slot name="action">
             {#if !timeout}
-              <Button text on:click={() => value = false}>Close</Button>
+              <Button text on:click={() => (value = false)}>Close</Button>
             {/if}
           </slot>
         {/if}

@@ -7,8 +7,10 @@
 </script>
 
 <div>
-<small>I selected {selected ? selected.toLocaleDateString() : "nothing"}</small>
+  <small>
+    I selected {selected ? selected.toLocaleDateString() : 'nothing'}
+  </small>
 </div>
-<DatePicker on:change={i => selected = i.detail } />
+<DatePicker on:change={i => (selected = i.detail)} />
 
 <Code code={datepickers} />

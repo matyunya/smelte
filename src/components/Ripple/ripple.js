@@ -41,7 +41,7 @@ export default function r(color = "primary", centered = false) {
     node.addEventListener("mousedown", onMouseDown);
 
     return {
-      onDestroy: () => node.removeEventListener("mousedown", onMouseDown),
+      onDestroy: () => node.removeEventListener("mousedown", onMouseDown)
     };
   };
 }

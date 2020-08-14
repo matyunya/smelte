@@ -38,12 +38,6 @@
 </Card.Card>
 
 <PropsTable
-  data={[
-    { prop: "hover", default: "true", description: "Enable hover elevation", type: "Boolean" },
-    { prop: "elevation", default: "1", description: "Default elevation value", type: "Number" },
-    { prop: "hoverElevation", default: "8", description: "Hover elevation value", type: "Number" },
-    { prop: "classes", default: `rounded inline-flex flex-col overflow-hidden duration-200 ease-in`, description: "String of root element classes", type: "String" },
-  ]}
-/>
+  data={[{ prop: 'hover', default: 'true', description: 'Enable hover elevation', type: 'Boolean' }, { prop: 'elevation', default: '1', description: 'Default elevation value', type: 'Number' }, { prop: 'hoverElevation', default: '8', description: 'Hover elevation value', type: 'Number' }, { prop: 'classes', default: `rounded inline-flex flex-col overflow-hidden duration-200 ease-in`, description: 'String of root element classes', type: 'String' }]} />
 
 <Code code={card} />

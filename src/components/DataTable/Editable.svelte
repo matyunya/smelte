@@ -4,15 +4,14 @@
   import TextField from "../TextField";
   import Icon from "../Icon";
 
-  const classesDefault = "absolute left-0 top-0 z-10 bg-white dark:bg-dark-400 p-2 elevation-3 rounded";
+  const classesDefault =
+    "absolute left-0 top-0 z-10 bg-white dark:bg-dark-400 p-2 elevation-3 rounded";
 
   export let item = {};
   export let column = {};
   export let editing = false;
 
-
   export let classes = classesDefault;
-
 
   const dispatch = createEventDispatcher();
 
@@ -33,12 +32,7 @@
       remove="bg-gray-100 bg-gray-300"
       on:blur={({ target }) => {
         editing = false;
-        dispatch("update", {
-          item,
-          column,
-          value: target.value
-        });
-      }}
-    />
+        dispatch('update', { item, column, value: target.value });
+      }} />
   </slot>
 </div>

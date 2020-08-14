@@ -1,9 +1,6 @@
 <script>
   import { ClassBuilder } from "../../utils/classes.js";
 
-
-
-
   let classesDefault =
     "fixed top-0 w-full items-center flex-wrap flex left-0 z-30 p-0 h-16 elevation-3 bg-primary-300 dark:bg-dark-600";
 
@@ -11,7 +8,10 @@
 
   const cb = new ClassBuilder(classes, classesDefault);
 
-  $: c = cb.flush().add($$props.class).get();
+  $: c = cb
+    .flush()
+    .add($$props.class)
+    .get();
 </script>
 
 <header class={c}>
