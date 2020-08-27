@@ -76,7 +76,7 @@ declare const _ButtonProps: {
      * 
      * Default: {}
      */
-    replace?: object;
+    replace?: {[key:string]:string};
     
     classes?: string;
     basicClasses?: string;

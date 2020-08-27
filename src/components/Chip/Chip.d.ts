@@ -50,7 +50,7 @@ declare const _ChipProps: {
      * 
      * Default: {}
      */
-    replace?: object;
+    replace?: {[key:string]:string};
 } & SvelteAllProps;
 declare const _ChipEvents: {
     click: MouseEvent;
