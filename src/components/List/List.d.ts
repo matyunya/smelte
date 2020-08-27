@@ -1,4 +1,7 @@
 import { SvelteTypedComponent , SvelteAllProps } from 'svelte-typed-component';
+import { ListItemBase } from './ListItem';
+
+
 export default class List extends SvelteTypedComponent<ListProps, ListEvents, ListSlots> {
     get level(): any;
     get text(): string;
@@ -8,14 +11,7 @@ export default class List extends SvelteTypedComponent<ListProps, ListEvents, Li
     get itemClasses(): (i: string) => string;
 }
 declare const _ListProps: {
-    items?: {
-        /** href */
-        to?:string,
-        id?:string,
-        value?: string,
-        text?:string
-
-    }[];
+    items?: ListItemBase[];
     /** Selected item value, Bindable.
      * 
      * Default: empty string

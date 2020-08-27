@@ -4,27 +4,31 @@ export default class ListItem extends SvelteTypedComponent<ListItemProps, ListIt
     get items(): any[];
     get level(): any;
 }
+export interface ListItemBase{
+    /** Item id.
+     * 
+     * Default: empty string
+     */
+    id?: string;
+    /** href */
+    to?: string;
+    /** Selected item value.
+     * 
+     * Default: empty string
+    */
+   value?: string;
+   /** Item text.
+    * 
+    * Default: empty string
+    */
+   text?: string;
+}
 declare const _ListItemProps: {
     /** Prepend item with icon.
      * 
      * Default: empty string
      */
     icon?: string;
-    /** Item id.
-     * 
-     * Default: empty string
-     */
-    id?: string;
-    /** Selected item value.
-     * 
-     * Default: empty string
-    */
-    value?: string;
-    /** Item text.
-     * 
-     * Default: empty string
-     */
-    text?: string;
     /** Item subheading.
      * 
      * Default: empty string
@@ -54,8 +58,7 @@ declare const _ListItemProps: {
     selectedClasses?: string;
     /** Subheading item classes */
     subheadingClasses?: string;
-    /** href */
-    to?: string;
+    
     /** Item wrapper classes */
     classes?: string;
     /** --not implemented-- Is navigation item
@@ -68,7 +71,7 @@ declare const _ListItemEvents: {
 declare const _ListItemSlots: {
     default: {};
 };
-export declare type ListItemProps = typeof _ListItemProps;
+export declare type ListItemProps = (typeof _ListItemProps) & ListItemBase;
 export declare type ListItemEvents = typeof _ListItemEvents;
 export declare type ListItemSlots = typeof _ListItemSlots;
 export {};
