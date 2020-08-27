@@ -57,7 +57,11 @@ declare const _ButtonProps: {
      * 
      * Default: "primary" */
     color?: string;
-    href?: any;
+    /** if href is supplied, button is a link
+     * 
+     * Default: null
+     */
+    href?: string|null;
     /** Fab variant. 
      * 
      * Default: false */
