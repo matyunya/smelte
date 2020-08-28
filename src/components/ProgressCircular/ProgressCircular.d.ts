@@ -6,7 +6,7 @@ import { SvelteTypedComponent } from 'svelte-typed-component';
 export default class ProgressCircular extends SvelteTypedComponent<ProgressCircularProps, ProgressCircularEvents, ProgressCircularSlots> {
 }
 declare const _ProgressCircularProps: {
-    /** Progress
+    /** Progress. If not is provided it becomes indefinite variant
      * 
      * Default: null
      */
