@@ -83,14 +83,14 @@ declare const _ButtonProps: {
     replace?: {[key:string]:string};
     
     classes?: string;
-    basicClasses?: string;
-    outlinedClasses?: string;
-    textClasses?: string;
-    iconClasses?: string;
-    fabClasses?: string;
-    smallClasses?: string;
-    disabledClasses?: string;
-    elevationClasses?: string;
+    basicClasses?: string|((s:string)=>string);
+    outlinedClasses?: string|((s:string)=>string);
+    textClasses?: string|((s:string)=>string);
+    iconClasses?: string|((s:string)=>string);
+    fabClasses?: string|((s:string)=>string);
+    smallClasses?: string|((s:string)=>string);
+    disabledClasses?: string|((s:string)=>string);
+    elevationClasses?: string|((s:string)=>string);
 } & SvelteAllProps;
 declare const _ButtonEvents: {
     click: MouseEvent;
