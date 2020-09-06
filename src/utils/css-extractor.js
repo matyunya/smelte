@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 
 function flatten(arr) {
-  return arr.reduce(function(flat, toFlatten) {
+  return arr.reduce(function (flat, toFlatten) {
     return flat.concat(
       Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten
     );
@@ -63,6 +63,17 @@ function classesPerComponent(colors) {
   }, []);
 }
 
+
+// whitelist does not seem to work with custom extractors!?!
+// so hardcode it
+const whitelist = [
+  "html", "body", "stroke-primary", "mode-dark",
+  // /ripple/
+  "ripple", "ripple-normal", "ripple-centered",
+  // /w\-.\/7/
+  ...flatten(["xl\:w","lg\:w","md\:w","sm\:w","w"].map(v=>[1,2,3,4,5,6].map(w=>v+"-"+w+"\/7")))
+
+]
 module.exports = function extractor(content, ownColors = ["primary", "white", "gray"]) {
   let ast;
   const usedColors = {};
@@ -70,10 +81,10 @@ module.exports = function extractor(content, ownColors = ["primary", "white", "g
 
   try {
     ast = parse(content);
-  } catch {}
+  } catch { }
 
   walk(ast, {
-    enter: function(node) {
+    enter: function (node) {
       const color = getProp(node, "color");
 
       if (node.type === "InlineComponent") {
@@ -86,6 +97,7 @@ module.exports = function extractor(content, ownColors = ["primary", "white", "g
       }
 
       if (color && color[0].data) {
+
         if (!usedColors[node.name]) {
           usedColors[node.name] = new Set(ownColors);
         }
@@ -98,15 +110,14 @@ module.exports = function extractor(content, ownColors = ["primary", "white", "g
   const fromClasses = content.match(/class:[A-Za-z0-9-_]+/g) || [];
   const defaultComponentClasses =
     content.match(/lasses = ("[a-zA-Z0-9-_ ]+")/g) || [];
-    const recursiveCrawl = [...usedComponents].map(
-      v => {
-        const cont = getComponentCodes(v);
-        console.log(cont);
-  
-        return cont.map(w=>extractor(fs.readFileSync(w,{encoding:"utf-8"}), usedColors[v]));
-      }
-    )
+  const recursiveCrawl = [...usedComponents].map(
+    v => {
+      const cont = getComponentCodes(v);
+      console.log(cont);
 
+      return cont.map(w=>extractor(fs.readFileSync(w,{encoding:"utf-8"}), usedColors[v]));
+    }
+  )
   return [
     ...flatten(recursiveCrawl),
     ...(content.match(/[A-Za-z0-9-_:\/]+/g) || []),
@@ -114,6 +125,7 @@ module.exports = function extractor(content, ownColors = ["primary", "white", "g
     ...flatten(classesPerComponent(usedColors)),
     ...defaultComponentClasses.map(c =>
       c.replace('lasses = "', "").replace('"', "")
-    )
+    ),
+    ...whitelist
   ];
 };
