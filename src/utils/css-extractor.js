@@ -110,6 +110,10 @@ module.exports = function extractor(content, ownColors = ["primary", "white", "g
   const fromClasses = content.match(/class:[A-Za-z0-9-_]+/g) || [];
   const defaultComponentClasses =
     content.match(/lasses = ("[a-zA-Z0-9-_ ]+")/g) || [];
+
+  // TODO: Each used component is crawled once per .svelte file.
+  // Could improve performance by globally tracking which component/colors are
+  // already checked
   const recursiveCrawl = [...usedComponents].map(
     v => {
       const cont = getComponentCodes(v);
