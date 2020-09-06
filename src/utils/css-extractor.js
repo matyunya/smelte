@@ -36,6 +36,19 @@ function getComponent(name) {
   }
 }
 
+function getComponentCodes(name) {
+  const root = [
+    "./src/components",
+    "./node_modules/smelte/src/components"
+  ].filter(v => fs.existsSync(v));
+  return flatten(root.map(v => {
+    const dir = fs.readdirSync(v);
+    return dir
+      .filter(w => fs.readdirSync(path.join(v,w)).includes(name + ".svelte"))
+      .map(w => path.join(v, w, name + ".svelte"));
+  }));
+}
+
 function classesPerComponent(colors) {
   return Object.keys(colors).reduce((acc, component) => {
     const def = defs[component] || getComponent(component);
@@ -50,7 +63,7 @@ function classesPerComponent(colors) {
   }, []);
 }
 
-module.exports = function extractor(content) {
+module.exports = function extractor(content, ownColors = ["primary", "white", "gray"]) {
   let ast;
   const usedColors = {};
   const usedComponents = new Set();
@@ -74,7 +87,7 @@ module.exports = function extractor(content) {
 
       if (color && color[0].data) {
         if (!usedColors[node.name]) {
-          usedColors[node.name] = new Set(["primary", "white", "gray"]);
+          usedColors[node.name] = new Set(ownColors);
         }
 
         usedColors[node.name].add(color[0].data);
@@ -85,8 +98,17 @@ module.exports = function extractor(content) {
   const fromClasses = content.match(/class:[A-Za-z0-9-_]+/g) || [];
   const defaultComponentClasses =
     content.match(/lasses = ("[a-zA-Z0-9-_ ]+")/g) || [];
+    const recursiveCrawl = [...usedComponents].map(
+      v => {
+        const cont = getComponentCodes(v);
+        console.log(cont);
+  
+        return cont.map(w=>extractor(fs.readFileSync(w,{encoding:"utf-8"}), usedColors[v]));
+      }
+    )
 
   return [
+    ...flatten(recursiveCrawl),
     ...(content.match(/[A-Za-z0-9-_:\/]+/g) || []),
     ...fromClasses.map(c => c.replace("class:", "")),
     ...flatten(classesPerComponent(usedColors)),
