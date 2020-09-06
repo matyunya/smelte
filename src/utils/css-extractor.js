@@ -65,6 +65,11 @@ module.exports = function extractor(content) {
 
       if (node.type === "InlineComponent") {
         usedComponents.add(node.name);
+
+        // catch default colors
+        if (!usedColors[node.name]) {
+          usedColors[node.name] = new Set(ownColors);
+        }
       }
 
       if (color && color[0].data) {
