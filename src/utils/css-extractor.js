@@ -44,7 +44,7 @@ function getComponentCodes(name) {
   return flatten(root.map(v => {
     const dir = fs.readdirSync(v);
     return dir
-      .filter(w => fs.readdirSync(path.join(v,w)).includes(name + ".svelte"))
+      .filter(w => fs.readdirSync(path.join(v, w)).includes(name + ".svelte"))
       .map(w => path.join(v, w, name + ".svelte"));
   }));
 }
@@ -71,7 +71,7 @@ const whitelist = [
   // /ripple/
   "ripple", "ripple-normal", "ripple-centered",
   // /w\-.\/7/
-  ...flatten(["xl\:w","lg\:w","md\:w","sm\:w","w"].map(v=>[1,2,3,4,5,6].map(w=>v+"-"+w+"\/7")))
+  ...flatten(["xl\:w", "lg\:w", "md\:w", "sm\:w", "w"].map(v => [1, 2, 3, 4, 5, 6].map(w => v + "-" + w + "\/7")))
 
 ]
 module.exports = function extractor(content, ownColors = ["primary", "white", "gray"]) {
@@ -117,9 +117,12 @@ module.exports = function extractor(content, ownColors = ["primary", "white", "g
   const recursiveCrawl = [...usedComponents].map(
     v => {
       const cont = getComponentCodes(v);
-      console.log(cont);
-
-      return cont.map(w=>extractor(fs.readFileSync(w,{encoding:"utf-8"}), usedColors[v]));
+      return cont.map(
+        w => extractor(
+          fs.readFileSync(w, { encoding: "utf-8" }),
+          usedColors[v]
+        )
+      );
     }
   )
   return [
