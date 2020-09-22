@@ -24,7 +24,7 @@
     .add($$props.class)
     .get();
 
-  const getColor = c => getComputedStyle(document.documentElement).getPropertyValue(c);
+  const getColor = c => `var(${c})`
 
   let style;
   $: {
