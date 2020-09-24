@@ -1,8 +1,8 @@
 <script>
-  import ProgressLinear from 'smelte/src/components/ProgressLinear';
-  import ProgressCircular from 'smelte/src/components/ProgressCircular';
-
-  import Code from 'docs/Code.svelte';
+  import {
+    ProgressLinear,
+    ProgressCircular
+  } from "smelte";
 
   let progress = 0;
 

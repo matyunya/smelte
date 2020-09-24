@@ -1,7 +1,22 @@
 <script>
   import { DataTable } from "smelte";
 
-  import data from "./data.json";
+  let data = [];
+  let loading = true;
+
+  async function getData() {
+    if (typeof window === "undefined") return;
+
+    loading = true;
+    const res = await fetch("data.json");
+    const body = await res.json();
+
+    data = body._embedded.episodes;
+
+    setTimeout(() => loading = false, 500);
+  }
+
+  getData();
 </script>
 
 <div class="overflow-auto p-1">

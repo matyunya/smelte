@@ -1,7 +1,8 @@
 <script>
-	import Button from 'smelte/src/components/Button';
-	import Menu from 'smelte/src/components/Menu';
-	import List from 'smelte/src/components/List';
+  import {
+    Button,
+    Menu,
+  } from "smelte";
 
   let open = true;
 	let selected = "";
