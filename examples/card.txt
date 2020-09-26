@@ -3,7 +3,7 @@
 		Card,
 		Button,
 		Image
-	} from 'smelte';
+	} from "smelte";
 </script>
 
 <Card.Card>

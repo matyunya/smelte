@@ -1,5 +1,5 @@
 <script>
-  import Chip from 'smelte/src/components/Chip';
+  import { Chip } from "smelte";
 
   let closed = false;
   let clicked = false;
