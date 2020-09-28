@@ -30,7 +30,9 @@
   };
 
   $: transitionProps.x = right ? 300 : -300;
-  $: persistent = show = $bp !== "sm";
+
+  // Don't show the drawer if it was created with show="false"
+  $: if (!hidden) persistent = show = $bp !== "sm";
 
   const cb = new ClassBuilder(classes, classesDefault);
 
