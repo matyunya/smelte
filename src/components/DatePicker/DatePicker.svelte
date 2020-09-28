@@ -38,15 +38,17 @@
   }
 
   function changeTextInput(e) {
-    const date = new Date(e.target.value);
 
-    if (valid(date)) {
-      value = date;
-    }
+    let date;
+    const dateArray = e.target.value.split(/\D+/);
+    if (dateArray[2].length == 4) date = new Date(dateArray[2], dateArray[1]-1, dateArray[0]);
+    else date = new Date(dateArray[0], dateArray[1]-1, dateArray[2]);
+    if (valid(date)) value = date;
 
     if (e.target.value === '') {
       value = null;
     }
+    
   }
 
   $: if (dense) {
