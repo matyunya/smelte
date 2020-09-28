@@ -22,7 +22,7 @@ export default function breakpoint(calcBreakpoint = defaultCalc) {
   const onResize = ({ target }) => store.set(calcBreakpoint(target.innerWidth));
 
   window.addEventListener("resize", onResize);
-  onDestroy(() => window.removeListener(onResize));
+  onDestroy(() => window.removeEventListener("resize", onResize));
 
   return {
     subscribe: store.subscribe
