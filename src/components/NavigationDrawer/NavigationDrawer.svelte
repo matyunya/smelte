@@ -31,7 +31,8 @@
 
   $: transitionProps.x = right ? 300 : -300;
 
-  // Don't show the drawer if it was created with show="false"
+  // Is the drawer deliberately hidden? Don't let the $bp check make it visible if so.
+  let hidden = !show;
   $: if (!hidden) persistent = show = $bp !== "sm";
 
   const cb = new ClassBuilder(classes, classesDefault);
