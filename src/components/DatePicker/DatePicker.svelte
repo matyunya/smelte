@@ -63,6 +63,7 @@
       {dense}
       append={defaultIcon}
       {appendClasses}
+      on:click={() => open = !open}
       on:click-append={() => open = !open}
       on:change={changeTextInput}
     />
