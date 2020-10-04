@@ -1,6 +1,6 @@
 # Smelte
 
-[![Smelte logo](http://smeltejs.com/logo-192.png)](https://smeltejs.com/)
+<a href="https://smeltejs.com/"><img src="./static/logo.svg" alt="Smelte logo" width="192"></a>
 
 [![license](https://img.shields.io/npm/l/smelte.svg)](https://img.shields.io/npm/l/smelte.svg)
 [![downloads](https://img.shields.io/npm/dm/smelte.svg)](https://img.shields.io/npm/dm/smelte.svg)
