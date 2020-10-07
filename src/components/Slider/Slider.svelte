@@ -15,6 +15,9 @@
 
   export let classes = classesDefault;
 
+  $: percentFactor = 100.0 / (max - min);
+
+  const toPercent = v => (v - min) * percentFactor;
 
   const cb = new ClassBuilder(classes, classesDefault);
 
@@ -30,9 +33,10 @@
   $: {
     let c1 = getColor(`--color-${color}-500`);
     let c2 = getColor(`--color-${color}-200`);
+    let cv = toPercent(value);
     style = disabled
     ? ""
-    : `background: linear-gradient(to right, ${c1} 0%, ${c1} ${value}%, ${c2} ${value}%, ${c2} 100%); --bg: ${c1}; --bg-focus: ${c1}`;
+    : `background: linear-gradient(to right, ${c1} 0%, ${c1} ${cv}%, ${c2} ${cv}%, ${c2} 100%); --bg: ${c1}; --bg-focus: ${c1}`;
   }
 
   function applyColor(node) {
