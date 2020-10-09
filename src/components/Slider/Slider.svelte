@@ -15,9 +15,11 @@
 
   export let classes = classesDefault;
 
-  $: percentFactor = 100.0 / (max - min);
-
-  const toPercent = v => (v - min) * percentFactor;
+  let toPercent;
+  $: {
+    let factor = 100.0 / (max - min);
+    toPercent = v => (v - min) * factor;
+  }
 
   const cb = new ClassBuilder(classes, classesDefault);
 
