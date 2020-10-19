@@ -24,6 +24,7 @@
   export let dense = false;
 
   let hasUserValue = Boolean(value);
+  if (hasUserValue) value = new Date(value);
 
   const today = (new Date()).getDate();
 

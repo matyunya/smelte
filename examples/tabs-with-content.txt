@@ -1,3 +1,14 @@
+<script>
+	import {
+    Tabs,
+    Tab,
+    Image,
+    TextField
+	} from "smelte";
+
+  let loading = false;
+</script>
+
 <div style="max-width: 400px">
   <Tabs
     selected="1"
@@ -33,7 +44,7 @@
           height="250"
         />
       </Tab>
-        <Tab id="3" {selected}>
+      <Tab id="3" {selected}>
         <Image
           alt="kitten 3"
           class="w-full"
@@ -42,5 +53,6 @@
           height="250"
         />
       </Tab>
+    </div>
   </Tabs>
 </div>

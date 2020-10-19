@@ -6,14 +6,19 @@ module.exports = {
     `bg-${color}-50`,
     `bg-${color}`,
     `text-${color}`,
-    `text-${color}-500`
+    `text-${color}-500`,
+    `hover:bg-${color}-trans`,
+    `hover:bg-${color}-trans`,
+    `dark-hover:bg-${color}-transDark`,
+    `hover:bg-${color}-transLight`,
   ],
   normal: color => [
     `text-${color}-500`,
     `text-${color}-400`,
     `bg-${color}-500`,
     `bg-${color}-400`,
-    `border-${color}-400`
+    `border-${color}-400`,
+    `hover:bg-${color}-400`,
   ],
   light: color => [
     `text-${color}-400`,

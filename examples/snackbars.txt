@@ -1,7 +1,11 @@
 <script>
-  import { Snackbar, notifier, Button, Notifications, TextField } from "smelte";
-  import Code from "docs/Code.svelte";
-  import snackbars from "examples/snackbars.txt";
+  import {
+    Snackbar,
+    notifier,
+    Button,
+    Notifications,
+    TextField
+  } from "smelte";
 
   let showSnackbar = false;
   let showSnackbarTop = false;
@@ -64,8 +68,6 @@
     on:click={() => (showSnackbarBottomLeft = true)}>Show snackbar on the bottom left</Button>
 </div>
 
-<Code code={snackbars} />
-
 <p>Also Smelte comes with a simple notification queue implementation.</p>
 
 <TextField bind:value={message} label="New message" />
@@ -74,5 +76,3 @@
   on:click={notify}>Add message to queue</Button>
 
 <Notifications />
-
-<Code code={snackbars} />

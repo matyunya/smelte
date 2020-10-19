@@ -1,26 +1,30 @@
 <script>
   // This is top src/routes/_layout.svelte.
 
-  import NavigationDrawer from 'smelte/src/components/NavigationDrawer';
-  import { right, elevation, persistent, showNav, showNavMobile, breakpoint } from 'stores.js';
-  import List from 'smelte/src/components/List';
-	import ListItem from 'smelte/src/components/List/ListItem.svelte';
+  import {
+    List,
+    ListItem,
+    NavigationDrawer
+  } from "smelte";
+  import { right, elevation, persistent, showNav } from 'stores.js';
   const menu = [
-      { to: "/components/text-fields", text: 'Text fields' },
-      { to: "/components/buttons", text: 'Buttons' },
-      { to: "/components/selection-controls", text: 'Selection controls' },
-      { to: "/components/lists", text: 'Lists' },
-      ...
+      { to: "components/text-fields", text: 'Text fields' },
+      { to: "components/buttons", text: 'Buttons' },
+      { to: "components/selection-controls", text: 'Selection controls' },
+      { to: "components/lists", text: 'Lists' },
+      { to: "components/navigation-drawers", text: 'Navigation Drawers' },
+      { to: "..", text: 'Go back' },
     ];
+  
+  let path = "components/navigation-drawers";
+
 </script>
 
 <NavigationDrawer
   bind:showDesktop={$showNav}
-  bind:showMobile={$showNavMobile}
   right={$right}
   persistent={$persistent}
   elevation={$elevation}
-  breakpoint={$breakpoint}
 >
   <h6
     class="p-6 ml-1 pb-2 text-xs text-gray-900"
