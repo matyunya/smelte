@@ -87,16 +87,16 @@ declare const _SelectProps: {
      * Default: false
      */
     showList?: boolean;
-    classes?: string;
-    optionsClasses?: string;
-    inputWrapperClasses?: (i: string) => string;
-    appendClasses?: (i: string) => string;
-    labelClasses?: (i: string) => string;
-    inputClasses?: (i: string) => string;
-    prependClasses?: (i: string) => string;
-    listClasses?: (i: string) => string;
-    selectedClasses?: (i: string) => string;
-    itemClasses?: (i: string) => string;
+    classes?: string|((s:string)=>string);
+    optionsClasses?: string|((s:string)=>string);
+    inputWrapperClasses?: string|((s:string)=>string);
+    appendClasses?: string|((s:string)=>string);
+    labelClasses?: string|((s:string)=>string);
+    inputClasses?: string|((s:string)=>string);
+    prependClasses?: string|((s:string)=>string);
+    listClasses?: string|((s:string)=>string);
+    selectedClasses?: string|((s:string)=>string);
+    itemClasses?: string|((s:string)=>string);
     /** List of classes to remove from the component (blank space separated).
      * 
      * Default: empty string

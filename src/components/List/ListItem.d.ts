@@ -55,12 +55,12 @@ declare const _ListItemProps: {
      */
     tabindex?: number|null;
     /** Selected item classes */
-    selectedClasses?: string;
+    selectedClasses?: string|((s:string)=>string);
     /** Subheading item classes */
-    subheadingClasses?: string;
+    subheadingClasses?: string|((s:string)=>string);
     
     /** Item wrapper classes */
-    classes?: string;
+    classes?: string|((s:string)=>string);
     /** --not implemented-- Is navigation item
      */
     navigation?:boolean

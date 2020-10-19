@@ -5,7 +5,7 @@ export default class Pagination extends SvelteTypedComponent<PaginationProps, Pa
 }
 declare const _PaginationProps: {
     /** String of root element classes. */
-    classes?: string;
+    classes?: string|((s:string)=>string);
     perPage?: number;
     page?: number;
     offset?: number;

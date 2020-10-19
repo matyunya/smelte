@@ -7,7 +7,7 @@ declare const _LabelProps: {
      * 
      * Default: "pl-2 cursor-pointer 'text-gray-700 dark:text-gray-300'"
      */
-    classes?: string;
+    classes?: string|((s:string)=>string);
     /** Text of the label
      * 
      * Default: empty string
@@ -22,7 +22,7 @@ declare const _LabelProps: {
      * 
      * Default: "text-gray-500 dark:text-gray-600"
      */
-    disabledClasses?: string;
+    disabledClasses?: string|((s:string)=>string);
 } & SvelteAllProps;
 declare const _LabelEvents: {};
 declare const _LabelSlots: {

@@ -7,7 +7,7 @@ import { RadioButtonProps } from './RadioButton';
 export default class RadioButtonGroup extends SvelteTypedComponent<RadioButtonGroupProps, RadioButtonGroupEvents, RadioButtonGroupSlots> {
 }
 declare const _RadioButtonGroupProps: {
-    classes?: string;
+    classes?: string|((s:string)=>string);
     /** Props for the Radio Button items */
     items?: (RadioButtonProps|any)[];
     /** Selected state. Bindable.
@@ -25,7 +25,7 @@ declare const _RadioButtonGroupProps: {
      * 
      * Default: "primary" */
     color?: string;
-    buttonClasses?: string;
+    buttonClasses?: string|((s:string)=>string);
 } & SvelteAllProps;
 declare const _RadioButtonGroupEvents: {};
 declare const _RadioButtonGroupSlots: {

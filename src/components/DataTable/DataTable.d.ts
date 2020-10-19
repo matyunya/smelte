@@ -144,7 +144,7 @@ export interface DataTableProps<DataRow extends {[key:string]:any}>{
      * 
      * Default: "flex justify-between items-center text-gray-700 text-sm w-full h-16"
      */
-    classes?: string;
+    classes?: string|((s:string)=>string);
 }
 declare const _DataTableEvents: {
     update: any;

@@ -43,7 +43,7 @@ declare const _UnderlineProps: {
      * Default: {}
      */
     replace?: {[key:string]:string};
-    lineClasses?: string;
+    lineClasses?: string|((s:string)=>string);
 } & SvelteAllProps;
 declare const _UnderlineEvents: {
     [evt: string]: CustomEvent<any>;

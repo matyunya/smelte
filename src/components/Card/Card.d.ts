@@ -63,7 +63,7 @@ declare const _CardProps: {
      * 
      * Default: "rounded inline-flex flex-col overflow-hidden duration-200 ease-in"
      */
-    classes?: string;
+    classes?: string|((s:string)=>string);
 } & SvelteAllProps;
 declare const _CardEvents: {};
 declare const _CardSlots: {
