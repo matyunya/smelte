@@ -1,4 +1,5 @@
 <script>
+  import { Tabs } from "smelte";
   import { stores } from '@sapper/app';
   const { page } = stores();
 

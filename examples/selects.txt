@@ -1,7 +1,5 @@
 <script>
-  import { Select, Checkbox, Card } from "smelte";
-  import Code from "docs/Code.svelte";
-  import selects from "examples/selects.txt";
+  import { Select, Checkbox } from "smelte";
 
   let value1 = "";
   let value2 = "";
@@ -37,8 +35,6 @@
 </p>
 <small>Selected: {value1 || 'nothing'}</small>
 <Select {label} {items} on:change={v => (value1 = v.detail)} />
-
-<Code code={selects} />
 
 <p>
   Or through binding
