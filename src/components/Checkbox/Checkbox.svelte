@@ -15,7 +15,15 @@
   export let disabled = false;
   export let classes = classesDefault;
   export let labelClasses = i => i;
-
+  export let group = [];
+  $: if (value){
+    const groupHasValue = group.includes(value);
+    if (checked && !groupHasValue){
+      group.push(value);
+    }else if (!checked && groupHasValue){
+      group =[...group.filter(v=>v!==value)];
+    }
+  }
   const dispatch = createEventDispatcher();
 
   function check() {
