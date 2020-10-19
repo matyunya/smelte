@@ -19,7 +19,7 @@
   $: if (value){
     const groupHasValue = group.includes(value);
     if (checked && !groupHasValue){
-      group.push(value);
+      group = group.concat([value]);
     }else if (!checked && groupHasValue){
       group =[...group.filter(v=>v!==value)];
     }
