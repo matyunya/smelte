@@ -29,10 +29,11 @@
       // add to group array if checked
       if (checked && !groupHasValue) {
         group = group.concat([value]);
-
+        groupstate = true;
         // remove from group array if unchecked
       } else if (!checked && groupHasValue) {
         group = [...group.filter(v => v !== value)];
+        groupstate = false;
       }
     } else {
       // group array has changed. Click box
