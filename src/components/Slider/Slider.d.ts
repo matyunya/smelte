@@ -40,7 +40,7 @@ declare const _SliderProps: {
      * Default: null
      */
     step?: number|null;
-    classes?: string;
+    classes?: string|((s:string)=>string);
 } & SvelteAllProps;
 declare const _SliderEvents: {
     change: Event;

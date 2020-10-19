@@ -133,10 +133,10 @@ declare const _TextFieldProps: {
      * Default: {}
      */
     replace?: {[key:string]:string};
-    inputClasses?: string;
-    classes?: string;
-    appendClasses?: string;
-    prependClasses?: string;
+    inputClasses?: string|((s:string)=>string);
+    classes?: string|((s:string)=>string);
+    appendClasses?: string|((s:string)=>string);
+    prependClasses?: string|((s:string)=>string);
     extend?: () => void;
     /** Focused. Bindable.
      * 

@@ -75,7 +75,7 @@ declare const _SnackbarProps: {
     noAction?: boolean;
     /** Hash. Bindable. */
     hash?: string|boolean|null;
-    classes?: string;
+    classes?: string|((s:string)=>string);
 } & SvelteAllProps;
 declare const _SnackbarEvents: {
     finish:Event

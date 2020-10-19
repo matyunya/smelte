@@ -55,7 +55,7 @@ declare const _TreeviewProps: {
      * 
      * Default: "bg-primary-trans"
      */
-    selectedClasses?: string;
+    selectedClasses?: string|((s:string)=>string);
 } & SvelteAllProps;
 declare const _TreeviewEvents: {
     click: any;

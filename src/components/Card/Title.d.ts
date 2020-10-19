@@ -22,7 +22,7 @@ declare const _TitleProps: {
      * 
      * Default: "flex px-4 py-2 items-center"
      */
-    classes?: string;
+    classes?: string|((s:string)=>string);
 } & SvelteAllProps;
 declare const _TitleEvents: {};
 declare const _TitleSlots: {};

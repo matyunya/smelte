@@ -2,7 +2,7 @@ import { SvelteTypedComponent } from 'svelte-typed-component';
 export default class AppBar extends SvelteTypedComponent<AppBarProps, AppBarEvents, AppBarSlots> {
 }
 declare const _AppBarProps: {
-    classes?: string;
+    classes?: string|((s:string)=>string);
 } & {
     class?:string;
 };

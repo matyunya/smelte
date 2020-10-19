@@ -6,7 +6,7 @@ declare const _EditableProps: {
     item?: object;
     column?: DataTableColumn<{[key:string]:any}>;
     editing?: boolean;
-    classes?: string;
+    classes?: string|((s:string)=>string);
 } & SvelteAllProps;
 declare const _EditableEvents: {
     change: any;

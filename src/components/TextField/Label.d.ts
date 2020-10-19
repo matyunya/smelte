@@ -58,7 +58,7 @@ declare const _LabelProps: {
      * Default: {}
      */
     replace?: {[key:string]:string};
-    labelClasses?: string;
+    labelClasses?: string|((s:string)=>string);
 } & SvelteAllProps;
 declare const _LabelEvents: {
     [evt: string]: CustomEvent<any>;
