@@ -12,6 +12,8 @@ declare const _CheckboxProps: {
      * Default: empty string
     */
     value?: string;
+    /** For bind:group handling. Adds/remove prop "value" to the array when checked changes */
+    group?: string[];
     /** Input label	
      * 
      * Default: empty string
