@@ -38,7 +38,6 @@ function getComponent(name) {
 
 function getComponentCodes(name) {
   const root = [
-    "./src/components",
     "./node_modules/smelte/src/components"
   ].filter(v => fs.existsSync(v));
   return flatten(root.map(v => {
