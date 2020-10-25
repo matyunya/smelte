@@ -42,12 +42,12 @@ declare const _TabsProps: {
      * Default: false
      */
     loading?: boolean;
-    tabButtonClasses?: (i: string) => string;
+    tabButtonClasses?: string|((i: string) => string);
     /** Classes.
      * 
      * Default: "y-0 h-full items-center relative mx-auto z-20"
      */
-    classes?: string;
+    classes?: string|((s:string)=>string);
 } & SvelteAllProps;
 declare const _TabsEvents: {
     [evt: string]: CustomEvent<any>;

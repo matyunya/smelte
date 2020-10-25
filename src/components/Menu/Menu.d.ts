@@ -19,8 +19,8 @@ declare const _MenuProps: {
      * Default: null
      */
     value?: string|null;
-    classes?: string;
-    listClasses?: string;
+    classes?: string|((s:string)=>string);
+    listClasses?: string|((s:string)=>string);
     /** Additional props for the list component */
     listProps?: ListProps;
 } & SvelteAllProps;

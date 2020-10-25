@@ -5,7 +5,7 @@ export default class Header extends SvelteTypedComponent<HeaderProps, HeaderEven
 }
 declare const _HeaderProps: {
     /** String of root element classes. */
-    classes?: string;
+    classes?: string|((s:string)=>string);
     /** Column information */
     column?: DataTableColumn<{[key:string]:any}>;
     /** Sort Ascending state. Bindable */

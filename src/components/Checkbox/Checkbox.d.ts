@@ -12,6 +12,8 @@ declare const _CheckboxProps: {
      * Default: empty string
     */
     value?: string;
+    /** For bind:group handling. Adds/remove prop "value" to the array when checked changes */
+    group?: string[];
     /** Input label	
      * 
      * Default: empty string
@@ -36,7 +38,7 @@ declare const _CheckboxProps: {
      * 
      * Default: "inline-flex items-center mb-2 cursor-pointer z-10"
      */
-    classes?: string;
+    classes?: string|((s:string)=>string);
     labelClasses?: (i: any) => any;
 } & SvelteAllProps;
 declare const _CheckboxEvents: {

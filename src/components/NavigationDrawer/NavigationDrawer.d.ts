@@ -29,9 +29,9 @@ declare const _NavigationDrawerProps: {
      */
     show?: boolean;
     
-    classes?: string;
-    navClasses?: string;
-    borderClasses?: string;
+    classes?: string|((s:string)=>string);
+    navClasses?: string|((s:string)=>string);
+    borderClasses?: string|((s:string)=>string);
     /** Transition Props for "fly"(FlyParams)*/
     transitionProps?: {
         duration?: number;

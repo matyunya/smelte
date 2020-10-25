@@ -1,4 +1,8 @@
-import Card from "./Card";
-import Title from "./Title";
-declare type card = {Card:Card, Title:Title};
+import Card_ from "./Card";
+import Title_ from "./Title";
+declare namespace card {
+    class Card extends Card_ {}
+    class Title extends Title_{}
+
+}
 export default card;

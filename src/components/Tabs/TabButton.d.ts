@@ -13,7 +13,7 @@ declare const _TabButtonProps: {
      * 
      * Default: "duration-100 relative overflow-hidden text-center w-full h-full p-4 cursor-pointer flex mx-auto items-center text-sm h-full"
      */
-    classes?: string;
+    classes?: string|((s:string)=>string);
     /** Icon to show at button.
      * 
      * Default: empty string
@@ -52,7 +52,7 @@ declare const _TabButtonProps: {
      * 
      * Default: "flex flex-col items-center content-center mx-auto"
      */
-    tabClasses?: string;
+    tabClasses?: string|((s:string)=>string);
 } & SvelteAllProps;
 declare const _TabButtonEvents: {
     click: MouseEvent;

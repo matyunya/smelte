@@ -27,7 +27,7 @@ declare const _ListProps: {
      * Default false
      */
     select?: boolean;
-    classes?: string;
+    classes?: string|((s:string)=>string);
     /** -not implemented - Is navigation drawer list	 */
     navigation?:boolean;
 } & SvelteAllProps;
