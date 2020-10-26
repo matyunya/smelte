@@ -162,6 +162,9 @@
       bind:value
       on:change
       on:input
+      on:keydown
+      on:keypress
+      on:keyup
       {disabled}
       on:click
       on:focus
@@ -174,6 +177,9 @@
       class={iClasses}
       on:change
       on:input
+      on:keydown
+      on:keypress
+      on:keyup
       {disabled}
       on:click
       on:focus
@@ -189,6 +195,9 @@
       class="{iClasses}"
       on:change
       on:input
+      on:keydown
+      on:keypress
+      on:keyup
       {disabled}
       on:click
       on:blur
