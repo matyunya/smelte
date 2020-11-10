@@ -16,6 +16,7 @@ const postcssProcessor = ({
   postcss = [],
   whitelist = defaultWhitelist,
   whitelistPatterns = defaultWhitelistPatterns,
+  whitelistPatternsChildren = defaultWhitelistPatterns,
   purge = false
 }) => {
   const tailwindConfig = require("./tailwind.config.js")(tailwind);
@@ -40,7 +41,8 @@ const postcssProcessor = ({
           }
         ],
         whitelist: whitelist.filter(Boolean),
-        whitelistPatterns: whitelistPatterns.filter(Boolean)
+        whitelistPatterns: whitelistPatterns.filter(Boolean),
+        whitelistPatternsChildren: whitelistPatternsChildren.filter(Boolean)
       })
   ].filter(Boolean);
 };

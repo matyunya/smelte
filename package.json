@@ -1,7 +1,7 @@
 {
   "name": "smelte",
   "description": "UI framework for Svelte using Tailwind CSS",
-  "version": "1.0.13",
+  "version": "1.0.18",
   "scripts": {
     "dev": "sapper dev -p 7777",
     "build": "rollup -c --config rollup-publish.config.js",
@@ -26,6 +26,7 @@
   ],
   "module": "dist/module.js",
   "main": "dist/index.js",
+  "types": "src/index.d.ts",
   "browserslist": "last 3 version",
   "svelte": "src/index.js",
   "dependencies": {
@@ -38,8 +39,9 @@
     "postcss-input-range": "^4.0.0",
     "postcss-url": "^8.0.0",
     "rollup-plugin-postcss": "^2.0.3",
-    "svelte": "^3.23.2",
+    "svelte": "^3.24.0",
     "svelte-preprocess": "^3.9.11",
+    "svelte-typed-component": "^1.1.1",
     "svelte-waypoint": "^0.1.4",
     "tailwind-css-variables": "^2.0.3",
     "tailwindcss": "^1.4.6",

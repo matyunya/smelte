@@ -16,7 +16,32 @@ const o = (value, name) => ({
 
 const white = tinycolor("#ffffff");
 
+function buildPaletteByVarColor(varColor) {
+  return {
+    "50": `var(${varColor}-50)`,
+    "200": `var(${varColor}-200)`,
+    "300": `var(${varColor}-300)`,
+    "400": `var(${varColor}-400)`,
+    "500": `var(${varColor}-500)`,
+    "600": `var(${varColor}-600)`,
+    "700": `var(${varColor}-700)`,
+    "800": `var(${varColor}-800)`,
+    "900": `var(${varColor}-900)`,
+    transLight: `var(${varColor}-transLight)`,
+    trans: `var(${varColor}-trans)`,
+    transDark: `var(${varColor}-transDark)`,
+    a100: `var(${varColor}-a100)`,
+    a200: `var(${varColor}-a200)`,
+    a400: `var(${varColor}-a400)`,
+    a700: `var(${varColor}-a700)`
+  };
+}
+
 function buildPalette(hex) {
+  const varColorMatch = hex.match(/var\((?<color>[^\)]+)/);
+  if (!!varColorMatch) {
+    return buildPaletteByVarColor(varColorMatch.groups.color);
+  }
   const baseDark = multiply(tinycolor(hex).toRgb(), tinycolor(hex).toRgb());
   const baseTriad = tinycolor(hex).tetrad();
 

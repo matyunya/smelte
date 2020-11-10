@@ -25,9 +25,9 @@
   let selectedItems = [];
 
   function toggle(i) {
-    return v => v.detail
-      ? selectedItems.push(i)
-      : selectedItems = selectedItems.filter(si => si !== i);
+    return v => selectedItems = v.detail
+      ? selectedItems.concat(i)
+      : selectedItems.filter(si => si !== i);
   }
 
   $: selectedLabel = selectedItems.map(i => i.text).join(", ");
@@ -74,7 +74,7 @@
   <div slot="options" class="elevation-3 rounded px-2 py-4 mt-0" on:click|stopPropagation>
       {#each items as item}
         <Checkbox
-          value={selectedItems.includes(item)}
+          checked={selectedItems.includes(item)}
           class="block my-2"
           color="error"
           label={item.text}
