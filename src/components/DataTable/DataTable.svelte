@@ -15,8 +15,7 @@
 
   const classesDefault = "elevation-3 relative text-sm overflow-x-auto dark:bg-dark-500";
 
-
-
+  function defaultHeaderClick() { console.log('default header click') }
 
   export let data = [];
   export let columns = Object.keys(data[0] || {})
@@ -38,9 +37,12 @@
   export let editableClasses = i => i;
   export let paginatorProps = null;
   export let classes = classesDefault;
+  export let customHeaderClick = false;
+  export let headerClick = defaultHeaderClick;
+  export let showSort = false;
+  export let sortBy = null;
 
   let table = "";
-  let sortBy = null;
 
   $: {
     perPage = pagination ? perPage : data.length;
@@ -64,16 +66,17 @@
 <table class={c} bind:this={table}>
   <thead class="items-center">
     {#each columns as column, i}
-      <slot name="header">
         <Header
           class={headerClasses}
           {column}
           bind:asc
           bind:sortBy
           {sortable}
+          {showSort}
           {editing}
+          {customHeaderClick}
+          on:click={headerClick}
         />
-      </slot>
     {/each}
   </thead>
   {#if loading && !hideProgress}

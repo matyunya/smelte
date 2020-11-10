@@ -14,6 +14,8 @@
   export let sortBy = false;
   export let sortable = true;
   export let editing = false;
+  export let customHeaderClick = false;
+  export let showSort = false;
 
   const dispatch = createEventDispatcher();
 
@@ -49,6 +51,12 @@
   class={c}
   class:cursor-pointer={sortable || column.sortable}
   on:click={() => {
+    if (customHeaderClick && !!column.sortable) {
+      sortBy = column;
+      asc = sortBy === column ? !asc : false;
+      dispatch("click");
+      return;
+    }
     if (column.sortable === false || !sortable) return;
     dispatch("sort", column);
 
@@ -57,17 +65,37 @@
     sortBy = column;
   }}
 >
-  <div class={headerColumnClass(column)}>
-    {#if sortable && column.sortable !== false && !column.iconAfter}
+  {#if showSort}
+    <div class={headerColumnClass(column)}>
+      {#if sortable && column.sortable !== false && !column.iconAfter}
+        {#if sortBy === column}
+          <span class:asc={!asc}>
+            <Icon small color="text-gray-400 dark:text-gray-100">arrow_downward</Icon>
+          </span>
+        {/if}
+      {/if}
+      <span>{column.label || column.field}</span>
+      {#if sortable && column.sortable !== false && !!column.iconAfter}
+        {#if sortBy === column}
+          <span class:asc={!asc}>
+            <Icon small color="text-gray-400 dark:text-gray-100">arrow_downward</Icon>
+          </span>
+        {/if}
+      {/if}
+    </div>
+  {:else}
+    <div class={headerColumnClass(column)}>
+      {#if sortable && column.sortable !== false && !column.iconAfter}
       <span class="sort" class:asc={!asc && sortBy === column}>
         <Icon small color="text-gray-400 dark:text-gray-100">arrow_downward</Icon>
       </span>
-    {/if}
-    <span>{column.label || column.field}</span>
-    {#if sortable && column.sortable !== false && !!column.iconAfter}
+      {/if}
+      <span>{column.label || column.field}</span>
+      {#if sortable && column.sortable !== false && !!column.iconAfter}
       <span class="sort" class:asc={!asc && sortBy === column}>
         <Icon small color="text-gray-400 dark:text-gray-100">arrow_downward</Icon>
       </span>
-    {/if}
-  </div>
+      {/if}
+    </div>
+  {/if}
 </th>
