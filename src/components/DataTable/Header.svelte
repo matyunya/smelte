@@ -5,10 +5,7 @@
 
   const classesDefault = "capitalize duration-100 text-gray-600 text-xs hover:text-black dark-hover:text-white p-3 font-normal text-right";
 
-
   export let classes = classesDefault;
-
-
   export let column = {};
   export let asc = false;
   export let sortBy = false;
