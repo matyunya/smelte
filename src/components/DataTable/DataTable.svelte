@@ -15,7 +15,8 @@
 
   const classesDefault = "elevation-3 relative text-sm overflow-x-auto dark:bg-dark-500";
 
-  function defaultHeaderClick() { console.log('default header click') }
+
+
 
   export let data = [];
   export let columns = Object.keys(data[0] || {})
@@ -55,29 +56,29 @@
   let editing = false;
 
   const cb = new ClassBuilder(classes, classesDefault);
-  $: c = cb
-    .flush()
-    .add(classes, true, classesDefault)
-    .add($$props.class)
-    .get();
+    $: c = cb
+      .flush()
+      .add(classes, true, classesDefault)
+      .add($$props.class)
+      .get();
 </script>
 
 <table class={c} bind:this={table}>
   <thead class="items-center">
-  {#each columns as column, i}
-    <slot name="header">
-      <Header
-              class={headerClasses}
-              {column}
-              bind:asc
-              bind:sortBy
-              {sortable}
-              {showSort}
-              {editing}
-              on:sort={sort}
-      />
-    </slot>
-  {/each}
+    {#each columns as column, i}
+      <slot name="header">
+        <Header
+          class={headerClasses}
+          {column}
+          bind:asc
+          bind:sortBy
+          {sortable}
+          {editing}
+          {showSort}
+          on:sort={sort}
+        />
+      </slot>
+    {/each}
   </thead>
   {#if loading && !hideProgress}
     <div class="absolute w-full" transition:slide>
@@ -85,33 +86,33 @@
     </div>
   {/if}
   <tbody>
-  {#each sorted as item, index}
-    <slot name="item">
-      <Row
-              bind:editing
-              {index}
-              {item}
-              {columns}
-              {editable}
-              {editableClasses}
-              on:update
-      />
-    </slot>
-  {/each}
+    {#each sorted as item, index}
+      <slot name="item">
+        <Row
+          bind:editing
+          {index}
+          {item}
+          {columns}
+          {editable}
+          {editableClasses}
+          on:update
+        />
+      </slot>
+    {/each}
   </tbody>
   {#if pagination}
     <slot name="pagination">
       <Pagination
-              bind:page
-              bind:perPage
-              class={paginationClasses}
-              {perPageOptions}
-              {scrollToTop}
-              {paginatorProps}
-              {offset}
-              {pagesCount}
-              {table}
-              total={data.length}
+        bind:page
+        bind:perPage
+        class={paginationClasses}
+        {perPageOptions}
+        {scrollToTop}
+        {paginatorProps}
+        {offset}
+        {pagesCount}
+        {table}
+        total={data.length}
       />
     </slot>
   {/if}
