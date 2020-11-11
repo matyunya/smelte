@@ -21,7 +21,10 @@
       .replace("text-gray-700", ""),
   };
 
+
   export let classes = classesDefault;
+
+
   export let perPage = 0;
   export let page = 0;
   export let offset = 0;
@@ -30,8 +33,7 @@
   export let scrollToTop = false;
   export let table = null;
   export let total = 0;
-  export let showPerPageOptions = true;
-  export let customPaginationClick = false;
+
   export let paginatorProps = false;
 
   const dispatch = createEventDispatcher();
@@ -45,51 +47,43 @@
 </script>
 
 <tfoot>
-  <tr>
-    <td colspan="100%" class="border-none">
-      <div class={c}>
-        <Spacer />
-        {#if showPerPageOptions}
-          <div class="mr-1 py-1">
-          Rows per page:
-          </div>
-          <Select
-            class="w-16 h-8 mb-5"
-            remove="select"
-            replace={{ "pt-6": "pt-4" }}
-            inputWrapperClasses={(c) => c.replace("mt-2", "").replace("pb-6", "")}
-            appendClasses={(c) => c.replace("pt-4", "pt-3").replace("pr-4", "pr-2")}
-            noUnderline
-            dense
-            bind:value={perPage}
-            items={perPageOptions}
-          />
-        {/if}
-        <Spacer />
-        <div>{offset}-{offset + perPage > total ? total : offset + perPage} of {total}</div>
-        <Button
-          disabled={(page - 1) < 1}
-          icon="keyboard_arrow_left"
-          {...(paginatorProps || paginatorPropsDefault)}
-          on:click={() => {
+<tr>
+  <td colspan="100%" class="border-none">
+    <div class={c}>
+      <Spacer />
+      <div class="mr-1 py-1">
+        Rows per page:
+      </div>
+      <Select
+              class="w-16 h-8 mb-5"
+              remove="select"
+              replace={{ "pt-6": "pt-4" }}
+              inputWrapperClasses={(c) => c.replace("mt-2", "").replace("pb-6", "")}
+              appendClasses={(c) => c.replace("pt-4", "pt-3").replace("pr-4", "pr-2")}
+              noUnderline
+              dense
+              bind:value={perPage}
+              items={perPageOptions}
+      />
+      <Spacer />
+      <div>{offset}-{offset + perPage > total ? total : offset + perPage} of {total}</div>
+      <Button
+              disabled={(page - 1) < 1}
+              icon="keyboard_arrow_left"
+              {...(paginatorProps || paginatorPropsDefault)}
+              on:click={() => {
             page -= 1;
             if (scrollToTop) table.scrollIntoView({ behavior: "smooth" });
-            if (customPaginationClick) {
-              dispatch("clickBack");
-            }
           }} />
-        <Button
-          disabled={page === pagesCount}
-          icon="keyboard_arrow_right"
-          {...(paginatorProps || paginatorPropsDefault)}
-          on:click={() => {
+      <Button
+              disabled={page === pagesCount}
+              icon="keyboard_arrow_right"
+              {...(paginatorProps || paginatorPropsDefault)}
+              on:click={() => {
             page += 1;
             if (scrollToTop) table.scrollIntoView({ behavior: "smooth" });
-            if (customPaginationClick) {
-              dispatch("clickForward");
-            }
           }} />
-        </div>
-      </td>
-    </tr>
-  </tfoot>
+    </div>
+  </td>
+</tr>
+</tfoot>

@@ -16,8 +16,6 @@
   const classesDefault = "elevation-3 relative text-sm overflow-x-auto dark:bg-dark-500";
 
   function defaultHeaderClick() { console.log('default header click') }
-  function defaultPaginationClickForward() { console.log('default pagination click forward') }
-  function defaultPaginationClickBack() { console.log('default pagination click back') }
 
   export let data = [];
   export let columns = Object.keys(data[0] || {})
@@ -42,9 +40,6 @@
   export let customSort = false;
   export let customHeaderClick = false;
   export let headerClick = defaultHeaderClick;
-  export let customPaginationClick = false;
-  export let paginationClickForward = defaultPaginationClickForward;
-  export let paginationClickBack = defaultPaginationClickBack;
   export let showSort = false;
   export let sortBy = null;
   export let showPerPageOptions = true;
@@ -125,9 +120,6 @@
         {table}
         {total}
         {showPerPageOptions}
-        {customPaginationClick}
-        on:clickForward={paginationClickForward}
-        on:clickBack={paginationClickBack}
       />
     </slot>
   {/if}
