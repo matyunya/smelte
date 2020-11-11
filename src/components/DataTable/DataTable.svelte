@@ -42,21 +42,15 @@
   export let headerClick = defaultHeaderClick;
   export let showSort = false;
   export let sortBy = null;
-  export let showPerPageOptions = true;
-  export let pagesCount;
-  export let total;
 
   let table = "";
 
   $: {
-    if (!total) {
-      total = data.length;
-    }
     perPage = pagination ? perPage : data.length;
-    pagesCount = Math.ceil(total / perPage);
   }
   $: offset = (page * perPage) - perPage;
   $: sorted = (customSort) ? data : sort(data, sortBy, asc).slice(offset, perPage + offset);
+  $: pagesCount = Math.ceil(data.length / perPage);
 
   const dispatch = createEventDispatcher();
 
@@ -73,6 +67,7 @@
 <table class={c} bind:this={table}>
   <thead class="items-center">
     {#each columns as column, i}
+      <slot name="header">
         <Header
           class={headerClasses}
           {column}
@@ -84,6 +79,7 @@
           {customHeaderClick}
           on:click={headerClick}
         />
+      </slot>
     {/each}
   </thead>
   {#if loading && !hideProgress}
@@ -118,8 +114,7 @@
         {offset}
         {pagesCount}
         {table}
-        {total}
-        {showPerPageOptions}
+        total={data.length}
       />
     </slot>
   {/if}
