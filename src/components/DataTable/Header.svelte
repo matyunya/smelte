@@ -17,6 +17,7 @@
   export let iconUp = 'arrow_upward';
   export let iconDown = 'arrow_downward';
   export let iconSortable = 'import_export';
+  export let remove = '';
 
   const dispatch = createEventDispatcher();
 
@@ -24,6 +25,7 @@
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
+    .remove(remove)
     .add($$props.class)
     .get();
 
@@ -64,9 +66,9 @@
     <span class={sortBy === column ? 'underline' : ''}>{column.label || column.field}</span>
     {#if sortable && column.sortable !== false && !!column.iconAfter}
       {#if sortBy === column}
-        <Icon small class="ml-1" color="text-gray-400 dark:text-gray-100">{asc ? iconUp : iconDown}</Icon>
+        <Icon small color="text-gray-400 dark:text-gray-100">{asc ? iconUp : iconDown}</Icon>
       {:else}
-        <Icon small class="ml-1" color="text-gray-400 dark:text-gray-100">{iconSortable}</Icon>
+        <Icon small color="text-gray-400 dark:text-gray-100">{iconSortable}</Icon>
       {/if}
     {/if}
   </div>

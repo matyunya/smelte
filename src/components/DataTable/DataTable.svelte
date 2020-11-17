@@ -34,6 +34,7 @@
   export let pagination = true;
   export let scrollToTop = false;
   export let headerClasses = i => i;
+  export let headerRemove = '';
   export let paginationClasses = i => i;
   export let editableClasses = i => i;
   export let paginatorProps = null;
@@ -74,6 +75,7 @@
           {column}
           bind:asc
           bind:sortBy
+          remove={headerRemove}
           {sortable}
           {editing}
           {iconUp}
