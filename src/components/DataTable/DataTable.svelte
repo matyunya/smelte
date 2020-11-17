@@ -39,7 +39,6 @@
   export let paginatorProps = null;
   export let classes = classesDefault;
   export let customSort = false;
-  export let showSort = false;
   export let sortBy = null;
 
   let table = "";
@@ -74,7 +73,6 @@
           bind:sortBy
           {sortable}
           {editing}
-          {showSort}
           on:sort={sort}
         />
       </slot>
