@@ -40,6 +40,9 @@
   export let classes = classesDefault;
   export let customSort = false;
   export let sortBy = null;
+  export let iconUp = 'arrow_upward';
+  export let iconDown = 'arrow_downward';
+  export let iconSortable = 'import_export';
 
   let table = "";
 
@@ -73,6 +76,9 @@
           bind:sortBy
           {sortable}
           {editing}
+          {iconUp}
+          {iconDown}
+          {iconSortable}
           on:sort={sort}
         />
       </slot>
