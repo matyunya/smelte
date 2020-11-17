@@ -14,6 +14,9 @@
   export let sortBy = false;
   export let sortable = true;
   export let editing = false;
+  export let iconUp = 'arrow_upward';
+  export let iconDown = 'arrow_downward';
+  export let iconSortable = 'import_export';
 
   const dispatch = createEventDispatcher();
 
@@ -53,17 +56,17 @@
   <div class={headerColumnClass(column)}>
     {#if sortable && column.sortable !== false && !column.iconAfter}
       {#if sortBy === column}
-        <Icon small color="text-gray-400 dark:text-gray-100">{asc ? 'arrow_upward' : 'arrow_downward'}</Icon>
+        <Icon small color="text-gray-400 dark:text-gray-100">{asc ? iconUp : iconDown}</Icon>
       {:else}
-        <Icon small color="text-gray-400 dark:text-gray-100">import_export</Icon>
+        <Icon small color="text-gray-400 dark:text-gray-100">{iconSortable}</Icon>
       {/if}
     {/if}
     <span class={sortBy === column ? 'underline' : ''}>{column.label || column.field}</span>
     {#if sortable && column.sortable !== false && !!column.iconAfter}
       {#if sortBy === column}
-        <Icon small class="ml-1" color="text-gray-400 dark:text-gray-100">{asc ? 'arrow_upward' : 'arrow_downward'}</Icon>
+        <Icon small class="ml-1" color="text-gray-400 dark:text-gray-100">{asc ? iconUp : iconDown}</Icon>
       {:else}
-        <Icon small class="ml-1" color="text-gray-400 dark:text-gray-100">import_export</Icon>
+        <Icon small class="ml-1" color="text-gray-400 dark:text-gray-100">{iconSortable}</Icon>
       {/if}
     {/if}
   </div>
