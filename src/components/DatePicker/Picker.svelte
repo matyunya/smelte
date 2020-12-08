@@ -52,6 +52,7 @@
   $: lastDayOfMonth = new Date(temp.getFullYear(), temp.getMonth() + 1, 0);
   $: firstDayOfMonth = new Date(temp.getFullYear(), temp.getMonth(), 1);
   $: isCurrentMonth = (new Date()).getMonth() === temp.getMonth();
+  $: isCurrentYear = (new Date()).getYear() === temp.getYear();
 
   function dayIsSelected(day) {
     if (!value) return false;
@@ -64,7 +65,7 @@
   $: daysInMonth = [...new Array(lastDayOfMonth.getDate() || 0)]
       .map((i, j) => ({
         day: j + 1,
-        isToday: isCurrentMonth && j + 1 === today,
+        isToday: isCurrentYear && isCurrentMonth && j + 1 === today,
         selected: dayIsSelected(j + 1),
       }));
 
