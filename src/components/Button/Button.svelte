@@ -19,6 +19,7 @@
   export let color = "primary";
   export let href = null;
   export let fab = false;
+  export let type = "button";
 
   export let remove = "";
   export let add = "";
@@ -136,6 +137,7 @@
       use:ripple
       class={classes}
       {...props}
+      {type}
       {disabled}
       on:click={() => (value = !value)}
       on:click
@@ -153,6 +155,7 @@
     use:ripple
     class={classes}
     {...props}
+    {type}
     {disabled}
     on:click={() => (value = !value)}
     on:click
