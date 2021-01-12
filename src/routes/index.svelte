@@ -32,7 +32,7 @@
   Hit up the components
   <a class="a" href="/components">introduction</a>
   or please join our
-  <a class="a" href="https://discord.gg/32e2zU6">Discord chat</a>
+  <a class="a" href="https://discord.com/invite/nZc64MMdkU">Discord chat</a>
   for a lovely chat!
 </p>
 
