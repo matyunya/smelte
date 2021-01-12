@@ -40,7 +40,7 @@
 To get you started you need to add Smelte to your dependencies with your
 favorite package manager.
 <Code code="$ npm install smelte or yarn add smelte" />
-Then you need to add Smelte Rollup plugin (Webpack is on its way).
+Then add the Smelte Rollup plugin (after svelte but before css). Webpack support coming soon.
 <Code
   code={`const smelte=require("smelte/rollup-plugin-smelte");
 
