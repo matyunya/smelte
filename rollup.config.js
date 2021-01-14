@@ -26,6 +26,7 @@ export default {
   client: {
     input: config.client.input(),
     output: config.client.output(),
+    export: false,
     onwarn,
     plugins: [
       replace({
