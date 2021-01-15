@@ -81,7 +81,7 @@ module.exports = (config = {}) =>
 
   const old_writeBundle = pcss.writeBundle
   pcss.writeBundle = function() {
-    old_writeBundle?.apply(this, arguments)
+    if (old_writeBundle) old_writeBundle.apply(this, arguments)
     // arguments[0]: OutputOptions
     moveGlobalCssToStatic(arguments[0], config.output || defaultOutput)
   }
