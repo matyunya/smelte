@@ -47,10 +47,44 @@ const postcssProcessor = ({
   ].filter(Boolean);
 };
 
+function moveGlobalCssToStatic({ dir }, output) {
+  if (!dir) return
+
+  const fs = require('fs')
+  const file = path.basename(output)
+  if (fs.existsSync(path.resolve(dir, file))) {
+    fs.copyFileSync(path.resolve(dir, file), path.resolve(output))
+    fs.unlinkSync(path.resolve(dir, file))
+  
+    console.log(
+      `rollup-plugin-smelte: 
+        moved ${file} 
+        from ${path.resolve(dir, file)} 
+        to ${path.resolve(output)}`
+    )
+  }
+}
+
 const plugins = config => postcssProcessor(config || {});
 
 module.exports = (config = {}) =>
-  postcss({
+{
+  const defaultOutput = "./static/global.css"
+  const pcss = postcss({
     plugins: plugins(config),
-    extract: path.resolve(config.output || "./static/global.css")
+    extract: path.basename(config.output || defaultOutput)
   });
+
+  // since rollup v2 we can't extract css outside of the defined output, so to keep the impact to this
+  // plugin minimal I injected some code to the "writeBundle" method (which should be called after "generateBundle")
+  // to move the global.css file located under rollup.config.js's rollup.output to config parameter's output
+
+  const old_writeBundle = pcss.writeBundle
+  pcss.writeBundle = function() {
+    old_writeBundle?.apply(this, arguments)
+    // arguments[0]: OutputOptions
+    moveGlobalCssToStatic(arguments[0], config.output || defaultOutput)
+  }
+
+  return pcss;
+}
