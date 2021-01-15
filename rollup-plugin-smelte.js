@@ -47,19 +47,24 @@ const postcssProcessor = ({
   ].filter(Boolean);
 };
 
-function moveGlobalCssToStatic({ dir }, output) {
-  if (!dir) return
+function moveGlobalCssToStatic({ dir, file }, output) {
+  let directory;
+  if (dir && !file) { // single file asset
+    directory = dir;
+  } else if (!dir && file) { // chunks
+    directory = path.dirname(file);
+  }
 
   const fs = require('fs')
-  const file = path.basename(output)
-  if (fs.existsSync(path.resolve(dir, file))) {
-    fs.copyFileSync(path.resolve(dir, file), path.resolve(output))
-    fs.unlinkSync(path.resolve(dir, file))
+  const cssFile = path.basename(output)
+  if (fs.existsSync(path.resolve(directory, cssFile))) {
+    fs.copyFileSync(path.resolve(directory, cssFile), path.resolve(output))
+    fs.unlinkSync(path.resolve(directory, cssFile))
   
     console.log(
       `rollup-plugin-smelte: 
-        moved ${file} 
-        from ${path.resolve(dir, file)} 
+        moved ${cssFile} 
+        from ${path.resolve(directory, cssFile)} 
         to ${path.resolve(output)}`
     )
   }
@@ -81,7 +86,9 @@ module.exports = (config = {}) =>
 
   const old_writeBundle = pcss.writeBundle
   pcss.writeBundle = function() {
-    if (old_writeBundle) old_writeBundle.apply(this, arguments)
+    if (old_writeBundle) {
+      old_writeBundle.apply(this, arguments)
+    }
     // arguments[0]: OutputOptions
     moveGlobalCssToStatic(arguments[0], config.output || defaultOutput)
   }
