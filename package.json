@@ -68,7 +68,6 @@
     "prettier-plugin-svelte": "^0.6.0",
     "prismjs": "^1.23.0",
     "rollup": "^2.36.1",
-    "rollup-plugin-alias": "^1.5.2",
     "rollup-plugin-analyzer": "^3.3.0",
     "rollup-plugin-bundle-size": "^1.0.3",
     "rollup-plugin-includepaths": "^0.2.4",

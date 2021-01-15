@@ -8,7 +8,6 @@ import { string } from "rollup-plugin-string";
 import json from "rollup-plugin-json";
 import config from "sapper/config/rollup.js";
 import includePaths from "rollup-plugin-includepaths";
-import alias from "rollup-plugin-alias";
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
@@ -47,7 +46,6 @@ export default {
 			}),
       commonjs(),
       includePaths({ paths: ["./src", "./"] }),
-      alias({ smelte: "src/index.js" }),
 
       !legacy &&
         babel({
@@ -139,7 +137,6 @@ export default {
       resolve({
 				dedupe: ['svelte']
 			}),
-      alias({ smelte: "src/index.js" }),
       includePaths({ paths: ["./src", "./"] }),
       commonjs({ sourceMap: false })
     ],
