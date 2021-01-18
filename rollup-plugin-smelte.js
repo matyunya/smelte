@@ -55,6 +55,10 @@ function moveGlobalCssToStatic({ dir, file }, output) {
     directory = path.dirname(file);
   }
 
+  if (directory === path.dirname(output)) {
+    return;
+  }
+
   const fs = require('fs')
   const cssFile = path.basename(output)
   if (fs.existsSync(path.resolve(directory, cssFile))) {
