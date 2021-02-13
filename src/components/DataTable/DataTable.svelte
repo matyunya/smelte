@@ -13,7 +13,7 @@
 
   import defaultSort from "./sort.js";
 
-  const classesDefault = "elevation-3 relative text-sm overflow-x-auto dark:bg-dark-500";
+  const classesDefault = "shadow relative text-sm overflow-x-auto dark:bg-dark-500";
 
 
 

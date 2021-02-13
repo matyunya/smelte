@@ -148,7 +148,7 @@ input[type="range"]:disabled {
 
 input[type="range"]::range-thumb {
   -webkit-appearance: none;
-  @apply rounded-full p-1 w-5 h-5 elevation-3;
+  @apply rounded-full p-1 w-5 h-5 shadow;
   background-color: var(--bg);
 }
 
@@ -165,7 +165,7 @@ input[type="range"]:focus {
 
 input[type="range"]:focus::range-thumb {
   -webkit-appearance: none;
-  @apply rounded-full p-1 w-5 h-5 elevation-3;
+  @apply rounded-full p-1 w-5 h-5 shadow;
   margin-top: -0.5rem;
   background-color: var(--bg-focus);
 }

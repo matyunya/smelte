@@ -1,5 +1,5 @@
 <script>
-  import Button from "components/Button"; 
+  import Button from "components/Button";
   import Code from "docs/Code.svelte";
 </script>
 
@@ -12,7 +12,7 @@
   utility-first nature of Tailwind. So for the most part components expose all of
   their elements' classes as strings like, for instance, Button component has
   "disabledClasses" prop defaulting to<br>
-  <span class="code-inline">bg-gray-300 text-gray-500 dark:bg-dark-400 elevation-none pointer-events-none hover:bg-gray-300 cursor-default</span>
+  <span class="code-inline">bg-gray-300 text-gray-500 dark:bg-dark-400 pointer-events-none hover:bg-gray-300 cursor-default</span>
 </p>
 
 <Code code="<Button disabled>Disabled button</Button>" />
@@ -23,17 +23,17 @@
 
 <p>
   Say you need to adjust that background color, you may the "disabledClasses" prop<br>
-  <span class="code-inline">bg-gray-100 text-gray-700 dark:bg-dark-100 elevation-none pointer-events-none hover:bg-gray-300 cursor-default</span>
+  <span class="code-inline">bg-gray-100 text-gray-700 dark:bg-dark-100 pointer-events-none hover:bg-gray-300 cursor-default</span>
 </p>
 
 <Code code={`<Button
-  disabledClasses="bg-gray-100 text-gray-500 dark:bg-dark-100 elevation-none pointer-events-none hover:bg-gray-300 cursor-default"
+  disabledClasses="bg-gray-100 text-gray-500 dark:bg-dark-100 pointer-events-none hover:bg-gray-300 cursor-default"
   disabled>Disabled button
 </Button>`} />
 
 <div class="pt-8 pb-16">
   <Button
-    disabledClasses="bg-gray-100 text-gray-500 dark:bg-dark-100 elevation-none pointer-events-none hover:bg-gray-300 cursor-default"
+    disabledClasses="bg-gray-100 text-gray-500 dark:bg-dark-100 pointer-events-none hover:bg-gray-300 cursor-default"
     disabled>Disabled button
   </Button>
 </div>

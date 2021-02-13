@@ -6,7 +6,7 @@
   import { ClassBuilder } from "../../utils/classes.js";
   import { hideListAction } from '../../utils/hide-list-action';
 
-  const optionsClassesDefault = "absolute left-0 bg-white rounded elevation-3 w-full z-20 dark:bg-dark-500";
+  const optionsClassesDefault = "absolute left-0 bg-white rounded shadow w-full z-20 dark:bg-dark-500";
   const classesDefault = "cursor-pointer relative pb-4";
 
   const noop = i => i;
@@ -104,10 +104,10 @@
     .add(optionsClasses, true, optionsClassesDefault)
     .add("rounded-t-none", !outlined)
     .get();
-    
+
   $: if (dense) {
     appendClasses = (i) => i.replace('pt-4', 'pt-3');
-  }  
+  }
 </script>
 
 <div class={c} use:hideListAction={onHideListPanel}>

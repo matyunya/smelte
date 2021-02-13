@@ -70,7 +70,7 @@
     { prop: "disabled", description: "Disabled state", default: false, type: "Boolean", },
     { prop: "classes", description: "Classes to pass down to checkbox wrapper", default: "inline-flex block items-center mb-2 cursor-pointer z-0", type: "String", },
     { prop: "trackClasses", description: "Track classes", default: "relative w-10 h-auto z-0 rounded-full overflow-visible flex items-center justify-center", type: "String" },
-    { prop: "thumbClasses", description: "Thumb classes", default: "rounded-full p-2 w-5 h-5 absolute elevation-3 duration-100", type: "String" },
+    { prop: "thumbClasses", description: "Thumb classes", default: "rounded-full p-2 w-5 h-5 absolute shadow duration-100", type: "String" },
     { prop: "labelClasses", description: "Tabel classes", default: "pl-2 cursor-pointer", type: "String" },
   ]}
 />

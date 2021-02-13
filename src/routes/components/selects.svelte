@@ -71,7 +71,7 @@
   label="Categories"
   {items}
 >
-  <div slot="options" class="elevation-3 rounded px-2 py-4 mt-0" on:click|stopPropagation>
+  <div slot="options" class="shadow rounded px-2 py-4 mt-0" on:click|stopPropagation>
       {#each items as item}
         <Checkbox
           checked={selectedItems.includes(item)}

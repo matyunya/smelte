@@ -30,7 +30,7 @@
   const dispatch = createEventDispatcher();
 
   const classesDefault = `pointer-events-auto flex absolute py-2 px-4 z-30 mb-4 content-between mx-auto
-      rounded items-center elevation-2 h-12`;
+      rounded items-center shadow-sm h-12`;
   const wrapperDefault = "fixed w-full h-full flex items-center justify-center pointer-events-none";
 
   export let classes = wrapperDefault;

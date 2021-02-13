@@ -33,8 +33,8 @@
   const iconDefault = 'p-4 flex items-center select-none';
   const fabDefault = 'hover:bg-transparent';
   const smallDefault = 'pt-1 pb-1 pl-2 pr-2 text-xs';
-  const disabledDefault = 'bg-gray-300 text-gray-500 dark:bg-dark-400 elevation-none pointer-events-none hover:bg-gray-300 cursor-default';
-  const elevationDefault = 'hover:elevation-5 elevation-3';
+  const disabledDefault = 'bg-gray-300 text-gray-500 dark:bg-dark-400 pointer-events-none hover:bg-gray-300 cursor-default';
+  const elevationDefault = 'hover:shadow shadow';
 
   export let classes = classesDefault;
   export let basicClasses = basicDefault;

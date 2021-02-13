@@ -5,7 +5,7 @@
   import { Scrim } from "../Util";
   import { ClassBuilder } from "../../utils/classes.js";
 
-  const classesDefault = "items-center z-50 rounded bg-white dark:bg-dark-400 p-4 elevation-4";
+  const classesDefault = "items-center z-50 rounded bg-white dark:bg-dark-400 p-4 shadow";
   const titleClassesDefault = "text-lg font-bold pb-4";
   const actionsClassesDefault = "flex w-full justify-end pt-4";
 

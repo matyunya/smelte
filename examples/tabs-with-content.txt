@@ -12,7 +12,7 @@
 <div style="max-width: 400px">
   <Tabs
     selected="1"
-    class="bg-black elevation-10 mt-6 text-white rounded-t-lg"
+    class="bg-black shadow-sm mt-6 text-white rounded-t-lg"
     color="yellow-a200"
     let:selected={selected}
     {loading}
