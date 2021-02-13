@@ -14,6 +14,10 @@
   export let sortBy = false;
   export let sortable = true;
   export let editing = false;
+  export let iconUp = 'arrow_upward';
+  export let iconDown = 'arrow_downward';
+  export let iconSortable = 'import_export';
+  export let remove = '';
 
   const dispatch = createEventDispatcher();
 
@@ -21,6 +25,7 @@
   $: c = cb
     .flush()
     .add(classes, true, classesDefault)
+    .remove(remove)
     .add($$props.class)
     .get();
 
@@ -39,35 +44,32 @@
   }
 </script>
 
-<style>
-  th .asc {
-    transform: rotate(180deg);
-  }
-</style>
-
 <th
   class={c}
   class:cursor-pointer={sortable || column.sortable}
   on:click={() => {
-    if (column.sortable === false || !sortable) return;
-    dispatch("sort", column);
-
+  if (column.sortable === false || !sortable) return;
     editing = false;
     asc = sortBy === column ? !asc : false;
     sortBy = column;
+    dispatch("sort", column);
   }}
 >
   <div class={headerColumnClass(column)}>
     {#if sortable && column.sortable !== false && !column.iconAfter}
-      <span class="sort" class:asc={!asc && sortBy === column}>
-        <Icon small color="text-gray-400 dark:text-gray-100">arrow_downward</Icon>
-      </span>
+      {#if sortBy === column}
+        <Icon small color="text-gray-400 dark:text-gray-100">{asc ? iconUp : iconDown}</Icon>
+      {:else}
+        <Icon small color="text-gray-400 dark:text-gray-100">{iconSortable}</Icon>
+      {/if}
     {/if}
-    <span>{column.label || column.field}</span>
+    <span class={sortBy === column ? 'underline' : ''}>{column.label || column.field}</span>
     {#if sortable && column.sortable !== false && !!column.iconAfter}
-      <span class="sort" class:asc={!asc && sortBy === column}>
-        <Icon small color="text-gray-400 dark:text-gray-100">arrow_downward</Icon>
-      </span>
+      {#if sortBy === column}
+        <Icon small color="text-gray-400 dark:text-gray-100">{asc ? iconUp : iconDown}</Icon>
+      {:else}
+        <Icon small color="text-gray-400 dark:text-gray-100">{iconSortable}</Icon>
+      {/if}
     {/if}
   </div>
 </th>
