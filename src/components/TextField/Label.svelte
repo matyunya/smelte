@@ -22,10 +22,8 @@
   export let labelClasses = labelDefault;
 
   const {
-    bg,
     border,
     txt,
-    caret,
   } = utils(color);
 
   const l = new ClassBuilder(labelClasses, labelDefault);

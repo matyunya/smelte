@@ -1,5 +1,7 @@
+/* purgecss start ignore */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
+/* purgecss end ignore */
 @import "tailwindcss/utilities";
 
 h1,
@@ -74,7 +76,7 @@ caption,
 }
 
 button:focus, input:focus, li:focus, div:focus, textarea:focus {
-  @apply outline-none;
+  outline: none;
 }
 
 .list {

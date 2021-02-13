@@ -32,7 +32,7 @@
   export let iconClass = "";
   export let disabled = false;
 
-  const inputDefault = `duration-200 ease-in pb-2 pt-6 px-4 rounded-t text-black dark:text-gray-100 w-full`;
+  const inputDefault = "pb-2 pt-6 px-4 rounded-t text-black dark:text-gray-100 w-full";
   const classesDefault = "mt-2 mb-6 relative text-gray-600 dark:text-gray-100";
   const appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 text-gray-700 z-10";
   const prependDefault = "absolute left-0 top-0 pb-2 pl-2 pt-4 text-xs text-gray-700 z-10";
@@ -80,7 +80,6 @@
       .remove(caret(), error)
       .add(caret(), !error)
       .add(border(), focused && !error)
-      .add('border-gray-600', !error && !focused)
       .add('bg-gray-100 dark:bg-dark-600', !outlined)
       .add('bg-gray-300 dark:bg-dark-200', focused && !outlined)
       .remove('px-4', prepend)
