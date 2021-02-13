@@ -79,7 +79,7 @@
       .add('border-error-500 caret-error-500', error)
       .remove(caret(), error)
       .add(caret(), !error)
-      .add(border(), focused && !error)
+      .add(border(), outlined && focused && !error)
       .add('bg-gray-100 dark:bg-dark-600', !outlined)
       .add('bg-gray-300 dark:bg-dark-200', focused && !outlined)
       .remove('px-4', prepend)
