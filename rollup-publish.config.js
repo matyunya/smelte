@@ -1,8 +1,8 @@
 // import path from "path";
 import analyze from "rollup-plugin-analyzer";
 import bundleSize from "rollup-plugin-bundle-size";
-import commonjs from "rollup-plugin-commonjs";
-import resolve from "rollup-plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
 import { terser } from "rollup-plugin-terser";
 import pkg from "./package.json";

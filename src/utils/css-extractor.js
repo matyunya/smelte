@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 
 function flatten(arr) {
-  return arr.reduce(function (flat, toFlatten) {
+  return arr.reduce(function(flat, toFlatten) {
     return flat.concat(
       Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten
     );
@@ -37,15 +37,17 @@ function getComponent(name) {
 }
 
 function getComponentCodes(name) {
-  const root = [
-    "./node_modules/smelte/src/components"
-  ].filter(v => fs.existsSync(v));
-  return flatten(root.map(v => {
-    const dir = fs.readdirSync(v);
-    return dir
-      .filter(w => fs.readdirSync(path.join(v, w)).includes(name + ".svelte"))
-      .map(w => path.join(v, w, name + ".svelte"));
-  }));
+  const root = ["./node_modules/smelte/src/components"].filter(v =>
+    fs.existsSync(v)
+  );
+  return flatten(
+    root.map(v => {
+      const dir = fs.readdirSync(v);
+      return dir
+        .filter(w => fs.readdirSync(path.join(v, w)).includes(name + ".svelte"))
+        .map(w => path.join(v, w, name + ".svelte"));
+    })
+  );
 }
 
 function classesPerComponent(colors) {
@@ -62,28 +64,38 @@ function classesPerComponent(colors) {
   }, []);
 }
 
-
 // whitelist does not seem to work with custom extractors!?!
 // so hardcode it
 const whitelist = [
-  "html", "body", "stroke-primary", "mode-dark",
+  "html",
+  "body",
+  "stroke-primary",
+  "mode-dark",
   // /ripple/
-  "ripple", "ripple-normal", "ripple-centered",
+  "ripple",
+  "ripple-normal",
+  "ripple-centered",
   // /w\-.\/7/
-  ...flatten(["xl\:w", "lg\:w", "md\:w", "sm\:w", "w"].map(v => [1, 2, 3, 4, 5, 6].map(w => v + "-" + w + "\/7")))
-
-]
-module.exports = function extractor(content, ownColors = ["primary", "white", "gray"]) {
+  ...flatten(
+    ["xl:w", "lg:w", "md:w", "sm:w", "w"].map(v =>
+      [1, 2, 3, 4, 5, 6].map(w => v + "-" + w + "/7")
+    )
+  )
+];
+module.exports = function extractor(
+  content,
+  ownColors = ["primary", "white", "gray"]
+) {
   let ast;
   const usedColors = {};
   const usedComponents = new Set();
 
   try {
     ast = parse(content);
-  } catch { }
+  } catch {}
 
   walk(ast, {
-    enter: function (node) {
+    enter: function(node) {
       const color = getProp(node, "color");
 
       if (node.type === "InlineComponent") {
@@ -96,7 +108,6 @@ module.exports = function extractor(content, ownColors = ["primary", "white", "g
       }
 
       if (color && color[0].data) {
-
         if (!usedColors[node.name]) {
           usedColors[node.name] = new Set(ownColors);
         }
@@ -113,17 +124,12 @@ module.exports = function extractor(content, ownColors = ["primary", "white", "g
   // TODO: Each used component is crawled once per .svelte file.
   // Could improve performance by globally tracking which component/colors are
   // already checked
-  const recursiveCrawl = [...usedComponents].map(
-    v => {
-      const cont = getComponentCodes(v);
-      return cont.map(
-        w => extractor(
-          fs.readFileSync(w, { encoding: "utf-8" }),
-          usedColors[v]
-        )
-      );
-    }
-  )
+  const recursiveCrawl = [...usedComponents].map(v => {
+    const cont = getComponentCodes(v);
+    return cont.map(w =>
+      extractor(fs.readFileSync(w, { encoding: "utf-8" }), usedColors[v])
+    );
+  });
   return [
     ...flatten(recursiveCrawl),
     ...(content.match(/[A-Za-z0-9-_:\/]+/g) || []),

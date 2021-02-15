@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/npm/l/smelte.svg)](https://img.shields.io/npm/l/smelte.svg)
 [![downloads](https://img.shields.io/npm/dm/smelte.svg)](https://img.shields.io/npm/dm/smelte.svg)
 [![version](https://img.shields.io/npm/v/smelte.svg)](https://img.shields.io/npm/v/smelte.svg)
-[![Discord Chat](https://img.shields.io/discord/671589733356535818.svg)](https://discord.gg/)
+[![Discord Chat](https://img.shields.io/discord/671589733356535818.svg)](https://discord.gg/nZc64MMdkU)
 
 [Demo](http://smeltejs.com/)
 
@@ -21,7 +21,7 @@ To get you started you need to add Smelte to your dependencies with your favorit
 $ npm install smelte or yarn add smelte
 ```
 
-Then you need to add Smelte Rollup plugin (Webpack is on its way).
+Then add the Smelte Rollup plugin (after svelte but before css). Webpack support coming soon.
 
 ```js
 const smelte = require("smelte/rollup-plugin-smelte");

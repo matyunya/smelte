@@ -43,7 +43,7 @@
     .flush()
     .add('relative overflow-hidden flex items-center rounded-full px-2 py-1')
     .add('bg-transparent border', outlined)
-    .add('border-gray-400 border-solid hover:bg-gray-50 dark-hover:bg-dark-400 bg-gray-300 dark:bg-dark-600', !selected)
+    .add('border-gray-400 border-solid hover:bg-gray-100 dark-hover:bg-dark-400 bg-gray-300 dark:bg-dark-600', !selected)
     .add(`${border()} dark:${border('800')} ${txt()} ${bg(100)} hover:${bg(50)}`, selected)
     .remove(remove)
     .replace(replace)

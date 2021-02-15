@@ -1,14 +1,13 @@
-import resolve from "rollup-plugin-node-resolve";
-import replace from "rollup-plugin-replace";
-import commonjs from "rollup-plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
+import replace from "@rollup/plugin-replace";
+import commonjs from "@rollup/plugin-commonjs";
 import svelte from "rollup-plugin-svelte";
-import babel from "rollup-plugin-babel";
+import babel from "@rollup/plugin-babel";
 import { terser } from "rollup-plugin-terser";
 import { string } from "rollup-plugin-string";
 import json from "rollup-plugin-json";
 import config from "sapper/config/rollup.js";
 import includePaths from "rollup-plugin-includepaths";
-import alias from "rollup-plugin-alias";
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
@@ -17,16 +16,14 @@ const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 const smelte = require("./rollup-plugin-smelte");
 
 const onwarn = (warning, onwarn) =>
-  (warning.code === "CIRCULAR_DEPENDENCY" &&
-    /[/\\]@sapper[/\\]/.test(warning.message)) ||
-  warning.message.includes("Use of eval is strongly discouraged") ||
-  onwarn(warning);
+	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
+	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
+	onwarn(warning);
 
 export default {
   client: {
     input: config.client.input(),
     output: config.client.output(),
-    onwarn,
     plugins: [
       replace({
         "process.browser": true,
@@ -43,25 +40,32 @@ export default {
         hydratable: true
       }),
       !dev && smelte(),
-      resolve(),
+      resolve({
+				browser: true,
+				dedupe: ['svelte']
+			}),
       commonjs(),
       includePaths({ paths: ["./src", "./"] }),
-      alias({ smelte: "src/index.js" }),
 
       !legacy &&
         babel({
           extensions: [".js", ".mjs", ".html", ".svelte"],
           exclude: ["node_modules/@babel/**"],
+          babelHelpers: "runtime",
           plugins: [
             "@babel/plugin-syntax-dynamic-import",
-            "@babel/plugin-proposal-object-rest-spread"
-          ]
+            "@babel/plugin-proposal-object-rest-spread",
+            ['@babel/plugin-transform-runtime', {
+              useESModules: true
+            }]
+          ],
         }),
 
       legacy &&
         babel({
           extensions: [".js", ".mjs", ".html", ".svelte"],
           exclude: ["node_modules/@babel/**"],
+          babelHelpers: "runtime",
           presets: [
             [
               "@babel/preset-env",
@@ -69,20 +73,28 @@ export default {
                 targets: "> 0.25%"
               }
             ]
-          ]
+          ],
+          plugins: [
+            '@babel/plugin-syntax-dynamic-import',
+            ['@babel/plugin-transform-runtime', {
+              useESModules: true
+            }]
+          ],
+          babelHelpers: "runtime"
         }),
 
       !dev &&
         terser({
           module: true
         })
-    ]
+    ],
+    preserveEntrySignatures: 'strict',
+    onwarn,
   },
 
   server: {
     input: config.server.input(),
-    output: config.server.output(),
-    onwarn,
+    output: {...config.server.output(), exports: 'default'},
     plugins: [
       replace({
         "process.browser": false,
@@ -122,15 +134,18 @@ export default {
       string({
         include: "**/*.txt"
       }),
-      resolve(),
-      alias({ smelte: "src/index.js" }),
+      resolve({
+				dedupe: ['svelte']
+			}),
       includePaths({ paths: ["./src", "./"] }),
-      commonjs()
+      commonjs({ sourceMap: false })
     ],
     external: [].concat(
       require("module").builtinModules ||
         Object.keys(process.binding("natives"))
-    )
+    ),
+    preserveEntrySignatures: 'strict',
+    onwarn,
   },
 
   serviceworker: {
@@ -144,6 +159,8 @@ export default {
       }),
       commonjs(),
       !dev && terser()
-    ]
+    ],
+    preserveEntrySignatures: false,
+		onwarn,
   }
 };

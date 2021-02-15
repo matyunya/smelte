@@ -20,7 +20,7 @@
 
 <i
   aria-hidden="true"
-  class="material-icons icon text-xl {$$props.class} duration-200 ease-in"
+  class="material-icons icon text-xl select-none {$$props.class} duration-200 ease-in"
   class:reverse
   class:tip
   on:click

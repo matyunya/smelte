@@ -48,7 +48,7 @@
     .add("left-0", !right)
     .add("pointer-events-none", persistent)
     .add("z-50", !persistent)
-    .add("elevation-4", elevation)
+    .add("shadow", elevation)
     .add("z-20", persistent)
     .get();
 

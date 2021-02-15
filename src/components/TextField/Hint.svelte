@@ -3,8 +3,7 @@
   import { fly } from "svelte/transition";
   import { quadOut } from "svelte/easing";
 
-  let classesDefault = "text-xs py-1 pl-4 absolute bottom-1 left-0";
-
+  let classesDefault = "text-xs py-1 pl-4 absolute left-0";
 
   export let error = false;
   export let hint = "";
@@ -35,8 +34,8 @@
 </script>
 
 <div
-  class="{classes}"
+  class={classes}
   transition:fly={transitionProps}>
-  {hint || ''}
+  {@html hint || ''}
   {error || ''}
 </div>

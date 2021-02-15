@@ -13,7 +13,7 @@
 
   import defaultSort from "./sort.js";
 
-  const classesDefault = "elevation-3 relative text-sm overflow-x-auto dark:bg-dark-500";
+  const classesDefault = "shadow relative text-sm overflow-x-auto dark:bg-dark-500";
 
 
 
@@ -34,19 +34,24 @@
   export let pagination = true;
   export let scrollToTop = false;
   export let headerClasses = i => i;
+  export let headerRemove = '';
   export let paginationClasses = i => i;
   export let editableClasses = i => i;
   export let paginatorProps = null;
   export let classes = classesDefault;
+  export let customSort = false;
+  export let sortBy = null;
+  export let iconUp = 'arrow_upward';
+  export let iconDown = 'arrow_downward';
+  export let iconSortable = 'import_export';
 
   let table = "";
-  let sortBy = null;
 
   $: {
     perPage = pagination ? perPage : data.length;
   }
   $: offset = (page * perPage) - perPage;
-  $: sorted = sort(data, sortBy, asc).slice(offset, perPage + offset);
+  $: sorted = (customSort) ? data : sort(data, sortBy, asc).slice(offset, perPage + offset);
   $: pagesCount = Math.ceil(data.length / perPage);
 
   const dispatch = createEventDispatcher();
@@ -70,8 +75,13 @@
           {column}
           bind:asc
           bind:sortBy
+          remove={headerRemove}
           {sortable}
           {editing}
+          {iconUp}
+          {iconDown}
+          {iconSortable}
+          on:sort={sort}
         />
       </slot>
     {/each}

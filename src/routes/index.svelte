@@ -32,7 +32,7 @@
   Hit up the components
   <a class="a" href="/components">introduction</a>
   or please join our
-  <a class="a" href="https://discord.gg/32e2zU6">Discord chat</a>
+  <a class="a" href="https://discord.com/invite/nZc64MMdkU">Discord chat</a>
   for a lovely chat!
 </p>
 
@@ -40,7 +40,8 @@
 To get you started you need to add Smelte to your dependencies with your
 favorite package manager.
 <Code code="$ npm install smelte or yarn add smelte" />
-Then you need to add Smelte Rollup plugin (Webpack is on its way).
+Then add the Smelte Rollup plugin (after svelte but before css). Webpack support
+coming soon.
 <Code
   code={`const smelte=require("smelte/rollup-plugin-smelte");
 
