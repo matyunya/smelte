@@ -15,6 +15,7 @@
   export let name = "";
   export let value = "";
   export let classes = classesDefault;
+  export let small = false;
   export let labelClasses = i => i;
 
   function select() {
@@ -46,11 +47,11 @@
   <div class="relative">
     <Ripple color={rippleColor}>
       {#if selected === value}
-        <Icon class="text-{disabled ? 'gray' : color}-500">
+        <Icon {small} class="text-{disabled ? 'gray' : color}-500">
           radio_button_checked
         </Icon>
       {:else}
-        <Icon class={disabled ? 'text-gray-500 dark:text-gray-600' : 'text-gray-600'}>
+        <Icon {small} class={disabled ? 'text-gray-500 dark:text-gray-600' : 'text-gray-600'}>
           radio_button_unchecked
         </Icon>
       {/if}
