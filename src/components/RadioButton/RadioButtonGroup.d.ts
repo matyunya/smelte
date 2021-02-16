@@ -26,6 +26,7 @@ declare const _RadioButtonGroupProps: {
      * Default: "primary" */
     color?: string;
     buttonClasses?: string|((s:string)=>string);
+    small?: boolean;
 } & SvelteAllProps;
 declare const _RadioButtonGroupEvents: {};
 declare const _RadioButtonGroupSlots: {
