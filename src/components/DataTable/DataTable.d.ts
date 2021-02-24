@@ -14,6 +14,14 @@ export interface DataTableColumn<DataRow> {
      * -- Warning -- uses unsafe svelte-@html-method, might be vulnerable to XSS attacks. See [svelte.dev/tutorial/html-tags](https://svelte.dev/tutorial/html-tags)
     */
     value?:(v:DataRow)=>any,
+    /** A component to be shown in column.
+     * 
+     * Default: undefined */
+    component?: any,
+    /** Derive props to be passed to component.
+     * 
+     * Default: () => {} */
+    componentProps?: (v: DataRow) => {[key: string]: any},
     /** Cells are Editable. Default: false */
     editable?: boolean,
     /** If editable is true and textarea is true, edit fiels is textarea (text in more than one row)
