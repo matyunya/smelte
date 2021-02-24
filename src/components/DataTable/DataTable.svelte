@@ -69,7 +69,7 @@
 <table class={c} bind:this={table}>
   <thead class="items-center">
     {#each columns as column, i}
-      <slot name="header">
+      <slot name="header" {column}>
         <Header
           class={headerClasses}
           {column}
@@ -93,7 +93,7 @@
   {/if}
   <tbody>
     {#each sorted as item, index}
-      <slot name="item">
+      <slot name="item" {item} {index}>
         <Row
           bind:editing
           {index}
