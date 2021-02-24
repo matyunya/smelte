@@ -67,7 +67,9 @@
           />
         </slot>
       {/if}
-      {#if column.value}
+      {#if column.component}
+        <svelte:component this={column.component} {...(column.componentProps ? column.componentProps(item) : {})} />
+      {:else if column.value}
         {@html column.value(item)}
       {:else}
         {@html item[column.field]}
