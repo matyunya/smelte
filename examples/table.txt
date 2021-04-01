@@ -1,5 +1,5 @@
 <script>
-  import { DataTable } from "smelte";
+  import { DataTable, Image } from "smelte";
 
   let data = [];
   let loading = true;
@@ -50,9 +50,10 @@
       },
       {
         field: "thumbnail",
-        value: (v) => v && v.image
-          ? `<img src="${v.image.medium.replace("http", "https")}" height="70" alt="${v.name}">`
-          : "",
+        component: Image,
+        componentProps: (v) => v && v.image
+          ? ({src: v.image.medium.replace("http", "https"), class: 'h-full', height: 100, alt: v.name})
+          : {},
         class: "w-48",
         sortable: false,
         editable: false,

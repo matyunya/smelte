@@ -57,7 +57,7 @@
       class:cursor-pointer={editable && column.editable !== false}
     >
       {#if editable && column.editable !== false && editing[index] === i}
-        <slot name="edit-dialog">
+        <slot name="edit-dialog" {column}>
           <Editable
             class={editableClasses}
             bind:editing
@@ -67,7 +67,9 @@
           />
         </slot>
       {/if}
-      {#if column.value}
+      {#if column.component}
+        <svelte:component this={column.component} {...(column.componentProps ? column.componentProps(item) : {})} />
+      {:else if column.value}
         {@html column.value(item)}
       {:else}
         {@html item[column.field]}

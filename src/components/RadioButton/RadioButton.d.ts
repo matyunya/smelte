@@ -37,6 +37,7 @@ declare const _RadioButtonProps: {
     value?: string;
     classes?: string|((s:string)=>string);
     labelClasses?: (i: string) => string;
+    small?: boolean;
 } & SvelteAllProps;
 declare const _RadioButtonEvents: {};
 declare const _RadioButtonSlots: {

@@ -1,5 +1,6 @@
 <script>
   import DataTable from "components/DataTable";
+  import Image from "components/Image";
   import Code from "docs/Code.svelte";
   import table from "examples/table.txt";
 
@@ -52,9 +53,10 @@
       },
       {
         field: "thumbnail",
-        value: (v) => v && v.image
-          ? `<img src="${v.image.medium.replace("http", "https")}" height="70" alt="${v.name}">`
-          : "",
+        component: Image,
+        componentProps: (v) => v && v.image
+          ? ({src: v.image.medium.replace("http", "https"), class: 'h-full', height: 100, alt: v.name})
+          : {},
         class: "w-48",
         sortable: false,
         editable: false,
