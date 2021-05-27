@@ -42,6 +42,7 @@
     class="hidden"
     type="radio"
     role="radio"
+    {disabled}
     {name}
     selected={selected === value} />
   <div class="relative">
