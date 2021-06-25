@@ -2,7 +2,7 @@
   import { scale, fade } from "svelte/transition";
   import { ClassBuilder } from "../../utils/classes.js";
 
-  const classesDefault = "tooltip whitespace-no-wrap text-xs absolute mt-2 bg-gray-600 text-gray-50 rounded md:px-2 md:py-2 py-4 px-3 z-30";
+  const classesDefault = "tooltip whitespace-nowrap text-xs absolute mt-2 bg-gray-600 text-gray-50 rounded md:px-2 md:py-2 py-4 px-3 z-30";
 
   export let classes = classesDefault;
 
