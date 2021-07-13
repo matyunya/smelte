@@ -16,12 +16,16 @@
     "src/utils",
     "src/tailwind.css",
     "src/index.js",
+    "src/index.d.ts",
     "src/breakpoints.js",
+    "src/breakpoints.d.ts",
     "src/notification-queue.js",
+    "src/notification-queue.d.ts",
     "src/components",
     "tailwind.config.js",
     "postcss.config.js",
     "src/dark.js",
+    "src/dark.d.ts",
     "rollup-plugin-smelte.js"
   ],
   "module": "dist/module.js",
@@ -38,6 +42,7 @@
     "postcss-url": "^10.1.1",
     "rollup-plugin-postcss": "^4.0.0",
     "svelte": "^3.31.2",
+    "svelte-typed-component": "^1.1.1",
     "tailwind-css-variables": "^2.0.3",
     "tailwindcss": "^2.0.3",
     "tinycolor2": "^1.4.2"
@@ -74,7 +79,6 @@
     "sapper": "^0.28.10",
     "sirv": "^0.4.6",
     "svelte-preprocess": "^3.9.11",
-    "svelte-typed-component": "^1.1.1",
     "svelte-waypoint": "^0.1.4"
   }
 }

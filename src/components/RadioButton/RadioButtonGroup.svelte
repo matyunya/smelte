@@ -13,6 +13,7 @@
   export let name = "";
   export let disabled = false;
   export let color = "primary";
+  export let small = false;
   export let buttonClasses = "inline-flex block items-center mb-2 cursor-pointer z-0";
 
   const cb = new ClassBuilder(classes, classesDefault);
@@ -28,6 +29,7 @@
         class={buttonClasses}
         {...item}
         {color}
+        {small}
         name={name || `radio-${Math.random()}`}
         {disabled} />
     </slot>

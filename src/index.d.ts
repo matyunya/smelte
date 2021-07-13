@@ -26,5 +26,6 @@ import Ripple from "./components/Ripple";
 import DatePicker from "./components/DatePicker";
 import breakpoints from "./breakpoints";
 import notificationQueue from "./notification-queue";
+import dark from "./dark";
 export { Scrim, Spacer } from "./components/Util";
-export { Button, Card, Chip, Dialog, Image, Checkbox, SelectionLabel, RadioButton, RadioButtonGroup, List, ListItem, Menu, Label, NavigationDrawer, Icon, ProgressLinear, ProgressCircular, Select, Slider, Snackbar, Tab, Tabs, TabButton, TextField, AppBar, DataTable, Treeview, Switch, Tooltip, Ripple, DatePicker, breakpoints, notifier, notificationQueue, Notifications };
+export { Button, Card, Chip, Dialog, Image, Checkbox, SelectionLabel, RadioButton, RadioButtonGroup, List, ListItem, Menu, Label, NavigationDrawer, Icon, ProgressLinear, ProgressCircular, Select, Slider, Snackbar, Tab, Tabs, TabButton, TextField, AppBar, DataTable, Treeview, Switch, Tooltip, Ripple, DatePicker, breakpoints, notifier, notificationQueue, dark, Notifications };
