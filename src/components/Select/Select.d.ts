@@ -115,6 +115,7 @@ declare const _SelectProps: {
 } & SvelteAllProps;
 declare const _SelectEvents: {
     click: any;
+    change: any;
 };
 declare const _SelectSlots: {
     select: {};
