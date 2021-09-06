@@ -44,32 +44,34 @@
 </script>
 
 <ul class={c} class:rounded-t-none={select}>
-  {#each items as item, i}
-    {#if item.to !== undefined}
-      <slot name="item" {item} {dense} {value}>
-        <a tabindex={i + 1} href={item.to}>
-          <ListItem bind:value {...item} id={id(item)} {dense} on:change>
-            {item.text}
+  <slot name="items" {dense} {value}>
+    {#each items as item, i}
+      {#if item.to !== undefined}
+        <slot name="item" {item} {dense} {value}>
+          <a tabindex={i + 1} href={item.to}>
+            <ListItem bind:value {...item} id={id(item)} {dense} on:change>
+              {item.text}
+            </ListItem>
+          </a>
+        </slot>
+      {:else}
+        <slot name="item" {item} {dense} {value}>
+          <ListItem
+            bind:value
+            {selectedClasses}
+            {itemClasses}
+            {disabledClasses}
+            {...item}
+            tabindex={i + 1}
+            id={id(item)}
+            selected={value === id(item)}
+            {dense}
+            on:change
+            on:click>
+            {getText(item)}
           </ListItem>
-        </a>
-      </slot>
-    {:else}
-      <slot name="item" {item} {dense} {value}>
-        <ListItem
-          bind:value
-          {selectedClasses}
-          {itemClasses}
-          {disabledClasses}
-          {...item}
-          tabindex={i + 1}
-          id={id(item)}
-          selected={value === id(item)}
-          {dense}
-          on:change
-          on:click>
-          {getText(item)}
-        </ListItem>
-      </slot>
-    {/if}
-  {/each}
+        </slot>
+      {/if}
+    {/each}
+  </slot>
 </ul>
