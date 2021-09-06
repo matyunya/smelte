@@ -240,7 +240,8 @@
     {noUnderline}
     {outlined}
     {focused}
-    {error} />
+    {error} 
+    {color}  />
 
   {#if showHint}
     <Hint
