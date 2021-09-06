@@ -1,5 +1,5 @@
 <script>
-  export let selected = false;
+  export let selected = undefined;
   export let id = null;
 </script>
 

@@ -10,9 +10,9 @@ export default class Tab extends SvelteTypedComponent<TabProps, TabEvents, TabSl
 declare const _TabProps: {
     /** Selectd
      * 
-     * Default: false
+     * Default: undefined
      */
-    selected?: boolean;
+    selected?: string;
     /** ID
      * 
      * Default: null
