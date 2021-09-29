@@ -37,7 +37,11 @@ declare const _ListEvents: {
 };
 declare const _ListSlots: {
     item: {
-        item: {};
+        item: ListItemBase;
+        dense: boolean;
+        value: string;
+    };
+    items: {
         dense: boolean;
         value: string;
     };
