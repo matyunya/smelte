@@ -34,6 +34,7 @@
   "browserslist": "last 3 version",
   "svelte": "src/index.js",
   "dependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.3",
     "autoprefixer": "^9.8.6",
     "merge-deep": "^3.0.3",
     "postcss": "^8.2.6",
