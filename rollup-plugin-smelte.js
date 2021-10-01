@@ -40,8 +40,7 @@ const postcssProcessor = ({
             extensions: ["svelte"]
           }
         ],
-        whitelist: whitelist.filter(Boolean),
-        whitelistPatterns: whitelistPatterns.filter(Boolean),
+        safelist: whitelist.concat(whitelistPatterns.map((s) => new RegExp(s))).filter(Boolean),
         whitelistPatternsChildren: whitelistPatternsChildren.filter(Boolean)
       })
   ].filter(Boolean);
