@@ -23,7 +23,7 @@ export default {
     },
     {
       file: pkg.main,
-      format: "umd",
+      format: "cjs",
       sourcemap: true,
       name
     }

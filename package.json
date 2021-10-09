@@ -32,7 +32,7 @@
   "main": "dist/index.js",
   "types": "src/index.d.ts",
   "browserslist": "last 3 version",
-  "svelte": "src/index.js",
+  "svelte": "src/module.js",
   "dependencies": {
     "autoprefixer": "^9.8.6",
     "merge-deep": "^3.0.3",
