@@ -1,5 +1,5 @@
 <script>
-  // This is top src/routes/_layout.svelte.
+  // This is top src/routes/+layout.svelte.
 
   import {
     List,
