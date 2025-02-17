@@ -46,19 +46,19 @@ function buildPalette(hex) {
   const baseDark = multiply(tinycolor(hex).toRgb(), tinycolor(hex).toRgb());
   const baseTriad = tinycolor(hex).tetrad();
 
-  const lightest = o(tinycolor.mix(white, hex, 12), "50");
+  const transBase = o(tinycolor.mix(white, hex, 30), "50");
   return {
-    transLight: tinycolor(lightest[50])
+    transLight: tinycolor(transBase[50])
       .toRgbString()
       .replace(")", ", 0.15)"),
-    trans: tinycolor(lightest[50])
+    trans: tinycolor(transBase[50])
       .toRgbString()
       .replace(")", ", 0.7)"),
     transDark: tinycolor(hex)
       .toRgbString()
       .replace(")", ", 0.15)"),
 
-    ...lightest,
+    ...o(tinycolor.mix(white, hex, 12), "50"),
     ...o(tinycolor.mix(white, hex, 30), "100"),
     ...o(tinycolor.mix(white, hex, 50), "200"),
     ...o(tinycolor.mix(white, hex, 70), "300"),
