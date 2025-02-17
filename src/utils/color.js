@@ -19,6 +19,7 @@ const white = tinycolor("#ffffff");
 function buildPaletteByVarColor(varColor) {
   return {
     "50": `var(${varColor}-50)`,
+    "100": `var(${varColor}-100)`,
     "200": `var(${varColor}-200)`,
     "300": `var(${varColor}-300)`,
     "400": `var(${varColor}-400)`,
@@ -45,12 +46,12 @@ function buildPalette(hex) {
   const baseDark = multiply(tinycolor(hex).toRgb(), tinycolor(hex).toRgb());
   const baseTriad = tinycolor(hex).tetrad();
 
-  const lightest = o(tinycolor.mix(white, hex, 30), "50");
+  const transBase = o(tinycolor.mix(white, hex, 30), "50");
   return {
-    transLight: tinycolor(lightest[50])
+    transLight: tinycolor(transBase[50])
       .toRgbString()
       .replace(")", ", 0.15)"),
-    trans: tinycolor(lightest[50])
+    trans: tinycolor(transBase[50])
       .toRgbString()
       .replace(")", ", 0.7)"),
     transDark: tinycolor(hex)
@@ -58,7 +59,7 @@ function buildPalette(hex) {
       .replace(")", ", 0.15)"),
 
     ...o(tinycolor.mix(white, hex, 12), "50"),
-    ...lightest,
+    ...o(tinycolor.mix(white, hex, 30), "100"),
     ...o(tinycolor.mix(white, hex, 50), "200"),
     ...o(tinycolor.mix(white, hex, 70), "300"),
     ...o(tinycolor.mix(white, hex, 85), "400"),
